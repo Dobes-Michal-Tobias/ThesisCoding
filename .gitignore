@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+*.ipynb_checkpoints/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.pdf
+
+# Ignorovat data a modely
+data/
+models/
+z_old_version/
+src_servis/
+
+Commands.txt
+data_generator.py
+
+# Systémové soubory
+.DS_Store
+Thumbs.db
