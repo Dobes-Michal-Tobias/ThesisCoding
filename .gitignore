@@ -19,6 +19,7 @@ venv/
 data/
 models/
 z_old_version/
+z_v1.0
 src_servis/
 
 Commands.txt
