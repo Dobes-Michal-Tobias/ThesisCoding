@@ -24,6 +24,7 @@ src_servis/
 
 Commands.txt
 data_generator.py
+*.zip
 
 # Systémové soubory
 .DS_Store

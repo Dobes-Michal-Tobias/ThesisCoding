@@ -2,7 +2,7 @@
 
 **Autor:** Bc. Michal Tobiáš Dobeš (student NMgr. Obecná lingvistika na KOL FF UP, michaltobias.dobes01@upol.cz)
 
-**Vedoucí práce:** Mgr. Vladimír Matlach, Ph.D. (Katedra obecné lingvistiky FF UP, vladimir.matlach@upol.cz)
+**Vedoucí práce:** Mgr. Vladimír Matlach, Ph.D. (Katedra obecné lingvistiky FF UP)
 
 **❗Práce k 16.1.2026 není ještě dokončena. Plánovaná doba dokončení je LS 2026**
 
