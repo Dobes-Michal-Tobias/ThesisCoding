@@ -1,57 +1,91 @@
 # Strojová detekce lexikálních jednotek s potenciálem narušit informační kvalitu ve zpravodajských textech
+ 
 
-**Autor:** Bc. Michal Tobiáš Dobeš (student NMgr. Obecná lingvistika na KOL FF UP, michaltobias.dobes01@upol.cz)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![NLP](https://img.shields.io/badge/NLP-RobeCzech-green)](https://huggingface.co/ufal/robeczech-base)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-In%20Progress-orange)]()
 
-**Vedoucí práce:** Mgr. Vladimír Matlach, Ph.D. (Katedra obecné lingvistiky FF UP)
+> **Diplomová práce** | Univerzita Palackého v Olomouci | Katedra obecné lingvistiky
 
-**❗Práce k 16.1.2026 není ještě dokončena. Plánovaná doba dokončení je LS 2026**
+Tento repozitář obsahuje zdrojový kód, experimentální framework a dokumentaci k diplomové práci zaměřené na **automatizovanou identifikaci slov porušujících objektivu** v českých zpravodajských textech. Projekt kombinuje doménové znalosti mediálních studií a lingvistiky s moderními metodami NLP (Natural Language Processing) a strojového učení.
 
-V diplomové práci se zabývám  aplikací strojového učení s cílem identifikace jazykových lexikálních jednotek, které mají potenciál porušit informační kvalitu typicky zpravodajských textů. Využíváme metody čítající detekce anomálií, supervised/unsupervised techniky, velké jazykové modely (LLM) a další modely umělé inteligence (AI).
-Veškeré tyto technické aplikace budu rámovat do žurnalistické a lingvistické doménové znalosti a poskytnu kvantitativní a kvalitativní resumé pro využití výsledků v praxi.
+---
 
-Tento repozitář obsahuje zdrojový kód a experimentální framework pro moji diplomovou práci. 
+## Cíle projektu
 
+Hlavním úkolem je detekce lexikálních jednotek, které mají potenciál narušovat objektivitu zpravodajství – tzv. **bias detection**. Projekt řeší tento problém čtyřmi přístupy (na úrovni vět i slov):
 
+1.  **Unsupervised Outlier Detection**
+    * Využití metod detekce anomálií pro identifikaci "odchylek" od neutrálního zpravodajského stylu.
+    * **Algoritmy:** One-Class SVM, Isolation Forest, Mahalanobisova vzdálenost.
+    * **Vstup:** Contextualized embeddings (BERT/RobeCzech).
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
-![NLP](https://img.shields.io/badge/NLP-RobeCzech-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+2.  **Supervised Classification (Klasifikace)**
+    * Trénování klasifikátorů na anotovaných datech.
+    * **Algoritmy:** Logistic Regression, SVM, XGBoost nad BERT embeddingy.
 
+3.  **Neural Networks (Hluboké učení)**
+    * Implementace vlastních architektur neuronových sítí.
+    * **Supervised:** MLP (Multilayer Perceptron) a BiLSTM pro klasifikaci sekvencí.
+    * **Unsupervised:** Autoenkodéry pro detekci anomálií na základě rekonstrukční chyby.
 
-## Cíl práce
+4.  **Large Language Models (LLM)**
+    * Využití state-of-the-art generativních modelů.
+    * **In-context Learning:** Zero-shot / Few-shot learning, pokročilý Prompt Engineering.
+    * **Fine-tuning:** Doménová adaptace open-source modelů (Llama 3, Mistral…).
+  
 
-Hlavním úkolem je identifikovat slova nebo celé věty, které mohou nauršovat *objektivitu* zpravodajství. Projekt zkoumá dva hlavní přístupy:
-1.  **Unsupervised Outlier Detection (M1):** Modelování normality na základě neutrálních textů (ONSVM, IF, Mahalanobisova vzdálenost).
-2.  **Supervised Classification (M2):** Klasifikace pomocí natrénovaných modelů (LogReg, SVM, XGBoost…) nad BERT embeddingy.
+## Vlastní datasety
+
+Projekt je postaven na **dvou unikátních datasetech vytvořených autorem** speciálně pro účely této práce:
+
+* **GOLD Dataset:** Ručně anotovaný dataset vysoké kvality. Obsahuje expertně ověřené příklady lexikálních jednotek s potenciálem narušit inforamční kvalitu zpravodajství (kombinace reálných textů a LLM augmentace). Slouží jako *Ground Truth* pro evaluaci.
+* **SILVER Dataset:** Rozsáhlý, automaticky generovaný dataset (weakly labeled). Slouží k trénování robustnosti modelů a ověření metod na větším objemu dat.
+
+> **Poznámka k dostupnosti dat:** Vzhledem k probíhajícímu řízení a originalitě dat **nejsou datasety momentálně veřejně dostupné**. Jejich zveřejnění v sekci [Releases](../../releases) je plánováno po odevzdání a obhajobě práce (LS 2026).
+
+## Technologie a nástroje
+
+Projekt využívá moderní Python stack pro Data Science:
+
+* **Jazyk:** Python 3.9+
+* **NLP & Embeddings:** `transformers` (HuggingFace), `ufal/robeczech-base`, `spaCy`
+* **Machine Learning:** `scikit-learn`, `xgboost`
+* **Data Processing:** `pandas`, `numpy`
+* **Vizualizace:** `seaborn`, `matplotlib`
 
 ## Struktura repozitáře
 
-Projekt je rozdělen do modulů (`src`) a Jupyter notebooků (`notebooks`), které reprezentují jednotlivé fáze experimentů.
+Projekt dodržuje modulární strukturu oddělující data, experimentální notebooky a znovupoužitelný kód.
 
 ```text
-├── data/                  # Složka pro data (stáhněte z Releases)
-│   ├── raw/               # Surová JSONL data
-│   ├── interim/           # Předzpracovaná data
-│   └── vectors/           # Vypočítané embeddingy (.pkl)
-├── notebooks/             # Experimentální notebooky
-│   ├── 01_EDA_Preprocess.ipynb               # Čištění dat, statistiky, embeddingy
-│   ├── 02_M1_S1_Unsupervised_Token.ipynb     # Detekce anomálií (slova)
-│   ├── 03_M1_S2_Unsupervised_Sentence.ipynb  # Detekce anomálií (věty)
-│   ├── 04_M2_S1_Supervised_Token.ipynb       # Klasifikace (slova) + Bootstrap
-│   └── 05_M2_S2_Supervised_Sentence.ipynb    # Klasifikace (věty)
-├── src/                   # Zdrojový kód a pomocné moduly
-│   ├── config.py          # Konfigurace cest a parametrů
-│   ├── models.py          # Wrappery pro ML modely
-│   ├── visualization.py   # Vizualizační funkce (PCA, t-SNE, metriky)
+├── data/                  # Složka pro data (viz sekce O datech)
+│   ├── raw/               # (Surová JSONL data - neveřejné)
+│   ├── vectors/           # (Předpočítané embeddingy - neveřejné)
+├── notebooks/             # Reprodukovatelné experimenty (Jupyter)
+│   ├── 01_EDA_Preprocess.ipynb           # Exploratorní analýza a NLP pipeline
+│   ├── 02_M1_S1_Unsupervised_Token.ipynb # Detekce anomálií na úrovni slov
+│   ├── 03_M1_S2_Unsupervised_Sentence.ipynb
+│   ├── 04_M2_S1_Supervised_Token.ipynb   # Klasifikace a bootstrap validace
 │   └── ...
-├── info/                  # Dokumentace k datasetům a struktuře
-└── README.md              # Tento soubor
+├── src/                   # Zdrojový kód (Python moduly)
+│   ├── config.py          # Centrální konfigurace projektu
+│   ├── load_data.py       # Data loading a preprocessing pipeline
+│   ├── visualization.py   # Unifikované vizualizace pro reporty
+│   └── evaluation.py      # Metriky (Precision-Recall, F1, AUPRC)
+├── requirements.txt       # Závislosti projektu
+└── README.md              # Dokumentace
 ```
 
-### Stažení dat
+---
 
-Vzhledem k velikosti nejsou dataset a vypočítané vektory (embeddingy) součástí repozitáře.
+**Michal Tobiáš Dobeš**
 
-1. Přejděte do sekce **[Releases]((https://github.com/Dobes-Michal-Tobias/ThesisCoding/releases))** v tomto repozitáři.
-2. Stáhněte archiv `data.zip`.
-3. Obsah rozbalte do kořenové složky projektu tak, aby vznikla struktura podle popisu (viz výše).
+* Student NMgr. Obecná lingvistika, FF UP
+* Zaměření: Computational Linguistics, NLP, Machine Learning
+* ✉️ [michaltobias.dobes01@upol.cz](mailto:michaltobias.dobes01@upol.cz)
+
+**Vedoucí práce:** Mgr. Vladimír Matlach, Ph.D. (Katedra obecné lingvistiky FF UP)
+
+*Poznámka: Práce je ve vývoji. Plánované dokončení a obhajoba: Letní semestr 2026.*
