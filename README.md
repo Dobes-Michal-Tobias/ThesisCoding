@@ -60,22 +60,22 @@ Projekt využívá moderní Python stack pro Data Science:
 Projekt dodržuje modulární strukturu oddělující data, experimentální notebooky a znovupoužitelný kód.
 
 ```text
-├── data/                  # Složka pro data (viz sekce O datech)
+├── data/                  # Složka pro data
 │   ├── raw/               # (Surová JSONL data - neveřejné)
 │   ├── vectors/           # (Předpočítané embeddingy - neveřejné)
 ├── notebooks/             # Reprodukovatelné experimenty (Jupyter)
 │   ├── 01_EDA_Preprocess.ipynb           # Exploratorní analýza a NLP pipeline
 │   ├── 02_M1_S1_Unsupervised_Token.ipynb # Detekce anomálií na úrovni slov
 │   ├── 03_M1_S2_Unsupervised_Sentence.ipynb
-│   ├── 04_M2_S1_Supervised_Token.ipynb   # Klasifikace a bootstrap validace
+│   ├── 04_M2_S1_Supervised_Token.ipynb   # Supervised Klasifikace 
 │   └── ...
 ├── src/                   # Zdrojový kód (Python moduly)
 │   ├── config.py          # Centrální konfigurace projektu
 │   ├── load_data.py       # Data loading a preprocessing pipeline
 │   ├── visualization.py   # Unifikované vizualizace pro reporty
 │   └── evaluation.py      # Metriky (Precision-Recall, F1, AUPRC)
-├── requirements.txt       # Závislosti projektu
-└── README.md              # Dokumentace
+├── requirements.txt       
+└── README.md              
 ```
 
 ---
