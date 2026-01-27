@@ -12,15 +12,13 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"⚙️ Konfigurace načtena. Používám zařízení: {DEVICE}")
 
 # --- 2. CESTY K SOUBORŮM (PATHS) ---
-# OPRAVA: BASE_DIR by měl být kořen projektu (složka ThesisCoding), ne data
-# Pokud máš config.py ve složce 'src', tak .parent je 'src' a .parent.parent je 'ThesisCoding'
-# Ale pokud chceš pevnou cestu, nastavíme ji takto (bez /data na konci):
+# BASE_DIR je kořen projektu (složka ThesisCoding)
 BASE_DIR = Path(r'C:\Users\dobes\Documents\UniversityCodingProject\ThesisCoding')
 
 # Datové složky
 DATA_DIR = BASE_DIR / 'data'        # C:\...\ThesisCoding\data
 RAW_DIR = DATA_DIR / 'raw'          # C:\...\ThesisCoding\data\raw
-INTERIM_DIR = DATA_DIR / 'interim'  # <--- NOVÉ: Zde se uloží data s embeddingy
+INTERIM_DIR = DATA_DIR / 'interim'  # Zde se uloží data s embeddingy
 VECTORS_DIR = DATA_DIR / 'vectors'  # C:\...\ThesisCoding\data\vectors
 MODELS_DIR = BASE_DIR / 'models'
 RESULTS_DIR = BASE_DIR / 'results'
@@ -60,10 +58,6 @@ COLORS = {
     'TN': '#e0e0e0',      
     'FN': '#9b59b6'       
 }
-
-
-# Barvy pro Train sady (světlejší verze těch nahoře - definujeme dynamicky nebo ručně)
-# Pro jednoduchost ve vizualizaci použijeme alfa kanál (průhlednost).
 
 SNS_STYLE = "whitegrid"
 SNS_CONTEXT = "paper"
