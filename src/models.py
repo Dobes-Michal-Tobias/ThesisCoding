@@ -2,6 +2,7 @@
 Modul definující wrappery pro modely (Unsupervised i Supervised).
 Zajišťuje jednotné rozhraní pro trénování a predikci.
 """
+import config
 
 import numpy as np
 from sklearn.ensemble import IsolationForest
@@ -71,10 +72,30 @@ class OCSVMWrapper(BaseDetector):
         # Chceme skóre anomálie -> otočíme znaménko.
         return -self.model.decision_function(X)
     
+def get_unsupervised_model(model_name, random_state=config.RANDOM_SEED):
+    """
+    Vrátí instanci unsupervised modelu podle názvu.
+    Slouží jako rozcestník pro analytické skripty.
+    """
+    name = model_name.lower()
+    
+    if 'mahalanobis' in name or 'md' in name:
+        return MahalanobisDetector(method='robust', random_state=random_state)
+    
+    elif 'isolation' in name or 'forest' in name or name == 'if':
+        return IsolationForestWrapper(random_state=random_state)
+    
+    elif 'svm' in name or 'ocsvm' in name:
+        # OCSVM nemá random_state v initu
+        return OCSVMWrapper()
+    
+    else:
+        raise ValueError(f"Unknown unsupervised model name: {model_name}")
+    
 # --- M2: SUPERVISED MODELS (Placeholder) ---
 # Sem později přidáme např.:
 
-def get_supervised_model(name, random_state=42):
+def get_supervised_model(name, random_state=config.RANDOM_SEED):
     """
     Vrátí instanci klasifikátoru podle názvu.
     Obsahuje přednastavené parametry pro tento projekt (class_weight='balanced' atd.).

@@ -1,0 +1,459 @@
+text,analyzed_token,true_label,pred_label,prob_anomaly,error_category,model,scenario
+Obžalovaný byl zproštěn viny v plném rozsahu.,plném,0.0,0.0,0.0408828156258482,TN,SVM (RBF),S1e
+"Město zasáhlo neúprosné peklo léta, které nemá v posledních dekádách obdoby.",peklo,1.0,1.0,0.9999878004455847,TP,SVM (RBF),S1e
+"K referendu, které se ve městě konalo v sobotu, nepřišlo dost lidí.",konalo,0.0,0.0,0.0007410180910829861,TN,SVM (RBF),S1e
+Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci.,populaci,0.0,0.0,0.00025716534616100417,TN,SVM (RBF),S1e
+"Izraelská armáda následně provedla rázný úder na pozice, odkud byly střely vypáleny.",rázný,1.0,1.0,0.9912675121435889,TP,SVM (RBF),S1e
+"Rozhodnutí bylo zbabělé, ministr měl bojovat až do samotného konce.",zbabělé,1.0,1.0,0.9999996360983369,TP,SVM (RBF),S1e
+"Podle Místopředsedkyně ANO Alena Schillerová v návrhu rozpočtu chybí 38 miliard korun na dopravní infrastrukturu, 32 miliard na mandatorní výdaje ministerstva práce a sociálních věcí a sedm miliard na spolufinancování zemědělství.",miliard,0.0,0.0,0.003755115983634164,TN,SVM (RBF),S1e
+Mediální bitva o hlasy voličů eskalovala během posledních dvou dnů.,eskalovala,0.0,0.0,0.0019351690424164476,TN,SVM (RBF),S1e
+"Zpráva uvádí, že na východě země bylo zaznamenáno řada porušení mezinárodního humanitárního práva.",řada,1.0,1.0,0.9962236606921531,TP,SVM (RBF),S1e
+Asistent trenéra opustí tým hned po podpisu ukončení smlouvy.,tým,0.0,0.0,0.0001068806647414988,TN,SVM (RBF),S1e
+Asistent trenéra opustí tým hned po podpisu ukončení smlouvy.,podpisu,0.0,0.0,0.01020396153319878,TN,SVM (RBF),S1e
+"Velký favorit večera, herec Robert Smith, si nakonec odnesl kýžené zlato za nejlepší mužský herecký výkon v hlavní roli.",zlato,1.0,1.0,0.8645263277834142,TP,SVM (RBF),S1e
+Případ na vládním resrotu je největším skandálem posledních let.,let,0.0,1.0,0.5648587523360028,FP,SVM (RBF),S1e
+"Při čelním střetu se vozy doslova drtily do sebe, svědci popisovali hrozivý zvuk.",drtily,1.0,1.0,0.9999990656706335,TP,SVM (RBF),S1e
+Kvalita poskytovaných služeb je však tristní.,tristní,1.0,1.0,0.9686099300234114,TP,SVM (RBF),S1e
+Návrh zavádí složitý systém tzv. hedge fondů a jejich odpisů.,složitý,0.0,0.0,0.006464007911673828,TN,SVM (RBF),S1e
+"Vedení společnosti věří, že tento úspěch mění celé paradigma distribuce audiovizuálního obsahu.",paradigma,1.0,1.0,0.99998499020114,TP,SVM (RBF),S1e
+"Rozpočet pro tento sektor vzroste v příštím roce o 5,5 miliardy korun.",příštím,0.0,0.0,0.000114618347966367,TN,SVM (RBF),S1e
+"Bylo oznámeno, že od ledna dojde k optimalizaci poplatků za služby v domovech pro seniory.",optimalizaci,1.0,1.0,0.9956007603971883,TP,SVM (RBF),S1e
+Na sedm let odnětí svobody dostal nepodmíněný trest ten hlavní obžalovaný.,odnětí,0.0,0.0,0.004170327325275588,TN,SVM (RBF),S1e
+Způsob propagace akce byl směšný.,směšný,1.0,1.0,0.9790457045080595,TP,SVM (RBF),S1e
+"Regulátoři se zaměřují na to, jak chamtivé korporace zneužívají své dominantní postavení na trhu s mobilními aplikacemi.",chamtivé,1.0,1.0,0.9999990083148219,TP,SVM (RBF),S1e
+"Jeden z předních expertů varuje, že nově objevená zranitelnost v DeFi protokolu představuje pro všechny držitele smrtící nebezpečí.",smrtící,1.0,1.0,0.9999825815061898,TP,SVM (RBF),S1e
+"Ekologičtí aktivisté ovšem tvrdí, že jde jen o uměle vyvolaný bordel a že elektrárny krajině neublíží.",bordel,1.0,1.0,0.9999997503188968,TP,SVM (RBF),S1e
+Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku.,celou,0.0,0.0,0.009057221999796231,TN,SVM (RBF),S1e
+Finanční podpora byla navýšena i přes diskutabilní uměleckou hodnotu některých dříve podpořených projektů.,diskutabilní,1.0,1.0,0.9955791873322009,TP,SVM (RBF),S1e
+"Nebude se moci do restaurací, do kaváren, nebude se moci do vlaků, TGV, ani do divadel.",TGV,1.0,1.0,0.6205269433416727,TP,SVM (RBF),S1e
+Režisérovi se podařilo vytvořit povedený přepis náročné literární předlohy.,povedený,1.0,1.0,0.9941182899749218,TP,SVM (RBF),S1e
+Toto špičkové zařízení umožní provádět detailnější diagnostiku neurologických a onkologických onemocnění.,špičkové,1.0,1.0,0.6642912262808593,TP,SVM (RBF),S1e
+Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností.,uzavřelo,0.0,0.0,0.006153542000259226,TN,SVM (RBF),S1e
+Návrh byl na radě města šmahem schválen bez hlubší analýzy budoucího využití plochy.,šmahem,1.0,1.0,0.9999998622486079,TP,SVM (RBF),S1e
+"Opozice kritizuje vládu, že svým přístupem vyvolává zbytečnou covidhysterie namísto klidného informování veřejnosti.",covidhysterie,1.0,1.0,0.9965036528476383,TP,SVM (RBF),S1e
+"Stavební práce mají za cíl vyřešit problémy s pověstným propadem vozovky v pravém jízdním pruhu, který se objevoval každou zimu.",pověstným,1.0,1.0,0.9963748018857073,TP,SVM (RBF),S1e
+"Vyšetřovatelé prověřují nové důkazy, které by snad mohly vést k dopadení pachatele.",snad,1.0,1.0,0.9618193581362446,TP,SVM (RBF),S1e
+Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen.,reakci,0.0,0.0,0.11685180880110979,TN,SVM (RBF),S1e
+"Kritici ale upozorňují, že tato štědrá podpora znamená nadměrné zatížení státního rozpočtu bez jasných záruk návratnosti.",štědrá,1.0,1.0,0.9999973648539477,TP,SVM (RBF),S1e
+Zákazníci se stávají rukojmími manažerů nadnárodních firem.,nadnárodních,0.0,1.0,0.5085913418801109,FP,SVM (RBF),S1e
+Večírky zástupců strany se konaly v restauraci a jejich účast byla vysoká.,restauraci,0.0,0.0,0.006025262458794456,TN,SVM (RBF),S1e
+"Průměrná cena benzínu se snížila o 0,80 koruny za jeden litr paliva.",paliva,0.0,1.0,0.8145622503211485,FP,SVM (RBF),S1e
+Podmínky soutěže jsou šité na míru jedné firmě.,míru,0.0,0.0,0.06068517039952539,TN,SVM (RBF),S1e
+Audit odhalil skandální plýtvání penězi daňových poplatníků v několika operačních programech v Portugalsku.,skandální,1.0,1.0,0.9999999103812712,TP,SVM (RBF),S1e
+"Ekonomické sankce, které se dosud považovaly za poslední možnost, byly nyní aktivovány jako sevřená pěst mezinárodního tlaku.",pěst,1.0,1.0,0.9320928556606373,TP,SVM (RBF),S1e
+Pro obyvatele je tato rostoucí inflace doslova zlodějina páchaná na jejich úsporách.,zlodějina,1.0,1.0,0.9999999445442672,TP,SVM (RBF),S1e
+"Zdá se, že řešení vleklé občanské války v oblasti je v nedohlednu, shodují se experti.",vleklé,1.0,1.0,0.996954945268765,TP,SVM (RBF),S1e
+"Podnikatelé se obávají, že ekonomický propad by mohl vést k masivnímu propouštění a omezení investic v klíčových sektorech.",propad,1.0,1.0,0.8244084245460744,TP,SVM (RBF),S1e
+Večírky zástupců strany se konaly v restauraci a jejich účast byla vysoká.,zástupců,0.0,0.0,0.013919890464924511,TN,SVM (RBF),S1e
+Důvodem je zhoršená bezpečnostní situace v oblasti.,zhoršená,0.0,0.0,0.0006980548342669184,TN,SVM (RBF),S1e
+Ulice jsou teď rozkopané a doprava kolabuje.,rozkopané,1.0,1.0,0.9366143476389088,TP,SVM (RBF),S1e
+Stav českého zdravotnictví je momentálně tristní.,českého,0.0,0.0,0.00021454442423411566,TN,SVM (RBF),S1e
+Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími.,vozidlům,0.0,0.0,0.024791730707516575,TN,SVM (RBF),S1e
+Vedení firmy plně podpořilo nový firemní program pro digidetox zaměstnanců.,nový,0.0,0.0,0.001241251090130021,TN,SVM (RBF),S1e
+"Hlavní prioritou vlády je nyní rychlá fiskální konsolidace veřejných financí, aby se zamezilo dalšímu zadlužování.",konsolidace,1.0,1.0,0.9963501230263326,TP,SVM (RBF),S1e
+Obsah masných výrobků je podle výživových expertů odpad.,výživových,0.0,1.0,0.6504204752358048,FP,SVM (RBF),S1e
+"Odbory kritizují tato drakonická opatření, která zahrnují snížení veřejných výdajů a zmrazení platů ve státní správě.",drakonická,1.0,1.0,0.9999849407984706,TP,SVM (RBF),S1e
+"Analytici varují, že její pozice na trhu polovodičů je nyní nezničitelná a představuje akutní riziko pro konkurenční firmy.",nezničitelná,1.0,1.0,0.9999996784621012,TP,SVM (RBF),S1e
+Podle opozičního lídra je celý dlouhodobý program premiérova týmu jen prázdné žvanění bez reálného obsahu.,žvanění,1.0,1.0,0.9999998148507867,TP,SVM (RBF),S1e
+Navzdory velkým očekáváním kritici přijali nový psychologický snímek poměrně rozpačitě.,rozpačitě,1.0,1.0,0.9930294783339523,TP,SVM (RBF),S1e
+Nové směrnice Zelené dohody zbytečně kladou na průmysl značné finanční a administrativní nároky.,zbytečně,1.0,1.0,0.9745521691302957,TP,SVM (RBF),S1e
+"Lékařský tým věru potvrdil, že rekonstrukce urgentního příjmu proběhne podle schváleného harmonogramu.",věru,1.0,1.0,0.9999946564783797,TP,SVM (RBF),S1e
+Tento krok představuje radikální obrat v dosavadním směrování firmy.,firmy,0.0,0.0,0.006464007911673828,TN,SVM (RBF),S1e
+Způsobenou škodu označil vandal za své dílko a podepsal se pod něj.,podepsal,0.0,0.0,0.00947166725135617,TN,SVM (RBF),S1e
+Prameny v roce 2021 získaly státní bezúročnou půjčku a v roce 2018 byla vypsána veřejná sbírka.,vypsána,0.0,0.0,0.0005366115800362206,TN,SVM (RBF),S1e
+"Některé členské státy se ale obávají, že se jedná o neférový diktát velkých zemí.",diktát,1.0,1.0,0.9999990669040333,TP,SVM (RBF),S1e
+Mediální bitva o hlasy voličů eskalovala během posledních dvou dnů.,bitva,1.0,1.0,0.9907981412413331,TP,SVM (RBF),S1e
+"Kritici očekávají, že inscenace nabídne ikonický pohled na moderní českou společnost.",ikonický,1.0,1.0,0.999999094559921,TP,SVM (RBF),S1e
+Zasedání bankovní rady proběhne příští týden za přítomnosti všech sedmi členů.,týden,0.0,0.0,0.00508797610251317,TN,SVM (RBF),S1e
+Všechny zúčastněné firmy podle zpráv tunelovaly státní fondy.,firmy,0.0,0.0,0.02175088259979409,TN,SVM (RBF),S1e
+"V nárazech dosáhla rychlost větru ničivou rychlost 140 km/h, což vedlo k pádům stromů a narušení železniční dopravy.",ničivou,1.0,1.0,0.9949571482344456,TP,SVM (RBF),S1e
+Klíčová pro úspěch integrace nových systémů do národní správy bude primárně změna mindsetu úředníků a zaměstnanců.,mindsetu,1.0,1.0,0.9896705632816989,TP,SVM (RBF),S1e
+Město při plánování průmyslového parku o rozloze 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností.,Státní,0.0,0.0,0.0010477670552220845,TN,SVM (RBF),S1e
+"Bylo navrženo, že by staré nevyužité špajsky mohly být přeměněny na studijní místnosti.",špajsky,1.0,1.0,0.9912726414958458,TP,SVM (RBF),S1e
+"Chyběl tam překvapivě jeden z hlavních představitelů,  který má čelit obvinění z korupce.",hlavních,0.0,0.0,0.0005008491362897663,TN,SVM (RBF),S1e
+"Vzpomeňme na rok 2018, kdy se tady ve Windsoru odehrála pohádková svatba prince Harryho s vévodkyní Megan.",kdy,0.0,0.0,0.00041538529768815266,TN,SVM (RBF),S1e
+Choreografie Tomáše Rychetského se stala skutečným darem pro pražskou taneční scénu.,darem,1.0,1.0,0.9820976061372639,TP,SVM (RBF),S1e
+Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod #silným tlakem velkých technologických firem a vlády USA.,navrhuje,0.0,0.0,0.022214879455102483,TN,SVM (RBF),S1e
+Dopravní situace v centru je dnes peklo.,situace,0.0,0.0,0.010037290867631509,TN,SVM (RBF),S1e
+Studie předpovídá pokles úrody pšenice o 15 procent do roku 2050.,Studie,0.0,0.0,0.16074297588176822,TN,SVM (RBF),S1e
+"Analytici varují, že Írán rozšiřuje svá chapadla v regionu skrze finanční a vojenskou podporu pro milice.",chapadla,1.0,1.0,0.9999909700512576,TP,SVM (RBF),S1e
+Primář Novák je podle hodnocení pacientů považován za skutečného machra ve svém oboru chirurgie.,machra,1.0,1.0,0.999987307143836,TP,SVM (RBF),S1e
+Rozdíl mezi platy mužů a žen zůstává i na dále neuvěřitelný.,žen,0.0,0.0,0.0009773327577260436,TN,SVM (RBF),S1e
+Po bouřlivé debatě se nakonec podařilo zajistit dostatečné kvorum pro schválení důležité vyhlášky o místních poplatcích.,kvorum,1.0,1.0,0.9916338666234658,TP,SVM (RBF),S1e
+Někteří pacienti popisují noční čekání na ošetření v přeplněné čekárně jako skutečné utrpení.,utrpení,1.0,1.0,0.9999928219345408,TP,SVM (RBF),S1e
+V rámci předvolebních slibů přislíbil občanům rapidní zlepšení MHD.,přislíbil,1.0,1.0,0.936869336651901,TP,SVM (RBF),S1e
+Civilisté jsou denně vystaveni agresi ze strany osadníků na Západním břehu Jordánu.,agresi,1.0,1.0,0.9859431730605872,TP,SVM (RBF),S1e
+"Přestože to zaznělo loni, zůstávala tato nadávka jako balvan mezi oběma politiky",nadávka,0.0,0.0,0.0013712518005076155,TN,SVM (RBF),S1e
+Finanční plán vedení je bordel a překvapil celou burzu svou nepřipraveností.,plán,0.0,0.0,0.012629608787712066,TN,SVM (RBF),S1e
+"Městská správa připravila opatření, která fungovala skvěle a zabránila větším škodám.",skvěle,1.0,1.0,0.9999926419685169,TP,SVM (RBF),S1e
+"Nejvíce nominací si odnesla mladá zpěvačka Billie Eilish, jejíž hlas definuje současnou generaci popu.",hlas,1.0,1.0,0.8559054659649694,TP,SVM (RBF),S1e
+Škoda byla předběžně vyčíslena na pět milionů korun v majetku města.,majetku,0.0,0.0,0.001962198600930472,TN,SVM (RBF),S1e
+Očekává se značné navýšení celosvětové produkce výkonných mikroprocesorů v příštím roce.,značné,1.0,1.0,0.9853081137711789,TP,SVM (RBF),S1e
+Vláda daného státu označila tento postup za nátlak a diktát ze strany Bruselu.,diktát,1.0,1.0,0.9999985976953811,TP,SVM (RBF),S1e
+"Jednání probíhají za zavřenými dveřmi, ale poněkud bez jasného a finálního výsledku.",poněkud,1.0,1.0,0.9967664632493926,TP,SVM (RBF),S1e
+Vzhledem k aktuální ekonomické situaci bylo riziko disrupce úrokových sazeb ČNB odmítnuto.,disrupce,1.0,1.0,0.992293102376965,TP,SVM (RBF),S1e
+Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun.,korun,0.0,0.0,0.05710390010882124,TN,SVM (RBF),S1e
+Pokles tržeb na byl neobyčejně velký.,tržeb,0.0,0.0,0.006501252630987439,TN,SVM (RBF),S1e
+"Naše bezpečnostní složky pouze zajišťují zvýšené monitorování hranic proti teroristickým hrozbám, uvedl premiér.",monitorování,1.0,0.0,0.04227195728577721,FN,SVM (RBF),S1e
+Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku.,podmínky,0.0,0.0,0.0006486968292042814,TN,SVM (RBF),S1e
+Základní sazba vzrostla o půl procentního bodu.,Základní,0.0,0.0,0.11449287882682725,TN,SVM (RBF),S1e
+Na opravu kostela přispěl stát balíkem peněz.,balíkem,1.0,1.0,0.9750573988882962,TP,SVM (RBF),S1e
+"Odborníci se shodují, že se jedná o nevídaný pokrok, který do deseti let změní více než 50% pracovního trhu.",nevídaný,1.0,1.0,0.9999884798372974,TP,SVM (RBF),S1e
+První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě.,svatého,0.0,0.0,0.1607823394937232,TN,SVM (RBF),S1e
+O 40 procent do roku 2030 oproti roku 1990 mají být sníženy ty emise.,roku,0.0,0.0,0.02659113573488255,TN,SVM (RBF),S1e
+"Jeho opakovaná nepřítomnost v důležitých chvílích znovu potvrdila, že je v podstatě jen politický fluktuant.",fluktuant,1.0,1.0,0.9999954818138138,TP,SVM (RBF),S1e
+Její předseda Tomio Okamura z budovy Sněmovny #ostentativně sundal ukrajinskou vlajku.,ostentativně,1.0,1.0,0.9348838742396407,TP,SVM (RBF),S1e
+"Produkce potvrdila, že celkový rozpočet přesáhne miliardu korun, což zaručuje velkolepý vizuální zážitek.",velkolepý,1.0,1.0,0.9970123217239878,TP,SVM (RBF),S1e
+"Evropa se potýká s infodemií, která je horší než jakákoliv virová epidemie.",horší,0.0,0.0,0.005033915420556563,TN,SVM (RBF),S1e
+Asistent trenéra opustí koryta ihned po podpisu ukončení pracovní smlouvy.,trenéra,0.0,0.0,0.0016159795820121633,TN,SVM (RBF),S1e
+Jeden z narkomanů prodává levný perník včetně dalších prostředků pro apliakci této drogy dětem.,dalších,0.0,0.0,0.0001466532984892067,TN,SVM (RBF),S1e
+"Přestože vláda slibovala finanční stabilitu, celková suma vydaná na panely stála daňové poplatníky pořádný ranec.",ranec,1.0,1.0,0.999999964740496,TP,SVM (RBF),S1e
+Pro platnost výsledků a jejich závaznost pro orgány stanovuje tato novela nová pravidla.,závaznost,0.0,0.0,0.0011981173833712257,TN,SVM (RBF),S1e
+Suverénní Motoristé si v koalici prosazují zcela vlastní program pro celou zemi.,program,0.0,0.0,0.0005774667430665617,TN,SVM (RBF),S1e
+"Pohřební rituál odráží pradávnou kulturu a zvyklosti, které nebyly dříve známy.",dříve,0.0,1.0,0.5,FP,SVM (RBF),S1e
+Mezi protestujícími se objevili i různí podivíni.,objevili,0.0,0.0,4.3230058904577563e-05,TN,SVM (RBF),S1e
+Stav papíru je zcela v háji a listy se lámou při manipulaci.,háji,1.0,1.0,0.9973425440876952,TP,SVM (RBF),S1e
+"Během proslovu Trump agresivně napadl migrační politiku současné administrativy, přičemž uvedl nepřesná statistická data.",agresivně,1.0,1.0,0.9965990308160471,TP,SVM (RBF),S1e
+Nový trenér podepsal s klubem kontrakt na tři sezóny s možnou opcí.,opcí,0.0,0.0,0.00046586845936140203,TN,SVM (RBF),S1e
+"Robert Králíček, místopředseda hnutí ANO a dlouholetý poslanec, jeden z hlavních motorů kampaně do sněmovních voleb kandidovat nebude.",poslanec,0.0,0.0,0.1397104884961045,TN,SVM (RBF),S1e
+Evropské instituce skutečně tu situaci pozorně sledují a pravidelně vyhodnocují.,pozorně,1.0,1.0,0.9442125459851022,TP,SVM (RBF),S1e
+Někteří ekonomové kritizovali plánované změny jako absurdní řešení současné krize.,absurdní,1.0,1.0,0.9974074931462391,TP,SVM (RBF),S1e
+První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě.,Pražském,0.0,0.0,0.0007927791677166472,TN,SVM (RBF),S1e
+"Prý už to ale nepůjde změnit, jelikož ústavní soud ve věci už jednou rozhodl.",už,0.0,0.0,0.2580960389953528,TN,SVM (RBF),S1e
+Cena zakázky se stoupne na desítky miliard korun.,desítky,1.0,0.0,0.25346983724022826,FN,SVM (RBF),S1e
+Místo konstruktivního řešení vedli někteří zástupci jenom samé plky o detailech rozpočtu.,plky,1.0,1.0,0.9999984899684049,TP,SVM (RBF),S1e
+Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku.,zájemců,0.0,0.0,0.0019018244195861216,TN,SVM (RBF),S1e
+Školy dostanou peníze na nákup tabletů.,nákup,0.0,0.0,0.01265425498122103,TN,SVM (RBF),S1e
+"Výsledek znamenal zdrcující porážku pro křídlo podporující dosavadního lídra, který odstoupil z funkce.",zdrcující,1.0,1.0,0.999999958710717,TP,SVM (RBF),S1e
+Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace.,proces,0.0,0.0,0.11241665221381991,TN,SVM (RBF),S1e
+Důležité mantinely dohody byly vyjednány v průběhu celonočního zasedání svazu.,vyjednány,0.0,0.0,0.0006215741517449064,TN,SVM (RBF),S1e
+Objem úvěrů pro domácnosti dosáhl nové výše 450 miliard korun.,korun,0.0,0.0,0.0020111903240853544,TN,SVM (RBF),S1e
+Hodnota zakázky se pohybuje kolem 55 miliard korun za techniku.,Hodnota,0.0,1.0,0.9702125386036944,FP,SVM (RBF),S1e
+Odborníci varují před možnou volatilitou v sektoru státních dluhopisů v důsledku změny ratingu.,volatilitou,1.0,1.0,0.9925362146694114,TP,SVM (RBF),S1e
+Pro platnost výsledků a jejich závaznost pro orgány stanovuje tato novela nová pravidla.,novela,0.0,0.0,0.20100166945031003,TN,SVM (RBF),S1e
+Údajně by měl být ministrem bez portfeje a na starosti sport a zdravý styl.,měl,0.0,0.0,0.0009923777560698758,TN,SVM (RBF),S1e
+"Byl zjištěn nečekaný případ inkongruence nálezů, které se neshodují.",nálezů,0.0,0.0,0.0016855563170395916,TN,SVM (RBF),S1e
+Reakce odpovědných orgánů byla pomalá.,Reakce,0.0,0.0,0.3710032384660636,TN,SVM (RBF),S1e
+Její předseda Tomio Okamura z budovy Sněmovny #ostentativně sundal ukrajinskou vlajku.,Okamura,0.0,0.0,0.0007892146902182488,TN,SVM (RBF),S1e
+Hlavní obžalovaný dostal trest odnětí svobody na pět let s okamžitou platností.,obžalovaný,0.0,0.0,0.004143127960131637,TN,SVM (RBF),S1e
+"Experti tvrdí, že investice do fotovoltaiky je zaručeným způsobem, jak si zajistit energetickou sklizeň.",sklizeň,1.0,1.0,0.9742375437676483,TP,SVM (RBF),S1e
+"V centru je to teď děsivé, zejména o víkendech.",teď,0.0,0.0,0.007155270891070534,TN,SVM (RBF),S1e
+Program se zaměří na umělou inteligenci a také novodobou robotiku.,také,0.0,0.0,0.04283102455199172,TN,SVM (RBF),S1e
+Varování platí pro čtyři kraje s účinností od sobotního rána do neděle.,rána,0.0,0.0,0.001270478755808952,TN,SVM (RBF),S1e
+Uživatelé tak mohou využívat skvělé funkce k rychlému a transparentnímu ověřování sporných tvrzení a politických prohlášení.,skvělé,1.0,1.0,0.9940985938732582,TP,SVM (RBF),S1e
+"Mezinárodní společenství je frustrováno jeho přístupem, který se v klíčových momentech ukázal být naprosto prase.",prase,1.0,1.0,0.9999998679981084,TP,SVM (RBF),S1e
+"Vyvinuli nové bateriové úložiště pro domácnosti, které dosahuje průlomové účinnosti v přeměně energie.",průlomové,1.0,1.0,0.983031400602827,TP,SVM (RBF),S1e
+Za posledních 72 hodin se na ostrov Lampedusa vylodily tisíce lidí bez řádné registrace a kontroly totožnosti.,tisíce,1.0,1.0,0.8017807738196098,TP,SVM (RBF),S1e
+Na úrovni 1500 případů na sto tisíc obyvatel dosáhla tato nemocnost v populaci.,úrovni,0.0,0.0,0.27155882686555066,TN,SVM (RBF),S1e
+Obchodní spory s regionálními partnery jen posilují narativ o nutnosti diverzifikace dodavatelských řetězců v Asii.,narativ,1.0,1.0,0.9999922529750818,TP,SVM (RBF),S1e
+Většina nádrží v kraji je vhodná ke koupání.,koupání,0.0,0.0,0.0025875211838783676,TN,SVM (RBF),S1e
+"Experti upozorňují, že Brusel investicím do inovací věnuje pouze značný podíl z celkového rozpočtu na výzkum.",značný,1.0,1.0,0.9963106005372527,TP,SVM (RBF),S1e
+"Postupný přechod k zeleným technologiím ukazuje, že čas tradičních fosilních obrů se definitivně chýlí ke konci.",obrů,1.0,1.0,0.9636592951146217,TP,SVM (RBF),S1e
+Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností.,parku,0.0,0.0,0.0020102934370269747,TN,SVM (RBF),S1e
+Vydání digitálního eura podle některých analytiků zcela zlikviduje dosavadní dominance privátních stablecoinů.,zlikviduje,1.0,1.0,0.9999981602317519,TP,SVM (RBF),S1e
+"Analytici upozorňují, že hlavním cílem je šířit politickou špínu a destabilizovat tak veřejnou debatu.",špínu,1.0,1.0,0.9999991099216269,TP,SVM (RBF),S1e
+"Rozhodnutí bylo zbabělé, ministr měl bojovat až do samotného konce.",samotného,0.0,0.0,0.0005086636515070245,TN,SVM (RBF),S1e
+"Podpora inovací ze strany státu tvoří 0,8 procenta HDP.",tvoří,0.0,0.0,0.002626763135156065,TN,SVM (RBF),S1e
+"Experti tvrdí, že současný model výuky je naprostý bordel a potřebuje generální rekonstrukci.",bordel,1.0,1.0,0.9999995597070443,TP,SVM (RBF),S1e
+"Kritici tvrdí, že současný systém přitahuje především tzv. dávkomaty bez zájmu zapojit se do pracovního trhu.",dávkomaty,1.0,1.0,0.9920650927427098,TP,SVM (RBF),S1e
+Zlepšení obchodních podmínek by mohlo vést k nebývalé prosperitě kontinentu.,prosperitě,1.0,1.0,0.9410923640112709,TP,SVM (RBF),S1e
+Skvrna se táhla v délce dvou kilometrů.,délce,0.0,0.0,0.12091916470308806,TN,SVM (RBF),S1e
+Tento jedovatý náklad byl určen pro desítky mladých uživatelů po celé metropoli.,jedovatý,1.0,1.0,0.9541874942594943,TP,SVM (RBF),S1e
+Korupční skandál spojený s ministryní financí nadále otřásá křehkou vládní koalicí a ohrožuje její stabilitu.,otřásá,1.0,1.0,0.9939243236872521,TP,SVM (RBF),S1e
+Celkový úlovek tresky v Labi klesl v loňském roce o 10 tun.,klesl,0.0,0.0,0.001752129811878848,TN,SVM (RBF),S1e
+"Odborníci se přesto shodují, že tak mastné výdaje jsou nezbytné pro udržení tempa výzkumu.",mastné,1.0,1.0,0.9999998951304109,TP,SVM (RBF),S1e
+"Prý už to ale nepůjde změnit, jelikož ústavní soud ve věci už jednou rozhodl.",ústavní,0.0,0.0,0.0365799148025705,TN,SVM (RBF),S1e
+Součástí opatření je navýšení platů a také příkladná podpora dalšího odborného vzdělávání personálu.,příkladná,1.0,1.0,0.9470025217835165,TP,SVM (RBF),S1e
+"Pokud vláda urychleně nezjednoduší stávající byrokracii, bude z celé té transformace akorát velký bordel.",bordel,1.0,1.0,0.9999999678564164,TP,SVM (RBF),S1e
+Městská policie tajně nasadila technologie geofencingu na sledování občanů ve městě.,tajně,0.0,0.0,0.08904503202867642,TN,SVM (RBF),S1e
+"Ti, co přišli, si mohli užít naprosto fenomenální akustiku provizorního stanu a hity devadesátých let.",fenomenální,1.0,1.0,0.9999978625517608,TP,SVM (RBF),S1e
+"Do sálu přišly desítky demonstrantů, kteří protestovali proti novým poplatkům.",desítky,1.0,0.0,0.24513841443591344,FN,SVM (RBF),S1e
+Opozice vyjádřila hlubokou deziluzi nad celým procesem jednání o tak důležitém tématu.,hlubokou,0.0,0.0,0.0014660096505977338,TN,SVM (RBF),S1e
+Zadržený pachatel byl dlouho sledován bafuňářem z místní ochranné služby.,bafuňářem,1.0,1.0,0.9999890325339299,TP,SVM (RBF),S1e
+Turisté se mohou těšit na příjemný špacír přes Růžovou zahradu a jižní nádvoří hradu.,špacír,1.0,1.0,0.9857989384941792,TP,SVM (RBF),S1e
+Obžaloba zahrnuje sedm osob a škoda přesahuje 30 milionů korun.,škoda,0.0,0.0,0.0015454483878802902,TN,SVM (RBF),S1e
+"Byly nalezeny desítky artefaktů, které pocházejí z raného středověku v této oblasti.",desítky,1.0,1.0,0.7893370082174472,TP,SVM (RBF),S1e
+Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní.,prostředí,0.0,0.0,0.010067449759393308,TN,SVM (RBF),S1e
+Lokalita obsahuje pozůstatky 600 těl datovaných do 13. století na tomto území.,těl,0.0,1.0,0.5870463131951861,FP,SVM (RBF),S1e
+Škoda byla předběžně vyčíslena na 50 milionů korun v majetku firmy a města.,předběžně,0.0,0.0,0.003038040407127821,TN,SVM (RBF),S1e
+Agrivoltaika povede k nevratné devastaci celé venkovské krajiny.,venkovské,0.0,0.0,0.0006025686042581765,TN,SVM (RBF),S1e
+Jejich nejnovější cenzurní opatření vyvolala mezi některými politiky vlnu nevole a debatu o svobodě slova.,cenzurní,1.0,1.0,0.9909071971003341,TP,SVM (RBF),S1e
+Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací.,pomalému,0.0,0.0,0.0004809116038954123,TN,SVM (RBF),S1e
+"Ekonomové ale varují, že v současné hyperinflační situaci jsou tyto sliby jen prázdné kecy.",kecy,1.0,1.0,0.9999963452986561,TP,SVM (RBF),S1e
+Hlídky byly posíleny zejména v parku Vrchlického sady.,Hlídky,0.0,0.0,0.004517552630876369,TN,SVM (RBF),S1e
+"Na resort kultury asi pošlou Ottu Klempíře, ale dohoda není finální ani jasná.",Ottu,0.0,0.0,9.491020772082459e-05,TN,SVM (RBF),S1e
+Hlídky byly posíleny zejména v nechvalně známém Sherwoodu.,zejména,0.0,0.0,0.01091666421852043,TN,SVM (RBF),S1e
+Auditoři varovali před masivním tunelováním fondů v několika členských státech Evropy.,varovali,0.0,0.0,0.21961732411956456,TN,SVM (RBF),S1e
+Nové pravidlo o zakázaném uvolnění vstoupí v platnost od začátku ligové sezóny.,zakázaném,0.0,0.0,0.0036732739454902893,TN,SVM (RBF),S1e
+Tyto kroky mohou spustit lavinu ekonomických problémů pro domácnosti.,lavinu,1.0,1.0,0.9878551596878531,TP,SVM (RBF),S1e
+"Ministerstvo ale odmítlo vydání, s odvoláním na nutnost udržení operační integrity a ochrany zdrojů pro probíhající případy.",udržení,1.0,1.0,0.8386583892177704,TP,SVM (RBF),S1e
+Navzdory obrovským investicím je projekt Metaverse zatím spíše zpackaný experiment bez jasné vize komerčního využití.,zpackaný,1.0,1.0,0.999999989394422,TP,SVM (RBF),S1e
+Cena zakázky se vyšplhá na dvacet miliard korun.,korun,0.0,0.0,0.004660172082435649,TN,SVM (RBF),S1e
+"Generální ředitel ujistil akcionáře, že má společnost v rezervách stále dost velký ranec pro pokrytí dluhů.",ranec,1.0,1.0,0.999998884498919,TP,SVM (RBF),S1e
+"Záchranná akce trvala skoro čtyři hodiny kvůli povětrnostním podmínkám, které ztěžovali podle záchranářů prohledávání terénu.",hodiny,0.0,0.0,0.013067921351354136,TN,SVM (RBF),S1e
+"Evropská komise dnes představila návrh megalomanského rozpočtu, který počítá s navýšením výdajů na administrativu.",megalomanského,1.0,1.0,0.9970314084126712,TP,SVM (RBF),S1e
+Produktivita práce v některých odvětvích je však mizerná.,mizerná,1.0,1.0,0.9953583166017956,TP,SVM (RBF),S1e
+"Rozpočet pro tento sektor vzroste v příštím roce o 5,5 miliardy korun.",Rozpočet,0.0,0.0,0.0018316244749332859,TN,SVM (RBF),S1e
+Kontinenty tehdy po planetě poskakovaly neobvyklou rychlostí,tehdy,0.0,0.0,0.012637811318308443,TN,SVM (RBF),S1e
+Zasedání bankovní rady proběhne příští týden za přítomnosti všech sedmi členů.,členů,0.0,0.0,0.04851820043497715,TN,SVM (RBF),S1e
+Celý proces schvalování revize azylového paktu byl nakonec jen zdlouhavá šaráda bez reálných výsledků pro EU.,šaráda,1.0,1.0,0.9999995464474777,TP,SVM (RBF),S1e
+Kodex zahrnuje pět hlavních principů pro všechny akademické obory a výzkumníky.,hlavních,0.0,0.0,0.00403773857200538,TN,SVM (RBF),S1e
+Chování řidiče osobobního automobilu při srážce s chodcem je neodpovědné.,Chování,0.0,0.0,0.007590042863224802,TN,SVM (RBF),S1e
+Jejich díla čtenáře upoutala čarokrásným popisem přírody a venkovského života.,venkovského,0.0,0.0,0.0020142421335978397,TN,SVM (RBF),S1e
+"Občané se shodují, že stávající míra poškození veřejného majetku je již děsivá a vyžaduje tvrdý zásah.",děsivá,1.0,1.0,0.9999993662106984,TP,SVM (RBF),S1e
+Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod #silným tlakem velkých technologických firem a vlády USA.,přelomových,0.0,0.0,0.11982374039400921,TN,SVM (RBF),S1e
+V elektrické a hybridní verzi bude dostupný ten nový model.,hybridní,0.0,0.0,0.08754161085444685,TN,SVM (RBF),S1e
+Majitelé kol by měli posílit zabezpečení proti novým metodám zlodějíčků.,zlodějíčků,1.0,1.0,0.9999964002034636,TP,SVM (RBF),S1e
+Hlavní trenér týmu je zodpovědný trouba a měl by odstoupit okamžitě ze své funkce.,trouba,1.0,1.0,0.999998577183922,TP,SVM (RBF),S1e
+Součástí projektu je výsadba sta nových stromů.,stromů,0.0,0.0,0.0003008930576025978,TN,SVM (RBF),S1e
+Hlavní trenér týmu se chystá na kompletní facelift obranné strategie týmu.,Hlavní,0.0,0.0,6.240139775333247e-05,TN,SVM (RBF),S1e
+"Pokud se situace rychle nezlepší, hrozí úplný kolaps interního lékařství v regionu.",kolaps,1.0,1.0,0.9859195395884274,TP,SVM (RBF),S1e
+Jeho kontakty s lidmi figurují v obří kauze krácení daní a praní špinavých peněz.,obří,1.0,1.0,0.4834190928290939,TP,SVM (RBF),S1e
+Obžaloba zahrnuje sedm osob a škoda přesahuje 30 milionů korun.,milionů,0.0,0.0,0.018259874902716387,TN,SVM (RBF),S1e
+Finanční kolaps firmy je zničující zpráva a překvapil celou burzu.,kolaps,1.0,1.0,0.9999950174163068,TP,SVM (RBF),S1e
+Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod #silným tlakem velkých technologických firem a vlády USA.,silným,1.0,1.0,0.6444462039617477,TP,SVM (RBF),S1e
+"Rijád usiluje o udržení vysoké produkce, aby na světový trh aktivně pumpoval dostatek ropy a stabilizoval tak globální ceny.",pumpoval,1.0,1.0,0.9653136559978585,TP,SVM (RBF),S1e
+"Oběť utrpěla lehčí zranění hlavy po tom, co ji zasáhla prudká týmovka pěstí.",týmovka,1.0,1.0,0.9934972037866893,TP,SVM (RBF),S1e
+Klíčovým krokem je technologicky komplikovaná fotolitografie s využitím extrémně krátké vlnové délky světla.,fotolitografie,1.0,1.0,0.9436118721084984,TP,SVM (RBF),S1e
+EU překvapivě odmítla otevřít novou kapitolu v přístupových jednáních se Srbskem.,překvapivě,1.0,1.0,0.9999996462750852,TP,SVM (RBF),S1e
+"V centru je to teď děsivé, zejména o víkendech.",děsivé,1.0,1.0,0.9999998487412486,TP,SVM (RBF),S1e
+Opozice vyjádřila hlubokou deziluzi nad celým procesem jednání o tak důležitém tématu.,deziluzi,1.0,1.0,0.995671825690819,TP,SVM (RBF),S1e
+"Vláda se snaží nastavit jasná pravidla, aby se zabránilo rabování tohoto vzácného klenotu pro baterie elektromobilů. ",klenotu,1.0,1.0,0.9899757976301121,TP,SVM (RBF),S1e
+Již několik dní neúnavně trvající vedra drží zemi ve svém sevření a ztěžují život.,sevření,1.0,1.0,0.8782851948366377,TP,SVM (RBF),S1e
+Odklad provozu nového zařízení může pro městskou čistotu znamenat ekologickou katastrofu.,katastrofu,1.0,1.0,0.9903719067751156,TP,SVM (RBF),S1e
+Chování řidiče osobobního automobilu při srážce s chodcem je neodpovědné.,neodpovědné,1.0,1.0,0.8519618079565724,TP,SVM (RBF),S1e
+Podle záchranářů je to pořádný průšvih a lidé by měli zvážit nutnost cestování.,průšvih,1.0,1.0,0.9999999556745989,TP,SVM (RBF),S1e
+"Živel po sobě zanechal demoliční spoušť, odklízení trosek potrvá několik dní.",demoliční,1.0,1.0,0.977613501701437,TP,SVM (RBF),S1e
+"Experti upozornili, že jde o hustej a technologicky náročný způsob, jak podkopat důvěru v bankovní sektor a kapitálové trhy.",hustej,1.0,1.0,0.9999988882142549,TP,SVM (RBF),S1e
+Jejich přelomový objev by mohl dramaticky změnit současné modely kosmologie a fyziky částic.,přelomový,1.0,1.0,0.9831053675623537,TP,SVM (RBF),S1e
+"Na severu je to poslední měsíce brutální, s dlouhodobým suchem.",brutální,1.0,1.0,0.9999994290508166,TP,SVM (RBF),S1e
+Podle analytiků je tento film pro studio DMM Pictures doslova lokomotiva celého letošního finančního výsledku.,lokomotiva,1.0,1.0,0.9999999400129254,TP,SVM (RBF),S1e
+Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen.,vedlo,0.0,0.0,0.0056486736525306344,TN,SVM (RBF),S1e
+"Kritici po zhlédnutí shodně prohlásili, že inscenace je naprostá pecka a doporučili ji široké veřejnosti.",pecka,1.0,1.0,0.9999999548204248,TP,SVM (RBF),S1e
+Ozbrojené střety se během dopoledne rozrostly do děsivých rozměrů a ohrozily stabilitu celé oblasti.,děsivých,1.0,1.0,0.9973056191039518,TP,SVM (RBF),S1e
+Regionální nemocnice se musí potýkat s katastrofálním nedostatkem internistů a chirurgů.,katastrofálním,1.0,1.0,0.9999969437490658,TP,SVM (RBF),S1e
+"Bylo zjištěno, že na prosazení kontroverzního energetického zákona byl utracen skutečný balík peněz daňových poplatníků.",balík,1.0,1.0,0.9999996280359372,TP,SVM (RBF),S1e
+Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet.,důvěru,0.0,0.0,0.0003349021291194454,TN,SVM (RBF),S1e
+"Kritici se obávají, že směrnice o jednotném nabíjení je pouze dalším diktátem z pera evropských úředníků.",diktátem,1.0,1.0,0.9999990282624555,TP,SVM (RBF),S1e
+"Řidiči museli čelit scéně, která na první pohled připomínala dopravní apokalypsu.",apokalypsu,1.0,1.0,0.9999953262118998,TP,SVM (RBF),S1e
+"Zařízení, které má být klíčovým produktem Vánoc, je překvapivě nabízeno za poloviční cenu oproti konkurenčním headsetům.",překvapivě,1.0,1.0,0.9953387494884322,TP,SVM (RBF),S1e
+"Turisté se už nemůžou dočkat, až konečně přestanou čučet jen na lešení a uvidí obnovenou fasádu.",čučet,1.0,1.0,0.9999998088664832,TP,SVM (RBF),S1e
+Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel.,dosáhla,0.0,1.0,0.9748331796545753,FP,SVM (RBF),S1e
+"Kritici v recenzích často zmiňovali, že toto představení je naprostý zázrak českého divadla.",zázrak,1.0,1.0,0.9999962363892536,TP,SVM (RBF),S1e
+"Zdůraznil, že je machr na snižování daní a slíbil, že se zaměří na střední třídu.",machr,1.0,1.0,0.9999987391342541,TP,SVM (RBF),S1e
+Touto první etapou oprav bude fasáda katedrály svatého Víta na Pražském hradě.,fasáda,0.0,0.0,0.0006832790235715733,TN,SVM (RBF),S1e
+Ceny v restauracích na Staroměstském náměstí opět vzrostly.,náměstí,0.0,0.0,0.005199295080234616,TN,SVM (RBF),S1e
+"Konzervativní poslanci předvedli divadlo obstrukcí, které trvalo čtyři hodiny.",poslanci,0.0,0.0,0.0033287474592479183,TN,SVM (RBF),S1e
+"Naopak italští pracovníci na základnách amerického námořnictva dostali výplatu včas, protože pro námořnictvo se vztahují jiná pravidla než pro pozemní síly a letectvo.",amerického,0.0,0.0,0.030179007851554175,TN,SVM (RBF),S1e
+Omezení se dotkne linek jedoucích přes Karlovo náměstí.,Karlovo,0.0,0.0,0.0030660713843862373,TN,SVM (RBF),S1e
+"20 % lidí podceňuje jednoduché principy psychohygieny, což vede k nárůstu duševních problémů.",jednoduché,0.0,0.0,0.00847933736532496,TN,SVM (RBF),S1e
+"Přechodná vláda, vedená premiérem Henrym, se ukázala být zcela nekompetentní čelit tomuto bezpečnostnímu kolapsu a ztratila kontrolu nad velkou částí území.",nekompetentní,1.0,1.0,0.9999909765865718,TP,SVM (RBF),S1e
+"Hlavní úroková sazba byla zvýšena o 0,75 procentního bodu na úroveň 6,5 procenta.",Hlavní,0.0,0.0,0.00012788834935701025,TN,SVM (RBF),S1e
+Na tiskové konferenci po konferenci s názvem Friends of Industry to dnes v Berlíně oznámila německá ministryně hospodářství Katherina Reicheová.,konferenci,0.0,0.0,0.012588912078995844,TN,SVM (RBF),S1e
+"Analytici předpovídají, že primární emise akcií (IPO) přinesou firmám pořádné lováky.",lováky,1.0,1.0,0.9999997942749271,TP,SVM (RBF),S1e
+Na pět let s okamžitou platností dostal trest odnětí svobody ten hlavní obžalovaný.,platností,0.0,0.0,0.0018854676154776587,TN,SVM (RBF),S1e
+Premiér ve svém projevu odsoudil toto rejdění nepřátelských špionů na našem území.,rejdění,1.0,1.0,0.9999928137247444,TP,SVM (RBF),S1e
+"Podle opozičních expertů jde o skandální selhání, které přímo ohrožuje mobilitu obyvatel venkova.",skandální,1.0,1.0,0.999999158423171,TP,SVM (RBF),S1e
+Celkový úlovek tresky v Labi klesl v loňském roce o 10 tun.,úlovek,0.0,0.0,0.006867572633128798,TN,SVM (RBF),S1e
+"Podle hydrologů se očekává ,epický nápor vody na říční koryta v celé délce Vltavy.",epický,1.0,1.0,0.9969537158412793,TP,SVM (RBF),S1e
+Chování řidiče osobobního automobilu při srážce s chodcem je neodpovědné.,srážce,0.0,0.0,0.0017117036276667087,TN,SVM (RBF),S1e
+"Vědci získali data o tání ledovců, která zahrnují stovky provedených měření.",získali,0.0,1.0,0.8474211679128856,FP,SVM (RBF),S1e
+"Herecký výkon hlavní protagonistky byl popsán jako ohromující, přičemž diváci na konci projekce povstali k bouřlivému potlesku.",ohromující,1.0,1.0,0.9969692498064752,TP,SVM (RBF),S1e
+Jeho výkon je kritiky považován za strhující a emocionálně silný po celou dobu stopáže.,strhující,1.0,1.0,0.9999997265715864,TP,SVM (RBF),S1e
+"Politici obvinili opozici z šíření fakenews, které ovlivnilo celý výsledek voleb.",fakenews,1.0,1.0,0.9999960981051593,TP,SVM (RBF),S1e
+Prameny v roce 2021 získaly státní bezúročnou půjčku a v roce 2018 byla vypsána veřejná sbírka.,půjčku,0.0,0.0,0.001989789353418541,TN,SVM (RBF),S1e
+"Na lavici obžalovaných teď čeká deset takových šmejdů, kteří se neštítili vydělávat na slabosti starých lidí.",šmejdů,1.0,1.0,0.999999976855234,TP,SVM (RBF),S1e
+Prameny v roce 2021 získaly státní bezúročnou půjčku a v roce 2018 byla vypsána veřejná sbírka.,roce,0.0,0.0,0.021691566194789687,TN,SVM (RBF),S1e
+Obžaloba zahrnuje sedm osob a škoda přesahuje 30 milionů korun.,osob,0.0,0.0,0.0021947882748209013,TN,SVM (RBF),S1e
+"Kritici tvrdí, že se jedná o neprůhledný kšeft, který je pro stát nevýhodný a zavazuje zemi na desítky let dopředu.",kšeft,1.0,1.0,0.9999879567835767,TP,SVM (RBF),S1e
+"Pak nám do redakce přišla informace, že zítra se chystá velká protestní akce.",přišla,1.0,1.0,0.47783907728720176,TP,SVM (RBF),S1e
+Mezi největšími hrozbami figuruje globální infodemie z východních zemí a její dopady na společnost.,figuruje,0.0,1.0,0.6775656204817636,FP,SVM (RBF),S1e
+Navýšení schodku představuje drama pro veřejné finance.,veřejné,0.0,0.0,0.0005759476980681656,TN,SVM (RBF),S1e
+"Situace na čínském realitním trhu se nadále prohlubuje a hrozí, že uvrhne regionální banky do propasti insolvence.",propasti,1.0,1.0,0.9943967331562813,TP,SVM (RBF),S1e
+"Politici obvinili opozici z šíření fakenews, které ovlivnilo celý výsledek voleb.",Politici,0.0,0.0,0.0043138425294989525,TN,SVM (RBF),S1e
+"Jeho cílem bylo prý zasáhnout vládní kolonu, což potvrzuje, že jsou to zkažené bestie bez jakéhokoliv morálního kompasu.",zkažené,1.0,1.0,0.9915287911372263,TP,SVM (RBF),S1e
+V té lokalitě byly nalezeny pozůstatky 600 těl datovaných do 13. století.,těl,0.0,0.0,0.0006798124207208151,TN,SVM (RBF),S1e
+Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu.,fáze,0.0,0.0,0.00024231335538995395,TN,SVM (RBF),S1e
+"Zveřejněné video bylo zjevně deepfake, jelikož se jednalo o velice narychlo vytvořený podvrh.",podvrh,0.0,0.0,0.0023473064637371866,TN,SVM (RBF),S1e
+Mezi největšími hrozbami figuruje globální infodemie z východních zemí a její dopady na společnost.,infodemie,1.0,1.0,0.9999999016872109,TP,SVM (RBF),S1e
+Za jízdu na červenou hrozí vyšší pokuta.,pokuta,0.0,0.0,2.538173125142891e-05,TN,SVM (RBF),S1e
+"Podpora inovací ze strany státu je jednoduše směšná, jak potvrdil jeden z vědců.",potvrdil,0.0,0.0,0.007351745166366051,TN,SVM (RBF),S1e
+Nedovolenou přepravu těchto dopravních prostředků budou v Praze kontrolovat revizoři.,revizoři,0.0,0.0,0.014385733458623998,TN,SVM (RBF),S1e
+Odborníci varují před rozsáhlými konsekvencemi pro velké technologické platformy.,konsekvencemi,1.0,1.0,0.9553716135688628,TP,SVM (RBF),S1e
+Auta stála v kolonách na celém Vítězném náměstí.,náměstí,0.0,0.0,0.003628361992660964,TN,SVM (RBF),S1e
+Fakulta začne fungovat od začátku akademického roku 2026 a přijme 500 studentů.,studentů,0.0,0.0,0.019536347116881188,TN,SVM (RBF),S1e
+"ANO jedná o vzniku budoucí vlády s Motoristy a SPD, jejíž předseda Tomio Okamura nechal sundat ukrajinskou vlajku z budovy Sněmovny den poté, co byl zvolen jejím předsedou.",předseda,0.0,0.0,1.2944004811594835e-05,TN,SVM (RBF),S1e
+Je to útok na nízkopříjmové rodiny a páry.,útok,1.0,1.0,0.9041224728777494,TP,SVM (RBF),S1e
+Tento krok vyvolal mezi veřejností nevídanou vlnu odporu a vedl k masivním demonstracím v několika evropských metropolích.,nevídanou,1.0,1.0,0.9704689558493381,TP,SVM (RBF),S1e
+V současné době je to doslova tragédie pro menší pekárny.,tragédie,1.0,1.0,0.9999999974631404,TP,SVM (RBF),S1e
+Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos.,veřejné,0.0,0.0,0.00047145586789619764,TN,SVM (RBF),S1e
+"Odborníci se obávají, že příštích pět dní se změní v opravdové horkopeklo pro celou Střední Evropu.",horkopeklo,1.0,1.0,0.9999993419147087,TP,SVM (RBF),S1e
+Na Moravě to bude o víkendu zřejmě masakr.,masakr,1.0,1.0,0.9999999673750175,TP,SVM (RBF),S1e
+Hasiči nadále bojují s plameny v tomto pekle a snaží se zabránit jejich postupu k obydleným místům.,pekle,1.0,1.0,0.9924054033355436,TP,SVM (RBF),S1e
+Rozložení nákladů bylo ostudně nerovné mezi jednotlivé čtvrti.,Rozložení,0.0,0.0,0.07769372767108573,TN,SVM (RBF),S1e
+"Těmito daty o tání ledovců, která zahrnují stovky měření, vědci získali cenné informace.",získali,0.0,1.0,0.7639430921780782,FP,SVM (RBF),S1e
+"Aktuální proočkovanost je zhruba třetina cílové populace, což je málo.",málo,0.0,0.0,0.0012533306196025832,TN,SVM (RBF),S1e
+Hlídky byly posíleny zejména v parku Vrchlického sady.,parku,0.0,0.0,0.07728779043335907,TN,SVM (RBF),S1e
+Jde o elektromobil s dojezdem pět set kilometrů.,dojezdem,0.0,0.0,0.00041878113992806096,TN,SVM (RBF),S1e
+Nový balíček obranných investic byl promyšleně schválen s cílem posílit východní křídlo.,promyšleně,1.0,1.0,0.988418425928579,TP,SVM (RBF),S1e
+"Podle zprávy nezávislé skupiny existují důkazy o tom, že by došlo k porušení standardů stanovených HCFA.",HCFA,1.0,0.0,0.1769517916530368,FN,SVM (RBF),S1e
+"Experti varují, že pokud se zpomalí poptávka na Západě, hrozí částečný kolaps dodavatelských řetězců závislých na exportu.",kolaps,1.0,1.0,0.9999911691481861,TP,SVM (RBF),S1e
+Projekt výstavby větrného parku u Kladna byl dnes úspěšně schválen zastupitelstvem obce.,úspěšně,1.0,1.0,0.9999816554569118,TP,SVM (RBF),S1e
+O deset procent za jeden megawatt se snížila ta průměrná cena zemního plynu.,zemního,0.0,0.0,0.0015411320766590228,TN,SVM (RBF),S1e
+Naštval tím i část #vlivných poslanců ANO.,vlivných,1.0,1.0,0.8459446492405204,TP,SVM (RBF),S1e
+Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů.,Výstava,0.0,0.0,0.0023991629799855092,TN,SVM (RBF),S1e
+"Vyšetřovatelé prověřují nové důkazy, které by snad mohly vést k dopadení pachatele.",Vyšetřovatelé,0.0,0.0,0.0029545781315190103,TN,SVM (RBF),S1e
+Protestní akce se zúčastnilo přibližně 500 traktorů a také zemědělských strojů.,přibližně,0.0,0.0,0.01107949833619929,TN,SVM (RBF),S1e
+Cena bitcoinu po ranních zprávách o regulacích nečekaně propadl o alarmující dvě procenta.,propadl,1.0,1.0,0.6404369459775832,TP,SVM (RBF),S1e
+Tento krok možná výrazně zkomplikuje investiční prostředí v zemi.,investiční,0.0,0.0,0.0001533555462018378,TN,SVM (RBF),S1e
+Jihočeští ochránci přírody semínka s botaniky nasbírali v chráněných oblastech.,Jihočeští,0.0,0.0,0.006717792137700372,TN,SVM (RBF),S1e
+"Půlnoční oblohu ozdobila luna, jejíž záře osvětlovala celou krajinu v širokém okolí.",ozdobila,0.0,0.0,0.24758894915001983,TN,SVM (RBF),S1e
+Městská policie tajně nasadila technologie geofencingu na sledování občanů ve městě.,nasadila,0.0,0.0,0.0007272075257080999,TN,SVM (RBF),S1e
+"Prý už to ale nepůjde změnit, jelikož ústavní soud ve věci rozhodl ve prospěch ministrstva.",nepůjde,0.0,0.0,0.048008784149769015,TN,SVM (RBF),S1e
+Na severu byl úhrn srážek za poslední měsíc pod dlouhodobým průměrem.,dlouhodobým,0.0,0.0,0.0010586719786072015,TN,SVM (RBF),S1e
+"Jeho sportovní vůz se stal nekontrolovatelnou střelou, která prorazila svodidla i betonové zábrany mostu.",střelou,1.0,1.0,0.9901660257155448,TP,SVM (RBF),S1e
+Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy.,nehodě,0.0,0.0,0.0008630031083392149,TN,SVM (RBF),S1e
+"Ta překvapivě souvisí i s uprchlým Františkem Savovem, který se z Londýna brání svému vydání.",překvapivě,1.0,1.0,0.9961891726358608,TP,SVM (RBF),S1e
+Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel.,obyvatel,0.0,0.0,0.0003833130110528818,TN,SVM (RBF),S1e
+Navrhovaná bypass řešení vyžadují značné investice do obchvatů a doprovodných staveb.,doprovodných,0.0,1.0,0.8429150653888476,FP,SVM (RBF),S1e
+Administrativní zpracování těchto žádostí se prodloužilo o deset dní.,žádostí,0.0,0.0,4.727040796077013e-05,TN,SVM (RBF),S1e
+Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy a města.,předběžně,0.0,1.0,0.798680543950944,FP,SVM (RBF),S1e
+"Současná ministryně označila postupy svých předchůdců za politickou špínu, která poškozuje pověst úřadu.",špínu,1.0,1.0,0.9999998906335283,TP,SVM (RBF),S1e
+"Evropa se potýká s infodemií, která je horší než jakákoliv virová epidemie.",virová,0.0,0.0,0.1650564784087416,TN,SVM (RBF),S1e
+"20 % lidí podceňuje jednoduché principy psychohygieny, což vede k nárůstu duševních problémů.",psychohygieny,1.0,1.0,0.9121585995394667,TP,SVM (RBF),S1e
+Současný stav dodavatelských řetězců je zcela zoufalý.,Současný,0.0,1.0,0.9668107200433873,FP,SVM (RBF),S1e
+"Mnozí lidé si myslí, že cenzura na sociálních sítích je primárně vedena politickými motivy, nikoli bojem proti dezinformacím.",Mnozí,1.0,1.0,0.7308235863322302,TP,SVM (RBF),S1e
+V norimberském procesu byla organizace SS označena jako zločinecká organizace.,organizace,0.0,0.0,0.011788066250063137,TN,SVM (RBF),S1e
+"Pacienti si však na vyšetření u specialistů stěžují, že čekají neustále příliš dlouho a dochází ke kolapsům.",neustále,1.0,1.0,0.9920932011533086,TP,SVM (RBF),S1e
+"Experti se shodují, že rozvoj solární energie přináší pro místní ekonomiky značný potenciál růstu.",značný,1.0,1.0,0.99547749373485,TP,SVM (RBF),S1e
+Projekt byl špatně naplánován a došlo ke zpoždění harmonogramu.,harmonogramu,0.0,0.0,0.023330789779871297,TN,SVM (RBF),S1e
+Naměřené hodnoty reziduí chemických látek značně překračují všechny bezpečnostní limity.,látek,0.0,0.0,0.23700132872757235,TN,SVM (RBF),S1e
+V elektrické a hybridní verzi bude dostupný ten nový model.,model,0.0,0.0,0.024978412715144938,TN,SVM (RBF),S1e
+"O 0,80 koruny za jeden litr paliva se snížila ta průměrná cena benzínu.",snížila,0.0,0.0,0.0004986542909686635,TN,SVM (RBF),S1e
+"Hlavní úroková sazba byla zvýšena o 0,75 procentního bodu na úroveň 6,5 procenta.",procenta,0.0,0.0,0.002449376297504859,TN,SVM (RBF),S1e
+#Naštval tím i část poslanců ANO.,Naštval,1.0,1.0,0.9869346731936406,TP,SVM (RBF),S1e
+Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu v Evropě.,Schválení,0.0,0.0,0.0071899712453488305,TN,SVM (RBF),S1e
+Jednotka převzala nové zásahové vozidlo a také speciální motorovou pilu.,pilu,0.0,0.0,0.0002469532865090093,TN,SVM (RBF),S1e
+Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb.,vystoupily,0.0,0.0,0.00048161511848468736,TN,SVM (RBF),S1e
+Současný systém dotací je pro ně likvidační.,likvidační,1.0,1.0,0.9999832883476238,TP,SVM (RBF),S1e
+Rozhodnutí úředníků i ministerstva místního rozvoje smrdí korupcí.,smrdí,1.0,1.0,0.9999876295579695,TP,SVM (RBF),S1e
+"Hlavní úroková sazba byla zvýšena o 0,75 procentního bodu na úroveň 6,5 procenta.",procentního,0.0,0.0,6.04703511485556e-05,TN,SVM (RBF),S1e
+"Ministr zahraničí ocenil, jak zručně se danou situaci podařilo ututlat před médii po dobu tří dnů.",zručně,1.0,1.0,0.9999989637637058,TP,SVM (RBF),S1e
+"Guvernér Texasu na tiskové konferenci prohlásil, že Bílý dům nechal stát zcela na holičkách.",holičkách,1.0,1.0,0.8052613548168223,TP,SVM (RBF),S1e
+Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní.,jeskyní,0.0,0.0,0.005300568458370015,TN,SVM (RBF),S1e
+Dosažené výsledky představují skutečný průlom v oblasti neurotechnologií.,průlom,1.0,1.0,0.9893331175964986,TP,SVM (RBF),S1e
+"Italský ministr zahraničí Antonio Tajani vyzval Washington i americké velvyslanectví v Římě, aby jednaly rychle bez ohledu na to, kdy shutdown skončí.",ohledu,0.0,0.0,0.002018725055463099,TN,SVM (RBF),S1e
+"Matka oběti přinesla fotografii tělíčka své dcery, aby upozornila na případ.",tělíčka,1.0,1.0,0.990544862522669,TP,SVM (RBF),S1e
+Je to zásah do rodinných rozpočtů chudých občanů.,chudých,1.0,1.0,0.7599177081649238,TP,SVM (RBF),S1e
+Stav papíru je zcela v háji a listy se lámou při manipulaci.,je,0.0,0.0,0.005168263538448261,TN,SVM (RBF),S1e
+Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen.,Naprosté,1.0,1.0,0.9118799924037305,TP,SVM (RBF),S1e
+"K referendu, které se ve městě konalo v sobotu, nepřišlo dost lidí.",nepřišlo,0.0,0.0,0.0003833130110528818,TN,SVM (RBF),S1e
+"Zjištění výzkumníků je veskrze alarmující, jelikož poukazuje na masivní erozí důvěry ve veřejné instituce.",veskrze,1.0,1.0,0.9999889466346644,TP,SVM (RBF),S1e
+Přes tyto snahy vykazuje bruselská byrokracie obrovský deficit flexibility.,obrovský,1.0,1.0,0.9999942879946837,TP,SVM (RBF),S1e
+Příprava nemocnic byla nedostatečná vzhledem k předchozím varováním.,nedostatečná,1.0,0.0,0.1006141880636824,FN,SVM (RBF),S1e
+"Řidič kamionu sjel na krajnici, dostal smyk a zahájil nebezpečný tanec napříč jízdními pruhy.",tanec,1.0,1.0,0.9316980275772899,TP,SVM (RBF),S1e
+"Už v neděli večer se hlava státu omlouvala spoluobčanům za to, jaký dojem aféra zanechala.",neděli,0.0,0.0,0.0018122260603434866,TN,SVM (RBF),S1e
+"V centru je to teď děsivé, zejména o víkendech.",zejména,0.0,0.0,0.001205607828632188,TN,SVM (RBF),S1e
+"Pro pacienty je nově k dispozici prostorná čekárna, a hlavně dokonalá informační služba na recepci.",dokonalá,1.0,1.0,0.9907451728766257,TP,SVM (RBF),S1e
+Studie testovala účinnost kombinované terapie na skupině 80 pacientů.,testovala,0.0,0.0,0.009830623741563203,TN,SVM (RBF),S1e
+"Nová kmen vykazuje značnou virulenci, což je pro populaci nebezpečné.",virulenci,1.0,1.0,0.9602124709245125,TP,SVM (RBF),S1e
+Dvořák byl i přes kontroverze spojené s jeho dílem po desetiletí považován za pilíř moderní české prózy.,pilíř,1.0,1.0,0.9999894758187007,TP,SVM (RBF),S1e
+"Zveřejněné video bylo zjevně deepfake, jelikož se jednalo o velice narychlo vytvořený podvrh.",Zveřejněné,0.0,0.0,0.05041415060282319,TN,SVM (RBF),S1e
+Tento krok představuje otočku v dosavadním směrování firmy.,otočku,1.0,1.0,0.9509410815234517,TP,SVM (RBF),S1e
+Podle interních zdrojů z Barrandova je výsledný materiál opravdu čupr a slibuje divácký úspěch.,čupr,1.0,1.0,0.9999999957262377,TP,SVM (RBF),S1e
+Omezení administrativy je přesto zoufale nedostatečné.,Omezení,0.0,0.0,0.003831274385630025,TN,SVM (RBF),S1e
+V elektrické a hybridní verzi bude dostupný ten nový model.,dostupný,0.0,0.0,0.0181292184290808,TN,SVM (RBF),S1e
+Přidáno pedagogvé nebo uklízečky dostanou almužnu.,uklízečky,0.0,0.0,0.0019620692605610505,TN,SVM (RBF),S1e
+Důležité mantinely dohody byly vyjednány v průběhu celonočního zasedání svazu.,celonočního,0.0,0.0,0.43465609313274634,TN,SVM (RBF),S1e
+Stav povodňové ochrany v několika obcích je nedostatečný.,obcích,0.0,0.0,0.00011662943056869151,TN,SVM (RBF),S1e
+Obyvatelé se v těchto pekelných vedrech potýkají s nedostatkem pitné vody.,pekelných,1.0,1.0,0.9447219020530316,TP,SVM (RBF),S1e
+Strážníci Prahy 1 rozdávali pokuty za každou blbost.,pokuty,0.0,0.0,0.0005786113596801102,TN,SVM (RBF),S1e
+Současná úroveň spotřeby energie je alarmující.,Současná,0.0,0.0,7.193561124203071e-05,TN,SVM (RBF),S1e
+Základní sazba vzrostla o půl procentního bodu.,půl,0.0,0.0,0.0001972616443876618,TN,SVM (RBF),S1e
+"Přestože se odehrávalo v malém sále, představení si získalo obdiv i u diváků přijíždějících z Brněnského Štatu.",Štatu,1.0,1.0,0.991739034637355,TP,SVM (RBF),S1e
+"Na resort kultury asi pošlou Ottu Klempíře, ale dohoda není finální ani jasná.",kultury,0.0,0.0,0.00018607514902290663,TN,SVM (RBF),S1e
+"Poukazují na zásadní asymetrii mezi zeměmi první linie a těmi ve vnitrozemí EU, které nemají přímou zodpovědnost za příjem.",asymetrii,1.0,1.0,0.9999999239904929,TP,SVM (RBF),S1e
+"Současné sucho představuje pro farmáře katastrofální situaci, z níž se jen těžko vzpamatují.",katastrofální,1.0,1.0,0.9999979414886436,TP,SVM (RBF),S1e
+"Bylo zatčeno pět osob, přičemž tyto borci se dlouhodobě zaměřovali na lov jelenů mimo povolenou sezónu.",borci,1.0,1.0,0.6225249663296447,TP,SVM (RBF),S1e
+"Někteří analytici varují, že taková centralizace by vedla k diktátu větších států na úkor menších.",diktátu,1.0,1.0,0.9963229266815661,TP,SVM (RBF),S1e
+Nové pravidlo o zakázaném uvolnění vstoupí v platnost od začátku sezóny.,zakázaném,0.0,0.0,0.0031924882879383614,TN,SVM (RBF),S1e
+"O 0,80 koruny za jeden litr paliva se snížila ta průměrná cena benzínu.",benzínu,0.0,0.0,0.006152362726435833,TN,SVM (RBF),S1e
+"Premiér v demisi Petr Fiala (ODS) i řada dalších lídrů jsou přesvědčeni o tom, že česká muniční iniciativa podporující Ukrajinu by měla pokračovat.",měla,0.0,0.0,0.04069577273800083,TN,SVM (RBF),S1e
+"V případě prudkého nárůstu pacientů by došlo k okamžitému kolapsu zdravotnického systému, varují odbory.",okamžitému,1.0,1.0,0.9369150478841419,TP,SVM (RBF),S1e
+"Z důvodu složité situace v Sýrii a Afghánistánu se Evropa potýká s přílivem celé generace mladých mužů, což mění sociální strukturu kontinentu.",celé,1.0,1.0,0.8477771452821201,TP,SVM (RBF),S1e
+"Expertní skupiny tvrdí, že současné tempo změn povede k ireverzibilní transformaci evropské společnosti.",ireverzibilní,1.0,1.0,0.9999998124787873,TP,SVM (RBF),S1e
+Nová obytná čtvrť se má stavět na sporném území Judska a Samaří pro 800 nových rodin.,Judska,1.0,1.0,0.9496956582164318,TP,SVM (RBF),S1e
+Návštěvníci mohli ochutnat regionální speciality.,regionální,0.0,0.0,0.003339043167871961,TN,SVM (RBF),S1e
+Z celkového počtu 81 senátorů se zúčastnilo pouze 35 členů Senátu k jednání.,členů,0.0,0.0,0.39690200739248505,TN,SVM (RBF),S1e
+"Experti zhodnotili včerejší summit jako průšvih, protože nedošlo ke shodě na klíčových bodech dohody.",průšvih,1.0,1.0,0.999998282776375,TP,SVM (RBF),S1e
+Úroveň čistoty ve vozidlech byla hodnocena průměrně v říjnovém auditu.,hodnocena,0.0,0.0,0.03059186923702752,TN,SVM (RBF),S1e
+"Norma vstoupí v platnost deiure, ale její praktické uplatnění je nejisté.",Norma,0.0,0.0,0.00018317115542869003,TN,SVM (RBF),S1e
+Opozice v poslanecké sněmovně sehrála dvanácti hodinové divadlo.,divadlo,1.0,0.0,0.44255011187636845,FN,SVM (RBF),S1e
+"Těchto sedm osob zahrnuje obžaloba, přičemž škoda přesahuje 30 milionů korun.",obžaloba,0.0,0.0,0.3784827933363301,TN,SVM (RBF),S1e
+Podle zprávy může mít masivní nasazení umělé inteligence v některých odvětvích ničivou sílu pro tradiční profese.,ničivou,1.0,1.0,0.9999962380104073,TP,SVM (RBF),S1e
+"Ceny těchto nemovitostí jsou takový průšvih, který si málokdo může dovolit.",Ceny,0.0,1.0,0.6888000694219687,FP,SVM (RBF),S1e
+Skutečnost na pracovním úřadě na ostravsku ale není tak růžová.,úřadě,0.0,0.0,0.000516238468230338,TN,SVM (RBF),S1e
+Pro malé a střední podniky bude tato reforma obrovskou výzvou.,podniky,0.0,1.0,0.9326784700797778,FP,SVM (RBF),S1e
+"Kurátoři věří, že tato sbírka se stane skutečnou pokladnicí pro historiky umění i širokou veřejnost.",pokladnicí,1.0,1.0,0.999992171956329,TP,SVM (RBF),S1e
+"Tedy případ, který se objevil v Rakousku, což je tedy šarže v dalších státech jako je Dánsko.",Tedy,0.0,0.0,0.0069931464904174154,TN,SVM (RBF),S1e
+Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu.,tragické,1.0,1.0,0.9999938786764959,TP,SVM (RBF),S1e
+Barel severomořské ropy Brent stojí 85 dolarů.,stojí,0.0,0.0,0.0003045607499285702,TN,SVM (RBF),S1e
+Schodek je bohužel katastrofálně vysoký vzhledem k ekonomickému výhledu.,výhledu,0.0,0.0,0.00020191023297850075,TN,SVM (RBF),S1e
+Na 20 milionů korun v majetku firmy byla předběžně vyčíslena ta škoda.,firmy,0.0,0.0,0.003170167535971587,TN,SVM (RBF),S1e
+"Nové opatření se týká bezmála všech velkých investičních společností, které tu podnikají.",bezmála,1.0,1.0,0.9839003820574008,TP,SVM (RBF),S1e
+"Nezávislý audit potvrdil, že výdaje na údržbu silnic byly vynaloženy účelně, ačkoliv se objevily drobné administrativní chyby v účetnictví.",audit,1.0,1.0,0.6740358380678583,TP,SVM (RBF),S1e
+"Ze sbírek zmizely tři obrazy, jejichž hodnota přesahuje sto milionů korun.",přesahuje,0.0,0.0,0.0027260461135175463,TN,SVM (RBF),S1e
+Instalace soch jsou mistrovské a zanechávají v divácích hluboký emocionální dojem.,mistrovské,1.0,1.0,0.9056534173645899,TP,SVM (RBF),S1e
+Západní analytici vnímají jeho prohlášení o nepříteli jako fanatický výlev ideologického přesvědčení.,fanatický,1.0,1.0,0.9999998220443261,TP,SVM (RBF),S1e
+"Aktuální tempo vakcinace české populace, zjeména důchodců, můžeme označit za žalostné.",můžeme,0.0,0.0,0.01828821743104057,TN,SVM (RBF),S1e
+Na jihu země to ale vypadá zoufale kvůli přetížené síti.,vypadá,0.0,0.0,0.0024101022411265505,TN,SVM (RBF),S1e
+"Podle Místopředsedkyně ANO Alena Schillerová v návrhu rozpočtu chybí 38 miliard korun na dopravní infrastrukturu, 32 miliard na mandatorní výdaje ministerstva práce a sociálních věcí a sedm miliard na spolufinancování zemědělství.",výdaje,0.0,0.0,0.004452650988943969,TN,SVM (RBF),S1e
+V sídle ministerstva byla podepsána ta smlouva v celkové hodnotě 12 miliard korun.,hodnotě,0.0,0.0,3.118009399321265e-05,TN,SVM (RBF),S1e
+"Cílem je zmenšit hlubokou ekonomickou propast, která je dle expertů hlavní příčinou masové migrace do Evropy. ",propast,1.0,1.0,0.9999982791288795,TP,SVM (RBF),S1e
+Výsledkem zátahu je zadržení prodavače novin a 'velké' množství nekolkovaných DVD v hodnotě tisíce korun.,velké,1.0,1.0,0.5806140663615663,TP,SVM (RBF),S1e
+Suverénní Motoristé si v koalici prosazují zcela vlastní program pro celou zemi.,zcela,0.0,0.0,2.9127781362154172e-05,TN,SVM (RBF),S1e
+ Deník Aktuálněcz v minulých dnech informoval o rošádě mezi kandidáty na ministra vnitra.,minulých,0.0,0.0,0.0768473631661043,TN,SVM (RBF),S1e
+"Důvodem je, že se poslanci chovali na jednání jako prasata a blokovali řečnický pult.",pult,0.0,0.0,0.006807257748601102,TN,SVM (RBF),S1e
+Studie předpovídá pokles úrody pšenice o 15 procent do roku 2050.,úrody,0.0,0.0,0.050539533259179176,TN,SVM (RBF),S1e
+"Očekává se, že nová vlna migrantů brzy dosáhne pevninské Evropy.",vlna,1.0,0.0,0.3541641939093815,FN,SVM (RBF),S1e
+Vysoká míra inflace neustále útočí na kupní sílu a peněženky českých domácností.,útočí,1.0,1.0,0.9833459829406871,TP,SVM (RBF),S1e
+Varování platí pro čtyři kraje s účinností od sobotního rána do neděle.,platí,0.0,0.0,0.00012739059432456914,TN,SVM (RBF),S1e
+"Speciální jednotky do davu lidí začali mlátit potom, co na ně přiletěla zápalná lahev.",lahev,0.0,0.0,1.7901939014959404e-05,TN,SVM (RBF),S1e
+Tento krok představuje otočku v dosavadním směrování firmy.,směrování,0.0,0.0,0.001204482460333806,TN,SVM (RBF),S1e
+Důležité mantinely dohody byly vyjednány v průběhu celonočního zasedání svazu.,mantinely,1.0,1.0,0.8980698746086961,TP,SVM (RBF),S1e
+Jejich díla čtenáře upoutala čarokrásným popisem přírody a venkovského života.,díla,0.0,0.0,0.008175989680243701,TN,SVM (RBF),S1e
+"Vědci apelují na záchranu tohoto křehkého ekosystému, který je závislý na specifickém druhu trávy.",křehkého,1.0,1.0,0.9999884262789434,TP,SVM (RBF),S1e
+"Silná bouře bičovala pobřeží rychlostí větru přes 130 km/h, což ochromilo dopravu.",bičovala,1.0,1.0,0.9999860638712199,TP,SVM (RBF),S1e
+Zadržený pachatel byl dlouho sledován bafuňářem z místní ochranné služby.,sledován,0.0,0.0,0.06084950862844352,TN,SVM (RBF),S1e
+"Doufejme, že si lidé na tuto úchvatnou hromadu svařeného železa časem zvyknou.",úchvatnou,1.0,1.0,0.9640626544838506,TP,SVM (RBF),S1e
+Protestující postupně zaplnili celé Václavské náměstí.,náměstí,0.0,0.0,0.0013049089646154487,TN,SVM (RBF),S1e
+Žalobce požadoval náhradu škody ve výši deseti milionů korun.,požadoval,0.0,0.0,0.04918113306787072,TN,SVM (RBF),S1e
+Zastupitelé se v sále začali mezi sebou o řešení krize vztekle křičet.,sále,0.0,0.0,0.033068759128540716,TN,SVM (RBF),S1e
+Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby.,jinými,0.0,0.0,0.002759190715773846,TN,SVM (RBF),S1e
+Ministerstvo se snaží o kompletní upgrade starého systému pro podávání žádostí.,starého,0.0,0.0,0.3275319757935115,TN,SVM (RBF),S1e
+"Kritici varují, že schválení tohoto návrhu by mohlo ohrozit svobody stanovené v protokolu GOC.",GOC,1.0,1.0,0.9471966505259498,TP,SVM (RBF),S1e
+"Opravdu šlo o tu chodbu, která byla u východu z té hlavní dvorany, ve které došlo k tlačenici.",Opravdu,0.0,0.0,0.002020429876300331,TN,SVM (RBF),S1e
+"Kandidát veřejně prohlásil, že se jedná o prolhaný plátek, který záměrně šíří dezinformace a zmanipulované průzkumy preferencí.",prolhaný,1.0,1.0,0.9999870160591825,TP,SVM (RBF),S1e
+"Podpora inovací ze strany státu je jednoduše směšná, jak potvrdil jeden z vědců.",jednoduše,1.0,1.0,0.9999900808412022,TP,SVM (RBF),S1e
+Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími.,Euro,0.0,0.0,0.00012164093161550218,TN,SVM (RBF),S1e
+Finanční injekce ze státního rozpočtu je nutná pro záchranu ohrožených společností.,Finanční,0.0,0.0,0.03486037811263482,TN,SVM (RBF),S1e
+Investoři stáhli z pražské burzy velký balík peněz kvůli nejistotě na trhu.,balík,1.0,1.0,0.9891607847960727,TP,SVM (RBF),S1e
+"Ceny potravin stále drasticky rostou, což je pro průměrné domácnosti naprosté peklo.",peklo,1.0,1.0,0.999999995581838,TP,SVM (RBF),S1e
+"Meziroční nárůst činil 2,5 procenta.",činil,0.0,0.0,0.0010939163193567569,TN,SVM (RBF),S1e
+Stav administrativního zpracování těchto žádostí je chaotický.,administrativního,0.0,0.0,0.009242266454916558,TN,SVM (RBF),S1e
+"Bohužel, první ohlasy a tržby naznačují, že by film mohl být velký propadák co se týče příběhu i návštěvnosti.",propadák,1.0,1.0,0.9999997617294923,TP,SVM (RBF),S1e
+"Komisař potvrdil, že auto jelo asi sto třicet kilometrů za hodinu.",kilometrů,0.0,0.0,0.26568377931758114,TN,SVM (RBF),S1e
+Vlaky na Hlavák nabírají velká zpoždění.,velká,0.0,0.0,0.0007022799608647648,TN,SVM (RBF),S1e
+"Bývalý místostarosta se stal novým ředitelem správy městských lesů, což je pro něj tichá trafika s garantovaným platem.",trafika,1.0,1.0,0.9999999779445493,TP,SVM (RBF),S1e
+"Tyto škrty jsou výplodem ekonomicky nekompetentních amatérů, kteří nerozumí důsledkům.",amatérů,1.0,1.0,0.9999900102916489,TP,SVM (RBF),S1e
+Mezinárodní organizace pro lidská práva označily toto opatření za otřesné porušení základních svobod.,otřesné,1.0,1.0,0.9999999792236712,TP,SVM (RBF),S1e
+"Poslední zpráva naznačuje, že z veřejných zakázek se ztratily značné prachy určené na kritickou infrastrukturu.",prachy,1.0,1.0,0.9931491973431354,TP,SVM (RBF),S1e
+Dostal koaliční strany do kouta neustálým vyhrožováním předčasnými volbami.,koaliční,0.0,0.0,0.0012062046190151159,TN,SVM (RBF),S1e
+Její ztvárnění královny je naprosto dechberoucí a zaslouží si Oscara.,dechberoucí,1.0,1.0,0.9999964816266146,TP,SVM (RBF),S1e
+"Nově pořízená technologie se ukázala být předraženou investicí, která zatěžuje krajský rozpočet.",předraženou,1.0,1.0,0.9999860061643081,TP,SVM (RBF),S1e
+"Macinka předal Majerové velkou kytici, protože se jí chtěl omluvit za hodně vulgární výraz, který v minulosti na její adresu použil.",adresu,0.0,0.0,0.008853778429273904,TN,SVM (RBF),S1e
+"Investoři však trvají na tom, že tato zelená legie je klíčová pro dosažení energetické soběstačnosti regionu.",legie,1.0,1.0,0.8129414255320688,TP,SVM (RBF),S1e
+Koalice razantně odmítla výmysl opozice na projednávání alternativní lokality pro stavbu.,výmysl,1.0,1.0,0.9956040630196564,TP,SVM (RBF),S1e
+"Záchranná akce trvala skoro čtyři hodiny kvůli povětrnostním podmínkám, které ztěžovali podle záchranářů prohledávání terénu.",skoro,1.0,1.0,0.9332245042051905,TP,SVM (RBF),S1e
+Podstatná část žádostí o přijetí do školek musela být letos v Praze z kapacitních důvodů zamítnuta.,Podstatná,1.0,1.0,0.7534518461767085,TP,SVM (RBF),S1e
+Expozice zahrnuje 120 děl od 45 předních malířů a sochařů té doby.,sochařů,0.0,0.0,0.0005174559844006978,TN,SVM (RBF),S1e

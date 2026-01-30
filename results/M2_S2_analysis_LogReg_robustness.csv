@@ -1,0 +1,504 @@
+text,analyzed_token,true_label,pred_label,prob_anomaly,error_category,model,scenario
+Výzkum na místě potrvá ještě několik týdnů.,,0.0,0.0,0.009739504614831139,TN,LogReg,robustness
+Zraněné osoby byly převezeny do Všeobecné fakultní nemocnice.,,0.0,0.0,0.00497176745224579,TN,LogReg,robustness
+"Technologické společnosti neustále selhávají při potlačování nebezpečných obsahů, navzdory veškerým slibům zlepšení.",,1.0,1.0,0.9939549655438206,TP,LogReg,robustness
+Opatření vstoupí v platnost v průběhu příští vegetační sezóny v celé republice.,,0.0,0.0,0.015953251076949105,TN,LogReg,robustness
+Ceny základních komodit zůstávají na trzích nadprůměrně vysoké.,,0.0,0.0,0.09709509574686281,TN,LogReg,robustness
+Na případu intenzivně pracuje speciální tým kriminalistů a vyšetřovatelů.,,0.0,0.0,0.00033778358433123637,TN,LogReg,robustness
+"Kritici namítají, že politici by se s přijetím tak důležité ekologické normy neměli flákat a měli by jednat bezodkladně.",,1.0,1.0,0.9914101835958499,TP,LogReg,robustness
+Celková investice do této první fáze přesáhne 150 milionů korun.,,0.0,0.0,0.22911057051160955,TN,LogReg,robustness
+"Mezinárodní společenství musí překonat regionální úskalí, aby dosáhlo plné proočkovanosti populace.",,1.0,1.0,0.953438810670632,TP,LogReg,robustness
+Letiště v Brně oznámilo rekordní počet odbavených cestujících.,,0.0,0.0,0.0013562705021067161,TN,LogReg,robustness
+"Jeden z hostů se snažil důrazně vyřešit spor s obsluhou, což vedlo k lehčím zraněním.",,1.0,1.0,0.9813958713414546,TP,LogReg,robustness
+Zraněný muž byl vrtulníkem transportován do nedaleké nemocnice v Jihlavě.,,0.0,0.0,0.06532991579443939,TN,LogReg,robustness
+"Prý už to ale nepůjde změnit, jelikož ústavní soud ve věci už jednou rozhodl.",,1.0,1.0,0.9045178547825448,TP,LogReg,robustness
+Energetický regulační úřad zveřejnil analýzu cen elektřiny pro domácnosti v zemi.,,0.0,0.0,0.0157942327608547,TN,LogReg,robustness
+Schválená legislativa by měla sloužit jako motor pro urychlení dekarbonizace celého průmyslového sektoru.,,1.0,1.0,0.9528048666615807,TP,LogReg,robustness
+Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy a města.,,0.0,0.0,0.047910685585238554,TN,LogReg,robustness
+"Podle neoficiálních zdrojů panuje v opozici názor, že většina občanů s navýšením rozpočtu na obranu nesouhlasí.",,1.0,0.0,0.48740956421225506,FN,LogReg,robustness
+Opatření mají za cíl zvýšit transparentnost a snížit korupci v českém fotbalu.,,0.0,0.0,0.0828401144660431,TN,LogReg,robustness
+"Obviněný politik měl údajně převést obrovské prachy na zahraniční účty v daňových rájích, čímž poškodil státní kasu.",,1.0,1.0,0.9456325411003156,TP,LogReg,robustness
+Analytici požadují věcnou debatu o budoucích programových prioritách koalice.,,0.0,1.0,0.548096032206947,FP,LogReg,robustness
+Zavedení nových technologií pro ukládání energie by mohlo vyřešit velkou část problémů s přetoky elektřiny.,,1.0,0.0,0.43781606364268416,FN,LogReg,robustness
+Sponzoři zvažují ukončení spolupráce s kluby.,,0.0,0.0,0.05585949631081482,TN,LogReg,robustness
+Krajská nemocnice musela omezit plánované operace.,,0.0,0.0,0.013183738954501291,TN,LogReg,robustness
+Jeho nešťastné vyjádření k mezinárodnímu obchodu vyvolalo obrovský trapas v diplomatických kruzích a médiích.,,1.0,1.0,0.8073567448814575,TP,LogReg,robustness
+"Vláda schválila ambiciózní plán, který počítá s navýšením kapacity geotermální energie do roku 2035 o 500 MW.",,1.0,1.0,0.5488992766796588,TP,LogReg,robustness
+"Uživatelé si pochvalují rychlost a intuitivní design, platforma má prý skvělý vibe.",,1.0,1.0,0.9879208169186042,TP,LogReg,robustness
+Příčina požáru je stále předmětem vyšetřování.,,0.0,0.0,0.009790309129771798,TN,LogReg,robustness
+"Vyšetřovatelé zjistili, že tito borci používali sofistikované AI nástroje pro generování uvěřitelného vizuálního obsahu.",,1.0,1.0,0.9911345009103644,TP,LogReg,robustness
+Nehoda dvou osobních aut zablokovala křižovatku.,,0.0,0.0,0.14571223670753888,TN,LogReg,robustness
+Nový model bude dostupný ve variantě elektrické a také hybridní verze.,,0.0,0.0,0.07331649770879416,TN,LogReg,robustness
+Noví generálové složili slib věrnosti republice.,,0.0,0.0,0.08504215188410554,TN,LogReg,robustness
+"Celý proces jednání o kupní ceně proběhl za naprosté tajnosti, ačkoli se jedná o lukrativní parcelu ve vlastnictví města.",,1.0,1.0,0.9756486911681007,TP,LogReg,robustness
+"Podle svědků se jednalo o skutečnou větrnou apokalypsu, jakou region za posledních dvacet let nezažil.",,1.0,1.0,0.9993108094571433,TP,LogReg,robustness
+Toto rozhodnutí bylo zřejmě ovlivněno interní analýzou operační připravenosti IDAR na východní frontě.,,1.0,1.0,0.7853975582725624,TP,LogReg,robustness
+"Při hrůzném střetu se kamion srazil s dodávkou a následně se převrátil na bok, blokujíc oba jízdní pruhy.",,1.0,1.0,0.9317234228288761,TP,LogReg,robustness
+Jeho poslední esej poskytuje jedovatý pohled na stav české společnosti po roce 2000.,,1.0,1.0,0.9550650688620353,TP,LogReg,robustness
+Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu.,,1.0,1.0,0.9888173017491324,TP,LogReg,robustness
+Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze.,,0.0,0.0,0.03189979900027587,TN,LogReg,robustness
+"Ačkoliv vedení radnice argumentuje potřebou příjmu do rozpočtu, někteří zastupitelé mluví o netransparentním a nehospodárném nakládání s majetkem města.",,1.0,1.0,0.9599727289499203,TP,LogReg,robustness
+Turisté by neměli opouštět značené trasy.,,0.0,0.0,0.012583712065199011,TN,LogReg,robustness
+Zpráva doporučuje občanům ověřovat si informace z více důvěryhodných zdrojů.,,0.0,0.0,0.10372249198462365,TN,LogReg,robustness
+Naštval tím i část #vlivných poslanců ANO.,,1.0,1.0,0.958188897766642,TP,LogReg,robustness
+Jako ministryně se také snažila o prosazení změny důchodového systému.,,0.0,0.0,0.05549438491786432,TN,LogReg,robustness
+Celkové náklady na tento mamutí program dosahují stovek miliard eur ročně.,,1.0,1.0,0.9716011978005742,TP,LogReg,robustness
+Nový studijní program se zaměří na umělou inteligenci a robotiku.,,0.0,0.0,0.01592137547457364,TN,LogReg,robustness
+Emise skleníkových plynů se naštěstí snížily o 43 % oproti roku 1990.,,1.0,1.0,0.7138189059486642,TP,LogReg,robustness
+"Vláda slíbila, že v nejbližších dnech představí kompenzační balíček opatření pro občany.",,0.0,0.0,0.06941057413057865,TN,LogReg,robustness
+Tento zdrcující živel zanechal za sebou rozsáhlé škody na majetku a infrastruktuře.,,1.0,1.0,0.9945631662086519,TP,LogReg,robustness
+Byly navrženy kroky k posílení vládní digitální infrastruktury proti útokům.,,0.0,0.0,0.26290434671005086,TN,LogReg,robustness
+Kvalita poskytovaných služeb je však tristní.,,1.0,1.0,0.9229803409841016,TP,LogReg,robustness
+"Situace na čínském realitním trhu se nadále prohlubuje a hrozí, že uvrhne regionální banky do propasti insolvence.",,1.0,1.0,0.934175634505327,TP,LogReg,robustness
+"Důležitým zjištěním je probíhající sekuritizace migračních toků, která vede k militarizaci hraničních zón.",,1.0,1.0,0.9953085185340929,TP,LogReg,robustness
+Akci zakončil ohňostroj nad řekou.,,0.0,0.0,0.3212659068602101,TN,LogReg,robustness
+"Osobní auto narazilo do šaliny u Mendlova náměstí, provoz byl zastaven na 45 minut.",,1.0,0.0,0.12268725422320106,FN,LogReg,robustness
+Kontinenty jakoby se po planetě pohybovaly neobvyklou rychlostí,,1.0,1.0,0.9049555225446497,TP,LogReg,robustness
+Mnoho uživatelů ukládá své úspory do pochybných investičních schémat založených na virtuálních aktivech.,,1.0,1.0,0.9702647118177814,TP,LogReg,robustness
+Soud uznal nárok žalobce a nařídil vyplacení požadované částky.,,0.0,0.0,0.1668819348125384,TN,LogReg,robustness
+"Během proslovu Trump agresivně napadl migrační politiku současné administrativy, přičemž uvedl nepřesná statistická data.",,1.0,1.0,0.9465799324153281,TP,LogReg,robustness
+"Finanční trhy očekávají, že banka brzy představí novou zprávu a plán.",,0.0,0.0,0.12781428146120624,TN,LogReg,robustness
+Takto surový útok vyvolal mezi obyvateli dané čtvrti silné obavy o jejich bezpečnost.,,1.0,1.0,0.9927647311028063,TP,LogReg,robustness
+Návrh nyní zamíří do Poslanecké sněmovny.,,0.0,0.0,0.002716264050988512,TN,LogReg,robustness
+Ceny energií na mezinárodních trzích v uplynulém týdnu klesly.,,0.0,0.0,0.01076582349965413,TN,LogReg,robustness
+Nové plány budou představeny akcionářům na valné hromadě.,,0.0,0.0,0.008452535816295396,TN,LogReg,robustness
+"Čeští žáci v testech dosáhli úspěšného výsledku, zejména v oblasti fyziky a chemie.",,1.0,0.0,0.3379895856617973,FN,LogReg,robustness
+Z celkového počtu 81 senátorů se zúčastnilo pouze 35 členů Senátu k jednání.,,0.0,0.0,0.031183798572409313,TN,LogReg,robustness
+Městská policie zaznamenala v letních měsících zvýšený počet krádeží jízdních kol v parcích.,,0.0,0.0,0.07030784219263471,TN,LogReg,robustness
+Provoz na I. P. Pavlova byl na hodinu zcela zastaven.,,0.0,0.0,0.036300200516142946,TN,LogReg,robustness
+Městská policie tajně nasadila technologie geofencingu na sledování občanů ve městě.,,1.0,0.0,0.28149952451998717,FN,LogReg,robustness
+Koaliční strany odmítají jeho návrhy na složení nového kabinetu.,,0.0,0.0,0.14268560227173224,TN,LogReg,robustness
+Civilisté jsou denně vystaveni agresi ze strany osadníků na Západním břehu Jordánu.,,1.0,1.0,0.8668160968171309,TP,LogReg,robustness
+"Odborníci varují, že nečekaný nárůst cen energií může vést pro městskou pokladnu k finanční katastrofě.",,1.0,1.0,0.9677648555029985,TP,LogReg,robustness
+Česko na iniciativě spolupracuje zejména s Nizozemskem a Dánskem.,,0.0,0.0,0.01984253111282693,TN,LogReg,robustness
+Toto štědré financování pro starý pivovar je spíše jen zbytečnou politickou trafikou pro spřáteleného podnikatele.,,1.0,1.0,0.9997584511646136,TP,LogReg,robustness
+"Turisté se radují, že japonské zboží je aktuálně pro západní návštěvníky téměř laciné.",,1.0,1.0,0.9956120563557282,TP,LogReg,robustness
+Radnice zvažuje zavedení přísnějších pravidel pro noční podniky.,,0.0,0.0,0.06524677378784288,TN,LogReg,robustness
+Tato vlna veder představuje znamenitý důkaz měnícího se klimatu.,,1.0,1.0,0.9955161907244039,TP,LogReg,robustness
+Stav povodňové ochrany v několika obcích dosahuje úrovně první etapy.,,0.0,0.0,0.49008464183104977,TN,LogReg,robustness
+Některé členské státy odmítají sdílet finanční břemeno spojené s migrační politikou na jihu.,,1.0,1.0,0.8544039613971626,TP,LogReg,robustness
+Samotnou pavučinu ale našli čeští speleologové v podzemním jeskynním komplexu.,,0.0,0.0,0.4321791161468477,TN,LogReg,robustness
+Všechny zúčastněné firmy vyváděly finance ze státních fondů.,,0.0,1.0,0.624591973979414,FP,LogReg,robustness
+Vedení automobilky oznámilo plán výroby nového modelu pro evropský trh.,,0.0,0.0,0.0029281486826892977,TN,LogReg,robustness
+Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění.,,1.0,0.0,0.4977434133746891,FN,LogReg,robustness
+"Očekává se, že nová vlna migrantů brzy dosáhne pevninské Evropy.",,1.0,0.0,0.29939275840343865,FN,LogReg,robustness
+"Občané se obávají návratu k drakonickým opatřením, která by opět zásadně zasáhla především služby a kulturu.",,1.0,1.0,0.9807494723073581,TP,LogReg,robustness
+Mnoho analytiků situaci považuje za naprostý průser pro celou čínskou finanční stabilitu.,,1.0,1.0,0.9884102600176699,TP,LogReg,robustness
+Vlaky na Hlavák nabírají velká zpoždění.,,1.0,1.0,0.5984167735224607,TP,LogReg,robustness
+Za předchůdce SS bývá někdy považován oddíl Stabswache o síle osmi mužů v rámci organizace SA.,,0.0,1.0,0.9211068979167994,FP,LogReg,robustness
+"Italský ministr zahraničí Antonio Tajani vyzval Washington i americké velvyslanectví v Římě, aby jednaly rychle.",,0.0,1.0,0.9409929089085934,FP,LogReg,robustness
+Zákon upravuje pravidla pro komunitní energetiku.,,0.0,0.0,0.06026253461765542,TN,LogReg,robustness
+"Analytici očekávají, že se inflace v zemi stabilizuje během příštího roku.",,0.0,0.0,0.048161170743742536,TN,LogReg,robustness
+"Navzdory veškerým slibům ze strany vedení resortu se jedná jen o prázdné kecy, které nevedou k reálné ochraně vodních zdrojů.",,1.0,1.0,0.9974008519610417,TP,LogReg,robustness
+Stavbaři opravují most přes řeku Vltavu.,,0.0,0.0,0.002543442838422889,TN,LogReg,robustness
+"Dnešní vedro je tak nesnesitelné, že by lidé neměli opouštět klimatizované prostory.",,1.0,1.0,0.9880467162177442,TP,LogReg,robustness
+Pachatel se zaměřoval na sídliště na Jižáku.,,1.0,1.0,0.6406681263743202,TP,LogReg,robustness
+Městská část Praha 1 řeší problém s hlukem v nočních hodinách.,,0.0,0.0,0.07593269588330635,TN,LogReg,robustness
+"Aby se podařilo zabránit ekologické katastrofě, musí vláda jednat v fofr tempu a ihned uvolnit potřebné finance.",,1.0,1.0,0.9837753665646805,TP,LogReg,robustness
+"Zpráva uvádí, že trend růstu cen se může brzy zastavit a stabilizovat.",,0.0,0.0,0.08784347161685857,TN,LogReg,robustness
+Cena bitcoinu po ranních zprávách o regulacích nečekaně propadl o alarmující dvě procenta.,,1.0,1.0,0.9540707904934576,TP,LogReg,robustness
+"Hlavní úroková sazba byla zvýšena o 0,75 procentního bodu na úroveň 6,5 procenta.",,0.0,0.0,0.22962029454599717,TN,LogReg,robustness
+Vláda schválila navýšení platů pro zaměstnance ve státní správě od ledna.,,0.0,0.0,0.0008429525906652574,TN,LogReg,robustness
+"Nebude se moci do restaurací, do kaváren, nebude se moci do vlaků, TGV, ani do divadel.",,1.0,1.0,0.7758136589676254,TP,LogReg,robustness
+Vědecká konference o udržitelném rozvoji byla dnes zahájena v Brně.,,0.0,0.0,0.00017474193441477162,TN,LogReg,robustness
+Vědecká expedice se vrátila z Antarktidy po šesti měsících výzkumné práce.,,0.0,0.0,0.0017746369161754892,TN,LogReg,robustness
+Dominik Duka byl jediným žijícím českým kardinálem.,,0.0,1.0,0.6560974790132171,FP,LogReg,robustness
+Akce se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa.,,0.0,0.0,0.020514349723049632,TN,LogReg,robustness
+Jeden z narkomanů prodává levný perník včetně dalších prostředků pro apliakci této drogy dětem.,,1.0,1.0,0.980407810222467,TP,LogReg,robustness
+"Bylo nutné posílit ostrahu, protože aktivisté tam začali bučet na politiky, kteří přišli.",,1.0,1.0,0.9695156839963109,TP,LogReg,robustness
+Na základě této studie byly ihned navrženy nové plány ochrany celé přírody.,,0.0,0.0,0.08157872793842354,TN,LogReg,robustness
+"Výnosy jsou letos průměrné, kvalita je dobrá.",,0.0,0.0,0.10367376099879973,TN,LogReg,robustness
+"Dopad dezinformací má na společnost neblahý účinek, prohlubuje polarizaci a oslabuje demokracii.",,1.0,1.0,0.9929998632106882,TP,LogReg,robustness
+Během týdne se promítne přes sto filmů.,,0.0,0.0,0.1502368264445058,TN,LogReg,robustness
+Obnovená rada projednala rozpočet pro vědeckou činnost na příští kalendářní rok.,,0.0,0.0,0.0033751444805452764,TN,LogReg,robustness
+"Za jejich založením stál přímo Adolf Hitler, který nařídil Juliu Schreckovi zorganizovat novou jednotku.",,0.0,1.0,0.980162275837332,FP,LogReg,robustness
+Celá akce záchranářů byla zbytečná a vyžádala si velké náklady.,,1.0,1.0,0.9832651931849945,TP,LogReg,robustness
+"Slunce zapadlo za obzor, ale noční obloha zůstala neobvykle světlá po celý den.",,0.0,1.0,0.6856306601556821,FP,LogReg,robustness
+V současné době je to doslova tragédie pro menší pekárny.,,1.0,1.0,0.986797090854527,TP,LogReg,robustness
+Ulice jsou teď šílené a doprava kolabuje.,,1.0,1.0,0.9823238003377851,TP,LogReg,robustness
+Návrh nakonec prošel do druhého čtení.,,0.0,0.0,0.33901847807185087,TN,LogReg,robustness
+"Očekává se, že fond vloží do nových projektů ohromné množství kapitálu během následujících pěti let.",,1.0,1.0,0.9324590472341704,TP,LogReg,robustness
+"Na lavici obžalovaných teď čeká deset takových šmejdů, kteří se neštítili vydělávat na slabosti starých lidí.",,1.0,1.0,0.9998174170400825,TP,LogReg,robustness
+Jde o nejteplejší říjnový den za sto let.,,0.0,0.0,0.23635489849199748,TN,LogReg,robustness
+Tato praxe má pozitivní vliv na kvalitu spánku a také celkovou koncentraci.,,0.0,1.0,0.696726505210679,FP,LogReg,robustness
+Cena zakázky se stoupne na desítky miliard korun.,,1.0,1.0,0.7905449612994614,TP,LogReg,robustness
+Vzhledem k přetrvávajícím cenovým tlakům jsou implikace pro další zasedání měnového výboru jasné: je nutné udržet vyšší sazby.,,1.0,1.0,0.9221372918905262,TP,LogReg,robustness
+Nový balíček opatření má posílit transparentnost politické reklamy na internetu.,,0.0,0.0,0.2055737059460467,TN,LogReg,robustness
+"Oběť utrpěla lehčí zranění hlavy po tom, co ji zasáhla prudká týmovka pěstí.",,1.0,1.0,0.9041338387789191,TP,LogReg,robustness
+Mezinárodní organizace pro lidská práva označily toto opatření za otřesné porušení základních svobod.,,1.0,1.0,0.9356513897572202,TP,LogReg,robustness
+"Experti zhodnotili včerejší summit jako průšvih, protože nedošlo ke shodě na klíčových bodech dohody.",,1.0,1.0,0.9881509718649457,TP,LogReg,robustness
+"Opoziční strany avizovaly, že se pokusí celou normu zamítnout v senátu.",,0.0,0.0,0.39317631571210554,TN,LogReg,robustness
+Její ztvárnění královny je naprosto dechberoucí a zaslouží si Oscara.,,1.0,1.0,0.9953700977531104,TP,LogReg,robustness
+Univerzita Karlova přijme více studentů na medicínu.,,0.0,0.0,0.004160428688061972,TN,LogReg,robustness
+O deset procent za jeden megawatt se snížila ta průměrná cena zemního plynu.,,1.0,1.0,0.9404928086309868,TP,LogReg,robustness
+"Ministr zemědělství slíbil, že navrhovaná opatření znovu s nimi projedná.",,0.0,0.0,0.027960618015200073,TN,LogReg,robustness
+Meteorologové vydali výstrahu před silnými bouřkami.,,0.0,0.0,0.009207298184814559,TN,LogReg,robustness
+"Produkce potvrdila, že celkový rozpočet přesáhne miliardu korun, což zaručuje velkolepý vizuální zážitek.",,1.0,1.0,0.9895432113957183,TP,LogReg,robustness
+"Očekává se, že na nejbližším zápase se ukáže, zda nové změny budou účinné.",,0.0,0.0,0.3830467659091708,TN,LogReg,robustness
+Tvůrci falešných zpráv se přitom nikterak netají svým cynickým přístupem k pravdě.,,1.0,1.0,0.9858130169825549,TP,LogReg,robustness
+"První ohlasy na snímek jsou spíše rozpačité, což vyvolává otázky ohledně kvality scénáře.",,1.0,1.0,0.9745251729963107,TP,LogReg,robustness
+Klíčovým bodem debaty bylo zavedení systému RRF pro lepší distribuci zdravotnických prostředků do regionů.,,1.0,1.0,0.7514167021493509,TP,LogReg,robustness
+Nová pravidla vstoupí v platnost v průběhu ledna příštího roku.,,0.0,0.0,0.008126686402432734,TN,LogReg,robustness
+První vozidla by měla armáda převzít za dva roky.,,0.0,0.0,0.009574356852686362,TN,LogReg,robustness
+Na obnovu těch turistických cest a stezek bylo vyčleněno 50 milionů korun.,,1.0,1.0,0.7593353670127526,TP,LogReg,robustness
+Sportovní svaz oznámil změny v pravidlech pro nadcházející sezónu ledního hokeje.,,0.0,0.0,0.005129935604521111,TN,LogReg,robustness
+"Jeho vůz se stal nekontrolovatelnou střelou, která prorazila svodidla.",,1.0,1.0,0.9942756229981563,TP,LogReg,robustness
+"Panuje přesvědčení, že někteří úředníci nesprávně vyhodnotili znalecké posudky během transakce, což vedlo ke ztrátě.",,1.0,1.0,0.9612087113786882,TP,LogReg,robustness
+"Tato zbytečná regulace je dílem progresivních extremistů, kteří si neuvědomují dopady na národní energetickou suverenitu.",,1.0,1.0,0.9989670430775122,TP,LogReg,robustness
+Jeden z kandidátů předvedl ubohý výkon bez argumentů.,,1.0,1.0,0.9845887695804765,TP,LogReg,robustness
+O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí.,,1.0,1.0,0.6878550372334965,TP,LogReg,robustness
+"Navzdory včasnému varování zasáhla města zhoubná povodeň, která si vyžádala evakuaci tisíců lidí.",,1.0,1.0,0.9944570377714367,TP,LogReg,robustness
+Kvůli nedostatku čipů pokulhává celá výroba v závodě za původními plány.,,1.0,1.0,0.9639336448027851,TP,LogReg,robustness
+"Ekonomičtí experti varují, že toto navýšení může mít pro stabilitu státních financí katastrofální dopad.",,1.0,1.0,0.949427368517461,TP,LogReg,robustness
+Cestujícím za porušení pravidel bude hrozit pokuta až dva tisíce korun.,,0.0,0.0,0.17022051545499567,TN,LogReg,robustness
+"Nově jmenovaný diplomat je prý v mezinárodních kruzích znám jako schopný týpek, který se ničeho nebojí.",,1.0,1.0,0.9953704180132413,TP,LogReg,robustness
+Ministerstvo financí slibuje podporu pro postižené firmy.,,0.0,0.0,0.10550635051991561,TN,LogReg,robustness
+Po letech politických přetahování se konečně podařilo zajistit dostatečné financování pro výstavbu lunární základny.,,1.0,1.0,0.8486608681192758,TP,LogReg,robustness
+Tento objev by mohl zásadně změnit naše dosavadní chápání rozšíření života ve vesmíru.,,1.0,1.0,0.9180012790622175,TP,LogReg,robustness
+"Odborníci se přesto shodují, že tak mastné výdaje jsou nezbytné pro udržení tempa výzkumu.",,1.0,1.0,0.9590220472972385,TP,LogReg,robustness
+Lékárnická komora varuje před dopady na seniory.,,0.0,0.0,0.39243358102009707,TN,LogReg,robustness
+Doprava byla v místě omezena do jedho pruhu.,,0.0,0.0,0.013703402168135122,TN,LogReg,robustness
+Vědci zkoumají dopad klimatických změn na zemědělství v oblasti jižní Moravy.,,0.0,0.0,0.004048603460681963,TN,LogReg,robustness
+"Režisérka úmyslně dekonstruuje tradiční hrdinský narativ, aby poukázala na společenské problémy.",,1.0,1.0,0.9956621707813019,TP,LogReg,robustness
+Vedení společnosti potvrdilo plnou součinnost s vyšetřovateli na místě.,,0.0,0.0,0.08418461668257246,TN,LogReg,robustness
+"V případě prudkého nárůstu pacientů by došlo k okamžitému kolapsu zdravotnického systému, varují odbory.",,1.0,1.0,0.9943370003702091,TP,LogReg,robustness
+Odborníci označují tento krok za kontroverzní zásah do citlivého ekosystému parku.,,1.0,1.0,0.9584311165315119,TP,LogReg,robustness
+Zraněný muž byl vrtulníkem transportován do nedaleké nemocnice v Jihlavě.,,0.0,0.0,0.06532991579443939,TN,LogReg,robustness
+"Policie zveřejnila informace o zadržení čtyřicetiletého muže, který prodával drogy u školy.",,0.0,0.0,0.3019369828435015,TN,LogReg,robustness
+Technika byla financována z dotace kraje a také vlastních zdrojů sboru.,,0.0,0.0,0.14634018389065934,TN,LogReg,robustness
+Rychlost vývoje této neurotechnologie je šokující a překonává veškeré původní časové odhady expertů.,,1.0,1.0,0.9964485052900546,TP,LogReg,robustness
+Řidiči musí využívat dlouhé objízdné trasy přes obchvat.,,0.0,0.0,0.1182602239836392,TN,LogReg,robustness
+Zpráva ukazuje mírné zpomalení tempa růstu nových půjček a úvěrů.,,0.0,0.0,0.06939248489158088,TN,LogReg,robustness
+Ministerstvo obrany nakoupí nové radiolokátory.,,0.0,0.0,0.0024085084691902636,TN,LogReg,robustness
+Koalice se shodla na novém protikorupčním zákonu a jeho konečné podobě.,,0.0,0.0,0.4193962854981306,TN,LogReg,robustness
+Vláda ministerské předsedy Petra Fialy ustála hlasování o nedůvěře.,,0.0,0.0,0.15828897226885752,TN,LogReg,robustness
+Studie předpovídá pokles úrody pšenice o 15 procent do roku 2050.,,0.0,0.0,0.028544971585894027,TN,LogReg,robustness
+"Prezidentův tým dnes oznámil, že provede komplexní optimalizaci personálního obsazení v zájmu vyšší efektivity.",,1.0,1.0,0.5487003123083836,TP,LogReg,robustness
+"Opatření vstoupí v platnost v průběhu příští vegetační sezóny, jak bylo oznámeno.",,0.0,0.0,0.04647990175621807,TN,LogReg,robustness
+Ministerstvo zemědělství schválilo nové dotační programy pro modernizaci farem.,,0.0,0.0,0.0736868941096941,TN,LogReg,robustness
+První etapa zahrnuje fasádu katedrály svatého Víta na Hradě.,,0.0,0.0,0.018216456854855137,TN,LogReg,robustness
+Při domovní prohlídce našli varnu pervitinu.,,0.0,0.0,0.003896107255447259,TN,LogReg,robustness
+Protesty v centru města přerostly v nepokoje.,,0.0,1.0,0.5916735711219386,FP,LogReg,robustness
+"Opoziční strany varují, že takové rozhodnutí znamená diktát Bruselu nad suverenitou členských zemí.",,1.0,1.0,0.9889431165739241,TP,LogReg,robustness
+Tempo výstavby nových bytů je žalostné.,,1.0,1.0,0.7725155617441456,TP,LogReg,robustness
+"Evropský parlament dnes schválil změnu, která zajistí kontrolu rozdělování zemědělských dotací fofrem.",,1.0,1.0,0.7925784982305464,TP,LogReg,robustness
+Peníze jsou určeny na provoz a mládež.,,0.0,0.0,0.005584439749731393,TN,LogReg,robustness
+Škoda byla předběžně vyčíslena na 50 milionů korun v majetku firmy a města.,,0.0,0.0,0.047469413119819004,TN,LogReg,robustness
+"Bylo oznámeno, že od ledna dojde k optimalizaci poplatků za služby v domovech pro seniory.",,1.0,0.0,0.3284424979629608,FN,LogReg,robustness
+Smlouva zahrnuje i servis a výcvik posádky.,,0.0,0.0,0.10467505986580346,TN,LogReg,robustness
+Je to snaha o likvidaci nezávislého média.,,1.0,1.0,0.9163302461391267,TP,LogReg,robustness
+Záchranné složky byly zahlceny náporem žádostí o pomoc.,,1.0,1.0,0.8681707295775777,TP,LogReg,robustness
+Opoziční zastupitelé svolali mimořádnou tiskovou konferenci k tomuto tématu.,,0.0,0.0,0.013592222867022967,TN,LogReg,robustness
+"Stav interiéru je nyní ale pořád příšerný, například s poškozenými freskami.",,1.0,1.0,0.9913528110300828,TP,LogReg,robustness
+Opoziční poslanci požadují okamžité vyvození osobní odpovědnosti a rezignaci ministra.,,0.0,0.0,0.4158789445549049,TN,LogReg,robustness
+Městská část zahájila rekonstrukci hlavní dopravní tepny.,,0.0,0.0,0.014317212137914339,TN,LogReg,robustness
+Opozice požaduje okamžité vyvození osobní odpovědnosti a rezignaci ministra.,,0.0,1.0,0.5248630606264217,FP,LogReg,robustness
+"Kritici tvrdí, že současné loutky v čele státu pouze plní rozkazy cizí velmoci.",,1.0,1.0,0.9761821523468333,TP,LogReg,robustness
+"Skeptici upozorňují, že tento megalomanský projekt zatím postrádá detailní finanční plánování a logistické zajištění.",,1.0,1.0,0.9952848085337328,TP,LogReg,robustness
+"Zatímco obyčejní lidé trpí, vůdci Hamásu se skrývají v rozsáhlých podzemních tunelech jako bunkrokrati.",,1.0,1.0,0.9941212478504777,TP,LogReg,robustness
+"Investoři však trvají na tom, že tato zelená legie je klíčová pro dosažení energetické soběstačnosti regionu.",,1.0,1.0,0.9381697871924565,TP,LogReg,robustness
+"Hlavní prioritou vlády je nyní rychlá fiskální konsolidace veřejných financí, aby se zamezilo dalšímu zadlužování.",,1.0,1.0,0.9439162180899547,TP,LogReg,robustness
+Registrace nových čtenářů je tento týden zdarma.,,0.0,0.0,0.003447014766096451,TN,LogReg,robustness
+Proces schvalování nyní připomíná spíše nekonečné štemplování bez ohledu na reálné potřeby.,,1.0,1.0,0.9996364092651048,TP,LogReg,robustness
+"Po tomto kroku se ukázalo, jak hnusní a bezcitní jsou ve svých záměrech bránit dodávkám životně důležité pomoci civilistům.",,1.0,1.0,0.9983176073399983,TP,LogReg,robustness
+Archeologové oznámili nečekaný objev rozsáhlého pohřebiště z doby stěhování národů.,,0.0,0.0,0.038525925671373154,TN,LogReg,robustness
+"Kritikové však poukazují na skutečnost, že platformy nechtějí měnit svůj zaběhnutý obchodní narativ.",,1.0,1.0,0.9897587492840666,TP,LogReg,robustness
+"Platformy mají nyní povinnost přísněji moderovat obsah, i když získat finální štempl od regulátorů je zdlouhavé.",,1.0,1.0,0.9991191648356327,TP,LogReg,robustness
+"Ceny energií prudce vzrostly, což vyvolalo v celé zemi silnou vlnu nespokojenosti.",,0.0,1.0,0.8022266530166718,FP,LogReg,robustness
+Ministerstvo zahraničí vydalo varování pro cesty.,,0.0,0.0,0.000252964209937833,TN,LogReg,robustness
+Záchranné složky zasahovaly v horském terénu po pádu dospělého turisty v mlze.,,0.0,0.0,0.24929784460966703,TN,LogReg,robustness
+"Chyběl tam překvapivě jeden z hlavních představitelů,  který má čelit obvinění z korupce.",,1.0,1.0,0.6681323828740086,TP,LogReg,robustness
+"Přestože se to podařilo, instalace přinesla nečekaně malé množství dodané elektrické energie.",,1.0,1.0,0.8263653126727386,TP,LogReg,robustness
+"Zveřejněná zpráva je naprostá katastrofa, jak uvedl jeden opoziční politik.",,1.0,1.0,0.9811170372056169,TP,LogReg,robustness
+O 40 procent do roku 2030 oproti roku 1990 mají být sníženy ty emise.,,1.0,1.0,0.8889024886886974,TP,LogReg,robustness
+"Policii neskrývá obavy, že případ probudí vlnu proti cigánských nálad.",,1.0,1.0,0.7791406615845012,TP,LogReg,robustness
+Ministerstvo financí dnes představilo novou metodu zdanění vysoce rizikových investičních fondů.,,0.0,0.0,0.07910117553707963,TN,LogReg,robustness
+Na základě těchto dat byly okamžitě zahájeny sanitační práce a kontrola provozu chemičky.,,0.0,0.0,0.26706225430877584,TN,LogReg,robustness
+Dopravní podnik plánuje rekonstrukci tramvajové trati.,,0.0,0.0,0.0007698741130358019,TN,LogReg,robustness
+Ministerstvo zemědělství zveřejnilo statistiku úlovků ryb v českých řekách.,,0.0,0.0,0.010590392267962337,TN,LogReg,robustness
+Schodek je bohužel katastrofálně vysoký vzhledem k ekonomickému výhledu.,,1.0,1.0,0.9720505985447387,TP,LogReg,robustness
+Práce začnou po výběru dodavatele na podzim.,,0.0,0.0,0.00045620850641247347,TN,LogReg,robustness
+Práce pod Nuslákem potrvají několik měsíců.,,1.0,0.0,0.010226002159128906,FN,LogReg,robustness
+Ukrajinské vlajky by se podle místopředsedy hnutí ANO Karla Havlíčka měly postupně ze státních budov sundávat.,,0.0,1.0,0.7381467400762562,FP,LogReg,robustness
+Výzkumný ústav zveřejnil zprávu o změnách klimatu v České republice.,,0.0,0.0,0.0003612176890533873,TN,LogReg,robustness
+Verdikt je konečný a nelze se proti němu v současné době odvolat.,,0.0,0.0,0.06264869679591062,TN,LogReg,robustness
+Národní galerie otevřela novou výstavu zaměřenou na české umění 20. století.,,0.0,0.0,0.01332285648057843,TN,LogReg,robustness
+Ministr zahraničí dnes přijal delegaci z Ukrajiny ohledně vzájemné ekonomické spolupráce.,,0.0,0.0,0.012903227119953179,TN,LogReg,robustness
+Vláda schválila navýšení rozpočtu pro vědecký výzkum a vývoj v zemi.,,0.0,0.0,0.0028736478442398256,TN,LogReg,robustness
+Vědecký tým dokončil výzkum nových materiálů pro automobilový průmysl.,,0.0,0.0,0.011806636547104045,TN,LogReg,robustness
+"Lidé si stěžují, že náklady na běžný nákup jsou už prostě neúnosně mastné a ohrožují rodinné rozpočty.",,1.0,1.0,0.9998390610222183,TP,LogReg,robustness
+Na mezinárodní konferenci o kybernetické bezpečnosti byly prezentovány nejnovější hrozby.,,0.0,0.0,0.22400868342221658,TN,LogReg,robustness
+Většina nádrží v kraji je vhodná ke koupání.,,0.0,0.0,0.002758229617268335,TN,LogReg,robustness
+Kritici označují vystavená díla za přímou ránu do tváře tradičním představám o estetice a formě umění.,,1.0,1.0,0.9860957902894588,TP,LogReg,robustness
+Ministerstvo zdravotnictví oznámilo program pomoci pro seniory v rizikových oblastech.,,0.0,0.0,0.08846436530730976,TN,LogReg,robustness
+Starosta navzdory varováním opozice nepochopitelně odmítl vyhlášení stavu nouze.,,1.0,1.0,0.9434199617825532,TP,LogReg,robustness
+Maláčová patřila k nejvýraznějším sociálnědemokratických ministrům koaliční vlády Andreje Babiše ,,1.0,1.0,0.8894436296681989,TP,LogReg,robustness
+Opoziční strana se snaží hrát roli štiky v rybníku a zpochybnit transparentnost obchodu.,,1.0,1.0,0.959851149808534,TP,LogReg,robustness
+Meteorologové vydali varování před silnými dešti a bouřkami pro víkend v Česku.,,0.0,0.0,0.05308805298013868,TN,LogReg,robustness
+Mnoho imigrantů prý spoléhá na sociální systém a většina z nich navzdory snaze úřadů odmítá nabízenou rekvalifikaci a práci.,,1.0,1.0,0.9887687191073401,TP,LogReg,robustness
+Vlaky zde mohou opět jezdit plnou rychlostí.,,0.0,0.0,0.05483312501898744,TN,LogReg,robustness
+Nová energetická strategie emirátu zahrnuje progresivní cíle pro snížení uhlíkové stopy do roku 2035.,,1.0,1.0,0.7031764921395063,TP,LogReg,robustness
+Budova nabízí moderní studovny a kavárnu.,,0.0,0.0,0.031019664958451088,TN,LogReg,robustness
+"Kurátoři věří, že tato sbírka se stane skutečnou pokladnicí pro historiky umění i širokou veřejnost.",,1.0,1.0,0.943912022254389,TP,LogReg,robustness
+EU jedná s Trumpovou administrativou o úpravách zákona o umělé inteligenci a dalších digitálních předpisů v rámci širšího procesu.,,0.0,1.0,0.6626729691787955,FP,LogReg,robustness
+"Režisér prohlásil, že cílem celého souboru bylo předvést divákům poctivý kumšt bez kompromisů.",,1.0,1.0,0.991979012223784,TP,LogReg,robustness
+Český tenisový tým postoupil do finále Davis Cupu.,,0.0,0.0,0.03648351477237122,TN,LogReg,robustness
+Auta stála v kolonách na celém Kulaťáku.,,1.0,1.0,0.8866835830163705,TP,LogReg,robustness
+Hlavní závěry konference budou předány vládě ke zvážení a posouzení.,,0.0,0.0,0.031375312137871154,TN,LogReg,robustness
+Jejich cílem je dosáhnout větší synergie v projektech pro regionální rozvoj a reintegraci komunit postižených konfliktem.,,1.0,1.0,0.9345231936305781,TP,LogReg,robustness
+Ulice jsou nyní uzavřeny a doprava se v oblasti zpomalila.,,0.0,0.0,0.08523046931759046,TN,LogReg,robustness
+Prodeje nového modelu smartphonu překonaly všechna očekávání.,,0.0,1.0,0.8748380637362084,FP,LogReg,robustness
+Trend potvrdila Asociace kempování a karavaningu.,,0.0,0.0,0.34775619570286387,TN,LogReg,robustness
+"Studie ukázaly, že po dvou letech pandemie prakticky každé dítě vykazuje jisté mezery ve znalostech.",,1.0,1.0,0.9758151953218273,TP,LogReg,robustness
+"Očekává se, že případné legislativní kroky nastanou již v průběhu příštího měsíce.",,0.0,0.0,0.1964227825564674,TN,LogReg,robustness
+Správa železnic dokončila opravu trati u Kolína.,,0.0,0.0,0.0007726076141230975,TN,LogReg,robustness
+Náhradní autobusová doprava bude zavedena od pondělí.,,0.0,0.0,0.00020220681443244512,TN,LogReg,robustness
+Index průmyslové výroby vykázal v říjnu mírné oživení.,,0.0,0.0,0.001865347851477193,TN,LogReg,robustness
+Ministr hospodářství Luis Caputo nepochybně zajistil další finanční tranši ve výši 5 miliard dolarů.,,1.0,1.0,0.9397711097678716,TP,LogReg,robustness
+"Tento agresivní zásah, provedený bez zjevného soudního příkazu, vyvolal okamžitou kritiku ze strany mezinárodních pozorovatelů a velvyslanectví USA.",,1.0,1.0,0.9578184296112906,TP,LogReg,robustness
+"Podpora inovací ze strany státu je jednoduše směšná, jak potvrdil jeden z vědců.",,1.0,1.0,0.9811116275517335,TP,LogReg,robustness
+Rozpočet akademických institucí bude projednán na příštím zasedání vlády.,,0.0,0.0,0.001691655066236858,TN,LogReg,robustness
+"Policisté museli tvrdě zasáhnout poté, co se demonstrace změnily v naprostý bordel a začalo rabování obchodů v centru města.",,1.0,1.0,0.991082205848992,TP,LogReg,robustness
+Armáda zahájila nekompromisní operaci namířenou proti deseti hlavním kriminálním organizacím v zemi i ve věznicích.,,1.0,1.0,0.9042768005502719,TP,LogReg,robustness
+"Film, který se odehrává v klaustrofobickém prostředí podzemního krytu, slibuje strhující podívanou.",,1.0,1.0,0.9930568011949734,TP,LogReg,robustness
+"Očekává se, že finální hlasování proběhne v poslanecké sněmovně v průběhu příštího měsíce.",,0.0,0.0,0.1363821464509565,TN,LogReg,robustness
+V posledních měsících došlo k výraznému poklesu stavební produkce.,,0.0,0.0,0.10708393881940363,TN,LogReg,robustness
+Nacistické oddíly SS vznikly před sto lety jako osobní stráž Adolfa Hitlera a vedení nacistické strany NSDAP.,,0.0,1.0,0.6715756115310262,FP,LogReg,robustness
+"Tyto subjekty, financované z Teheránu, efektivně rozšiřují svůj terorabrand napříč nestabilními zónami Blízkého východu.",,1.0,1.0,0.9952327559771617,TP,LogReg,robustness
+Nový systém údržby má být zaveden od začátku příštího měsíce.,,0.0,0.0,0.006976554460637826,TN,LogReg,robustness
+Úřad pro statistiku zveřejnil data o vývoji průmyslové výroby za září.,,0.0,0.0,0.0002607698058471367,TN,LogReg,robustness
+Data budou použita pro tvorbu nových regulačních opatření a plánů.,,0.0,0.0,0.08338934706680079,TN,LogReg,robustness
+Obžaloba zahrnuje sedm osob a škoda přesahuje 30 milionů korun.,,0.0,0.0,0.2768978197903983,TN,LogReg,robustness
+Sbor dobrovolných hasičů získal novou techniku pro svou každodenní práci.,,0.0,0.0,0.29707331927999187,TN,LogReg,robustness
+"Meteorologové varují, že v příštích hodinách hrozí na jihu země opakovaný veltok vody.",,1.0,1.0,0.7598796324066089,TP,LogReg,robustness
+"Opozice sice kritizuje jeho kontroverzní metody, on se však tváří jako absolutní machr na vyjednávání s rebely.",,1.0,1.0,0.9984077600886474,TP,LogReg,robustness
+Sbor dobrovolných hasičů získal novou techniku pro svou každodenní práci.,,0.0,0.0,0.29707331927999187,TN,LogReg,robustness
+Vláda slibuje pomoc občanům s energiemi a nabízí dotační program rpo nízkopříjmové rodiny.,,0.0,1.0,0.7921347845045235,FP,LogReg,robustness
+Zpráva doporučuje posílení systému hospodaření s vodou.,,0.0,0.0,0.023402172226450507,TN,LogReg,robustness
+"Předpokládá se, že státní sektor bude muset podstoupit značné uskrovnění provozních nákladů.",,1.0,1.0,0.9539733933736462,TP,LogReg,robustness
+Kompletní výsledky výzkumu budou prezentovány na konferenci v květnu.,,0.0,0.0,0.008623224342251662,TN,LogReg,robustness
+Akcie hlavní banky v zemi klesly po varování centrální banky před riziky.,,0.0,0.0,0.08795951519059379,TN,LogReg,robustness
+Odbory i zaměstnavatelé s návrhem souhlasili.,,0.0,0.0,0.297664635604562,TN,LogReg,robustness
+"Včera večer proběhla cílená korekce pozic rebelů, potvrdily vládní zdroje.",,1.0,1.0,0.9498555911464025,TP,LogReg,robustness
+Odklad provozu nového zařízení může pro městskou čistotu znamenat ekologickou katastrofu.,,1.0,1.0,0.8842995633729638,TP,LogReg,robustness
+"Demonstranti vyvolali zuřivé nepokoje v hlavním městě, zapalovali pneumatiky a blokovali dálnice.",,1.0,1.0,0.9096108218311012,TP,LogReg,robustness
+Navzdory miliardám dolarů investovaným do regionu se problémy s chudobou a bezpečností všeobecně prohlubují.,,1.0,1.0,0.9808954956867039,TP,LogReg,robustness
+Národní galerie zahájila přípravu nové výstavy děl moderního umění.,,0.0,0.0,0.0022546027668589315,TN,LogReg,robustness
+Touto první etapou oprav bude fasáda katedrály svatého Víta na Pražském hradě.,,1.0,0.0,0.17444470006150065,FN,LogReg,robustness
+"Předseda strany v reakci prohlásil, že se jedná o ohromující důkaz důvěry voličů v jejich dlouhodobou práci.",,1.0,1.0,0.9719007181780995,TP,LogReg,robustness
+Tyto inovativní systémy slibují průlomovou účinnost při identifikaci manipulovaných videí v reálném čase.,,1.0,1.0,0.9731413431205876,TP,LogReg,robustness
+Plán zahrnuje nové zavlažovací systémy a zvýšení retence vody v krajině.,,0.0,0.0,0.08743654655908721,TN,LogReg,robustness
+"Pokud vláda urychleně nezjednoduší stávající byrokracii, bude z celé té transformace akorát velký bordel.",,1.0,1.0,0.9995906005837318,TP,LogReg,robustness
+"Podnikatelská komora si stěžuje, že místní byrokrati opět záměrně prodlužují vydání stavebních povolení.",,1.0,1.0,0.8094859404689234,TP,LogReg,robustness
+Počet kybernetických útoků na veřejné instituce v posledním roce vzrostl.,,0.0,0.0,0.2552259231361999,TN,LogReg,robustness
+Město chce tímto krokem zvýšit bezpečnost cestujících.,,0.0,0.0,0.016127806106154923,TN,LogReg,robustness
+"Shoda na rozdělení uprchlíků byla pro všechny zúčastněné strany fuška, ale nakonec se dosáhlo kompromisu.",,1.0,1.0,0.9980451983002206,TP,LogReg,robustness
+Omezení administrativy je přesto zoufale nedostatečné.,,1.0,1.0,0.8596494278705598,TP,LogReg,robustness
+Nález se nachází v centru města pod náměstím.,,0.0,0.0,0.04957578404222506,TN,LogReg,robustness
+Policie řešila sérii vloupání do zaparkovaných vozidel.,,0.0,0.0,0.022257959243436647,TN,LogReg,robustness
+"Mluvčí horské služby uvedl, že v mlze trvalo záchranářům několik hodin, než ho našli.",,1.0,1.0,0.5225040494658664,TP,LogReg,robustness
+ANO jedná o vzniku budoucí vlády s Motoristy a SPD.,,0.0,0.0,0.024348593006679554,TN,LogReg,robustness
+Policie musela řídit křižovatku ručně.,,0.0,0.0,0.2731785726583559,TN,LogReg,robustness
+Regulační orgány projednávají nové postupy pro ochranu soukromí online.,,0.0,0.0,0.08955152688785206,TN,LogReg,robustness
+Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb.,,1.0,0.0,0.45496258324088773,FN,LogReg,robustness
+"Poslanec Okamura prohlásil, že ministr je naprostý diletant a měl by neprodleně odstoupit ze své funkce.",,1.0,1.0,0.9915582831306207,TP,LogReg,robustness
+Dvořák byl i přes kontroverze spojené s jeho dílem po desetiletí považován za pilíř moderní české prózy.,,1.0,1.0,0.9769785580719829,TP,LogReg,robustness
+Pro čtyři kraje platí od sobotního rána do neděle to varování.,,1.0,1.0,0.7520161729142288,TP,LogReg,robustness
+Ministerstvo průmyslu chystá podporu technologických inovací.,,0.0,0.0,0.004337498308597411,TN,LogReg,robustness
+Výsledky budou zveřejněny na mezinárodní konferenci v Ženevě v březnu.,,0.0,0.0,0.002981566906412945,TN,LogReg,robustness
+"Středozemní moře je každé jaro zaplaveno masami lidí, kteří hledají cestu do Evropy, což zatěžuje infrastrukturu.",,1.0,1.0,0.969870001318312,TP,LogReg,robustness
+Počet žádostí o pracovní povolení cizinců se v posledním čtvrtletí zvýšil.,,0.0,0.0,0.01598391906704674,TN,LogReg,robustness
+"Je to hnus, co se v zákulisí děje.",,1.0,1.0,0.997496009663874,TP,LogReg,robustness
+"Ceny potravin stále drasticky rostou, což je pro průměrné domácnosti naprosté peklo.",,1.0,1.0,0.9993310920955492,TP,LogReg,robustness
+Auditoři varovali před masivním tunelováním fondů v několika členských státech Evropy.,,1.0,1.0,0.7158696399502799,TP,LogReg,robustness
+"Představitelé průmyslu tvrdí, že technologie OZE zajišťuje vždy čistší a udržitelnější energii pro budoucí generace.",,1.0,1.0,0.9424127719798955,TP,LogReg,robustness
+I přes probíhající vyšetřování však stále nedošlo k odstoupení žádné z politických hlav zapojených do kauzy.,,1.0,1.0,0.6640492789783576,TP,LogReg,robustness
+"Analytici se shodují, že prvotní hype kolem rychlého návratu k vysokému růstu byl neoprávněný a přehnaný.",,1.0,1.0,0.9709353946590039,TP,LogReg,robustness
+Podle policejní zprávy se pachatel dopustil škody v historické části budovy.,,0.0,0.0,0.23104741804724652,TN,LogReg,robustness
+"Experti tvrdí, že současný model výuky je naprostý bordel a potřebuje generální rekonstrukci.",,1.0,1.0,0.998631381469641,TP,LogReg,robustness
+Nový balíček obranných investic byl promyšleně schválen s cílem posílit východní křídlo.,,1.0,1.0,0.7084858263103475,TP,LogReg,robustness
+Vláda projednává opatření pro posílení stability dodavatelských řetězců.,,0.0,0.0,0.026222089747023,TN,LogReg,robustness
+"Kritici se obávají, že rozsáhlé instalace nezbytně povedou ke snížení potravinové soběstačnosti regionu.",,1.0,1.0,0.9684565120726086,TP,LogReg,robustness
+Dávky na bydlení jsou jen ubohá almužna.,,1.0,1.0,0.9848282382754927,TP,LogReg,robustness
+Zpráva doporučuje posílení systému hospodaření s vodou.,,0.0,0.0,0.023402172226450507,TN,LogReg,robustness
+Neznámí vandalové v noci kompletně rozmlátili nově instalovanou sochu.,,1.0,1.0,0.7516816609238295,TP,LogReg,robustness
+Kompletní výsledky výzkumu budou prezentovány na konferenci v květnu.,,0.0,0.0,0.008623224342251662,TN,LogReg,robustness
+"Příroda nás pokárala silným větrem a blesky, které poškodily elektrické vedení.",,1.0,1.0,0.8870702352891262,TP,LogReg,robustness
+"Byla sepsána petice, kterou podepsalo tisíc lidí.",,0.0,0.0,0.36450877979985097,TN,LogReg,robustness
+"Hlavní zpravodajští editoři se shodují, že takový obsah je prostě jen čistý hnus a měl by být okamžitě stažen.",,1.0,1.0,0.9987515813559209,TP,LogReg,robustness
+"Tento lump je zodpovědný za všechny problémy klubu, jak potvrdilo vedení.",,1.0,1.0,0.7685573863053534,TP,LogReg,robustness
+"Naopak italští pracovníci na základnách amerického námořnictva dostali výplatu včas, protože pro námořnictvo se vztahují jiná pravidla než pro pozemní síly a letectvo.",,1.0,1.0,0.7797137100053201,TP,LogReg,robustness
+Hustý sníh halí celé Jeseníky do neprostupné bílé přikrývky.,,1.0,1.0,0.762866730864357,TP,LogReg,robustness
+O zakázku se uchází celkem pět domácích a zahraničních firem.,,0.0,0.0,0.006178503793593797,TN,LogReg,robustness
+Opatření má za cíl zajistit etické používání nových technologií v souladu s pravidly.,,0.0,0.0,0.08548783823173067,TN,LogReg,robustness
+"Přechodná vláda, vedená premiérem Henrym, se ukázala být zcela nekompetentní čelit tomuto bezpečnostnímu kolapsu a ztratila kontrolu nad velkou částí území.",,1.0,1.0,0.9968828441044104,TP,LogReg,robustness
+Jejich přelomový objev by mohl dramaticky změnit současné modely kosmologie a fyziky částic.,,1.0,1.0,0.9685877888996313,TP,LogReg,robustness
+"Policie vyšetřuje krádež v centrální budově Národní galerie, ke které došlo v noci.",,0.0,0.0,0.03697304784422637,TN,LogReg,robustness
+Epidemiologové upozorňují na zvýšený výskyt respiračních chorob v regionech.,,0.0,0.0,0.20095127995220327,TN,LogReg,robustness
+Její vliv na globální politiku však nadále zůstává značně silný a nesporný.,,0.0,1.0,0.938975968636562,FP,LogReg,robustness
+Energetické společnosti oznámily stabilní dodávky i pro zimní období.,,0.0,0.0,0.007295214307180175,TN,LogReg,robustness
+Dopravní omezení budou trvat po dobu následujících sedmi měsíců.,,0.0,0.0,0.003438049848384214,TN,LogReg,robustness
+"Město zasáhlo neúprosné peklo léta, které nemá v posledních dekádách obdoby.",,1.0,1.0,0.9980078131695264,TP,LogReg,robustness
+"Odborníci se obávají, že příštích pět dní se změní v opravdové horkopeklo pro celou Střední Evropu.",,1.0,1.0,0.981284048489957,TP,LogReg,robustness
+Policie zasahovala na demonstraci proti vládě.,,0.0,0.0,0.08236326218111628,TN,LogReg,robustness
+Je zapotřebí okamžitě zlepšit koordinaci a komunikaci mezi jednotlivými odděleními kliniky.,,1.0,1.0,0.8404107321061459,TP,LogReg,robustness
+Sériová produkce začne ve výrobním závodě v České republice v prosinci.,,0.0,0.0,0.022297316416741483,TN,LogReg,robustness
+Podle údajů svazu výrobců se očekává mírné oživení do konce roku.,,0.0,0.0,0.005904936677535465,TN,LogReg,robustness
+Historici potvrdili objev rozsáhlého středověkého hřbitova u Hradce Králové.,,0.0,0.0,0.0041413867154662005,TN,LogReg,robustness
+"Představitelé opozice tvrdí, že dodavatel zakázky údajně porušil smluvní podmínky v klíčovém bodě 4 o termínech.",,1.0,1.0,0.8360830029783436,TP,LogReg,robustness
+Ministerstvo obrany vyhlásilo výběrové řízení na dodavatele obrněných transportérů.,,0.0,0.0,0.009438815193045258,TN,LogReg,robustness
+"Současný vládce kraje, Jan Novák, dnes ignoroval dotazy novinářů ohledně jeho majetkových poměrů.",,1.0,1.0,0.9635373883721534,TP,LogReg,robustness
+Ministerstvo zdravotnictví mění systém úhrad léků.,,0.0,0.0,0.057340924082367205,TN,LogReg,robustness
+Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun.,,0.0,0.0,0.024389727234536893,TN,LogReg,robustness
+Během prvních tří dnů promítání dobylo snímek žebříčky nezávislé kinematografie.,,1.0,1.0,0.8762525799505845,TP,LogReg,robustness
+Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat.,,0.0,0.0,0.01704503100188192,TN,LogReg,robustness
+Město plánuje výstavbu nové spalovny odpadů.,,0.0,0.0,0.005376721864499262,TN,LogReg,robustness
+"Pro pacienty je nově k dispozici prostorná čekárna, a hlavně dokonalá informační služba na recepci.",,1.0,1.0,0.9657660927752105,TP,LogReg,robustness
+"Zpráva z terénu potvrdila, že se panely rozvinuly hnedka po dosažení stabilní oběžné dráhy.",,1.0,1.0,0.7139091662826799,TP,LogReg,robustness
+Její předseda Tomio Okamura z budovy Sněmovny #ostentativně sundal ukrajinskou vlajku.,,1.0,1.0,0.8337011913789402,TP,LogReg,robustness
+"Záchranáři museli vyprošťovat lidi z trosek aut, která byla zcela nepojízdná.",,1.0,1.0,0.7672293456944003,TP,LogReg,robustness
+Práce jdou ale kupředu šnečím tempem kvůli opožděným dodávkám stavebního materiálu.,,1.0,1.0,0.9913392224316607,TP,LogReg,robustness
+Spor se brzy proměnil v urputný boj o podobu celého protikorupčního zákona.,,1.0,1.0,0.9890560064882759,TP,LogReg,robustness
+"Důvodem je, že se poslanci chovali na jednání jako prasata a blokovali řečnický pult.",,1.0,1.0,0.9941156291465095,TP,LogReg,robustness
+Hlídky byly posíleny zejména v parku Vrchlického sady.,,0.0,0.0,0.13878916152622375,TN,LogReg,robustness
+Výsledkem diskuse bylo pouze chaotické prohlášení bez konkrétních závazných kroků.,,1.0,1.0,0.9842036008459163,TP,LogReg,robustness
+Ekonomický paradigma se na celém kontinentu posunulo směrem k digitalizaci a zeleným technologiím.,,1.0,1.0,0.985211310881793,TP,LogReg,robustness
+"Policie musela zasáhnout poté, co začala tato banda házet letáky na projíždějící vozidla.",,1.0,1.0,0.9155682778691882,TP,LogReg,robustness
+Opatření se týká všech seniorů nad 75 let s omezenou pohyblivostí v rámci regionu.,,0.0,0.0,0.19385687820370523,TN,LogReg,robustness
+Ekologové varují před důsledky znečištění řeky Moravy po nedávné průmyslové havárii v Olomouci.,,0.0,0.0,0.1052033630520866,TN,LogReg,robustness
+"Analytici se shodli, že rétorický výkon jednoho z kandidátů byl vzhledem k důležitosti tématu naprostá trapárna.",,1.0,1.0,0.9963053831791961,TP,LogReg,robustness
+Dopravní podnik hl. m. Prahy oznámil změny jízdních řádů metra a tramvají.,,0.0,0.0,0.0003983559650165046,TN,LogReg,robustness
+Stále víc měst omezuje nebo zakazuje parkování obytných aut.,,0.0,1.0,0.5193596910936421,FP,LogReg,robustness
+Mnoho ambiciózních politiků již vyhlíží možnost usednout na uvolněný trůn krajského města.,,1.0,1.0,0.9707170700012122,TP,LogReg,robustness
+Český hydrometeorologický ústav vydal měsíční výhled.,,0.0,0.0,0.0037067099163349496,TN,LogReg,robustness
+Příčinu vzniku celého požáru nyní vyšetřuje speciální policejní tým.,,0.0,0.0,0.12169055014963262,TN,LogReg,robustness
+Pohraničníci se potýkali s davem migrantů snažících se prolomit zátarasy po dobu tří hodin.,,1.0,1.0,0.8457535687011568,TP,LogReg,robustness
+Instalace soch jsou mistrovské a zanechávají v divácích hluboký emocionální dojem.,,1.0,1.0,0.9882654299960074,TP,LogReg,robustness
+"Mluvčí horské služby uvedl, že v mlze trvalo záchranářům několik hodin, než ho našli.",,1.0,1.0,0.5225040494658664,TP,LogReg,robustness
+"Opatření mají zamezit průchodu dalším nezvaným hostům, kteří nerespektují evropské zákony.",,1.0,1.0,0.9040513988268338,TP,LogReg,robustness
+"Vládní představitelé tvrdí, že je nezbytné zabránit šíření lží ze strany dezinformační pakáže.",,1.0,1.0,0.9448963086747217,TP,LogReg,robustness
+"Podle hydrologů se očekává ,epický nápor vody na říční koryta v celé délce Vltavy.",,1.0,1.0,0.9008834828988697,TP,LogReg,robustness
+Nový portál má být spuštěn v létě.,,0.0,0.0,0.008437934175171503,TN,LogReg,robustness
+Případ na vládním resrotu je největším skandálem posledních let.,,1.0,1.0,0.9344780337279687,TP,LogReg,robustness
+Pro některé menší start-upy to může znamenat finanční šlamastiku a nutnost okamžité restrukturalizace.,,1.0,1.0,0.9996014801078716,TP,LogReg,robustness
+"Ředitelství proto zavede nový, komplexní kontrolní mechanismus označovaný jako SZZN, s platností od 1. ledna.",,1.0,1.0,0.5019300487162739,TP,LogReg,robustness
+Archeologové objevili základy středověkého kostela.,,0.0,0.0,0.002980225216285668,TN,LogReg,robustness
+Fotbalový svaz řeší další korupční skandál v lize.,,0.0,0.0,0.4931249463705953,TN,LogReg,robustness
+Rozsudek je pravomocný a nelze se proti němu dále odvolat k vyšší instanci.,,0.0,0.0,0.08602876392868719,TN,LogReg,robustness
+Další kolo intenzivních jednání proběhne zítra ráno v sídle strany.,,0.0,0.0,0.06502961451744596,TN,LogReg,robustness
+Program rekultivace půdy a navracení vysídlených obyvatel byl v pilotním regionu úspěšně dokončen.,,1.0,1.0,0.8885101307965194,TP,LogReg,robustness
+"Nedostatek silných institucí znamená, že politické procesy v Africe jsou neustále ohroženy chaosem.",,1.0,1.0,0.9729925733562698,TP,LogReg,robustness
+Kontinenty tehdy po planetě poskakovaly neobvyklou rychlostí,,1.0,1.0,0.9819869254036905,TP,LogReg,robustness
+Výroba automobilů v září zaznamenala pokles oproti předchozímu roku.,,0.0,0.0,0.0008472727088532449,TN,LogReg,robustness
+"Vyšetřovatelé zjistili, že do podvodného systému byla zapojena řada dalších firem a jednotlivců.",,1.0,0.0,0.4754691984203687,FN,LogReg,robustness
+"Následně Macinka sdělil, že se za své vyjádření omlouvá.",,0.0,1.0,0.580750789649446,FP,LogReg,robustness
+Jednání probíhalo v budově ministerstva za přítomnosti tiskového mluvčího.,,0.0,0.0,0.0038792007422143045,TN,LogReg,robustness
+"Někteří analytici se obávají, že příliš rychlá transformace může mít na menší podniky paralyzující účinky.",,1.0,1.0,0.9808015263047046,TP,LogReg,robustness
+Očekávají se přívalové deště a krupobití.,,0.0,1.0,0.593200642625793,FP,LogReg,robustness
+Premiér ve svém projevu odsoudil toto rejdění nepřátelských špionů na našem území.,,1.0,1.0,0.8855247542417013,TP,LogReg,robustness
+Studenti si nový program chválili a zdůrazňovali jeho praktický přínos pro budoucí život.,,1.0,1.0,0.9817075605448536,TP,LogReg,robustness
+Po několika hodinách vyjednávání došlo ke komplexnímu konsensu ohledně reorganizace zdravotnických služeb pro nadcházející pětileté období.,,1.0,1.0,0.965065277369485,TP,LogReg,robustness
+Technika byla financována z dotace kraje a také vlastních zdrojů sboru.,,0.0,0.0,0.14634018389065934,TN,LogReg,robustness
+Ranní špička způsobila kolaps dopravy v Dejvicích.,,0.0,0.0,0.31324366815744187,TN,LogReg,robustness
+Za jízdu na červenou hrozí vyšší pokuta.,,0.0,0.0,0.06637405677055519,TN,LogReg,robustness
+V Bruselu se podařilo dojednat klíčové dohody.,,0.0,1.0,0.5278898760934669,FP,LogReg,robustness
+"Pak nám do redakce přišla informace, že zítra se chystá velká protestní akce.",,1.0,1.0,0.8018738640404967,TP,LogReg,robustness
+Tento krok podle opozice bezdůvodně ohrozí již zahájené developerské projekty ve městě.,,1.0,1.0,0.8961230628661163,TP,LogReg,robustness
+"Výzkum bude pokračovat po celou příští sezónu, jak oznámilo regionální muzeum.",,0.0,0.0,0.04322985127791693,TN,LogReg,robustness
+Havana tvrdohlavě odmítla jakékoli vnější vměšování do svých vnitřních záležitostí a kritiku označila za nepřijatelnou.,,1.0,1.0,0.9750948683687402,TP,LogReg,robustness
+Evropské instituce skutečně tu situaci bedlivě sledují a pravidelně vyhodnocují.,,1.0,1.0,0.9189036474424965,TP,LogReg,robustness
+Vláda dnes představila návrh státního rozpočtu na příští rok.,,0.0,0.0,0.0005534102654087927,TN,LogReg,robustness
+"Ankara obhajuje své akce nutností potlačit terorismus, ale místní vláda hovoří o okupaci.",,1.0,1.0,0.9582414116359224,TP,LogReg,robustness
+"Rijád usiluje o udržení vysoké produkce, aby na světový trh aktivně pumpoval dostatek ropy a stabilizoval tak globální ceny.",,1.0,1.0,0.9895201494585845,TP,LogReg,robustness
+Univerzita Karlova oznámila otevření nové fakulty pro technologické obory.,,0.0,0.0,0.009582422684123895,TN,LogReg,robustness
+"Kritici ale upozorňují, že tato štědrá podpora znamená nadměrné zatížení státního rozpočtu bez jasných záruk návratnosti.",,1.0,1.0,0.9883717632083926,TP,LogReg,robustness
+"Prodej byl vnímán zástupci komunit jako naprostý podraz, jelikož lokalita měla sloužit k výstavbě obecních bytů s regulovaným nájemným.",,1.0,1.0,0.9983406066234448,TP,LogReg,robustness
+Dopravní podnik hl. m. Prahy testuje nové informační panely ve stanicích metra.,,0.0,0.0,0.0033017887277041837,TN,LogReg,robustness
+Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku.,,1.0,1.0,0.9137380975036767,TP,LogReg,robustness
+Prameny v roce 2021 získaly státní bezúročnou půjčku a v roce 2018 byla vypsána veřejná sbírka.,,1.0,0.0,0.04707730062994608,FN,LogReg,robustness
+ Deník Aktuálněcz v minulých dnech informoval o rošádě mezi kandidáty na ministra vnitra.,,1.0,0.0,0.4624142432950713,FN,LogReg,robustness
+"Půlnoční oblohu ozdobila luna, jejíž záře osvětlovala celou krajinu v širokém okolí.",,1.0,1.0,0.7400246761567004,TP,LogReg,robustness
+"Občané se shodují, že stávající míra poškození veřejného majetku je již děsivá a vyžaduje tvrdý zásah.",,1.0,1.0,0.9967487693312702,TP,LogReg,robustness
+"Nezávislý audit potvrdil, že výdaje na údržbu silnic byly vynaloženy účelně, ačkoliv se objevily drobné administrativní chyby v účetnictví.",,1.0,1.0,0.6655442486782307,TP,LogReg,robustness
+"Součástí balíčku byl sešit, pravítko a zbrusu nový futrál na psací potřeby.",,1.0,1.0,0.98768766260555,TP,LogReg,robustness
+"Odborníci očekávají, že fiskální deficit se začne snižovat v roce 2026.",,0.0,0.0,0.08042280140784845,TN,LogReg,robustness
+Mnoho domácností bude mít problém zaplatit zálohy.,,0.0,0.0,0.08640207401068589,TN,LogReg,robustness
+"Při čelním střetu se vozy doslova drtily do sebe, svědci popisovali hrozivý zvuk.",,1.0,1.0,0.9986179309499867,TP,LogReg,robustness
+Městská rada projednala návrh na zvýšení poplatků za komunální odpad.,,0.0,0.0,0.0023630901383869685,TN,LogReg,robustness
+"Astronomové potvrdili, že šlo o neobvyklý optický úkaz, který se zřídka opakuje.",,0.0,1.0,0.8838655968377452,FP,LogReg,robustness
+Vedení města rozhodlo o uzavření mostu kvůli havarijnímu stavu.,,0.0,0.0,0.02636496336481542,TN,LogReg,robustness
+Hasiči bojovali s požárem lesa tři dny.,,0.0,0.0,0.017989248843816544,TN,LogReg,robustness
+Rada města proto drasticky zvýšila poplatky za odvoz komunálního odpadu pro následující fiskální období.,,1.0,1.0,0.622885909031906,TP,LogReg,robustness
+Proces digitalizace zahrnoval 450 000 stran historických dokumentů a textů.,,0.0,0.0,0.47779709538032566,TN,LogReg,robustness
+Eliminace této chobotnice dezinformací je komplikovaná kvůli rychlému zakládání nových profilů.,,1.0,1.0,0.960833598116346,TP,LogReg,robustness
+Podle hlavního primáře je personální obsazení již zpět v normálu a situace je momentálně zcela cajk.,,1.0,1.0,0.9909016931000652,TP,LogReg,robustness
+Představitelé kraje tento krok označili za nezbytnou restrukturalizaci sítě veřejné správy.,,1.0,0.0,0.4312258716287788,FN,LogReg,robustness
+"Objevují se zprávy, že nespočet dětí v táboře nemá přístup k základní zdravotní péči ani hygienickým zařízením.",,1.0,1.0,0.9609155120139767,TP,LogReg,robustness
+"Premiér vycouval z plánu, že představí menšinovou vládu v dohledné době.",,1.0,1.0,0.7730164589387845,TP,LogReg,robustness
+Mluvčí horské služby označil celou akci za zbytečnou a extrémně nákladnou.,,1.0,1.0,0.9651210374450337,TP,LogReg,robustness
+"O 0,80 koruny za jeden litr paliva se snížila ta průměrná cena benzínu.",,1.0,1.0,0.8784072808102904,TP,LogReg,robustness
+"Analytici se shodují, že toto rozhodnutí může vést k mnoha komplikacím v mezinárodním obchodu s ropou.",,1.0,1.0,0.6114587851519835,TP,LogReg,robustness
+Národní galerie zahájila přípravu nové výstavy děl moderního umění.,,0.0,0.0,0.0022546027668589315,TN,LogReg,robustness
+Iniciativa získává pro Ukrajinu dělostřeleckou munici v zemích i mimo Evropskou unii.,,1.0,0.0,0.2863134864802148,FN,LogReg,robustness
+Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen.,,1.0,1.0,0.9249359892258617,TP,LogReg,robustness
+"Vedení radnice však popřelo jakékoli spory a tvrdí, že koalice pevně drží kormidlo města.",,1.0,1.0,0.7520631969819253,TP,LogReg,robustness
+Produktivita práce v některých odvětvích je však mizerná.,,1.0,1.0,0.8993127665069621,TP,LogReg,robustness
+Zakázku získala česká zbrojovka z Pardubic.,,0.0,0.0,0.062302935225178685,TN,LogReg,robustness
+"Doba vyřízení elektronických žádostí se díky implementaci nového systému zkrátila podstatně, což má vést k vyšší efektivitě práce úřadu.",,1.0,1.0,0.9677994732121536,TP,LogReg,robustness
+Cílem je zrychlit hru a zvýšit celkovou atraktivitu celé ligové soutěže.,,0.0,1.0,0.5281129644721749,FP,LogReg,robustness
+Zjištěné nedostatky budou projednány na summitu šéfů vlád a států v Bruselu.,,0.0,0.0,0.0535700533384077,TN,LogReg,robustness
+Nová éra festivalu se tak okamžitě stala kulturním fenoménem letošní letní sezóny.,,1.0,1.0,0.9887798003246295,TP,LogReg,robustness
+"V centru je to teď děsivé, zejména o víkendech.",,1.0,1.0,0.995633806873264,TP,LogReg,robustness
+"Obě strany shodně potvrdily, že jejich vzájemný vztah je pro region blahodárný.",,1.0,1.0,0.9820032331849537,TP,LogReg,robustness
+"Vláda zavedla nové karanténní opatření až včera, čímž zbytečně prodloužila dobu šíření nákazy.",,1.0,1.0,0.7767898683237162,TP,LogReg,robustness
+Experti upozorňují na nutnost rychlé implementace legislativních změn pro zajištění transparentního trhu.,,1.0,1.0,0.9514294906019088,TP,LogReg,robustness
+"Starostové menších obcí se obávají, že mnoho žadatelů nedosáhne na nové dotační programy pro rekonstrukce škol.",,1.0,1.0,0.83505879995213,TP,LogReg,robustness
+Základní sazba vzrostla o půl procentního bodu.,,0.0,0.0,0.02752262401577022,TN,LogReg,robustness
+Zájem opadá kvůli rostoucí celkové apatii fanoušků ke špatné hře hráčů.,,1.0,1.0,0.926887486173714,TP,LogReg,robustness
+Podle vyšetřovatelů se choval jako mecenáš financující soukromé stavební a kulturní projekty z veřejných rozpočtů.,,1.0,1.0,0.907687700616944,TP,LogReg,robustness
+Zemědělci dnes v Praze demonstrovali proti navrhovaným změnám v dotační politice.,,0.0,0.0,0.018733015256827315,TN,LogReg,robustness
+Prameny na Chebsku budou jednou ze zastávek prezidenta Petra Pavla s manželkou při jejich pondělní návštěvě Karlovarského kraje.,,0.0,0.0,0.15391190408680544,TN,LogReg,robustness
+Obžaloba zahrnuje sedm osob a škoda přesahuje 30 milionů korun.,,0.0,0.0,0.2768978197903983,TN,LogReg,robustness
+Kvůli byrokracii stále řada menších škol nedostala přislíbené dotace na modernizaci laboratoří.,,1.0,1.0,0.9631724236357284,TP,LogReg,robustness
+"Opozice tvrdí, že koalice vystavěla kolem projektu byrokratickou zeď kvůli vnitřním rozporům ve financování.",,1.0,1.0,0.9568861738796373,TP,LogReg,robustness
+Ve vztahu mezi předsedou Motoristů Petrem Macinkou a předsedkyní Trikolory Zuzanou Majerovou šlo ale o důležitý symbol.,,0.0,1.0,0.9058352865860265,FP,LogReg,robustness
+Požár v průmyslové zóně trval několik hodin.,,0.0,0.0,0.18525491747606945,TN,LogReg,robustness
+Kriminalisté zajistili kamerové záznamy z okolních domů.,,0.0,0.0,0.02351215439410371,TN,LogReg,robustness
+Prezident Erdogan poté drze navrhl okamžité stažení mezinárodních mírových jednotek ze sporného území.,,1.0,1.0,0.9377290743552263,TP,LogReg,robustness
+Od ledna vzroste o tisíc sto korun měsíčně.,,0.0,0.0,0.10425146893221554,TN,LogReg,robustness
+Praha od nového roku zakáže přepravu elektrických kol a koloběžek v metru.,,0.0,0.0,0.004421758559408686,TN,LogReg,robustness
+"Poslední zpráva naznačuje, že z veřejných zakázek se ztratily značné prachy určené na kritickou infrastrukturu.",,1.0,1.0,0.9859869105278142,TP,LogReg,robustness
+Vláda se k tomuto konkrétnímu návrhu zatím veřejně nevyjádřila a analyzuje finanční dopad.,,0.0,0.0,0.17793160728470458,TN,LogReg,robustness
+Sériová výroba začne v polovině příštího roku.,,0.0,0.0,0.002052829972882176,TN,LogReg,robustness
+Regionální vlaky a rychlíky společnosti Českých drah na hlavní trati nabírají velká zpoždění.,,0.0,0.0,0.17444346295596794,TN,LogReg,robustness
+Zavedení této byrokratické normy vyvolalo protesty mezi menšími internetovými společnostmi.,,1.0,1.0,0.5510233137233258,TP,LogReg,robustness
+"Přestože zpráva neprokázala přímé pochybení ministra, veřejnost ji označila za politickou frašku.",,1.0,1.0,0.9623704996274262,TP,LogReg,robustness
+Podle zprávy může mít masivní nasazení umělé inteligence v některých odvětvích ničivou sílu pro tradiční profese.,,1.0,1.0,0.9773694129225295,TP,LogReg,robustness
+Dodávky techniky začnou v příštím roce a budou trvat po dobu pěti let.,,0.0,0.0,0.003246702326958751,TN,LogReg,robustness
+Meteorologický ústav naměřil rekordní teploty.,,0.0,0.0,0.017885000683729266,TN,LogReg,robustness
+Vlaková doprava na hlavním koridoru byla přerušena.,,0.0,0.0,0.001031755440510585,TN,LogReg,robustness
+Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet.,,1.0,1.0,0.9987689335458017,TP,LogReg,robustness
+Vyšetřování stále pokračuje a další podrobnosti budou zveřejněny.,,0.0,0.0,0.027572890949467306,TN,LogReg,robustness
+Místní hospodářská komora označila nový logistický park za motor ekonomického růstu celého kraje.,,1.0,1.0,0.7917887418684632,TP,LogReg,robustness
+Nový systém údržby má být zaveden od začátku příštího měsíce.,,0.0,0.0,0.006976554460637826,TN,LogReg,robustness
+"Odbor životního prostředí se nadále fláká s vyřizováním klíčových dokumentů, což ohrožuje splnění klimatických cílů.",,1.0,1.0,0.9825616149910675,TP,LogReg,robustness
+Z období gotiky byly nalezeny ty základy domů a také keramika.,,1.0,1.0,0.7773775666566654,TP,LogReg,robustness
+Policie dosud neposkytla podrobnější informace k probíhajícímu případu v Praze.,,0.0,0.0,0.001977802071039095,TN,LogReg,robustness
+Vláda rozhodla o zastropování cen energií.,,0.0,0.0,0.01246918421451674,TN,LogReg,robustness
+Akcie technologické společnosti po zveřejnění kvartálních výsledků klesaly na rekordní minimum.,,0.0,0.0,0.4686461716641193,TN,LogReg,robustness
+"Zkušení uživatelé internetu přitom samozřejmě vědí, že těmto globálním platformám se nedá plně důvěřovat.",,1.0,1.0,0.9894516807384586,TP,LogReg,robustness
+Národní banka oznámila změnu své měnové politiky na základě inflačních tlaků.,,0.0,0.0,0.13839754190862957,TN,LogReg,robustness
+Sportovní klub uzavřel smlouvu s novým zahraničním fotbalovým trenérem.,,0.0,0.0,0.014164233596388404,TN,LogReg,robustness
+"To je selhání zastaralého byrokratického molochu, který brzdí rozvoj zdravotnictví.",,1.0,1.0,0.9996781555956812,TP,LogReg,robustness
+"Ministr financí uvedl, že klíčová pro konečné rozhodování bude aktuální data indexu PŘIV.",,1.0,1.0,0.5815370113164021,TP,LogReg,robustness
+Lídr moudře vyzval k omezení vojenských operací a k hledání diplomatického řešení ve všech konfliktních zónách.,,1.0,1.0,0.904744688349085,TP,LogReg,robustness
+Státní zástupce v nejbližších dnech rozhodne o uvalení vazby na podezřelé osoby.,,0.0,0.0,0.0027161581278261414,TN,LogReg,robustness
+"Prezident přijal demisi ministra, který opustil vládu po neshodách na rozpočtu.",,0.0,0.0,0.05908204838516648,TN,LogReg,robustness
+Protestní pochod se uskuteční v centru Prahy již v průběhu příštího týdne.,,0.0,0.0,0.023699572786934943,TN,LogReg,robustness
+Část parku bude pro návštěvníky otevřena již v průběhu letní sezóny.,,0.0,0.0,0.02311963440281312,TN,LogReg,robustness
+Proces byl odročen na příští měsíc kvůli absenci jednoho svědka.,,0.0,0.0,0.1349393869556066,TN,LogReg,robustness
+Zemědělci dokončili sklizeň obilovin v kraji.,,0.0,0.0,0.0018063626691555235,TN,LogReg,robustness
+Ukrajinská vlajka visela na sídle dolní parlamentní komory od začátku ruské vojenské invaze v únoru 2022 jako symbol podpory napadené zemi.,,0.0,0.0,0.27480537696569945,TN,LogReg,robustness
+Hodnota zakázky se pohybuje kolem 55 miliard korun za techniku.,,0.0,0.0,0.24368763182710348,TN,LogReg,robustness
+Ministerstvo vnitra varuje před podvodnými e-maily.,,0.0,0.0,0.03486083338161658,TN,LogReg,robustness
+"Někteří odborníci tvrdí, že současné modely se již přiblížily úrovni lidského uvažování.",,1.0,1.0,0.8906631782158786,TP,LogReg,robustness
