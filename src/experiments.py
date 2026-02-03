@@ -42,8 +42,8 @@ def run_unsupervised_benchmark(
         # 1. Load Data
         # We use the convenience function from data_splitting
         # Note: M1 usually implies 'baseline' scenario logic (Train on L0)
-        data = data_splitting.get_train_val_test_splits(
-            scenario='baseline', 
+        data = data_splitting.get_unsupervised_splits( 
+            scenario='baseline',
             level=level,
             filter_type=filter_type,
             pooling=pooling,

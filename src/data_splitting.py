@@ -383,3 +383,62 @@ def get_train_val_test_splits(scenario='baseline', level='token', filter_type='a
         'y_test': y_test,
         'meta_test': meta_test,
     }
+
+def get_unsupervised_splits(scenario='baseline', level='token', filter_type='aggressive', 
+                            pooling='mean', random_state=42):
+    """
+    SPECIALIZED SPLIT FOR M1 (Unsupervised Anomaly Detection).
+    
+    Logic:
+    1. Documents are split into Train/Val/Test (no leakage).
+    2. TRAIN set is filtered to contain ONLY NEUTRAL (L0) tokens/sentences.
+       (Because M1 models learn 'normality' from clean data).
+    3. VAL and TEST sets keep the mixed (natural) distribution of L0/L1.
+    
+    Args:
+        Same as get_train_val_test_splits
+        
+    Returns:
+        Dictionary with X_train (clean), X_val (mixed), X_test (mixed) etc.
+    """
+    logger.info(f"🔄 Preparing UNSUPERVISED splits for scenario: {scenario} (Training strictly on L0)")
+
+    # 1. Get raw DataFrames split by documents
+    # (This ensures no document overlaps between sets)
+    data = prepare_scenario_data(
+        scenario=scenario,
+        level=level,
+        filter_type=filter_type,
+        test_size=config.SPLIT_CONFIG['test_size'],
+        val_size=config.SPLIT_CONFIG['val_size'],
+        random_state=random_state
+    )
+    
+    train_df = data['train']
+    val_df = data['val']
+    test_df = data['test']
+    
+    # 2. PURIFY TRAIN SET (Remove anomalies)
+    # Unsupervised models train only on "Normal" data (Label 0)
+    n_total_train = len(train_df)
+    train_df_clean = train_df[train_df['label'] == config.LABEL_NEUTRAL]
+    n_removed = n_total_train - len(train_df_clean)
+    
+    if len(train_df_clean) == 0:
+        raise ValueError("❌ Critical Error: Training set is empty after filtering for L0 (Neutral)!")
+
+    logger.info(f"   🧹 Purifying Train Set: Removed {n_removed} anomalies (L1). Kept {len(train_df_clean)} neutral samples.")
+    
+    # 3. Extract vectors
+    # Train: Only L0
+    X_train, y_train, meta_train = extract_features_labels(train_df_clean, level, pooling)
+    
+    # Val/Test: Mixed (Natural distribution) - ideal for realistic threshold tuning
+    X_val, y_val, meta_val = extract_features_labels(val_df, level, pooling)
+    X_test, y_test, meta_test = extract_features_labels(test_df, level, pooling)
+    
+    return {
+        'X_train': X_train, 'y_train': y_train, 'meta_train': meta_train,
+        'X_val': X_val,     'y_val': y_val,     'meta_val': meta_val,
+        'X_test': X_test,   'y_test': y_test,   'meta_test': meta_test
+    }
