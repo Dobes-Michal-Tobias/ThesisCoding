@@ -1,59 +1,98 @@
 """
-Modul pro načítání a preprocessing dat.
-Obsahuje funkce pro NLP pipeline (spaCy + RobeCzech) a generování vektorů.
+Data loading and preprocessing module.
+FIXED VERSION - Prevents data leakage, uses DataFrame structure with metadata.
+
+Key fixes:
+1. Document IDs tracked throughout
+2. Independent sentence embedding computation (no cross-document context)
+3. DataFrame-based storage with full metadata
+4. Separate functions for token vs sentence level
+5. No mixing of train/test data during preprocessing
 """
 
 import os
 import json
+import hashlib
+import logging
+from pathlib import Path
+import pickle
+
 import torch
 import numpy as np
 import pandas as pd
 import spacy_udpipe
 from transformers import AutoTokenizer, AutoModel
 from tqdm import tqdm
-from pathlib import Path
-import pickle
-import json
 
-# Import konfigurace
+# Import configuration
 import config
 
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# Global model variables
 nlp = None
 tokenizer = None
 model = None
 
 def initialize_models():
-    """
-    Inicializuje spaCy a BERT modely, pokud ještě nejsou načteny.
-    """
+    """Initialize spaCy and BERT models if not already loaded."""
     global nlp, tokenizer, model
     
     if nlp is None:
-        print("⏳ Načítám spaCy-UDPipe model ('cs-pdt')...")
-        # Stažení modelu, pokud není (bezpečné volání)
+        logger.info("Loading spaCy-UDPipe model ('cs-pdt')...")
         try:
             spacy_udpipe.load("cs-pdt")
         except:
+            logger.info("Downloading spaCy-UDPipe model...")
             spacy_udpipe.download("cs-pdt")
         nlp = spacy_udpipe.load("cs-pdt")
     
     if model is None:
-        print(f"⏳ Načítám RobeCzech model ('{config.MODEL_NAME}')...")
+        logger.info(f"Loading RobeCzech model ('{config.MODEL_NAME}')...")
         tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME, add_prefix_space=True)
         model = AutoModel.from_pretrained(config.MODEL_NAME)
         model.to(config.DEVICE)
         model.eval()
         
-    print("✅ Modely připraveny.")
+    logger.info("✅ Models loaded successfully")
 
-def get_bert_embeddings(text_list):
+
+def get_bert_embeddings_independent(text, return_cls=False, return_mean=False):
     """
-    Získá embeddingy pro seznam slov pomocí BERTa.
-    Vrací: (aligned_embeddings, cls_token, sent_mean_embedding)
+    ✅ FIXED: Compute embeddings for a SINGLE sentence independently.
+    
+    NO cross-sentence context to prevent leakage!
+    
+    Args:
+        text: Single sentence string OR list of words
+        return_cls: If True, return CLS token embedding
+        return_mean: If True, return mean-pooled sentence embedding
+    
+    Returns:
+        If text is string:
+            - token_embeddings: List of arrays (one per word)
+            - cls_embedding: Array (if return_cls=True)
+            - mean_embedding: Array (if return_mean=True)
+        
+        Return format: (token_embeddings, cls_embedding, mean_embedding)
+                       (None for embeddings not requested)
     """
-    # Tokenizace pro BERT
+    # Convert to list of words if string
+    if isinstance(text, str):
+        # Simple whitespace tokenization (spaCy will handle properly later)
+        words = text.split()
+    else:
+        words = text
+    
+    if not words:
+        logger.warning("Empty input to get_bert_embeddings_independent")
+        return [], None, None
+    
+    # Tokenize for BERT
     inputs = tokenizer(
-        text_list,
+        words,
         is_split_into_words=True,
         return_tensors="pt",
         padding=True,
@@ -61,311 +100,469 @@ def get_bert_embeddings(text_list):
         max_length=config.MAX_LENGTH
     ).to(config.DEVICE)
     
+    # Get embeddings
     with torch.no_grad():
         outputs = model(**inputs)
     
-    # Získání hidden states [batch, seq_len, hidden]
-    last_hidden_states = outputs.last_hidden_state
+    last_hidden_states = outputs.last_hidden_state  # [1, seq_len, 768]
     
-    # --- A) CLS Token ---
-    # První token v sekvenci (index 0)
-    cls_embedding = last_hidden_states[0, 0, :].cpu().numpy()
+    # --- A) CLS Token Embedding ---
+    cls_embedding = None
+    if return_cls:
+        cls_embedding = last_hidden_states[0, 0, :].cpu().numpy()
     
-    # --- B) Sentence Mean Pooling (NOVÉ) ---
-    # Musíme vzít průměr všech tokenů, ale IGNOROVAT padding!
-    attention_mask = inputs['attention_mask']
-    input_mask_expanded = attention_mask.unsqueeze(-1).expand(last_hidden_states.size()).float()
+    # --- B) Mean Pooling (Sentence Embedding) ---
+    mean_embedding = None
+    if return_mean:
+        attention_mask = inputs['attention_mask']
+        input_mask_expanded = attention_mask.unsqueeze(-1).expand(last_hidden_states.size()).float()
+        
+        sum_embeddings = torch.sum(last_hidden_states * input_mask_expanded, 1)
+        sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
+        mean_embedding = (sum_embeddings / sum_mask)[0].cpu().numpy()
     
-    sum_embeddings = torch.sum(last_hidden_states * input_mask_expanded, 1)
-    sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
-    sent_mean_embedding = (sum_embeddings / sum_mask)[0].cpu().numpy()
-
-    # --- C) Word Alignment (Původní logika) ---
-    # Zde pracujeme s [0], protože batch_size=1
+    # --- C) Token-Level Embeddings (Word Alignment) ---
     sequence_output = last_hidden_states[0].cpu()
     word_ids = inputs.word_ids()
-    aligned_embeddings = []
     
+    token_embeddings = []
     current_word_idx = None
     current_subtokens = []
     
     for i, word_id in enumerate(word_ids):
-        if word_id is None: # Skip special tokens [CLS], [SEP]
+        if word_id is None:  # Skip [CLS], [SEP], [PAD]
             continue
-            
+        
         if word_id != current_word_idx:
+            # Save previous word
             if current_subtokens:
                 avg_emb = torch.stack(current_subtokens).mean(dim=0).numpy()
-                aligned_embeddings.append(avg_emb)
+                token_embeddings.append(avg_emb)
+            
+            # Start new word
             current_word_idx = word_id
             current_subtokens = []
         
         current_subtokens.append(sequence_output[i])
-        
+    
+    # Don't forget last word
     if current_subtokens:
         avg_emb = torch.stack(current_subtokens).mean(dim=0).numpy()
-        aligned_embeddings.append(avg_emb)
-        
-    # VRACÍME TŘI HODNOTY (Tokens, CLS, Mean)
-    return aligned_embeddings, cls_embedding, sent_mean_embedding
+        token_embeddings.append(avg_emb)
+    
+    return token_embeddings, cls_embedding, mean_embedding
 
-def process_row(row):
+
+def process_sentence_to_tokens(sentence_text, sentence_id, document_id, label, target_token=None):
     """
-    Zpracuje jeden řádek datasetu.
-    Vrací: (final_tokens, sentence_embeddings_dict)
+    ✅ FIXED: Process a single sentence and extract token-level data with metadata.
+    
+    Args:
+        sentence_text: The sentence text
+        sentence_id: Unique identifier for this sentence
+        document_id: Which document this sentence belongs to
+        label: 0 (neutral) or 1 (contains LJMPNIK)
+        target_token: The specific LJMPNIK word (if label=1)
+    
+    Returns:
+        DataFrame with columns: ['document_id', 'sentence_id', 'token_id', 'form', 
+                                  'lemma', 'pos', 'embedding', 'is_target', 'label']
     """
-    texts_parts = [
-        (0, row.get('context_prev')), 
-        (1, row.get('target_sentence')), 
-        (2, row.get('context_next'))
-    ]
+    if not sentence_text or pd.isna(sentence_text):
+        return pd.DataFrame()
     
-    final_tokens = []
+    # 1. SpaCy processing
+    doc = nlp(sentence_text)
     
-    # Slovník pro všechny věty (klíč bude string '0', '1', '2')
-    all_sent_embs = {}
+    words = []
+    pos_tags = []
+    lemmas = []
     
-    for sent_id, text in texts_parts:
-        if not text or pd.isna(text):
+    for token in doc:
+        if token.is_space:
             continue
-            
-        # 1. SpaCy
-        doc = nlp(text)
-        words_for_bert = []
-        spacy_tokens_info = []
+        words.append(token.text)
+        pos_tags.append(token.pos_)
+        lemmas.append(token.lemma_)
+    
+    if not words:
+        return pd.DataFrame()
+    
+    # 2. Get BERT embeddings (INDEPENDENT - no cross-sentence context!)
+    token_embeddings, _, _ = get_bert_embeddings_independent(words, return_cls=False, return_mean=False)
+    
+    # 3. Build DataFrame
+    rows = []
+    for idx, (word, pos, lemma, embedding) in enumerate(zip(words, pos_tags, lemmas, token_embeddings)):
+        # Determine if this is the target LJMPNIK token
+        is_target = (label == 1 and target_token and word == target_token)
         
-        for token in doc:
-            if token.is_space: continue
-            words_for_bert.append(token.text)
-            spacy_tokens_info.append({
-                "form": token.text,
-                "lemma": token.lemma_,
-                "pos": token.pos_,
-                "sent_id": sent_id
-            })
-            
-        if not words_for_bert: continue
-            
-        # 2. BERT Embeddingy
-        embeddings, cls_emb, mean_emb = get_bert_embeddings(words_for_bert)
-        
-        # 3. ZMĚNA: Ukládáme embeddingy pro KAŽDOU větu (nejen pro target)
-        all_sent_embs[str(sent_id)] = {
-            'cls': cls_emb.tolist(),
-            'mean': mean_emb.tolist()
-        }
-        
-        # 4. Spojení info pro slova
-        for i, info in enumerate(spacy_tokens_info):
-            if i < len(embeddings):
-                info['embedding'] = embeddings[i].tolist()
-                final_tokens.append(info)
-                
-    # Vracíme tokens a slovník se všemi větnými vektory
-    return final_tokens, all_sent_embs
+        rows.append({
+            'document_id': document_id,
+            'sentence_id': sentence_id,
+            'token_id': f"{sentence_id}_tok_{idx}",
+            'position': idx,
+            'form': word,
+            'lemma': lemma,
+            'pos': pos,
+            'embedding': embedding,
+            'is_target': is_target,
+            'label': label,  # Sentence-level label
+            'token_label': 1 if is_target else 0,  # Token-level label
+        })
+    
+    return pd.DataFrame(rows)
 
-def create_interim_jsonl(input_path, output_path):
+
+def process_sentence_to_vectors(sentence_text, sentence_id, document_id, label):
     """
-    Načte RAW JSONL, přidá embeddingy a uloží do Interim JSONL.
+    ✅ FIXED: Process a single sentence and extract sentence-level embeddings.
+    
+    Computes BOTH CLS and Mean embeddings.
+    
+    Returns:
+        Dictionary with sentence metadata and embeddings
+    """
+    if not sentence_text or pd.isna(sentence_text):
+        return None
+    
+    # Get SpaCy tokens
+    doc = nlp(sentence_text)
+    words = [token.text for token in doc if not token.is_space]
+    
+    if not words:
+        return None
+    
+    # Get BERT embeddings (BOTH CLS and Mean)
+    _, cls_emb, mean_emb = get_bert_embeddings_independent(
+        words, 
+        return_cls=True, 
+        return_mean=True
+    )
+    
+    return {
+        'document_id': document_id,
+        'sentence_id': sentence_id,
+        'text': sentence_text,
+        'num_tokens': len(words),
+        'cls_embedding': cls_emb,
+        'mean_embedding': mean_emb,
+        'label': label,
+    }
+
+
+def create_processed_dataframes(input_jsonl_path, dataset_name='gold'):
+    """
+    ✅ FIXED: Main processing function - creates DataFrames with full metadata.
+    
+    Processes JSONL and creates TWO DataFrames:
+    1. Token-level: Each row is a token with its embedding
+    2. Sentence-level: Each row is a sentence with CLS and Mean embeddings
+    
+    Key improvements:
+    - Document IDs tracked
+    - Sentences processed INDEPENDENTLY (no cross-doc context)
+    - Full metadata for qualitative analysis
+    - DataFrame-based storage
+    
+    Args:
+        input_jsonl_path: Path to raw JSONL file
+        dataset_name: 'gold' or 'silver'
+    
+    Returns:
+        (token_df, sentence_df): Two DataFrames
     """
     initialize_models()
     
+    if not os.path.exists(input_jsonl_path):
+        raise FileNotFoundError(f"Input file not found: {input_jsonl_path}")
+    
+    # Load JSONL
     data = []
-    with open(input_path, 'r', encoding='utf-8') as f:
-        for line in f:
+    with open(input_jsonl_path, 'r', encoding='utf-8') as f:
+        for line_num, line in enumerate(f, 1):
             try:
-                data.append(json.loads(line))
-            except:
+                entry = json.loads(line)
+                # ✅ ADD document_id if missing
+                if 'document_id' not in entry:
+                    entry['document_id'] = f"{dataset_name}_doc_{line_num:04d}"
+                data.append(entry)
+            except json.JSONDecodeError as e:
+                logger.warning(f"Skipping invalid JSON on line {line_num}: {e}")
                 continue
-                
-    df = pd.DataFrame(data)
-    print(f"🚀 Zpracovávám {len(df)} řádků z {input_path}...")
     
-    # Aplikace process_row s progress barem
-    tqdm.pandas(desc="NLP Pipeline")
+    logger.info(f"Loaded {len(data)} entries from {input_jsonl_path}")
     
-    # --- ZMĚNA ZDE ---
-    # process_row nyní vrací (tokens, sent_embs_dict)
-    # Použijeme pomocnou lambda funkci pro aplikaci a výsledek uložíme do dočasné Series
-    processed_series = df.progress_apply(process_row, axis=1)
+    # Process data
+    token_dfs = []
+    sentence_records = []
     
-    # Rozbalení výsledků do sloupců DataFrame
-    # 1. Sloupec 'tokens' (obsahuje seznam slov s embeddingy)
-    df['tokens'] = processed_series.apply(lambda x: x[0])
+    for entry in tqdm(data, desc=f"Processing {dataset_name} data"):
+        document_id = entry['document_id']
+        label = entry.get('label')
+        target_token = entry.get('target_token')
+        
+        # Generate unique sentence IDs
+        target_sentence_id = f"{document_id}_target"
+        context_prev_id = f"{document_id}_ctx_prev"
+        context_next_id = f"{document_id}_ctx_next"
+        
+        # --- Process TARGET sentence ---
+        target_text = entry.get('target_sentence') or entry.get('text')
+        if target_text:
+            # Token-level
+            token_df = process_sentence_to_tokens(
+                target_text, 
+                target_sentence_id, 
+                document_id, 
+                label, 
+                target_token
+            )
+            if not token_df.empty:
+                token_dfs.append(token_df)
+            
+            # Sentence-level
+            sent_data = process_sentence_to_vectors(
+                target_text, 
+                target_sentence_id, 
+                document_id, 
+                label
+            )
+            if sent_data:
+                sentence_records.append(sent_data)
+        
+        # --- Process CONTEXT sentences (always neutral) ---
+        # ⚠️ IMPORTANT: We process these separately but TRACK their document origin
+        # This allows proper document-level splitting later
+        
+        context_prev = entry.get('context_prev')
+        if context_prev:
+            # Token-level (label=0 for context)
+            token_df = process_sentence_to_tokens(
+                context_prev, 
+                context_prev_id, 
+                document_id, 
+                label=0,  # Context is always neutral
+                target_token=None
+            )
+            if not token_df.empty:
+                token_dfs.append(token_df)
+            
+            # Sentence-level
+            sent_data = process_sentence_to_vectors(
+                context_prev, 
+                context_prev_id, 
+                document_id, 
+                label=0
+            )
+            if sent_data:
+                sent_data['is_context'] = True
+                sent_data['context_type'] = 'prev'
+                sentence_records.append(sent_data)
+        
+        context_next = entry.get('context_next')
+        if context_next:
+            # Token-level
+            token_df = process_sentence_to_tokens(
+                context_next, 
+                context_next_id, 
+                document_id, 
+                label=0,
+                target_token=None
+            )
+            if not token_df.empty:
+                token_dfs.append(token_df)
+            
+            # Sentence-level
+            sent_data = process_sentence_to_vectors(
+                context_next, 
+                context_next_id, 
+                document_id, 
+                label=0
+            )
+            if sent_data:
+                sent_data['is_context'] = True
+                sent_data['context_type'] = 'next'
+                sentence_records.append(sent_data)
+    
+    # Combine into final DataFrames
+    if token_dfs:
+        final_token_df = pd.concat(token_dfs, ignore_index=True)
+    else:
+        final_token_df = pd.DataFrame()
+    
+    final_sentence_df = pd.DataFrame(sentence_records)
+    
+    if not final_sentence_df.empty:
+        # 1. Oprava 'is_context': NaN -> False, převod na bool
+        if 'is_context' in final_sentence_df.columns:
+            final_sentence_df['is_context'] = final_sentence_df['is_context'].fillna(False).astype(bool)
+        else:
+            final_sentence_df['is_context'] = False # Pokud sloupec vůbec neexistuje
+            
+        # 2. Oprava 'context_type': NaN -> None
+        if 'context_type' not in final_sentence_df.columns:
+            final_sentence_df['context_type'] = None
+    
+    # Pojistka i pro tokeny (pokud bys tam flag 'is_context' přidával)
+    if not final_token_df.empty and 'is_context' in final_token_df.columns:
+        final_token_df['is_context'] = final_token_df['is_context'].fillna(False).astype(bool)
 
-    # 2. ZMĚNA: Ukládáme celý slovník větných embeddingů
-    # Bude obsahovat keys "0", "1", "2" (pokud existují)
-    df['sentence_vectors'] = processed_series.apply(lambda x: x[1])
-    # (Staré sloupce 'sent_cls_emb' už nepotřebujeme, vše je v 'sentence_vectors')
+    logger.info(f"✅ Processed {dataset_name}:")
+    logger.info(f"   - Token-level: {len(final_token_df)} rows")
+    logger.info(f"   - Sentence-level: {len(final_sentence_df)} rows")
     
-    # Uložení
-    print(f"💾 Ukládám Interim dataset do {output_path}...")
-    df.to_json(output_path, orient='records', lines=True, force_ascii=False)
-    print("✅ Hotovo.")
+    return final_token_df, final_sentence_df
+
+
+def save_processed_data(token_df, sentence_df, dataset_name='gold'):
+    """
+    Save processed DataFrames to pickle files.
+    
+    Saves to config.PROCESSED_DIR with structure:
+    - {dataset_name}_tokens.pkl
+    - {dataset_name}_sentences.pkl
+    """
+    output_dir = config.PROCESSED_DIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    token_path = output_dir / f"{dataset_name}_tokens.pkl"
+    sentence_path = output_dir / f"{dataset_name}_sentences.pkl"
+    
+    # Save with compression
+    token_df.to_pickle(token_path, compression='gzip')
+    sentence_df.to_pickle(sentence_path, compression='gzip')
+    
+    logger.info(f"💾 Saved processed data:")
+    logger.info(f"   - Tokens: {token_path}")
+    logger.info(f"   - Sentences: {sentence_path}")
+    
+    # ✅ Create integrity checksums
+    _create_checksum(token_path)
+    _create_checksum(sentence_path)
+    
+    return token_path, sentence_path
+
+
+def _create_checksum(filepath):
+    """Create SHA256 checksum file for integrity verification."""
+    with open(filepath, 'rb') as f:
+        checksum = hashlib.sha256(f.read()).hexdigest()
+    
+    checksum_path = filepath.parent / f"{filepath.name}.sha256"
+    with open(checksum_path, 'w') as f:
+        f.write(checksum)
+
+
+def load_processed_data(dataset_name='gold', level='token', verify_integrity=True):
+    """
+    ✅ FIXED: Load processed DataFrame with optional integrity check.
+    
+    Args:
+        dataset_name: 'gold' or 'silver'
+        level: 'token' or 'sentence'
+        verify_integrity: Check SHA256 hash before loading
+    
+    Returns:
+        DataFrame
+    """
+    if level == 'token':
+        filepath = config.PROCESSED_DIR / f"{dataset_name}_tokens.pkl"
+    elif level == 'sentence':
+        filepath = config.PROCESSED_DIR / f"{dataset_name}_sentences.pkl"
+    else:
+        raise ValueError(f"Invalid level: {level}. Must be 'token' or 'sentence'")
+    
+    if not filepath.exists():
+        raise FileNotFoundError(f"Processed data not found: {filepath}")
+    
+    # Verify integrity
+    if verify_integrity:
+        checksum_path = filepath.parent / f"{filepath.name}.sha256"
+        if checksum_path.exists():
+            with open(checksum_path, 'r') as f:
+                expected_checksum = f.read().strip()
+            
+            with open(filepath, 'rb') as f:
+                actual_checksum = hashlib.sha256(f.read()).hexdigest()
+            
+            if actual_checksum != expected_checksum:
+                raise ValueError(f"Integrity check failed for {filepath}!")
+    
+    # Load DataFrame
+    df = pd.read_pickle(filepath, compression='gzip')
+    
+    logger.info(f"✅ Loaded {len(df)} rows from {filepath}")
+    
     return df
 
-# --- FUNKCE PRO GENEROVÁNÍ VEKTOROVÝCH ARTEFAKTŮ ---
-def _initialize_storage():
-    """Připraví prázdné kontejnery pro data."""
-    store = {
-        'token': {
-            'none': {'l0': [], 'l1': []},
-            'mild': {'l0': [], 'l1': []},
-            'aggressive': {'l0': [], 'l1': []}
-        },
-        'sentence': {
-            'mean': {'l0': [], 'l1': []},
-            'cls': {'l0': [], 'l1': []}
-        },
-        # Augmentace pro Gold (Context)
-        'gold_context': {
-            'token': {'none': [], 'mild': [], 'aggressive': []},
-            'sentence': {'mean': [], 'cls': []}
-        }
-    }
-    return store
 
-def _is_token_kept(pos_tag, filter_type):
-    """Rozhodne, zda token projde filtrem."""
+# ============================================================================
+# HELPER FUNCTIONS FOR FILTERING
+# ============================================================================
+
+def apply_pos_filter(df, filter_type='aggressive'):
+    """
+    Apply POS filtering to token DataFrame.
+    
+    Args:
+        df: Token DataFrame with 'pos' column
+        filter_type: 'aggressive', 'mild', or 'none'
+    
+    Returns:
+        Filtered DataFrame
+    """
     if filter_type == 'none':
-        return True
-    if filter_type == 'mild':
-        return pos_tag not in config.POS_FORBIDDEN_MILD
-    if filter_type == 'aggressive':
-        return pos_tag in config.POS_ALLOWED_AGGRESSIVE
-    return False
+        return df
+    
+    elif filter_type == 'aggressive':
+        return df[df['pos'].isin(config.POS_ALLOWED_AGGRESSIVE)]
+    
+    elif filter_type == 'mild':
+        return df[~df['pos'].isin(config.POS_FORBIDDEN_MILD)]
+    
+    else:
+        raise ValueError(f"Unknown filter_type: {filter_type}")
 
-def _process_sentence_level(row, store, dataset_name):
+
+# ============================================================================
+# MAIN PIPELINE FUNCTION
+# ============================================================================
+
+def run_full_pipeline(dataset_name='gold'):
     """
-    Zpracuje embeddingy celých vět.
-    Čte 'True CLS' a 'True Mean' z připraveného slovníku sentence_vectors.
+    Complete processing pipeline for one dataset.
+    
+    1. Load raw JSONL
+    2. Process to DataFrames with embeddings
+    3. Save to pickle
+    4. Verify integrity
+    
+    Args:
+        dataset_name: 'gold' or 'silver'
     """
-    label = row['label']
+    logger.info(f"🚀 Starting full pipeline for {dataset_name.upper()} dataset")
     
-    # Načteme slovník s vektory (pokud chybí, je prázdný)
-    sent_vecs = row.get('sentence_vectors', {})
-    if not sent_vecs:
-        return # Nemáme data, končíme
-
-    # --- A. TARGET VĚTA (ID '1') ---
-    target_data = sent_vecs.get('1')
+    # Determine input path
+    if dataset_name.lower() == 'gold':
+        input_path = config.PATH_GOLD_RAW
+    elif dataset_name.lower() == 'silver':
+        input_path = config.PATH_SILVER_RAW
+    else:
+        raise ValueError(f"Unknown dataset_name: {dataset_name}")
     
-    if target_data:
-        mean_emb = target_data['mean']
-        cls_emb = target_data['cls']
-        
-        # Ukládání (Logic: Všechno bereme, Gold i Silver)
-        key = 'l1' if label == 1 else 'l0'
-        
-        # Ukládáme do store
-        store['sentence']['mean'][key].append(mean_emb)
-        store['sentence']['cls'][key].append(cls_emb)
-
-    # --- B. KONTEXTOVÉ VĚTY (ID '0', '2') - Pouze pro Gold Augmentaci ---
-    if dataset_name == 'gold':
-        for ctx_id in ['0', '2']: # Pozor: klíče v JSON jsou stringy
-            ctx_data = sent_vecs.get(ctx_id)
-            
-            if ctx_data:
-                store['gold_context']['sentence']['mean'].append(ctx_data['mean'])
-                store['gold_context']['sentence']['cls'].append(ctx_data['cls'])
-
-def _process_token_level(row, store, dataset_name):
-    """Zpracuje embeddingy jednotlivých tokenů."""
-    label = row['label']
-    target_token_form = row.get('target_token')
+    # 1. Process
+    token_df, sentence_df = create_processed_dataframes(input_path, dataset_name)
     
-    for t in row['tokens']:
-        emb = t['embedding']
-        pos = t['pos']
-        form = t['form']
-        sent_id = t['sent_id']
-        
-        # Identifikace role tokenu
-        is_anomaly = (label == 1 and form == target_token_form and sent_id == 1)
-        is_target_l0 = (label == 0 and sent_id == 1) # Čisté slovo v target větě
-        is_context = (sent_id != 1)
-        
-        # Pokud je to Silver a není to anomálie, token nás nezajímá (Silver L0 zahazujeme)
-        # if dataset_name == 'silver' and not is_anomaly: continue
-
-        for f_type in ['none', 'mild', 'aggressive']:
-            if _is_token_kept(pos, f_type):
-                if is_anomaly:
-                    store['token'][f_type]['l1'].append(emb)
-                
-                elif is_target_l0: # Odstraněno: and dataset_name == 'gold'
-                    store['token'][f_type]['l0'].append(emb)
-                
-                elif is_context and dataset_name == 'gold':
-                    store['gold_context']['token'][f_type].append(emb)
-
-def _save_to_disk(store, dataset_name):
-    """Uloží nasbíraná data do .pkl souborů."""
-    save_dir = config.VECTORS_DIR / dataset_name.lower()
-    save_dir.mkdir(parents=True, exist_ok=True)
-    print(f"💾 Saving artifacts to {save_dir}...")
-
-    def _dump(data, filename):
-        if not data: return
-        # Konverze na numpy array pro efektivitu
-        arr = np.array(data, dtype=np.float32)
-        with open(save_dir / filename, 'wb') as f:
-            pickle.dump(arr, f)
-        del arr # Úklid paměti
-
-    # 1. Uložení Tokenů
-    for f_type, dict_l0_l1 in store['token'].items():
-        _dump(dict_l0_l1['l0'], f"{dataset_name}_token_{f_type}_l0.pkl")
-        _dump(dict_l0_l1['l1'], f"{dataset_name}_token_{f_type}_l1.pkl")
-        
-    # 2. Uložení Vět
-    for pool_type, dict_l0_l1 in store['sentence'].items():
-        _dump(dict_l0_l1['l0'], f"{dataset_name}_sent_{pool_type}_l0.pkl")
-        _dump(dict_l0_l1['l1'], f"{dataset_name}_sent_{pool_type}_l1.pkl")
-
-    # 3. Uložení Gold Augmentace - ZMĚNA ZDE
-    if dataset_name == 'gold':
-        # Nyní ukládáme oba typy vektorů zvlášť
-        _dump(store['gold_context']['sentence']['mean'], "gold_context_sent_mean.pkl")
-        _dump(store['gold_context']['sentence']['cls'], "gold_context_sent_cls.pkl")
-        
-        for f_type, data in store['gold_context']['token'].items():
-            _dump(data, f"gold_context_token_{f_type}.pkl")
-            
-    print("✅ Artifacts saved successfully.")
-
-# --- HLAVNÍ FUNKCE (Public) ---
-
-def generate_vector_artifacts(interim_path, dataset_name):
-    """
-    Hlavní řídící funkce. Čte soubor řádek po řádku a volá procesory.
-    """
-    print(f"\n🔨 Generuji vektorové artefakty pro: {dataset_name.upper()}")
+    # 2. Save
+    token_path, sentence_path = save_processed_data(token_df, sentence_df, dataset_name)
     
-    if not os.path.exists(interim_path):
-        print(f"❌ Error: File not found: {interim_path}")
-        return
-
-    # 1. Inicializace
-    store = _initialize_storage()
-
-    # Zjištění počtu řádků (pro progress bar)
-    total_lines = sum(1 for _ in open(interim_path, 'r', encoding='utf-8'))
+    # 3. Verify by reloading
+    token_df_reloaded = load_processed_data(dataset_name, 'token', verify_integrity=True)
+    sentence_df_reloaded = load_processed_data(dataset_name, 'sentence', verify_integrity=True)
     
-    # 2. Hlavní smyčka (Streaming)
-    print(f"   -> Processing {total_lines} lines stream-wise...")
+    logger.info("✅ Pipeline completed successfully!")
+    logger.info(f"   Token rows: {len(token_df_reloaded)}")
+    logger.info(f"   Sentence rows: {len(sentence_df_reloaded)}")
     
-    with open(interim_path, 'r', encoding='utf-8') as f:
-        for line in tqdm(f, total=total_lines, desc="Extracting Vectors"):
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-
-            # Delegování práce na pod-funkce
-            _process_sentence_level(row, store, dataset_name)
-            _process_token_level(row, store, dataset_name)
-            
-    # 3. Uložení výsledků
-    _save_to_disk(store, dataset_name)
+    return token_df, sentence_df
