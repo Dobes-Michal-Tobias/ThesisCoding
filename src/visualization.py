@@ -237,59 +237,75 @@ def plot_threshold_tuning(y_true: np.ndarray,
     return best_th, best_f1
 
 
-def plot_anomaly_histogram(y_true: np.ndarray,
-                           y_scores: np.ndarray,
-                           threshold: Optional[float] = None,
+def plot_anomaly_histogram(y_true: np.ndarray, 
+                           y_scores: np.ndarray, 
+                           threshold: Optional[float] = None, 
                            title: str = "Rozložení skóre anomálie",
                            save_path: Optional[Path] = None) -> None:
     """
     Plot histogram of anomaly scores separated by true class.
-    
-    Args:
-        y_true: Ground truth labels
-        y_scores: Anomaly scores
-        threshold: Optional decision threshold to mark on plot
-        title: Plot title
-        save_path: Optional save path
-    
-    Example:
-        >>> plot_anomaly_histogram(y_test, scores, threshold=0.65)
     """
-    # ✅ NEW: Validation
+    # Validation
     if len(y_true) != len(y_scores):
         raise ValueError(f"Shape mismatch: y_true={len(y_true)}, y_scores={len(y_scores)}")
     
+    # 1. Bezpečné vytvoření DataFrame
+    # Musíme zajistit, že y_true jsou integery, aby fungoval .map()
+    y_true_int = np.array(y_true).astype(int)
+    
     df_scores = pd.DataFrame({
         'score': y_scores,
-        'label': y_true
+        'label': y_true_int
     })
-    df_scores['label_name'] = df_scores['label'].map({
+
+    # 2. Definice názvů a mapování
+    label_map = {
         0: 'Neutral (L0)',
         1: 'LJMPNIK (L1)'
-    })
+    }
+    df_scores['label_name'] = df_scores['label'].map(label_map)
     
+    # Kontrola, zda mapování nezanechalo NaN (pokud by y_true obsahovalo jiné hodnoty)
+    if df_scores['label_name'].isna().any():
+        logger.warning("⚠️ Some labels could not be mapped (NaN found). Check y_true inputs.")
+        df_scores.dropna(subset=['label_name'], inplace=True)
+
+    # 3. Explicitní paleta (Slovník je bezpečnější než List)
+    palette_dict = {
+        'Neutral (L0)': config.COLORS['l0'],
+        'LJMPNIK (L1)': config.COLORS['l1']
+    }
+
     plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
     
+    # 4. Vykreslení
+    # element="step" a fill=True vypadá lépe pro překrývající se histogramy
     sns.histplot(
-        data=df_scores, x='score', hue='label_name',
-        element="step", stat="density", common_norm=False, bins=50,
-        palette=[config.COLORS['l0'], config.COLORS['l1']]
+        data=df_scores, 
+        x='score', 
+        hue='label_name',
+        element="step", 
+        stat="density", 
+        common_norm=False, 
+        bins=50,
+        palette=palette_dict,  # <--- ZDE BÝVALA CHYBA (nyní posíláme dict)
+        alpha=0.3
     )
     
     if threshold is not None:
-        plt.axvline(threshold, color='black', linestyle='--', linewidth=2,
-                   label=f'Threshold ({threshold:.2f})')
+        plt.axvline(threshold, color='red', linestyle='--', linewidth=2, 
+                    label=f'Threshold ({threshold:.2f})')
         plt.legend()
     
     plt.title(title, pad=15)
-    plt.xlabel("Anomaly Score")
+    plt.xlabel("Anomaly Score (Higher = More Anomalous)")
+    plt.ylabel("Density")
     plt.tight_layout()
     
     if save_path:
         plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
     
     plt.show()
-
 
 def plot_confusion_matrix_heatmap(y_true: np.ndarray,
                                   y_pred: np.ndarray,

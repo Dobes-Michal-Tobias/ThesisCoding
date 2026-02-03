@@ -99,8 +99,14 @@ class BaseDetector(ABC):
             TypeError: If X is not array-like
             ValueError: If X has wrong shape or contains invalid values
         """
+        if hasattr(X, 'values'):
+            X = X.values
+            
         if not isinstance(X, (np.ndarray, list)):
-            raise TypeError(f"{context} must be array-like, got {type(X)}")
+            try:
+                X = np.asarray(X)
+            except:
+                raise TypeError(f"{context} must be array-like, got {type(X)}")
         
         X = np.asarray(X)
         
@@ -141,24 +147,21 @@ class MahalanobisDetector(BaseDetector):
         >>> anomalies = scores > threshold
     """
     
-    def __init__(self, method: str = 'robust', random_state: int = config.RANDOM_SEED):
-        # ✅ NEW: Input validation
-        if method not in ['robust', 'empirical']:
-            raise ValueError(f"method must be 'robust' or 'empirical', got '{method}'")
+    def __init__(self, method: str = None, random_state: int = config.RANDOM_SEED):
+        # Načteme defaulty bezpečně
+        defaults = config.MODEL_DEFAULTS.get('mahalanobis', {'method': 'empirical'})
         
-        self.method = method
+        # Pokud method není zadána, použijeme default z configu
+        self.method = method if method else defaults.get('method', 'empirical')
         self.random_state = random_state
         
-        # ✅ IMPROVED: Use config defaults
-        defaults = config.MODEL_DEFAULTS['mahalanobis']
-        
-        if method == 'robust':
+        if self.method == 'robust':
             self.cov_model = MinCovDet(random_state=random_state)
         else:
-            self.cov_model = EmpiricalCovariance()
+            self.cov_model = EmpiricalCovariance() # Empirical je stabilnější pro BERT
         
-        logger.debug(f"Initialized MahalanobisDetector (method={method})")
-    
+        logger.debug(f"Initialized MahalanobisDetector (method={self.method})")
+
     def fit(self, X: np.ndarray):
         """Fit Gaussian distribution to normal data."""
         # ✅ NEW: Validation
@@ -206,21 +209,32 @@ class IsolationForestWrapper(BaseDetector):
     """
     
     def __init__(self, 
-                 contamination: Union[str, float] = 'auto',
-                 n_estimators: int = 100,
-                 random_state: int = config.RANDOM_SEED):
+                 contamination: Union[str, float] = None,
+                 n_estimators: int = None,
+                 random_state: int = config.RANDOM_SEED,
+                 **kwargs):  # <--- PŘIDÁNO **kwargs
         
-        # ✅ IMPROVED: Use config defaults as base
-        defaults = config.MODEL_DEFAULTS['isolation_forest']
+        defaults = config.MODEL_DEFAULTS.get('isolation_forest', {})
         
+        # Spojíme explicitní parametry, defaulty a kwargs (pro GridSearch)
+        # Priorita: kwargs > explicit > defaults
+        
+        final_contamination = kwargs.get('contamination', contamination or defaults.get('contamination', 'auto'))
+        final_n_estimators = kwargs.get('n_estimators', n_estimators or defaults.get('n_estimators', 100))
+        n_jobs = defaults.get('n_jobs', -1)
+        
+        # Odstraníme duplicity z kwargs, aby to sklearn neřval
+        kwargs_clean = {k: v for k, v in kwargs.items() if k not in ['contamination', 'n_estimators']}
+
         self.model = IsolationForest(
-            contamination=contamination or defaults['contamination'],
-            n_estimators=n_estimators or defaults['n_estimators'],
-            n_jobs=defaults['n_jobs'],
-            random_state=random_state
+            contamination=final_contamination,
+            n_estimators=final_n_estimators,
+            n_jobs=n_jobs,
+            random_state=random_state,
+            **kwargs_clean # <--- Předáme zbytek (např. max_samples)
         )
         
-        logger.debug(f"Initialized IsolationForest (n_estimators={n_estimators})")
+        logger.debug(f"Initialized IsolationForest (n_estimators={final_n_estimators})")
     
     def fit(self, X: np.ndarray):
         """Fit forest on normal data."""

@@ -14,6 +14,7 @@ from sklearn.model_selection import GroupShuffleSplit
 import logging
 
 import config
+import load_preprocess_data
 
 logger = logging.getLogger(__name__)
 
@@ -387,26 +388,14 @@ def get_train_val_test_splits(scenario='baseline', level='token', filter_type='a
 def get_unsupervised_splits(scenario='baseline', level='token', filter_type='aggressive', 
                             pooling='mean', random_state=42):
     """
-    SPECIALIZED SPLIT FOR M1 (Unsupervised Anomaly Detection).
-    
-    Logic:
-    1. Documents are split into Train/Val/Test (no leakage).
-    2. TRAIN set is filtered to contain ONLY NEUTRAL (L0) tokens/sentences.
-       (Because M1 models learn 'normality' from clean data).
-    3. VAL and TEST sets keep the mixed (natural) distribution of L0/L1.
-    
-    Args:
-        Same as get_train_val_test_splits
-        
-    Returns:
-        Dictionary with X_train (clean), X_val (mixed), X_test (mixed) etc.
+    Returns splits for M1 experiments.
+    Supports 'baseline' (Gold only) and 'robustness' (Gold + Silver L1 in Test).
     """
-    logger.info(f"🔄 Preparing UNSUPERVISED splits for scenario: {scenario} (Training strictly on L0)")
+    logger.info(f"🔄 Preparing UNSUPERVISED splits for scenario: {scenario}")
 
-    # 1. Get raw DataFrames split by documents
-    # (This ensures no document overlaps between sets)
+    # 1. Get Standard Gold Splits (Train/Val/Test)
     data = prepare_scenario_data(
-        scenario=scenario,
+        scenario='baseline',
         level=level,
         filter_type=filter_type,
         test_size=config.SPLIT_CONFIG['test_size'],
@@ -418,22 +407,50 @@ def get_unsupervised_splits(scenario='baseline', level='token', filter_type='agg
     val_df = data['val']
     test_df = data['test']
     
-    # 2. PURIFY TRAIN SET (Remove anomalies)
-    # Unsupervised models train only on "Normal" data (Label 0)
-    n_total_train = len(train_df)
-    train_df_clean = train_df[train_df['label'] == config.LABEL_NEUTRAL]
-    n_removed = n_total_train - len(train_df_clean)
-    
-    if len(train_df_clean) == 0:
-        raise ValueError("❌ Critical Error: Training set is empty after filtering for L0 (Neutral)!")
+    # --- ROBUSTNESS LOGIC: Inject Silver L1 into Test ---
+    if scenario == 'robustness':
+        logger.info("🛡️ Robustness Scenario: Injecting SILVER anomalies into Test set...")
+        
+        try:
+            # ✅ OPRAVA: Voláme přímo pro konkrétní level a vrací se jeden DF
+            silver_df = load_preprocess_data.load_processed_data('silver', level=level)
+            
+            # Filtrujeme jen L1 (Anomálie)
+            silver_l1 = silver_df[silver_df['label'] == config.LABEL_ANOMALY]
+            
+            if len(silver_l1) == 0:
+                logger.warning("⚠️ No anomalies found in Silver dataset!")
+            else:
+                # Aplikujeme stejný POS filtr i na Silver data
+                if level == 'token' and filter_type != 'none':
+                    # Pro zjednodušení používáme logiku z configu
+                    allowed_pos = None
+                    if filter_type == 'aggressive':
+                        allowed_pos = config.POS_ALLOWED_AGGRESSIVE
+                    elif filter_type == 'mild':
+                        forbidden_pos = config.POS_FORBIDDEN_MILD
+                        # Tady musíme trochu improvizovat, pokud nemáme funkci _is_kept importovanou
+                        # Ale pokud máš silver_df už s POS tagy, jde to snadno:
+                        if allowed_pos:
+                             silver_l1 = silver_l1[silver_l1['pos'].isin(allowed_pos)]
+                        elif forbidden_pos:
+                             silver_l1 = silver_l1[~silver_l1['pos'].isin(forbidden_pos)]
 
-    logger.info(f"   🧹 Purifying Train Set: Removed {n_removed} anomalies (L1). Kept {len(train_df_clean)} neutral samples.")
+                logger.info(f"   ➕ Adding {len(silver_l1)} Silver anomalies to Test set.")
+                
+                # Spojíme Gold Test + Silver L1
+                test_df = pd.concat([test_df, silver_l1], ignore_index=True)
+                
+        except Exception as e:
+            logger.error(f"❌ Failed to load Silver data for robustness: {e}")
+            # V případě chyby robustness padáme, abychom neměli falešné výsledky
+            raise e
+
+    # 2. PURIFY TRAIN SET (Remove anomalies)
+    train_df_clean = train_df[train_df['label'] == config.LABEL_NEUTRAL]
     
     # 3. Extract vectors
-    # Train: Only L0
     X_train, y_train, meta_train = extract_features_labels(train_df_clean, level, pooling)
-    
-    # Val/Test: Mixed (Natural distribution) - ideal for realistic threshold tuning
     X_val, y_val, meta_val = extract_features_labels(val_df, level, pooling)
     X_test, y_test, meta_test = extract_features_labels(test_df, level, pooling)
     

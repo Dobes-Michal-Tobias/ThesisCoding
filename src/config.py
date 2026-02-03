@@ -138,9 +138,13 @@ VIZ_CONFIG = {
 
 # --- 6. MODEL DEFAULTS ---
 MODEL_DEFAULTS = {
+    'mahalanobis': { 
+        'method': 'empirical', # Empirical je bezpečnější pro vysoké dimenze než robust
+    },
     'isolation_forest': {
         'contamination': 'auto',
         'n_estimators': 100,
+        'n_jobs': -1,
     },
     'ocsvm': {
         'kernel': 'rbf',

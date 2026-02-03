@@ -73,6 +73,7 @@ def calculate_metrics(
     """
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
     
+    # Basic metrics
     metrics = {
         'accuracy': accuracy_score(y_true, y_pred),
         'precision': precision_score(y_true, y_pred, zero_division=0),
@@ -85,13 +86,22 @@ def calculate_metrics(
         'confusion_tp': tp,
     }
     
-    # Advanced metrics requiring scores
+    # ROC AUC (Only if scores are provided)
     if y_scores is not None:
         try:
-            metrics['auroc'] = roc_auc_score(y_true, y_scores)
-            metrics['auprc'] = average_precision_score(y_true, y_scores)
-        except ValueError:
-            metrics['auroc'] = 0.0
-            metrics['auprc'] = 0.0
+            # Check if we have both classes, otherwise ROC is undefined
+            if len(np.unique(y_true)) > 1:
+                metrics['roc_auc'] = roc_auc_score(y_true, y_scores)
+                metrics['avg_precision'] = average_precision_score(y_true, y_scores)
+            else:
+                metrics['roc_auc'] = 0.5
+                metrics['avg_precision'] = 0.0
+        except Exception as e:
+            logger.warning(f"Could not calculate ROC AUC: {e}")
+            metrics['roc_auc'] = 0.5
+            metrics['avg_precision'] = 0.0
+    else:
+        metrics['roc_auc'] = 0.0
+        metrics['avg_precision'] = 0.0
             
     return metrics
