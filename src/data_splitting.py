@@ -391,9 +391,8 @@ def get_unsupervised_splits(scenario='baseline', level='token', filter_type='agg
     Returns splits for M1 experiments.
     Supports 'baseline' (Gold only) and 'robustness' (Gold + Silver L1 in Test).
     """
-    logger.info(f"🔄 Preparing UNSUPERVISED splits for scenario: {scenario}")
-
     # 1. Get Standard Gold Splits (Train/Val/Test)
+    # Tady se děje to "upovídané" logování, ale my ho ignorujeme a vypíšeme si vlastní souhrn na konci
     data = prepare_scenario_data(
         scenario='baseline',
         level=level,
@@ -410,49 +409,42 @@ def get_unsupervised_splits(scenario='baseline', level='token', filter_type='agg
     # --- ROBUSTNESS LOGIC: Inject Silver L1 into Test ---
     if scenario == 'robustness':
         logger.info("🛡️ Robustness Scenario: Injecting SILVER anomalies into Test set...")
-        
         try:
-            # ✅ OPRAVA: Voláme přímo pro konkrétní level a vrací se jeden DF
             silver_df = load_preprocess_data.load_processed_data('silver', level=level)
-            
-            # Filtrujeme jen L1 (Anomálie)
             silver_l1 = silver_df[silver_df['label'] == config.LABEL_ANOMALY]
             
-            if len(silver_l1) == 0:
-                logger.warning("⚠️ No anomalies found in Silver dataset!")
-            else:
-                # Aplikujeme stejný POS filtr i na Silver data
+            if len(silver_l1) > 0:                # Filter POS if needed
                 if level == 'token' and filter_type != 'none':
-                    # Pro zjednodušení používáme logiku z configu
-                    allowed_pos = None
                     if filter_type == 'aggressive':
-                        allowed_pos = config.POS_ALLOWED_AGGRESSIVE
+                        silver_l1 = silver_l1[silver_l1['pos'].isin(config.POS_ALLOWED_AGGRESSIVE)]
                     elif filter_type == 'mild':
-                        forbidden_pos = config.POS_FORBIDDEN_MILD
-                        # Tady musíme trochu improvizovat, pokud nemáme funkci _is_kept importovanou
-                        # Ale pokud máš silver_df už s POS tagy, jde to snadno:
-                        if allowed_pos:
-                             silver_l1 = silver_l1[silver_l1['pos'].isin(allowed_pos)]
-                        elif forbidden_pos:
-                             silver_l1 = silver_l1[~silver_l1['pos'].isin(forbidden_pos)]
-
-                logger.info(f"   ➕ Adding {len(silver_l1)} Silver anomalies to Test set.")
+                        silver_l1 = silver_l1[~silver_l1['pos'].isin(config.POS_FORBIDDEN_MILD)]
                 
-                # Spojíme Gold Test + Silver L1
                 test_df = pd.concat([test_df, silver_l1], ignore_index=True)
                 
         except Exception as e:
             logger.error(f"❌ Failed to load Silver data for robustness: {e}")
-            # V případě chyby robustness padáme, abychom neměli falešné výsledky
             raise e
 
-    # 2. PURIFY TRAIN SET (Remove anomalies)
+    # 2. PURIFY TRAIN SET (Remove anomalies - L1)
+    # Toto je klíčové - Train musí být čistý
     train_df_clean = train_df[train_df['label'] == config.LABEL_NEUTRAL]
     
     # 3. Extract vectors
     X_train, y_train, meta_train = extract_features_labels(train_df_clean, level, pooling)
     X_val, y_val, meta_val = extract_features_labels(val_df, level, pooling)
     X_test, y_test, meta_test = extract_features_labels(test_df, level, pooling)
+    
+    # --- ✅ FINAL SUMMARY LOGGING (Clean & Informative) ---
+    logger.info(f"📊 DATA SUMMARY ({scenario} / {filter_type}):")
+    logger.info(f"   🔹 TRAIN (Neutral Only): {len(X_train)} samples")
+    
+    # Výpočet poměrů pro Val a Test
+    val_l0, val_l1 = np.sum(y_val == 0), np.sum(y_val == 1)
+    test_l0, test_l1 = np.sum(y_test == 0), np.sum(y_test == 1)
+    
+    logger.info(f"   🔹 VAL   (Mixed):       {len(X_val)} samples (L0: {val_l0}, L1: {val_l1})")
+    logger.info(f"   🔹 TEST  (Mixed):       {len(X_test)} samples (L0: {test_l0}, L1: {test_l1})")
     
     return {
         'X_train': X_train, 'y_train': y_train, 'meta_train': meta_train,

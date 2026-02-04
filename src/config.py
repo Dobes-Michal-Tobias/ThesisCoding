@@ -123,17 +123,28 @@ VIZ_CONFIG = {
         'medium': (10, 6),
         'large': (12, 6),
         'wide': (14, 5),
+        'square': (10, 10),
     },
     'projection': {
-        'max_samples': 3000,
+        'max_samples': 3000,       # Maximální počet bodů (aby to netrvalo věčnost)
+        
+        # t-SNE settings
         'tsne_perplexity': 30,
+        'tsne_init': 'pca',        # 'pca' je stabilnější než 'random'
+        'tsne_learning_rate': 'auto',
+        
+        # UMAP settings
         'umap_n_neighbors': 15,
         'umap_min_dist': 0.1,
+    },
+    'dpi': {
+        'screen': 100,  # Pro zobrazení v notebooku
+        'print': 300,   # Pro uložení do souboru
     },
     'alpha': {
         'scatter': 0.7,
         'fill': 0.2,
-    },
+    }
 }
 
 # --- 6. MODEL DEFAULTS ---

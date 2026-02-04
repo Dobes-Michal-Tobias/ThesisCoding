@@ -307,42 +307,64 @@ def plot_anomaly_histogram(y_true: np.ndarray,
     
     plt.show()
 
-def plot_confusion_matrix_heatmap(y_true: np.ndarray,
-                                  y_pred: np.ndarray,
-                                  title: str = "Confusion Matrix",
+def plot_confusion_matrix_heatmap(y_true: np.ndarray, 
+                                  y_pred: np.ndarray, 
+                                  normalize: bool = False,
+                                  title: str = "Confusion Matrix", 
                                   save_path: Optional[Path] = None) -> None:
     """
-    Plot confusion matrix as heatmap.
+    Plot confusion matrix as a heatmap.
     
     Args:
-        y_true: Ground truth labels
+        y_true: True labels
         y_pred: Predicted labels
+        normalize: If True, show percentages (recall). If False, show raw counts.
         title: Plot title
-        save_path: Optional save path
-    
-    Example:
-        >>> plot_confusion_matrix_heatmap(y_test, y_pred)
+        save_path: Path to save the figure
     """
-    # ✅ NEW: Validation
+    # Validation
     if len(y_true) != len(y_pred):
         raise ValueError(f"Shape mismatch: y_true={len(y_true)}, y_pred={len(y_pred)}")
-    
+
+    # 1. Výpočet matice
     cm = confusion_matrix(y_true, y_pred)
     
-    plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['square'])
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False,
-                annot_kws={"size": 16})
+    # 2. Normalizace (pokud je vyžadována)
+    if normalize:
+        # Dělíme součtem řádků (True labels) -> Získáme Recall pro každou třídu
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        fmt = '.1%' # Formátování jako procenta (např. 85.2%)
+        title = f"{title} (Normalized)"
+    else:
+        fmt = 'd'   # Formátování jako celá čísla (integer)
+
+    # 3. Příprava grafu
+    plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
     
-    plt.title(title, pad=15)
-    plt.xlabel("Predikce modelu")
-    plt.ylabel("Skutečnost")
-    plt.xticks([0.5, 1.5], ['Neutral', 'LJMPNIK'])
-    plt.yticks([0.5, 1.5], ['Neutral', 'LJMPNIK'])
+    # Popisky os
+    labels = ['Neutral (L0)', 'Anomaly (L1)']
+    
+    # Vykreslení Heatmapy
+    sns.heatmap(
+        cm, 
+        annot=True, 
+        fmt=fmt, 
+        cmap='Blues',      # Modrá je standard pro CM, je čitelná
+        xticklabels=labels, 
+        yticklabels=labels,
+        annot_kws={"size": 14, "weight": "bold"}, # Větší písmo čísel
+        cbar=True
+    )
+    
+    plt.title(title, fontsize=15, pad=15)
+    plt.ylabel('True Label', fontsize=12, fontweight='bold')
+    plt.xlabel('Predicted Label', fontsize=12, fontweight='bold')
     plt.tight_layout()
     
     if save_path:
         plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
-    
+        logger.info(f"💾 Saved confusion matrix to {save_path}")
+        
     plt.show()
 
 # ============================================================================
