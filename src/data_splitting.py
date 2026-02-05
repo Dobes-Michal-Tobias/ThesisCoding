@@ -118,22 +118,6 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
     """
     ✅ FIXED: Prepare data for specific scenario with proper splitting.
     
-    Scenarios:
-    - 'baseline': Clean Gold data only
-    - 'robustness': Gold + context sentences (from same docs)
-    - 'hybrid': Gold L0 + (Gold + Silver) L1
-    - 'noisy_train': Train on Silver, test on Gold
-    
-    Args:
-        scenario: Scenario name
-        level: 'token' or 'sentence'
-        filter_type: POS filter for tokens
-        test_size: Test set proportion
-        val_size: Validation set proportion
-        random_state: Random seed
-    
-    Returns:
-        Dictionary with 'train', 'val', 'test' DataFrames
     """
     from load_preprocess_data import load_processed_data, apply_pos_filter
     
@@ -163,7 +147,6 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
         if level == 'sentence':
             df = gold_df[~gold_df['is_context']].copy()
         else:
-            # For tokens, filter to only target sentences
             df = gold_df[gold_df['sentence_id'].str.contains('_target')].copy()
         
         # Split by documents
@@ -173,9 +156,7 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
     
     elif scenario == 'robustness':
         # Gold target + Gold context (but all from Gold documents)
-        df = gold_df.copy()  # Includes context sentences
-        
-        # Split by documents (context stays with its document)
+        df = gold_df.copy()  
         train_df, val_df, test_df = split_by_documents(
             df, test_size=test_size, val_size=val_size, random_state=random_state
         )
@@ -187,32 +168,23 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
         if silver_df.empty:
             raise ValueError("Hybrid scenario requires Silver data")
         
-        # Get L0 from Gold (target sentences only)
+        # Get L0 from Gold
         if level == 'sentence':
             gold_l0 = gold_df[(gold_df['label'] == 0) & (~gold_df['is_context'])].copy()
         else:
-            gold_l0 = gold_df[
-                (gold_df['label'] == 0) & 
-                (gold_df['sentence_id'].str.contains('_target'))
-            ].copy()
+            gold_l0 = gold_df[(gold_df['label'] == 0) & (gold_df['sentence_id'].str.contains('_target'))].copy()
         
         # Get L1 from Gold
         if level == 'sentence':
             gold_l1 = gold_df[(gold_df['label'] == 1) & (~gold_df['is_context'])].copy()
         else:
-            gold_l1 = gold_df[
-                (gold_df['label'] == 1) & 
-                (gold_df['sentence_id'].str.contains('_target'))
-            ].copy()
+            gold_l1 = gold_df[(gold_df['label'] == 1) & (gold_df['sentence_id'].str.contains('_target'))].copy()
         
         # Get L1 from Silver
         if level == 'sentence':
             silver_l1 = silver_df[(silver_df['label'] == 1) & (~silver_df.get('is_context', False))].copy()
         else:
-            silver_l1 = silver_df[
-                (silver_df['label'] == 1) & 
-                (silver_df['sentence_id'].str.contains('_target'))
-            ].copy()
+            silver_l1 = silver_df[(silver_df['label'] == 1) & (silver_df['sentence_id'].str.contains('_target'))].copy()
         
         # Combine
         df = pd.concat([gold_l0, gold_l1, silver_l1], ignore_index=True)
@@ -222,16 +194,17 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
             df, test_size=test_size, val_size=val_size, random_state=random_state
         )
         
-        # ⚠️ IMPORTANT: Balance training set AFTER split (not before!)
-        train_df = _balance_dataset(train_df, method='undersample', random_state=random_state)
+        # ⚠️ ZMĚNA: NEPROVÁDÍME UNDERSAMPLING PRO HYBRID
+        # Chceme zachovat všechna Silver data v tréninku.
+        # Nerovnováhu vyřešíme parametrem class_weight='balanced' v modelu.
+        # train_df = _balance_dataset(train_df, method='undersample', random_state=random_state)
         
     elif scenario == 'noisy_train':
         # Train on Silver, Test on Gold
-        
         if silver_df.empty:
             raise ValueError("Noisy_train scenario requires Silver data")
         
-        # Training: Silver data (balanced)
+        # Training: Silver data
         if level == 'sentence':
             silver_target = silver_df[~silver_df.get('is_context', False)].copy()
         else:
@@ -242,10 +215,7 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
             silver_target, test_size=0.0, val_size=0.15, random_state=random_state
         )
         
-        # Balance training
-        train_df = _balance_dataset(train_df, method='undersample', random_state=random_state)
-        
-        # Test: Gold data only (no split needed, use all)
+        # Test: Gold data only
         if level == 'sentence':
             test_df = gold_df[~gold_df['is_context']].copy()
         else:
@@ -265,7 +235,6 @@ def prepare_scenario_data(scenario, level='token', filter_type='aggressive',
         'val': val_df,
         'test': test_df,
     }
-
 
 def _balance_dataset(df, method='undersample', random_state=42):
     """
