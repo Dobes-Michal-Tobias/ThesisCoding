@@ -1,0 +1,104 @@
+document_id,sentence_id,text,true_label,pred_label,anomaly_score,category
+gold_doc_0003,gold_doc_0003_target,Tempo výstavby nových bytů je žalostné.,1,1,-0.11469330287289559,TP
+gold_doc_0007,gold_doc_0007_target,Produktivita práce v některých odvětvích je však mizerná.,1,0,-0.26158075520593194,FN
+gold_doc_0010,gold_doc_0010_target,Úroveň čistoty ve vozidlech je otřesná.,1,0,-0.2640102349454967,FN
+gold_doc_0011,gold_doc_0011_target,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen.,1,0,-0.23971787324606453,FN
+gold_doc_0014,gold_doc_0014_target,Vývoj na trhu práce je alarmující zejména v menších regionech.,1,0,-0.35977576564703906,FN
+gold_doc_0031,gold_doc_0031_target,Na jihu země to ale vypadá zoufale kvůli přetížené síti.,1,0,-0.2515560425048582,FN
+gold_doc_0041,gold_doc_0041_target,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet.,1,1,-0.10671831205273374,TP
+gold_doc_0042,gold_doc_0042_target,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu.,1,0,-0.2515920152025144,FN
+gold_doc_0044,gold_doc_0044_target,"Aktuální tempo vakcinace české populace, zjeména důchodců, můžeme označit za žalostné.",1,1,-0.1921914475294395,TP
+gold_doc_0045,gold_doc_0045_target,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby.,1,1,-0.05679418749163023,TP
+gold_doc_0056,gold_doc_0056_target,"Dodal, že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing.",1,0,-0.23723002307690333,FN
+gold_doc_0059,gold_doc_0059_target,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb.,1,1,-0.06816622343474865,TP
+gold_doc_0071,gold_doc_0071_target,"Komisař potvrdil, že auto jelo asi sto třicet kilometrů za hodinu.",1,1,-0.17235223183388904,TP
+gold_doc_0072,gold_doc_0072_target,"Hledání nového kandidáta bude trvat pomalu měsíc, kvůli absenci vhodných osobností.",1,1,-0.124965773589377,TP
+gold_doc_0073,gold_doc_0073_target,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku.,1,1,-0.1647407202175062,TP
+gold_doc_0077,gold_doc_0077_target,"Opravdu šlo o tu chodbu, která byla u východu z té hlavní dvorany, ve které došlo k tlačenici.",1,1,-0.0007325607314543348,TP
+gold_doc_0078,gold_doc_0078_target,"A že nemusíme mluvit pouze v patetických termínech, které nic neřeší.",1,1,-0.016593747802564174,TP
+gold_doc_0080,gold_doc_0080_target,"Tedy případ, který se objevil v Rakousku, což je tedy šarže v dalších státech jako je Dánsko.",1,1,-0.053289502594505045,TP
+gold_doc_0084,gold_doc_0084_target,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích.,1,0,-0.22213262497582598,FN
+gold_doc_0085,gold_doc_0085_target,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to, jaký dojem aféra zanechala.",1,1,-0.15303648700506578,TP
+gold_doc_0088,gold_doc_0088_target,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu.,1,0,-0.29129256687640126,FN
+gold_doc_0091,gold_doc_0091_target,"Byl zjištěn nečekaný případ inkongruence nálezů, které se neshodují.",1,1,-0.0835791781316928,TP
+gold_doc_0106,gold_doc_0106_target,"Muž vedl mystický život plný záhad a zcela podivných rituálů, jak dokládají spisy.",1,1,0.004574329269294353,TP
+gold_doc_0121,gold_doc_0121_target,"Byly nalezeny desítky artefaktů, které pocházejí z raného středověku v této oblasti.",1,0,-0.23046982075456857,FN
+gold_doc_0122,gold_doc_0122_target,"Nové opatření se týká bezmála všech velkých investičních společností, které tu podnikají.",1,0,-0.23700492070610224,FN
+gold_doc_0138,gold_doc_0138_target,"Rozhodnutí bylo zbabělé, ministr měl bojovat až do samotného konce.",1,1,-0.17499861652530413,TP
+gold_doc_0139,gold_doc_0139_target,Ceny těchto nemovitostí jsou  neskutečné.,1,1,-0.10526659326948895,TP
+gold_doc_0143,gold_doc_0143_target,"Macinka předal Majerové velkou kytici, protože se jí chtěl omluvit za hodně vulgární výraz, který v minulosti na její adresu použil.",1,1,-0.08322102501861206,TP
+gold_doc_0155,gold_doc_0155_target,"Hodnota cenných papírů banky poklesla během obchodního dne o 1,2 procenta.",0,0,-0.24421739663519304,TN
+gold_doc_0159,gold_doc_0159_target,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel.,0,0,-0.2451494414605211,TN
+gold_doc_0165,gold_doc_0165_target,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst.,0,1,-0.16048546012113274,FP
+gold_doc_0166,gold_doc_0166_target,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími.,0,1,-0.14760677125957855,FP
+gold_doc_0168,gold_doc_0168_target,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu.,0,1,-0.15800395630807884,FP
+gold_doc_0169,gold_doc_0169_target,"Hlavní úroková sazba byla zvýšena o 0,75 procentního bodu na úroveň 6,5 procenta.",0,0,-0.2440107606330244,TN
+gold_doc_0174,gold_doc_0174_target,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy.,0,0,-0.31756345639037864,TN
+gold_doc_0180,gold_doc_0180_target,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy.,0,0,-0.34050639939140215,TN
+gold_doc_0192,gold_doc_0192_target,Studie testovala účinnost kombinované terapie na skupině 80 pacientů.,0,1,-0.1756744690803549,FP
+gold_doc_0195,gold_doc_0195_target,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě.,0,0,-0.2993571755903721,TN
+gold_doc_0201,gold_doc_0201_target,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027.,0,0,-0.3320848113641697,TN
+gold_doc_0205,gold_doc_0205_target,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech.,0,0,-0.29280470794900637,TN
+gold_doc_0210,gold_doc_0210_target,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy.,0,0,-0.31375009947293453,TN
+gold_doc_0215,gold_doc_0215_target,Produktivita práce v některých odvětvích klesla o dvě procenta.,0,0,-0.2562738450264055,TN
+gold_doc_0216,gold_doc_0216_target,Administrativní zpracování těchto žádostí se prodloužilo o deset dní.,0,0,-0.22466328177199557,TN
+gold_doc_0217,gold_doc_0217_target,"Podpora inovací ze strany státu tvoří 0,8 procenta HDP.",0,0,-0.23664380276734764,TN
+gold_doc_0228,gold_doc_0228_target,"Kolej Nepomucenum slouží studentům teologie a filozofie, kteří se připravují na kněžství.",1,1,-0.000733170315862175,TP
+gold_doc_0230,gold_doc_0230_target,V norimberském procesu byla organizace SS označena jako zločinecká organizace.,0,0,-0.2602793667537817,TN
+gold_doc_0237,gold_doc_0237_target,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos.,0,1,-0.18054992240551382,FP
+gold_doc_0240,gold_doc_0240_target,"Volit v referendu přišlo jen 20,71 procenta oprávněných voličů.",1,1,0.15010402215741525,TP
+gold_doc_0242,gold_doc_0242_target,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností.,1,1,-0.030531802333564784,TP
+gold_doc_0243,gold_doc_0243_target,Poučila se z podobných událostí v cizině.,1,0,-0.22991481888369236,FN
+gold_doc_0244,gold_doc_0244_target,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní.,1,1,-0.02906618310862985,TP
+gold_doc_0246,gold_doc_0246_target,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030.,0,0,-0.24055654994905318,TN
+gold_doc_0264,gold_doc_0264_target,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun.,0,0,-0.3689237207445588,TN
+gold_doc_0276,gold_doc_0276_target,"Poté, co v pondělí uvolnilo vstupenky na prosinec, roboti překupníků poničili prodejní systém.",0,1,0.002987382469805233,FP
+gold_doc_0280,gold_doc_0280_target,Naštval tím i část #vlivných poslanců ANO.,1,1,0.012262720612094213,TP
+gold_doc_0281,gold_doc_0281_target,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod #silným tlakem velkých technologických firem a vlády USA.,1,1,-0.1606336003536697,TP
+gold_doc_0283,gold_doc_0283_target,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat.,0,0,-0.31332633771648855,TN
+gold_doc_0287,gold_doc_0287_target,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami.,0,1,-0.17035874685891894,FP
+gold_doc_0291,gold_doc_0291_target,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze.,0,0,-0.2808288160225434,TN
+gold_doc_0295,gold_doc_0295_target,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby.,0,1,0.044565842791262966,FP
+gold_doc_0304,gold_doc_0304_target,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci.,1,0,-0.23869443123025924,FN
+gold_doc_0305,gold_doc_0305_target,"Nový výzkum odhalil chování vlka, který je typickým predátorem v této oblasti.",1,0,-0.2507896470612252,FN
+gold_doc_0313,gold_doc_0313_target,"Investor je ten developer, který měl v minulosti problémy se zákonem o dotacích.",1,0,-0.26424748466610914,FN
+gold_doc_0317,gold_doc_0317_target,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací.,1,1,-0.164116504991771,TP
+gold_doc_0320,gold_doc_0320_target,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu.,1,0,-0.23735161849559816,FN
+gold_doc_0327,gold_doc_0327_target,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi.,1,0,-0.28965728328156537,FN
+gold_doc_0329,gold_doc_0329_target,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP.,1,1,-0.18329759693841208,TP
+gold_doc_0334,gold_doc_0334_target,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu.,1,1,-0.18966143904160226,TP
+gold_doc_0338,gold_doc_0338_target,Pro malé a střední podniky bude tato reforma obrovskou výzvou.,1,1,-0.12426976615332297,TP
+gold_doc_0339,gold_doc_0339_target,Výsledky znamenají historický zlom v politické scéně země.,1,1,-0.002097024838081829,TP
+gold_doc_0342,gold_doc_0342_target,Místo nehody se proměnilo v peklo pro zasahující hasiče.,1,1,-0.1550037582317234,TP
+gold_doc_0353,gold_doc_0353_target,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí.,1,1,-0.16419970363507108,TP
+gold_doc_0357,gold_doc_0357_target,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů.,1,0,-0.33758795253386875,FN
+gold_doc_0361,gold_doc_0361_target,"Těmito daty o tání ledovců, která zahrnují stovky měření, vědci získali cenné informace.",1,1,-0.15855730817493807,TP
+gold_doc_0370,gold_doc_0370_target,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace.,1,1,-0.0073070502526642045,TP
+gold_doc_0371,gold_doc_0371_target,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa.,1,0,-0.22847653532503642,FN
+gold_doc_0375,gold_doc_0375_target,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden.,1,1,-0.0825944191365462,TP
+gold_doc_0378,gold_doc_0378_target,Z období gotiky byly nalezeny ty základy domů a také keramika.,1,1,-0.11765923608935669,TP
+gold_doc_0384,gold_doc_0384_target,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky.,1,1,-0.1472702356462161,TP
+gold_doc_0385,gold_doc_0385_target,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila.,1,1,0.007199490138203757,TP
+gold_doc_0388,gold_doc_0388_target,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění.,1,1,-0.1328792190850976,TP
+gold_doc_0389,gold_doc_0389_target,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi.,1,1,-0.18378881110623624,TP
+gold_doc_0392,gold_doc_0392_target,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie.,1,1,-0.11249191872913311,TP
+gold_doc_0405,gold_doc_0405_target,Obžalovaný byl zproštěn viny v plném rozsahu.,0,1,-0.18073585335753872,FP
+gold_doc_0415,gold_doc_0415_target,Nález se nachází v centru města pod náměstím.,0,0,-0.24683616955415388,TN
+gold_doc_0421,gold_doc_0421_target,"Výnosy jsou letos průměrné, kvalita je dobrá.",0,1,-0.14139775156447332,FP
+gold_doc_0424,gold_doc_0424_target,Školy dostanou peníze na nákup tabletů.,0,1,-0.03594653110759083,FP
+gold_doc_0427,gold_doc_0427_target,Součástí projektu je výsadba sta nových stromů.,0,1,-0.19312816369731145,FP
+gold_doc_0430,gold_doc_0430_target,Většina nádrží v kraji je vhodná ke koupání.,0,1,-0.15082174608894583,FP
+gold_doc_0431,gold_doc_0431_target,Za jízdu na červenou hrozí vyšší pokuta.,0,1,-0.09792181728686167,FP
+gold_doc_0435,gold_doc_0435_target,Zakázku získala česká zbrojovka z Pardubic.,0,1,-0.18434313420687154,FP
+gold_doc_0440,gold_doc_0440_target,Jmenovací dekret převzalo třicet kandidátů.,0,1,-0.04343604652853017,FP
+gold_doc_0442,gold_doc_0442_target,Řidiči budou moci sledovat své body online.,0,1,-0.15814875216584223,FP
+gold_doc_0453,gold_doc_0453_target,Cena zakázky se vyšplhá na dvacet miliard korun.,1,1,-0.18093135369322866,TP
+gold_doc_0455,gold_doc_0455_target,Cena zakázky se stoupne asi na dvacet miliard korun.,1,1,-0.1730029242006328,TP
+gold_doc_0464,gold_doc_0464_target,Místní obyvatelé si stěžují na bandy opilých turistů.,1,0,-0.22253897811626544,FN
+gold_doc_0475,gold_doc_0475_target,Policejní prezidium povolalo i těžkooděnce.,1,1,-0.09810783369439591,TP
+gold_doc_0491,gold_doc_0491_target,Je to útok na nízkopříjmové rodiny a páry.,1,1,-0.10047360510237269,TP
+gold_doc_0495,gold_doc_0495_target,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová.,1,0,-0.2942505539800315,FN
+gold_doc_0502,gold_doc_0502_target,Protestující postupně zaplnili celé Václavské náměstí.,0,1,-0.142495286665139,FP
+gold_doc_0507,gold_doc_0507_target,Stánky na Míráku se otevřou už tento víkend.,1,1,-0.2004652925130772,TP
+gold_doc_0512,gold_doc_0512_target,Auta stála v kolonách na celém Vítězném náměstí.,0,1,-0.03902397977402394,FP
+gold_doc_0517,gold_doc_0517_target,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu.,1,1,-0.17883547180440829,TP

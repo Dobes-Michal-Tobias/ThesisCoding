@@ -1137,6 +1137,74 @@ def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
         
         plt.show()
 
+def plot_model_comparison(df_results: pd.DataFrame,
+                          metric: str = 'test_f1',
+                          x_col: str = 'model',
+                          hue_col: str = 'scenario_name',
+                          col_col: str = 'pooling',
+                          title: str = "Comparison of Models",
+                          save_path: Optional[Path] = None) -> None:
+    """
+    Vykreslí porovnání modelů (Barplot) rozdělené podle poolingu a scénáře.
+    Vhodné pro Results Overview M1.
+    
+    Args:
+        df_results: DataFrame s výsledky
+        metric: Název sloupce s metrikou (např. 'test_f1')
+        x_col: Co bude na ose X (typicky 'model')
+        hue_col: Co bude rozlišeno barvou (typicky 'scenario_name')
+        col_col: Co bude rozděleno do sloupců grafu (typicky 'pooling')
+        title: Nadpis grafu
+        save_path: Cesta pro uložení
+    """
+    # Kontrola existence sloupce
+    if metric not in df_results.columns:
+        logger.warning(f"⚠️ Metrika '{metric}' není v datech. Graf nebude vykreslen.")
+        return
+
+    # Nastavení stylu (pro jistotu, kdyby nebylo globálně)
+    sns.set_style("whitegrid")
+    
+    # Vytvoření FacetGridu
+    g = sns.catplot(
+        data=df_results, 
+        kind="bar",
+        x=x_col, 
+        y=metric, 
+        hue=hue_col, 
+        col=col_col,
+        palette="viridis",  # Konzistentní paleta
+        height=5, 
+        aspect=1.2,
+        sharey=True
+    )
+    
+    # Formátování nadpisů a os
+    g.fig.suptitle(title, y=1.05, fontsize=16, weight='bold')
+    
+    # Pěkný popisek osy Y (z 'test_f1' udělá 'Test F1')
+    y_label = metric.replace('_', ' ').title()
+    g.set_axis_labels("", y_label)
+    
+    # Nadpisy sloupců (např. "Pooling: Mean")
+    g.set_titles(f"{col_col.title()}: {{col_name}}")
+    
+    # Přidání hodnot nad sloupce
+    for ax in g.axes.flat:
+        ax.yaxis.grid(True, linestyle='--', alpha=0.7)
+        for container in ax.containers:
+            # Formátování čísla (0.75)
+            ax.bar_label(container, fmt='%.2f', fontsize=10, padding=3, weight='bold')
+            
+    # Uložení
+    if save_path:
+        # Načteme DPI z configu, pokud je dostupné, jinak default 300
+        dpi = config.VIZ_CONFIG['dpi']['print'] if hasattr(config, 'VIZ_CONFIG') else 300
+        plt.savefig(save_path, bbox_inches='tight', dpi=dpi)
+        logger.info(f"💾 Saved comparison plot to {save_path}")
+        
+    plt.show()
+
 # ============================================================================
 # EXPORTS
 # ============================================================================
