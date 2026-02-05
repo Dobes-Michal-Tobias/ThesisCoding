@@ -142,6 +142,7 @@ VIZ_CONFIG = {
         'print': 300,   # Pro uložení do souboru
     },
     'alpha': {
+        'grid': 0.3,
         'scatter': 0.7,
         'fill': 0.2,
     }

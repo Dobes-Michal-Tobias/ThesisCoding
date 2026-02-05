@@ -1042,6 +1042,100 @@ def plot_bootstrap_results(bootstrap_scores: Dict[str, np.ndarray],
     for line in stats_text:
         print(line)
 
+# =============================================================================
+# DETAILED VISUALIZATION (Train vs Val vs Test)
+# =============================================================================
+
+def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
+    """
+    Vykreslí srovnání Train/Val/Test pro každý experiment (S1a, S1b...).
+    Používá barvy definované v config.COLORS.
+    """
+    # 0. Pracujeme s kopií, ať neovlivníme originál
+    df_viz = df_results.copy()
+
+    # 1. Vytvoření unikátního popisku (ID + Název), např. "S1a: Baseline (Imbalanced)"
+    # Tím zajistíme, že S1a a S1b budou v grafu odděleně
+    if 'scenario_name' in df_viz.columns:
+        df_viz['Experiment_Label'] = df_viz.apply(lambda x: f"{x['id']}: {x['scenario_name']}", axis=1)
+    else:
+        # Fallback pro starší verze CSV
+        df_viz['Experiment_Label'] = df_viz['id'] + " (" + df_viz['scenario'] + ")"
+
+    # 2. Kontrola sloupců
+    cols = [f'train_{metric}', f'val_{metric}', f'test_{metric}']
+    if not all(c in df_viz.columns for c in cols):
+        print(f"⚠️ Metrika '{metric}' není dostupná pro všechny sady (Train/Val/Test).")
+        return
+
+    # 3. Transformace dat (Wide -> Long)
+    df_long = pd.melt(
+        df_viz,
+        id_vars=['Experiment_Label', 'model'], # <--- ZMĚNA: Seskupujeme podle Experiment Label
+        value_vars=cols,
+        var_name='Split_Raw',
+        value_name='Score'
+    )
+    
+    # Vyčistíme názvy splitů (train_f1 -> Train)
+    df_long['Split'] = df_long['Split_Raw'].apply(lambda x: x.split('_')[0]) 
+    
+    # 4. Barvy z Configu (Pastelová paleta)
+    split_colors = {
+        'train': config.COLORS['train'],
+        'val':   config.COLORS['val'],
+        'test':  config.COLORS['test']
+    }
+    
+    # Pořadí a formátování pro legendu
+    split_order = ['train', 'val', 'test']
+    df_long['Split_Label'] = df_long['Split'].map(lambda x: x.capitalize())
+    split_colors_mapped = {k.capitalize(): v for k, v in split_colors.items()}
+    split_order_mapped = [s.capitalize() for s in split_order]
+
+    # 5. Vykreslení po Experimentech (S1a, S1b, S1d, S1e...)
+    experiments = sorted(df_long['Experiment_Label'].unique())
+    
+    for exp_label in experiments:
+        data_exp = df_long[df_long['Experiment_Label'] == exp_label]
+        
+        plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+        
+        ax = sns.barplot(
+            data=data_exp,
+            x='model',
+            y='Score',
+            hue='Split_Label',
+            hue_order=split_order_mapped,
+            palette=split_colors_mapped,
+            edgecolor='white',
+            linewidth=1.5,
+            errorbar=None # <--- POJISTKA: Vypne černé čáry (kdyby náhodou)
+        )
+        
+        # Titulek nyní obsahuje ID (S1a...)
+        plt.title(f"{exp_label} - {metric.upper()} Comparison", fontsize=15, pad=15, fontweight='bold')
+        plt.xlabel("Model", fontsize=12, fontweight='bold')
+        plt.ylabel(f"{metric.upper()} Score", fontsize=12, fontweight='bold')
+        plt.ylim(0, 1.1) 
+        plt.grid(axis='y', linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
+        
+        plt.legend(title=None, bbox_to_anchor=(1.02, 1), loc='upper left', frameon=True)
+        
+        # Hodnoty nad sloupci
+        for container in ax.containers:
+            ax.bar_label(container, fmt='%.2f', padding=3, fontsize=10, fontweight='bold')
+            
+        plt.tight_layout()
+        
+        if save_dir:
+            # Bezpečný název souboru (nahradíme dvojtečky a mezery)
+            safe_name = exp_label.replace(":", "").replace(" ", "_").replace("(", "").replace(")", "")
+            save_path = save_dir / f"breakdown_3way_{safe_name}_{metric}.png"
+            plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
+            print(f"💾 Graf uložen: {save_path.name}")
+        
+        plt.show()
 
 # ============================================================================
 # EXPORTS
