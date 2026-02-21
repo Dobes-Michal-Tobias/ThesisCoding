@@ -1,0 +1,168 @@
+
+
+										=== KONZULTACE === 
+										==================
+
+
+
+- Úspěch v2
+		- 4 experimetální notebooky
+			- M1/S1 - unsupervised word-level (Mahalanobis, OCSVM, IF)
+			- M1/S2 - unsupervised sentence-level (Mahalanobis, OCSVM, IF)
+
+			- M2/S1 - supervised word-level (LogReg, SVM…)
+			- M2/S2 - supervised sentence-level (LogReg, SVM)
+
+			+ (ve v3)
+			- M3/S1 - LLM word-level 
+			- M3/S2 - LLM sentece-level
+
+
+- Dvakrát Data leakage ve v2 aneb úprava do v3
+			
+			- Dotrénování kontextuálních emb. na celé sekvenci (dokument) context_prev - target_senc - context_post 
+					---> bereme emb. jen pro každý token (nevyužíváme jejich celou výhodu
+
+			- Špatný split
+				- Tokeny z jedné věty ve word-level šli do různých setů (train, test) 
+				---> Musíme zahodit třeba u M1 z trainu spoustu L1 dat, nemůžeme je dát jinam.
+
+			- Treshold tunning na test u M1 
+				---> nově 3 set: train, val, test (=> méně dat ve všech)
+			
+			---
+
+			- ALE!
+				- ztrácíme hodně (!) dat a to je škoda. Ale všechny augmentace jsme musel zavrhnout, jelikož se nějakou mírou vrátí do v2
+					---> Východiskem je z několika násobit celý dataset (kde ale bude hrozně moc dat k ničemu).
+					---> Nebo najít nějaké nové řešení, které mě nenapadá, aby bylo fér
+
+
+			- Využít v práci v2 i v3 a to více než jen v jedné zmínce.
+				- Postavit to jako problém:
+					v3 náročné na data, ale (snad) fér	vs 	v2 má problémy, které s tím hodně posunou. Něco nám to říká o povaze problému
+			
+			- Celou dobu je jasné, že náš největší problém je dataset.
+				- Je relativně malý (ve v3 hodně), syntetický (to může nést bias nebo naopak usnadňuje úlohu)
+				- Toto je ale dipmlomka.
+					- Nemáme finance (na záskání zkušených anotátorů a toto je náročný problém i pro odborného člověka)
+					- V jednom člověku udělat celý projekt je časově strašně náročné 
+
+				- Ale je to věc, na které se dá v budoucnu stavět!
+
+
+- Refactoring v2 -> v3
+			
+			- Málo dat, malé výsledky (ale uvěřitelné)
+
+
+			- word-level M1/S1 --> cca 0,17 F1 Mahalanobis (AUPRC 0,11)
+
+			- sentence-level M1/S2 --> kupodivu moc nespadlo
+
+			- word-level M2/S1 --> LogReg a SVM pořád vyhrávají (jako v2), ale šlo to dolů na cca 
+
+			- sentence-level M2/S2 --> 
+
+	
+			-- Ještě je potřeba dodělat M3 LLM (jak si stojí drahý, obecný model na této konkrétní úloze?) 
+
+
+
+
+
+- Otázky:
+
+		- Metriky: F1 vs AUPRC … A co dál Prec+Rec, ROC-AUC?	
+
+		- Přidat do M2/S1 MLP? takové M2/S1+, kde vyzkoušíme z sklearn MLPClassifier. 
+
+
+
+
+-----------------------------------------
+
+
+
+
+
+# Struktura experimentů
+
+### Filtrace
+* **`filter_type`:**
+    * `'aggressive'` (Jen NOUN, ADJ, VERB, ADV)
+    * `'mild'` (Vše kromě ADP, CONJ, PUNCT, SYM)
+    * `'none'` (Všechny tokeny)
+
+### Reprezentace věty 
+* **`pooling_method`:**
+    * `'mean'` (Průměr embeddingů tokenů)
+    * `'cls'` (Embedding speciálního [CLS] tokenu)
+
+### Datasety
+1.  **I - Malý čistý dataset** $\rightarrow$ **`GOLD` Dataset**
+    * Ručně anotovaný, kotrolovaný, vysoká kvalita, důvěryhodný pro testování. Kombinace REAL, LLM, AUTHOR.
+2.  **II - Velký dataset** $\rightarrow$ **`SILVER` Dataset**
+    * Automaticky generovaný, významně větší, ale může obsahovat šum (není 100% perfektní), "weakly labeled" data.
+3.  **III - Hybridní dataset** $\rightarrow$ **`HYBRID` Dataset**
+    * Kombinuje anomálie ze SILVER a GOLD a neutralitu z GOLD.
+
+---
+Každý níže uvedený experiment se provádí v kombinacích:
+`'aggressive'` vs `'mild'` vs `'none'`
+
+### **---> M1: Unsupervised Outlier Detection**
+*Cíl: Modelování normality. Trénujeme pouze na neutrální třídě (L0).
+
+* **S1 - Token Level (Slova)**
+* *Poznámka:* Počítáme závilost F1 na parametrech/tresholdech: *nu*, *contamination*, *p-value*
+* *Poznámka:* 
+        * `'Gold Baseline'`:** Trénink na GOLD L0, test na GOLD L1+L0.
+        * `'Combined Robustness'`:** Trénink na GOLD L0, test na GOLD+SILVER L1 a GOLD L0.
+
+    * **S1a - ONSVM (One-Class SVM):** Geometrická metoda pro nelineární hranice.
+        * **S1a-I (Gold Baseline)** 
+        * **S1a-II (Combined Robustness)**
+    * **S1b - Isolation Forest (IF):** Stromová metoda izolující odlehlé body.
+        * **S1b-I (Gold Baseline)** 
+        * **S1b-II (Combined Robustness)** 
+    * **S1c - Mahalanobis Distance (MD):** Statistická metoda (vzdálenost od centroidu distribuce).
+        * **S1c-I (Gold Baseline)**
+        * **S1c-II (Combined Robustness)**
+* *Otázka:* Na trénovat nejlepší model znovu na augmentovaném datasetu… L1 z Gold a Silver, L0 z target Gold a z Gold kontextových vět
+
+* **S2 - Sentence Level (Věty)**
+    * *Poznámka:* U všech S2 experimentů navíc porovnáváme vliv reprezentace věty (**Mean Pooling** vs **[CLS] Token**).
+    * *Poznámka:* Počítáme závilost F1 na parametrech/tresholdech: *nu*, *contamination*, *p-value*
+    * **S2a - ONSVM (Věty):** Klasifikace celých vět jako anomálií.
+        * **S2a-I (Gold Baseline)**
+        * **S2a-II (Combined Robustness)**
+    * **S2b - Isolation Forest (Věty):**
+        * **S2b-I (Gold Baseline)** 
+        * **S2b-II (Combined Robustness)** 
+    * **S2c - Mahalanobis Distance (Věty):**
+        * **S2c-I (Gold Baseline)** 
+        * **S2c-II (Combined Robustness)**
+ 
+### **---> M2: Supervised Classification**
+
+* **S1 - Token Level (Slova)**
+    * **S1a - Baseline (Imbalanced):** Všechna data, nev    yvážené.
+    * **S1b - Gold Balanced:** Undersampling L0 z Gold datasetu.
+    * **S1c - Bootstrap Validation:** Ověření stability S1b (100 iterací).
+    * **S1d - Train Noisy, Test Clean:** Trénink na Silver, Test na Gold.
+    * **S1e - Hybrid:** Max L1 (Gold+Silver) + Clean Balanced L0 (Gold).
+
+* **S2 - Sentence Level (Věty)**
+* *Poznámka:* U všech S2 experimentů navíc porovnáváme vliv reprezentace věty (**Mean Pooling** vs **[CLS] Token**).
+    * **S2a - Gold Balanced:** Trénink na větách z malého datasetu.
+    * **S2b - Hybrid:** Trénink na L1 větách (GOLD + SILVER) + L0 větách (Gold).
+  
+
+### --> M3 (LLM)
+* **S1 - Token Level**
+* **S2 - Sentence Level**
+
+### --> M4 (autoenkodér):
+* **S1 - Token Level**
+* **S2 - Sentence Level**
