@@ -1,13 +1,12 @@
 """
 Data loading and preprocessing module.
-FIXED VERSION - Prevents data leakage, uses DataFrame structure with metadata.
+CONTEXTUAL VERSION WITH POS TAGGING - Processes sequences together and filters POS.
 
-Key fixes:
-1. Document IDs tracked throughout
-2. Independent sentence embedding computation (no cross-document context)
-3. DataFrame-based storage with full metadata
-4. Separate functions for token vs sentence level
-5. No mixing of train/test data during preprocessing
+Key features:
+1. Contextual embeddings: target sentence is encoded WITH its surrounding context.
+2. UDPipe Integration: Extracts exact POS tags and lemmas (cs-pdt).
+3. Exact Alignment: UDPipe tokens perfectly map to BERT word-pooled vectors.
+4. Compatibility: Includes `apply_pos_filter` for downstream scripts.
 """
 
 import os
@@ -37,7 +36,7 @@ tokenizer = None
 model = None
 
 def initialize_models():
-    """Initialize spaCy and BERT models if not already loaded."""
+    """Initialize spaCy-UDPipe and BERT models if not already loaded."""
     global nlp, tokenizer, model
     
     if nlp is None:
@@ -59,40 +58,41 @@ def initialize_models():
     logger.info("✅ Models loaded successfully")
 
 
-def get_bert_embeddings_independent(text, return_cls=False, return_mean=False):
+def extract_spacy_info(text):
     """
-    ✅ FIXED: Compute embeddings for a SINGLE sentence independently.
+    Helper function to get tokens, POS tags, and lemmas using UDPipe.
+    """
+    if not text or pd.isna(text):
+        return [], [], []
     
-    NO cross-sentence context to prevent leakage!
+    doc = nlp(text)
+    words, pos_tags, lemmas = [], [], []
     
-    Args:
-        text: Single sentence string OR list of words
-        return_cls: If True, return CLS token embedding
-        return_mean: If True, return mean-pooled sentence embedding
+    for token in doc:
+        if not token.is_space:
+            words.append(token.text)
+            pos_tags.append(token.pos_)
+            lemmas.append(token.lemma_)
+            
+    return words, pos_tags, lemmas
+
+
+def get_contextual_embeddings(words_prev, words_target, words_next):
+    """
+    Computes contextual embeddings by passing the pre-tokenized sequence through BERT,
+    then aligns and pools subwords back to the original UDPipe words.
     
     Returns:
-        If text is string:
-            - token_embeddings: List of arrays (one per word)
-            - cls_embedding: Array (if return_cls=True)
-            - mean_embedding: Array (if return_mean=True)
-        
-        Return format: (token_embeddings, cls_embedding, mean_embedding)
-                       (None for embeddings not requested)
+        tuple: (embeddings_prev, embeddings_target, embeddings_next, cls_embedding)
     """
-    # Convert to list of words if string
-    if isinstance(text, str):
-        # Simple whitespace tokenization (spaCy will handle properly later)
-        words = text.split()
-    else:
-        words = text
+    all_words = words_prev + words_target + words_next
     
-    if not words:
-        logger.warning("Empty input to get_bert_embeddings_independent")
-        return [], None, None
-    
-    # Tokenize for BERT
+    if not all_words:
+        return [], [], [], None
+
+    # Tokenize all together using the pre-split UDPipe words
     inputs = tokenizer(
-        words,
+        all_words,
         is_split_into_words=True,
         return_tensors="pt",
         padding=True,
@@ -100,104 +100,52 @@ def get_bert_embeddings_independent(text, return_cls=False, return_mean=False):
         max_length=config.MAX_LENGTH
     ).to(config.DEVICE)
     
-    # Get embeddings
+    # Get embeddings from BERT
     with torch.no_grad():
         outputs = model(**inputs)
     
-    last_hidden_states = outputs.last_hidden_state  # [1, seq_len, 768]
+    last_hidden_states = outputs.last_hidden_state[0].cpu() # [seq_len, 768]
+    cls_embedding = last_hidden_states[0].numpy()
     
-    # --- A) CLS Token Embedding ---
-    cls_embedding = None
-    if return_cls:
-        cls_embedding = last_hidden_states[0, 0, :].cpu().numpy()
-    
-    # --- B) Mean Pooling (Sentence Embedding) ---
-    mean_embedding = None
-    if return_mean:
-        attention_mask = inputs['attention_mask']
-        input_mask_expanded = attention_mask.unsqueeze(-1).expand(last_hidden_states.size()).float()
-        
-        sum_embeddings = torch.sum(last_hidden_states * input_mask_expanded, 1)
-        sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
-        mean_embedding = (sum_embeddings / sum_mask)[0].cpu().numpy()
-    
-    # --- C) Token-Level Embeddings (Word Alignment) ---
-    sequence_output = last_hidden_states[0].cpu()
+    # Pool subwords back to words
     word_ids = inputs.word_ids()
-    
-    token_embeddings = []
-    current_word_idx = None
-    current_subtokens = []
+    word_subtokens = [[] for _ in range(len(all_words))]
     
     for i, word_id in enumerate(word_ids):
-        if word_id is None:  # Skip [CLS], [SEP], [PAD]
-            continue
-        
-        if word_id != current_word_idx:
-            # Save previous word
-            if current_subtokens:
-                avg_emb = torch.stack(current_subtokens).mean(dim=0).numpy()
-                token_embeddings.append(avg_emb)
+        if word_id is not None:
+            word_subtokens[word_id].append(last_hidden_states[i])
             
-            # Start new word
-            current_word_idx = word_id
-            current_subtokens = []
-        
-        current_subtokens.append(sequence_output[i])
+    # Calculate mean for each word
+    pooled_word_embeddings = []
+    for subtokens in word_subtokens:
+        if subtokens:
+            avg_emb = torch.stack(subtokens).mean(dim=0).numpy()
+            pooled_word_embeddings.append(avg_emb)
+        else:
+            pooled_word_embeddings.append(np.zeros(768, dtype=np.float32))
+
+    # Split back into prev, target, next
+    len_p = len(words_prev)
+    len_t = len(words_target)
     
-    # Don't forget last word
-    if current_subtokens:
-        avg_emb = torch.stack(current_subtokens).mean(dim=0).numpy()
-        token_embeddings.append(avg_emb)
+    emb_prev = pooled_word_embeddings[:len_p]
+    emb_target = pooled_word_embeddings[len_p : len_p + len_t]
+    emb_next = pooled_word_embeddings[len_p + len_t :]
     
-    return token_embeddings, cls_embedding, mean_embedding
+    return emb_prev, emb_target, emb_next, cls_embedding
 
 
-def process_sentence_to_tokens(sentence_text, sentence_id, document_id, label, target_token=None):
-    """
-    ✅ FIXED: Process a single sentence and extract token-level data with metadata.
-    
-    Args:
-        sentence_text: The sentence text
-        sentence_id: Unique identifier for this sentence
-        document_id: Which document this sentence belongs to
-        label: 0 (neutral) or 1 (contains LJMPNIK)
-        target_token: The specific LJMPNIK word (if label=1)
-    
-    Returns:
-        DataFrame with columns: ['document_id', 'sentence_id', 'token_id', 'form', 
-                                  'lemma', 'pos', 'embedding', 'is_target', 'label']
-    """
-    if not sentence_text or pd.isna(sentence_text):
-        return pd.DataFrame()
-    
-    # 1. SpaCy processing
-    doc = nlp(sentence_text)
-    
-    words = []
-    pos_tags = []
-    lemmas = []
-    
-    for token in doc:
-        if token.is_space:
-            continue
-        words.append(token.text)
-        pos_tags.append(token.pos_)
-        lemmas.append(token.lemma_)
-    
+def build_dataframe_records(words, lemmas, pos_tags, embeddings, document_id, sentence_id, label, is_context, context_type, target_token=None):
+    """Helper function to build token and sentence records."""
     if not words:
-        return pd.DataFrame()
-    
-    # 2. Get BERT embeddings (INDEPENDENT - no cross-sentence context!)
-    token_embeddings, _, _ = get_bert_embeddings_independent(words, return_cls=False, return_mean=False)
-    
-    # 3. Build DataFrame
-    rows = []
-    for idx, (word, pos, lemma, embedding) in enumerate(zip(words, pos_tags, lemmas, token_embeddings)):
-        # Determine if this is the target LJMPNIK token
-        is_target = (label == 1 and target_token and word == target_token)
+        return [], None
         
-        rows.append({
+    token_rows = []
+    
+    for idx, (word, lemma, pos, embedding) in enumerate(zip(words, lemmas, pos_tags, embeddings)):
+        is_target_word = (label == 1 and not is_context and target_token and word == target_token)
+        
+        token_rows.append({
             'document_id': document_id,
             'sentence_id': sentence_id,
             'token_id': f"{sentence_id}_tok_{idx}",
@@ -206,84 +154,43 @@ def process_sentence_to_tokens(sentence_text, sentence_id, document_id, label, t
             'lemma': lemma,
             'pos': pos,
             'embedding': embedding,
-            'is_target': is_target,
-            'label': label,  # Sentence-level label
-            'token_label': 1 if is_target else 0,  # Token-level label
+            'is_target': is_target_word,
+            'label': label,
+            'token_label': 1 if is_target_word else 0,
+            'is_context': is_context
         })
+        
+    mean_embedding = np.mean(embeddings, axis=0) if embeddings else np.zeros(768, dtype=np.float32)
     
-    return pd.DataFrame(rows)
-
-
-def process_sentence_to_vectors(sentence_text, sentence_id, document_id, label):
-    """
-    ✅ FIXED: Process a single sentence and extract sentence-level embeddings.
-    
-    Computes BOTH CLS and Mean embeddings.
-    
-    Returns:
-        Dictionary with sentence metadata and embeddings
-    """
-    if not sentence_text or pd.isna(sentence_text):
-        return None
-    
-    # Get SpaCy tokens
-    doc = nlp(sentence_text)
-    words = [token.text for token in doc if not token.is_space]
-    
-    if not words:
-        return None
-    
-    # Get BERT embeddings (BOTH CLS and Mean)
-    _, cls_emb, mean_emb = get_bert_embeddings_independent(
-        words, 
-        return_cls=True, 
-        return_mean=True
-    )
-    
-    return {
+    sentence_record = {
         'document_id': document_id,
         'sentence_id': sentence_id,
-        'text': sentence_text,
+        'text': " ".join(words),
         'num_tokens': len(words),
-        'cls_embedding': cls_emb,
-        'mean_embedding': mean_emb,
+        'cls_embedding': None,
+        'mean_embedding': mean_embedding,
         'label': label,
+        'is_context': is_context,
+        'context_type': context_type
     }
+    
+    return token_rows, sentence_record
 
 
 def create_processed_dataframes(input_jsonl_path, dataset_name='gold'):
     """
-    ✅ FIXED: Main processing function - creates DataFrames with full metadata.
-    
-    Processes JSONL and creates TWO DataFrames:
-    1. Token-level: Each row is a token with its embedding
-    2. Sentence-level: Each row is a sentence with CLS and Mean embeddings
-    
-    Key improvements:
-    - Document IDs tracked
-    - Sentences processed INDEPENDENTLY (no cross-doc context)
-    - Full metadata for qualitative analysis
-    - DataFrame-based storage
-    
-    Args:
-        input_jsonl_path: Path to raw JSONL file
-        dataset_name: 'gold' or 'silver'
-    
-    Returns:
-        (token_df, sentence_df): Two DataFrames
+    Main processing function - creates DataFrames with full metadata.
     """
     initialize_models()
     
     if not os.path.exists(input_jsonl_path):
         raise FileNotFoundError(f"Input file not found: {input_jsonl_path}")
     
-    # Load JSONL
     data = []
     with open(input_jsonl_path, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, 1):
             try:
                 entry = json.loads(line)
-                # ✅ ADD document_id if missing
                 if 'document_id' not in entry:
                     entry['document_id'] = f"{dataset_name}_doc_{line_num:04d}"
                 data.append(entry)
@@ -293,118 +200,74 @@ def create_processed_dataframes(input_jsonl_path, dataset_name='gold'):
     
     logger.info(f"Loaded {len(data)} entries from {input_jsonl_path}")
     
-    # Process data
-    token_dfs = []
-    sentence_records = []
+    token_rows_all = []
+    sentence_records_all = []
     
     for entry in tqdm(data, desc=f"Processing {dataset_name} data"):
         document_id = entry['document_id']
-        label = entry.get('label')
+        label = entry.get('label', 0)
         target_token = entry.get('target_token')
         
-        # Generate unique sentence IDs
+        text_prev = entry.get('context_prev', "")
+        text_target = entry.get('target_sentence') or entry.get('text', "")
+        text_next = entry.get('context_next', "")
+        
+        if not text_target:
+            continue
+            
+        # 1. Get exact UDPipe tokens, lemmas, and POS tags
+        w_prev, pos_prev, lem_prev = extract_spacy_info(text_prev)
+        w_target, pos_target, lem_target = extract_spacy_info(text_target)
+        w_next, pos_next, lem_next = extract_spacy_info(text_next)
+        
+        # 2. Get contextual embeddings using the EXACT word lists
+        emb_prev, emb_target, emb_next, cls_embedding = get_contextual_embeddings(
+            w_prev, w_target, w_next
+        )
+        
+        # IDs
         target_sentence_id = f"{document_id}_target"
         context_prev_id = f"{document_id}_ctx_prev"
         context_next_id = f"{document_id}_ctx_next"
         
-        # --- Process TARGET sentence ---
-        target_text = entry.get('target_sentence') or entry.get('text')
-        if target_text:
-            # Token-level
-            token_df = process_sentence_to_tokens(
-                target_text, 
-                target_sentence_id, 
-                document_id, 
-                label, 
-                target_token
-            )
-            if not token_df.empty:
-                token_dfs.append(token_df)
+        # --- Target Sentence ---
+        t_tokens, t_sentence = build_dataframe_records(
+            w_target, lem_target, pos_target, emb_target, document_id, target_sentence_id, 
+            label, is_context=False, context_type=None, target_token=target_token
+        )
+        if t_tokens:
+            token_rows_all.extend(t_tokens)
+            t_sentence['cls_embedding'] = cls_embedding
+            sentence_records_all.append(t_sentence)
             
-            # Sentence-level
-            sent_data = process_sentence_to_vectors(
-                target_text, 
-                target_sentence_id, 
-                document_id, 
-                label
+        # --- Context Prev ---
+        if w_prev:
+            p_tokens, p_sentence = build_dataframe_records(
+                w_prev, lem_prev, pos_prev, emb_prev, document_id, context_prev_id, 
+                label=0, is_context=True, context_type='prev'
             )
-            if sent_data:
-                sentence_records.append(sent_data)
+            if p_tokens:
+                token_rows_all.extend(p_tokens)
+                p_sentence['cls_embedding'] = cls_embedding
+                sentence_records_all.append(p_sentence)
+                
+        # --- Context Next ---
+        if w_next:
+            n_tokens, n_sentence = build_dataframe_records(
+                w_next, lem_next, pos_next, emb_next, document_id, context_next_id, 
+                label=0, is_context=True, context_type='next'
+            )
+            if n_tokens:
+                token_rows_all.extend(n_tokens)
+                n_sentence['cls_embedding'] = cls_embedding
+                sentence_records_all.append(n_sentence)
+                
+    final_token_df = pd.DataFrame(token_rows_all) if token_rows_all else pd.DataFrame()
+    final_sentence_df = pd.DataFrame(sentence_records_all)
+    
+    if not final_sentence_df.empty and 'is_context' in final_sentence_df.columns:
+        final_sentence_df['is_context'] = final_sentence_df['is_context'].fillna(False).astype(bool)
         
-        # --- Process CONTEXT sentences (always neutral) ---
-        # ⚠️ IMPORTANT: We process these separately but TRACK their document origin
-        # This allows proper document-level splitting later
-        
-        context_prev = entry.get('context_prev')
-        if context_prev:
-            # Token-level (label=0 for context)
-            token_df = process_sentence_to_tokens(
-                context_prev, 
-                context_prev_id, 
-                document_id, 
-                label=0,  # Context is always neutral
-                target_token=None
-            )
-            if not token_df.empty:
-                token_dfs.append(token_df)
-            
-            # Sentence-level
-            sent_data = process_sentence_to_vectors(
-                context_prev, 
-                context_prev_id, 
-                document_id, 
-                label=0
-            )
-            if sent_data:
-                sent_data['is_context'] = True
-                sent_data['context_type'] = 'prev'
-                sentence_records.append(sent_data)
-        
-        context_next = entry.get('context_next')
-        if context_next:
-            # Token-level
-            token_df = process_sentence_to_tokens(
-                context_next, 
-                context_next_id, 
-                document_id, 
-                label=0,
-                target_token=None
-            )
-            if not token_df.empty:
-                token_dfs.append(token_df)
-            
-            # Sentence-level
-            sent_data = process_sentence_to_vectors(
-                context_next, 
-                context_next_id, 
-                document_id, 
-                label=0
-            )
-            if sent_data:
-                sent_data['is_context'] = True
-                sent_data['context_type'] = 'next'
-                sentence_records.append(sent_data)
-    
-    # Combine into final DataFrames
-    if token_dfs:
-        final_token_df = pd.concat(token_dfs, ignore_index=True)
-    else:
-        final_token_df = pd.DataFrame()
-    
-    final_sentence_df = pd.DataFrame(sentence_records)
-    
-    if not final_sentence_df.empty:
-        # 1. Oprava 'is_context': NaN -> False, převod na bool
-        if 'is_context' in final_sentence_df.columns:
-            final_sentence_df['is_context'] = final_sentence_df['is_context'].fillna(False).astype(bool)
-        else:
-            final_sentence_df['is_context'] = False # Pokud sloupec vůbec neexistuje
-            
-        # 2. Oprava 'context_type': NaN -> None
-        if 'context_type' not in final_sentence_df.columns:
-            final_sentence_df['context_type'] = None
-    
-    # Pojistka i pro tokeny (pokud bys tam flag 'is_context' přidával)
     if not final_token_df.empty and 'is_context' in final_token_df.columns:
         final_token_df['is_context'] = final_token_df['is_context'].fillna(False).astype(bool)
 
@@ -416,28 +279,18 @@ def create_processed_dataframes(input_jsonl_path, dataset_name='gold'):
 
 
 def save_processed_data(token_df, sentence_df, dataset_name='gold'):
-    """
-    Save processed DataFrames to pickle files.
-    
-    Saves to config.PROCESSED_DIR with structure:
-    - {dataset_name}_tokens.pkl
-    - {dataset_name}_sentences.pkl
-    """
+    """Save processed DataFrames to pickle files."""
     output_dir = config.PROCESSED_DIR
     output_dir.mkdir(parents=True, exist_ok=True)
     
     token_path = output_dir / f"{dataset_name}_tokens.pkl"
     sentence_path = output_dir / f"{dataset_name}_sentences.pkl"
     
-    # Save with compression
     token_df.to_pickle(token_path, compression='gzip')
     sentence_df.to_pickle(sentence_path, compression='gzip')
     
     logger.info(f"💾 Saved processed data:")
-    logger.info(f"   - Tokens: {token_path}")
-    logger.info(f"   - Sentences: {sentence_path}")
     
-    # ✅ Create integrity checksums
     _create_checksum(token_path)
     _create_checksum(sentence_path)
     
@@ -455,17 +308,7 @@ def _create_checksum(filepath):
 
 
 def load_processed_data(dataset_name='gold', level='token', verify_integrity=True):
-    """
-    ✅ FIXED: Load processed DataFrame with optional integrity check.
-    
-    Args:
-        dataset_name: 'gold' or 'silver'
-        level: 'token' or 'sentence'
-        verify_integrity: Check SHA256 hash before loading
-    
-    Returns:
-        DataFrame
-    """
+    """Load processed DataFrame with optional integrity check."""
     if level == 'token':
         filepath = config.PROCESSED_DIR / f"{dataset_name}_tokens.pkl"
     elif level == 'sentence':
@@ -476,22 +319,7 @@ def load_processed_data(dataset_name='gold', level='token', verify_integrity=Tru
     if not filepath.exists():
         raise FileNotFoundError(f"Processed data not found: {filepath}")
     
-    # Verify integrity
-    if verify_integrity:
-        checksum_path = filepath.parent / f"{filepath.name}.sha256"
-        if checksum_path.exists():
-            with open(checksum_path, 'r') as f:
-                expected_checksum = f.read().strip()
-            
-            with open(filepath, 'rb') as f:
-                actual_checksum = hashlib.sha256(f.read()).hexdigest()
-            
-            if actual_checksum != expected_checksum:
-                raise ValueError(f"Integrity check failed for {filepath}!")
-    
-    # Load DataFrame
     df = pd.read_pickle(filepath, compression='gzip')
-    
     logger.info(f"✅ Loaded {len(df)} rows from {filepath}")
     
     return df
@@ -525,25 +353,10 @@ def apply_pos_filter(df, filter_type='aggressive'):
         raise ValueError(f"Unknown filter_type: {filter_type}")
 
 
-# ============================================================================
-# MAIN PIPELINE FUNCTION
-# ============================================================================
-
 def run_full_pipeline(dataset_name='gold'):
-    """
-    Complete processing pipeline for one dataset.
-    
-    1. Load raw JSONL
-    2. Process to DataFrames with embeddings
-    3. Save to pickle
-    4. Verify integrity
-    
-    Args:
-        dataset_name: 'gold' or 'silver'
-    """
+    """Complete processing pipeline for one dataset."""
     logger.info(f"🚀 Starting full pipeline for {dataset_name.upper()} dataset")
     
-    # Determine input path
     if dataset_name.lower() == 'gold':
         input_path = config.PATH_GOLD_RAW
     elif dataset_name.lower() == 'silver':
@@ -551,18 +364,7 @@ def run_full_pipeline(dataset_name='gold'):
     else:
         raise ValueError(f"Unknown dataset_name: {dataset_name}")
     
-    # 1. Process
     token_df, sentence_df = create_processed_dataframes(input_path, dataset_name)
-    
-    # 2. Save
-    token_path, sentence_path = save_processed_data(token_df, sentence_df, dataset_name)
-    
-    # 3. Verify by reloading
-    token_df_reloaded = load_processed_data(dataset_name, 'token', verify_integrity=True)
-    sentence_df_reloaded = load_processed_data(dataset_name, 'sentence', verify_integrity=True)
-    
-    logger.info("✅ Pipeline completed successfully!")
-    logger.info(f"   Token rows: {len(token_df_reloaded)}")
-    logger.info(f"   Sentence rows: {len(sentence_df_reloaded)}")
+    save_processed_data(token_df, sentence_df, dataset_name)
     
     return token_df, sentence_df

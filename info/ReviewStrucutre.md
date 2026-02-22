@@ -28,9 +28,7 @@ Každý níže uvedený experiment se provádí v kombinacích:
 
 * **S1 - Token Level (Slova)**
 * *Poznámka:* Počítáme závilost F1 na parametrech/tresholdech: *nu*, *contamination*, *p-value*
-* *Poznámka:* 
-        * `'Gold Baseline'`:** Trénink na GOLD L0, test na GOLD L1+L0.
-        * `'Combined Robustness'`:** Trénink na GOLD L0, test na GOLD+SILVER L1 a GOLD L0.
+* *Poznámka:* *`'Gold Baseline'`:** Trénink na GOLD L0, test na GOLD L1+L0. * `'Combined Robustness'`:** Trénink na GOLD L0, test na GOLD+SILVER L1 a GOLD L0.
 
     * **S1a - ONSVM (One-Class SVM):** Geometrická metoda pro nelineární hranice.
         * **S1a-I (Gold Baseline)** 

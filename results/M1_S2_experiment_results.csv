@@ -1,0 +1,13 @@
+id,scenario,scenario_name,pooling,model,params,test_f1,test_auprc,test_roc_auc
+S2a,baseline,Baseline (Target L0),mean,Mahalanobis,{'method': 'empirical'},0.7169811320754716,0.5797655503776448,0.38493038493038484
+S2a,baseline,Baseline (Target L0),mean,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.7354838709677419,0.6180263634850344,0.5036855036855037
+S2a,baseline,Baseline (Target L0),mean,OCSVM,"{'nu': 0.05, 'kernel': 'rbf', 'gamma': 0.1}",0.6166666666666667,0.7107500940403148,0.5446355446355446
+S2c,robustness,Robustness (Target+Ctx),mean,Mahalanobis,{'method': 'empirical'},0.19161676646706588,0.17254439139880803,0.3885147774036663
+S2c,robustness,Robustness (Target+Ctx),mean,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.2484472049689441,0.21101329803699523,0.48715550567402416
+S2c,robustness,Robustness (Target+Ctx),mean,OCSVM,"{'nu': 0.1, 'kernel': 'rbf', 'gamma': 'scale'}",0.20168067226890757,0.2707514191052336,0.43652575134056615
+S2a,baseline,Baseline (Target L0),cls,Mahalanobis,{'method': 'empirical'},0.7590361445783133,0.6840024936741527,0.5167895167895168
+S2a,baseline,Baseline (Target L0),cls,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.7848101265822784,0.6761424553080684,0.552006552006552
+S2a,baseline,Baseline (Target L0),cls,OCSVM,"{'nu': 0.01, 'kernel': 'rbf', 'gamma': 'scale'}",0.7654320987654321,0.623905800846981,0.4672399672399672
+S2c,robustness,Robustness (Target+Ctx),cls,Mahalanobis,{'method': 'empirical'},0.34688346883468835,0.20760021026662587,0.4612794612794613
+S2c,robustness,Robustness (Target+Ctx),cls,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.34444444444444444,0.21273723993576504,0.48447437336326227
+S2c,robustness,Robustness (Target+Ctx),cls,OCSVM,"{'nu': 0.01, 'kernel': 'rbf', 'gamma': 'scale'}",0.34946236559139787,0.19302343504870428,0.44668911335578
