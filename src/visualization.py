@@ -1206,6 +1206,111 @@ def plot_model_comparison(df_results: pd.DataFrame,
     plt.show()
 
 # ============================================================================
+# E. LLM BENCHMARK COMPARISON
+# ============================================================================
+
+def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
+                               df_m2_best: pd.DataFrame,
+                               metrics: List[str] = ['auprc', 'f1', 'precision', 'recall'],
+                               title: str = "LLM (Zero-Shot) vs. Nejlepší M2/S2 Model",
+                               save_path: Optional[Path] = None) -> None:
+    """
+    Porovná výsledky LLM modelů s nejlepším modelem z M2/S2 (Sentence Supervised).
+    """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as mpatches
+    import seaborn as sns
+    import numpy as np
+    import config
+    import logging
+    logger = logging.getLogger(__name__)
+
+    # --- 1. Validace vstupů ---
+    required_llm_cols = ['model'] + metrics
+    missing_llm = [c for c in required_llm_cols if c not in df_llm_metrics.columns]
+    if missing_llm:
+        raise ValueError(f"df_llm_metrics chybí sloupce: {missing_llm}")
+
+    # --- 2. Příprava dat M2/S2 baseline ---
+    col_map = {'auprc': 'test_auprc', 'f1': 'test_f1', 'precision': 'test_prec', 'recall': 'test_rec'}
+    
+    m2_row = df_m2_best.iloc[0]
+    m2_label = f"M2/S2 Baseline"
+    
+    m2_data = {'model': m2_label}
+    for metric in metrics:
+        src_col = col_map.get(metric, f'test_{metric}')
+        if src_col in m2_row.index:
+            m2_data[metric] = m2_row[src_col]
+        else:
+            m2_data[metric] = np.nan
+
+    df_m2_formatted = pd.DataFrame([m2_data])
+
+    # --- 3. Spojení dat ---
+    df_all = pd.concat([df_llm_metrics[['model'] + metrics], df_m2_formatted], ignore_index=True)
+
+    # --- 4. Příprava barev ---
+    model_names = df_all['model'].tolist()
+    palette = {name: config.COLORS['l0'] if name.startswith('M2/S2') else config.COLORS['l1'] for name in model_names}
+
+    # --- 5. Transformace do long formátu ---
+    df_long = df_all.melt(id_vars='model', value_vars=metrics, var_name='Metrika', value_name='Hodnota')
+    metric_labels = {'auprc': 'AUPRC', 'f1': 'F1 Score', 'precision': 'Precision', 'recall': 'Recall'}
+    df_long['Metrika'] = df_long['Metrika'].map(lambda x: metric_labels.get(x, x.upper()))
+
+    # --- 6. Vykreslení ---
+    n_metrics = len(metrics)
+    fig, axes = plt.subplots(1, n_metrics, figsize=(4 * n_metrics, 5), sharey=True)
+    if n_metrics == 1: axes = [axes]
+    
+    metric_label_list = [metric_labels.get(m, m.upper()) for m in metrics]
+
+    for ax, metric_label in zip(axes, metric_label_list):
+        df_sub = df_long[df_long['Metrika'] == metric_label].copy()
+        colors = [palette[m] for m in df_sub['model']]
+
+        bars = ax.bar(df_sub['model'], df_sub['Hodnota'], color=colors, edgecolor='white', linewidth=1.5, width=0.6)
+
+        # Hodnoty nad sloupci
+        for bar in bars:
+            height = bar.get_height()
+            if not np.isnan(height):
+                ax.text(bar.get_x() + bar.get_width() / 2., height + 0.02, f'{height:.2f}', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+        # Zvýraznění referenčního modelu
+        m2_val = df_sub[df_sub['model'].str.startswith('M2/S2')]['Hodnota'].values
+        if len(m2_val) > 0 and not np.isnan(m2_val[0]):
+            ax.axhline(y=m2_val[0], color=config.COLORS['l0'], linestyle='--', linewidth=1.5, alpha=0.8)
+
+        ax.set_title(metric_label, fontsize=12, fontweight='bold', pad=10)
+        ax.set_xlabel("")
+        ax.set_ylim(0, 1.15)
+        ax.yaxis.grid(True, linestyle='--', alpha=0.5)
+        
+        # Opravené zarovnání textu osy X
+        ax.set_xticks(range(len(df_sub['model'])))
+        ax.set_xticklabels(df_sub['model'], rotation=30, ha='right', fontsize=9)
+        sns.despine(ax=ax)
+
+    # --- 7. Legenda a titulek ---
+    legend_patches = [
+        mpatches.Patch(color=config.COLORS['l1'], label='LLM (Zero-Shot)'),
+        mpatches.Patch(color=config.COLORS['l0'], label='M2/S2 Baseline')
+    ]
+    fig.legend(handles=legend_patches, loc='upper center', bbox_to_anchor=(0.5, 1.05), ncol=2, frameon=False, fontsize=11)
+
+    fig.suptitle(title, fontsize=14, fontweight='bold', y=1.12)
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        logger.info(f"💾 Saved LLM comparison plot to {save_path}")
+
+    plt.show()
+
+
+# ============================================================================
 # EXPORTS
 # ============================================================================
 
@@ -1233,4 +1338,7 @@ __all__ = [
     'plot_feature_importance',
     'plot_error_analysis_projection',
     'plot_bootstrap_results',
+
+    # LLM Benchmark
+    'plot_llm_vs_m2_comparison',
 ]
