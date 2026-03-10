@@ -84,68 +84,87 @@ EMBEDDING_MODES = {
 }
 
 # --- 5. VISUALIZATION SETTINGS ---
-PALETTE_CATEGORICAL_NAME = "pastel"
+
+# Palety
+PALETTE_CATEGORICAL_NAME = "Set2"
 PALETTE_CONTINUOUS_NAME = "coolwarm"
 
+# Primární barvy (Set2-inspired, akademicky tlumené)
 COLORS = {
-    'l0': '#a1c9f4',      # Pastel Blue (Neutral)
-    'l1': '#ff9f9a',      # Pastel Red (Anomaly)
-    'gold': '#ffb482',    # Pastel Orange
-    'silver': '#c6c6c6',  # Pastel Grey
-    'train': '#b3de69',   # Pastel Green
-    'test': '#bc80bd',    # Pastel Purple
-    'val': '#ffd92f',     # Pastel Yellow (NEW)
-    'grid': '#e0e0e0',
-    
-    # Error analysis colors
-    'TP': '#ff9f9a',
-    'FP': '#f39c12',
-    'TN': '#e0e0e0',
-    'FN': '#9b59b6'
+    # Třídy (label)
+    'l0': '#66C2A5',      # Set2 Teal (Neutral)
+    'l1': '#FC8D62',      # Set2 Coral (Anomaly)
+
+    # Datasety
+    'gold': '#E78AC3',    # Set2 Pink
+    'silver': '#B3B3B3',  # Neutrální šedá
+
+    # Error analysis
+    'TP': '#66C2A5',      # Teal  — správně detekovaná anomálie
+    'FP': '#FC8D62',      # Coral — falešný poplach
+    'TN': '#D9D9D9',      # Světle šedá — správně neutrální
+    'FN': '#8DA0CB',      # Set2 Blue — zmeškaná anomálie
+
+    # Utility
+    'grid': '#E0E0E0',
 }
 
-# Scenario colors
+# Explicitní barvy pro data-splity (Train / Val / Test)
+DATASET_COLORS = {
+    'Train': '#8DA0CB',   # Set2 Blue
+    'Val':   '#FC8D62',   # Set2 Coral
+    'Test':  '#66C2A5',   # Set2 Teal
+}
+
+# Barvy scénářů
 SCENARIO_COLORS = {
-    'S1a': '#e74c3c',
-    'S1b': '#f39c12',
-    'S1d': '#9b59b6',
-    'S1e': '#3498db',
+    'S1a': '#66C2A5',     # Teal
+    'S1b': '#FC8D62',     # Coral
+    'S1d': '#8DA0CB',     # Blue
+    'S1e': '#E78AC3',     # Pink
 }
 
-SNS_STYLE = "whitegrid"
-SNS_CONTEXT = "paper"
-FONT_SCALE = 1.1
-
-# Visualization configuration
+# Centralizovaná vizualizační konfigurace
 VIZ_CONFIG = {
     'figure_sizes': {
-        'small': (8, 6),
+        'small':  (8, 6),
         'medium': (10, 6),
-        'large': (12, 6),
-        'wide': (14, 5),
+        'large':  (12, 6),
+        'wide':   (14, 5),
         'square': (10, 10),
     },
+    'font': {
+        'family': 'sans-serif',
+        'title':  14,
+        'label':  12,
+        'tick':   10,
+        'legend': 10,
+        'annot':  10,
+    },
+    'style': {
+        'sns_context': 'paper',
+        'font_scale':  1.1,
+        'bg_color':    '#EAEAF2',
+        'grid_color':  '#FFFFFF',
+        'text_color':  '#333333',
+    },
     'projection': {
-        'max_samples': 3000,       # Maximální počet bodů (aby to netrvalo věčnost)
-        
-        # t-SNE settings
+        'max_samples': 3000,
         'tsne_perplexity': 30,
-        'tsne_init': 'pca',        # 'pca' je stabilnější než 'random'
+        'tsne_init': 'pca',
         'tsne_learning_rate': 'auto',
-        
-        # UMAP settings
         'umap_n_neighbors': 15,
         'umap_min_dist': 0.1,
     },
     'dpi': {
-        'screen': 100,  # Pro zobrazení v notebooku
-        'print': 300,   # Pro uložení do souboru
+        'screen': 100,
+        'print':  300,
     },
     'alpha': {
-        'grid': 0.3,
+        'grid':    0.3,
         'scatter': 0.7,
-        'fill': 0.2,
-    }
+        'fill':    0.2,
+    },
 }
 
 # --- 6. MODEL DEFAULTS ---

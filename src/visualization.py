@@ -1,22 +1,12 @@
 """
 visualization.py - Unified Visualization Functions
 
-Comprehensive plotting functions for model evaluation, error analysis,
-and result presentation.
+Publication-ready plotting for model evaluation, error analysis,
+embedding projections, and result presentation.
 
-Changes from original:
-    - ✅ FIXED: Removed code duplication (_prepare_long_data functions merged)
-    - ✅ FIXED: Removed commented-out unused code
-    - ✅ NEW: Added input validation to all plotting functions
-    - ✅ NEW: Added type hints for all functions
-    - ✅ IMPROVED: Centralized configuration via config module
-    - ✅ IMPROVED: Better error handling and user feedback
-    - ✅ IMPROVED: Consistent styling and color schemes
-    - ✅ NEW: Added save_path parameter to all major plots
-    - ✅ NEW: Added comprehensive docstrings with examples
+Style: ggplot base + Set2 palette, configured via config.py.
 
 Author: Michal Tobiáš Dobeš
-Date: January 2026
 """
 
 from typing import Dict, List, Tuple, Optional, Union
@@ -53,27 +43,74 @@ logger = logging.getLogger(__name__)
 
 def setup_style() -> None:
     """
-    Apply global visualization style from config.
-    
+    Apply global ggplot-inspired academic visualization style.
+
+    Uses matplotlib 'ggplot' as base, then refines via seaborn and rcParams
+    to achieve a clean, publication-ready look with muted Set2 palette.
+
     Should be called once at the beginning of analysis notebooks.
-    
+
     Example:
         >>> from visualization import setup_style
         >>> setup_style()
-        🎨 Visualization style set: whitegrid
     """
+    style_cfg = config.VIZ_CONFIG['style']
+    font_cfg = config.VIZ_CONFIG['font']
+
+    # 1. Base ggplot style (grey background, white gridlines)
+    plt.style.use('ggplot')
+
+    # 2. Seaborn layer — context scaling + Set2 palette
     sns.set_theme(
-        style=config.SNS_STYLE,
-        context=config.SNS_CONTEXT,
-        font_scale=config.FONT_SCALE
+        context=style_cfg['sns_context'],
+        style='whitegrid',
+        font_scale=style_cfg['font_scale'],
+        palette=config.PALETTE_CATEGORICAL_NAME,
     )
-    
-    # Set color cycle
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(
-        color=[config.COLORS['l0'], config.COLORS['l1']]
-    )
-    
-    logger.info(f"🎨 Visualization style set: {config.SNS_STYLE}")
+
+    # 3. Fine-tune rcParams for academic ggplot look
+    rc_overrides = {
+        # Background & grid
+        'axes.facecolor':     style_cfg['bg_color'],
+        'figure.facecolor':   'white',
+        'axes.grid':          True,
+        'grid.color':         style_cfg['grid_color'],
+        'grid.linewidth':     0.8,
+        'grid.alpha':         1.0,
+        'axes.edgecolor':     '#CCCCCC',
+        'axes.linewidth':     0.6,
+
+        # Typography
+        'font.family':        font_cfg['family'],
+        'text.color':         style_cfg['text_color'],
+        'axes.labelcolor':    style_cfg['text_color'],
+        'xtick.color':        style_cfg['text_color'],
+        'ytick.color':        style_cfg['text_color'],
+        'axes.titlesize':     font_cfg['title'],
+        'axes.labelsize':     font_cfg['label'],
+        'xtick.labelsize':    font_cfg['tick'],
+        'ytick.labelsize':    font_cfg['tick'],
+        'legend.fontsize':    font_cfg['legend'],
+
+        # Color cycle — Set2 derived
+        'axes.prop_cycle': plt.cycler(color=sns.color_palette(
+            config.PALETTE_CATEGORICAL_NAME
+        ).as_hex()),
+
+        # Figure defaults
+        'figure.dpi':         config.VIZ_CONFIG['dpi']['screen'],
+        'savefig.dpi':        config.VIZ_CONFIG['dpi']['print'],
+        'savefig.bbox':       'tight',
+        'figure.figsize':     config.VIZ_CONFIG['figure_sizes']['medium'],
+
+        # Legend
+        'legend.frameon':     True,
+        'legend.framealpha':  0.9,
+        'legend.edgecolor':   '#CCCCCC',
+    }
+    plt.rcParams.update(rc_overrides)
+
+    logger.info("Visualization style applied (ggplot + Set2).")
 
 # ============================================================================
 # A. METRICS AND PERFORMANCE PLOTS
@@ -190,11 +227,10 @@ def plot_threshold_tuning(y_true: np.ndarray,
     })
     df_long = df_metrics.melt(id_vars='Threshold', var_name='Metric', value_name='Score')
     
-    # ✅ IMPROVED: Use config colors
     custom_palette = {
         'F1 Score': config.COLORS['l1'],
         'Precision': config.COLORS['l0'],
-        'Recall': '#95a5a6'
+        'Recall': '#B3B3B3'
     }
     
     # Plot
@@ -603,7 +639,10 @@ def plot_scenario_breakdown(df_results: pd.DataFrame,
     scenarios = df_results['scenario'].unique()
     df_long = _prepare_long_data(df_results, metric, extra_id_vars=['filter'])
     
-    palette = {"Train": "#b0bec5", "Test": "#2c3e50"}
+    palette = {
+        "Train": config.DATASET_COLORS['Train'],
+        "Test": config.DATASET_COLORS['Test'],
+    }
     
     for scen in scenarios:
         data_scen = df_long[df_long['scenario'] == scen]
@@ -758,7 +797,10 @@ def plot_pooling_breakdown(df_results: pd.DataFrame,
     scenarios = df_results['scenario'].unique()
     df_long = _prepare_long_data(df_results, metric, extra_id_vars=['pooling'])
     
-    palette = {"Train": "#b0bec5", "Test": "#2c3e50"}
+    palette = {
+        "Train": config.DATASET_COLORS['Train'],
+        "Test": config.DATASET_COLORS['Test'],
+    }
     
     for scen in scenarios:
         data_scen = df_long[df_long['scenario'] == scen]
@@ -1080,11 +1122,11 @@ def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
     # Vyčistíme názvy splitů (train_f1 -> Train)
     df_long['Split'] = df_long['Split_Raw'].apply(lambda x: x.split('_')[0]) 
     
-    # 4. Barvy z Configu (Pastelová paleta)
+    # 4. Barvy z DATASET_COLORS
     split_colors = {
-        'train': config.COLORS['train'],
-        'val':   config.COLORS['val'],
-        'test':  config.COLORS['test']
+        'train': config.DATASET_COLORS['Train'],
+        'val':   config.DATASET_COLORS['Val'],
+        'test':  config.DATASET_COLORS['Test'],
     }
     
     # Pořadí a formátování pro legendu
@@ -1162,18 +1204,15 @@ def plot_model_comparison(df_results: pd.DataFrame,
         logger.warning(f"⚠️ Metrika '{metric}' není v datech. Graf nebude vykreslen.")
         return
 
-    # Nastavení stylu (pro jistotu, kdyby nebylo globálně)
-    sns.set_style("whitegrid")
-    
     # Vytvoření FacetGridu
     g = sns.catplot(
-        data=df_results, 
+        data=df_results,
         kind="bar",
-        x=x_col, 
-        y=metric, 
-        hue=hue_col, 
+        x=x_col,
+        y=metric,
+        hue=hue_col,
         col=col_col,
-        palette="viridis",  # Konzistentní paleta
+        palette=config.PALETTE_CATEGORICAL_NAME,
         height=5, 
         aspect=1.2,
         sharey=True
@@ -1217,14 +1256,6 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
     """
     Porovná výsledky LLM modelů s nejlepším modelem z M2/S2 (Sentence Supervised).
     """
-    import matplotlib.pyplot as plt
-    import matplotlib.patches as mpatches
-    import seaborn as sns
-    import numpy as np
-    import config
-    import logging
-    logger = logging.getLogger(__name__)
-
     # --- 1. Validace vstupů ---
     required_llm_cols = ['model'] + metrics
     missing_llm = [c for c in required_llm_cols if c not in df_llm_metrics.columns]
@@ -1317,22 +1348,24 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
 __all__ = [
     # Style
     'setup_style',
-    
+
     # Metrics & Performance
     'plot_pr_curve',
     'plot_threshold_tuning',
     'plot_anomaly_histogram',
     'plot_confusion_matrix_heatmap',
-    
+
     # Embeddings & Projections
     'compute_projections',
     'plot_embedding_projection',
-    
+
     # Supervised Results
     'plot_scenario_breakdown',
     'plot_global_comparison',
     'plot_pooling_breakdown',
-    
+    'plot_three_way_comparison',
+    'plot_model_comparison',
+
     # Advanced Analysis
     'plot_model_calibration',
     'plot_feature_importance',
@@ -1342,3 +1375,18 @@ __all__ = [
     # LLM Benchmark
     'plot_llm_vs_m2_comparison',
 ]
+
+
+# ============================================================================
+# F. THESIS-LEVEL VISUALIZATIONS (stubs for future implementation)
+# ============================================================================
+#
+# Prostor pro celkové vizualizace diplomové práce.
+# Implementovat po dokončení všech experimentů (M1–M3).
+#
+# Plánované funkce:
+#   - plot_thesis_overview_table()    — souhrnná tabulka všech výsledků
+#   - plot_thesis_radar_chart()       — radar/spider chart porovnání modelů
+#   - plot_thesis_pipeline_diagram()  — schéma celého experimentálního pipeline
+#   - plot_thesis_embedding_gallery() — grid projekcí (PCA/t-SNE/UMAP) pro appendix
+#

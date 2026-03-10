@@ -2,7 +2,10 @@
 EDA Visualization Module
 
 Reusable functions for exploratory data analysis visualizations.
-All plots use config settings for consistency.
+All plots use the unified style from config.py and visualization.setup_style().
+
+Each function produces ONE independent figure (no subplots grids),
+so that every plot can be saved and embedded in the thesis separately.
 """
 
 import numpy as np
@@ -10,641 +13,594 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from collections import Counter
+from typing import Optional, Dict
+from pathlib import Path
 
 import config
 
-
-def setup_style():
-    """Apply global visualization style from config."""
-    sns.set_theme(
-        style=config.SNS_STYLE,
-        context=config.SNS_CONTEXT,
-        font_scale=config.FONT_SCALE
-    )
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(
-        color=[config.COLORS['l0'], config.COLORS['l1']]
-    )
-    print(f"🎨 EDA visualization style set: {config.SNS_STYLE}")
+# DPI shortcut
+_DPI = config.VIZ_CONFIG['dpi']['print']
 
 
-def plot_class_distribution(df, title="Class Distribution", save_path=None):
+# ============================================================================
+# A. CLASS & LABEL DISTRIBUTIONS
+# ============================================================================
+
+def plot_class_distribution(df: pd.DataFrame,
+                           title: str = "Class Distribution",
+                           save_path: Optional[Path] = None) -> pd.Series:
     """
-    Plot distribution of labels (L0 vs L1).
-    
+    Plot distribution of labels (L0 vs L1) as a bar chart.
+
     Args:
         df: DataFrame with 'label' column
         title: Plot title
         save_path: Optional path to save figure
+
+    Returns:
+        pd.Series with label counts
     """
-    # Count labels
     label_counts = df['label'].value_counts().sort_index()
-    
-    # Create figure
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
-    
-    # Bar plot
+
     bars = ax.bar(
         ['Neutral (L0)', 'LJMPNIK (L1)'],
         label_counts.values,
         color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.8,
-        edgecolor='black'
+        edgecolor='white', linewidth=1.2
     )
-    
-    # Add value labels on bars
+
     for bar in bars:
         height = bar.get_height()
-        ax.text(
-            bar.get_x() + bar.get_width() / 2.,
-            height,
-            f'{int(height):,}',
-            ha='center',
-            va='bottom',
-            fontweight='bold'
-        )
-    
-    # Calculate percentage
+        ax.text(bar.get_x() + bar.get_width() / 2., height,
+                f'{int(height):,}', ha='center', va='bottom', fontweight='bold')
+
     total = label_counts.sum()
-    ratio = label_counts[0] / label_counts[1]
-    
-    # Add ratio text
-    ax.text(
-        0.5, 0.95,
-        f'Total: {total:,} samples | Ratio L0:L1 = {ratio:.2f}:1',
-        transform=ax.transAxes,
-        ha='center',
-        va='top',
-        bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-    )
-    
+    ratio = label_counts[0] / label_counts[1] if label_counts[1] > 0 else float('inf')
+
+    ax.text(0.5, 0.95,
+            f'Total: {total:,} samples | Ratio L0:L1 = {ratio:.2f}:1',
+            transform=ax.transAxes, ha='center', va='top',
+            bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7))
+
     ax.set_ylabel('Count')
-    ax.set_title(title, fontweight='bold', pad=15)
-    ax.grid(True, alpha=0.3, axis='y')
-    
+    ax.set_title(title, pad=15)
     plt.tight_layout()
-    
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
     plt.show()
-    
     return label_counts
 
 
-def plot_length_distribution(df, text_col='text', title="Text Length Distribution", 
-                            save_path=None):
-    """
-    Plot distribution of text lengths (in tokens/words).
-    
-    Args:
-        df: DataFrame with text column
-        text_col: Name of text column
-        title: Plot title
-        save_path: Optional path to save
-    """
-    # Calculate lengths
+# ============================================================================
+# B. TEXT LENGTH DISTRIBUTIONS (split into 2 independent figures)
+# ============================================================================
+
+def _get_lengths(df: pd.DataFrame, text_col: str = 'text') -> pd.Series:
+    """Helper: extract text lengths from DataFrame."""
     if text_col in df.columns:
-        lengths = df[text_col].str.split().str.len()
+        return df[text_col].str.split().str.len()
     elif 'num_tokens' in df.columns:
-        lengths = df['num_tokens']
+        return df['num_tokens']
     else:
         raise ValueError("No text or num_tokens column found")
-    
-    # Separate by label
+
+
+def plot_length_histogram(df: pd.DataFrame,
+                          text_col: str = 'text',
+                          title: str = "Length Distribution (Histogram)",
+                          save_path: Optional[Path] = None) -> Dict:
+    """
+    Plot histogram of text lengths separated by label.
+
+    Args:
+        df: DataFrame with text/num_tokens column and 'label' column
+        text_col: Name of text column
+        title: Plot title
+        save_path: Optional path to save figure
+
+    Returns:
+        Dict with mean/std statistics per class
+    """
+    lengths = _get_lengths(df, text_col)
     l0_lengths = lengths[df['label'] == 0]
     l1_lengths = lengths[df['label'] == 1]
-    
-    # Create figure
-    fig, axes = plt.subplots(1, 2, figsize=config.VIZ_CONFIG['figure_sizes']['wide'])
-    
-    # Histogram
-    axes[0].hist(
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    ax.hist(
         [l0_lengths, l1_lengths],
         bins=30,
         label=['Neutral (L0)', 'LJMPNIK (L1)'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7,
-        edgecolor='black'
+        alpha=0.7, edgecolor='white'
     )
-    axes[0].set_xlabel('Number of Tokens')
-    axes[0].set_ylabel('Frequency')
-    axes[0].set_title('Length Distribution (Histogram)', fontweight='bold')
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
-    
-    # Box plot
+
+    stats_text = (
+        f"Neutral: \u03bc={l0_lengths.mean():.1f}, \u03c3={l0_lengths.std():.1f}\n"
+        f"LJMPNIK: \u03bc={l1_lengths.mean():.1f}, \u03c3={l1_lengths.std():.1f}"
+    )
+    ax.text(0.97, 0.95, stats_text, transform=ax.transAxes, ha='right', va='top',
+            bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7), fontsize=10)
+
+    ax.set_xlabel('Number of Tokens')
+    ax.set_ylabel('Frequency')
+    ax.set_title(title, pad=15)
+    ax.legend()
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
+    plt.show()
+
+    return {
+        'l0_mean': l0_lengths.mean(), 'l0_std': l0_lengths.std(),
+        'l1_mean': l1_lengths.mean(), 'l1_std': l1_lengths.std(),
+    }
+
+
+def plot_length_boxplot(df: pd.DataFrame,
+                        text_col: str = 'text',
+                        title: str = "Length Distribution (Box Plot)",
+                        save_path: Optional[Path] = None) -> None:
+    """
+    Plot box plot of text lengths separated by label.
+
+    Args:
+        df: DataFrame with text/num_tokens column and 'label' column
+        text_col: Name of text column
+        title: Plot title
+        save_path: Optional path to save figure
+    """
+    lengths = _get_lengths(df, text_col)
+    l0_lengths = lengths[df['label'] == 0]
+    l1_lengths = lengths[df['label'] == 1]
+
     data_for_box = pd.DataFrame({
         'Length': pd.concat([l0_lengths, l1_lengths]),
         'Label': ['Neutral'] * len(l0_lengths) + ['LJMPNIK'] * len(l1_lengths)
     })
-    
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
+
     sns.boxplot(
-        data=data_for_box,
-        x='Label',
-        y='Length',
+        data=data_for_box, x='Label', y='Length',
         palette=[config.COLORS['l0'], config.COLORS['l1']],
-        ax=axes[1]
+        ax=ax
     )
-    axes[1].set_title('Length Distribution (Box Plot)', fontweight='bold')
-    axes[1].grid(True, alpha=0.3, axis='y')
-    
-    # Calculate statistics
-    stats_text = (
-        f"Neutral: μ={l0_lengths.mean():.1f}, σ={l0_lengths.std():.1f}\\n"
-        f"LJMPNIK: μ={l1_lengths.mean():.1f}, σ={l1_lengths.std():.1f}"
-    )
-    
-    fig.text(
-        0.5, 0.02,
-        stats_text,
-        ha='center',
-        fontsize=10,
-        bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-    )
-    
-    fig.suptitle(title, fontweight='bold', fontsize=14, y=0.98)
-    plt.tight_layout(rect=[0, 0.05, 1, 0.96])
-    
+    ax.set_title(title, pad=15)
+    plt.tight_layout()
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
     plt.show()
-    
-    return {
-        'l0_mean': l0_lengths.mean(),
-        'l0_std': l0_lengths.std(),
-        'l1_mean': l1_lengths.mean(),
-        'l1_std': l1_lengths.std()
-    }
 
 
-def plot_pos_distribution(token_df, top_n=15, title="POS Tag Distribution", 
-                         save_path=None):
+# Backward-compatible wrapper
+def plot_length_distribution(df: pd.DataFrame, text_col: str = 'text',
+                             title: str = "Text Length Distribution",
+                             save_path: Optional[Path] = None) -> Dict:
+    """Convenience wrapper — calls both histogram and boxplot."""
+    stats = plot_length_histogram(df, text_col, f"{title} (Histogram)", save_path)
+    plot_length_boxplot(df, text_col, f"{title} (Box Plot)", save_path)
+    return stats
+
+
+# ============================================================================
+# C. POS TAG ANALYSIS
+# ============================================================================
+
+def plot_pos_distribution(token_df: pd.DataFrame,
+                          top_n: int = 15,
+                          title: str = "POS Tag Distribution",
+                          save_path: Optional[Path] = None) -> Dict:
     """
-    Plot distribution of POS tags.
-    
+    Plot distribution of POS tags separated by label.
+
     Args:
         token_df: Token-level DataFrame with 'pos' column
         top_n: Number of top POS tags to show
         title: Plot title
         save_path: Optional save path
+
+    Returns:
+        Dict with POS counters per class
     """
-    # Count POS tags by label
     l0_pos = Counter(token_df[token_df['label'] == 0]['pos'])
     l1_pos = Counter(token_df[token_df['label'] == 1]['pos'])
-    
-    # Get top N from L1 (anomalies)
+
     top_pos_tags = [tag for tag, _ in l1_pos.most_common(top_n)]
-    
-    # Create DataFrame for plotting
+
     plot_data = []
     for pos in top_pos_tags:
-        plot_data.append({
-            'POS': pos,
-            'Count': l0_pos.get(pos, 0),
-            'Label': 'Neutral (L0)'
-        })
-        plot_data.append({
-            'POS': pos,
-            'Count': l1_pos.get(pos, 0),
-            'Label': 'LJMPNIK (L1)'
-        })
-    
+        plot_data.append({'POS': pos, 'Count': l0_pos.get(pos, 0), 'Label': 'Neutral (L0)'})
+        plot_data.append({'POS': pos, 'Count': l1_pos.get(pos, 0), 'Label': 'LJMPNIK (L1)'})
     plot_df = pd.DataFrame(plot_data)
-    
-    # Create figure
+
     fig, ax = plt.subplots(figsize=(12, 6))
-    
+
     sns.barplot(
-        data=plot_df,
-        x='POS',
-        y='Count',
-        hue='Label',
+        data=plot_df, x='POS', y='Count', hue='Label',
         palette=[config.COLORS['l0'], config.COLORS['l1']],
         ax=ax
     )
-    
-    ax.set_xlabel('POS Tag', fontweight='bold')
-    ax.set_ylabel('Count', fontweight='bold')
-    ax.set_title(title, fontweight='bold', pad=15)
+
+    ax.set_xlabel('POS Tag')
+    ax.set_ylabel('Count')
+    ax.set_title(title, pad=15)
     ax.legend(title='Class')
-    ax.grid(True, alpha=0.3, axis='y')
-    
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
-    
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
     plt.show()
-    
-    return {
-        'l0_pos_distribution': l0_pos,
-        'l1_pos_distribution': l1_pos
-    }
+
+    return {'l0_pos_distribution': l0_pos, 'l1_pos_distribution': l1_pos}
 
 
-def plot_ljmpnik_pos_analysis(token_df, title="LJMPNIK POS Tag Analysis", 
-                              save_path=None):
+def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
+                              title: str = "LJMPNIK POS Tag Analysis",
+                              save_path: Optional[Path] = None) -> Optional[pd.Series]:
     """
-    Analyze POS tags specifically for LJMPNIK tokens (where is_target=True).
-    
+    Analyze POS tags specifically for LJMPNIK tokens (is_target=True).
+
     Args:
         token_df: Token DataFrame
         title: Plot title
         save_path: Optional save path
+
+    Returns:
+        pd.Series with POS counts, or None if no LJMPNIK tokens
     """
-    # Filter to only LJMPNIK tokens
     ljmpnik_tokens = token_df[token_df['is_target'] == True]
-    
+
     if len(ljmpnik_tokens) == 0:
-        print("⚠️ No LJMPNIK tokens found (is_target=True)")
+        print("No LJMPNIK tokens found (is_target=True)")
         return None
-    
-    # Count POS tags
+
     pos_counts = ljmpnik_tokens['pos'].value_counts()
-    
-    # Create figure
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
-    
-    # Bar plot
+
     bars = ax.bar(
-        pos_counts.index,
-        pos_counts.values,
-        color=config.COLORS['l1'],
-        alpha=0.8,
-        edgecolor='black'
+        pos_counts.index, pos_counts.values,
+        color=config.COLORS['l1'], edgecolor='white', linewidth=1.2
     )
-    
-    # Add value labels
+
     for bar in bars:
         height = bar.get_height()
-        ax.text(
-            bar.get_x() + bar.get_width() / 2.,
-            height,
-            f'{int(height)}',
-            ha='center',
-            va='bottom',
-            fontweight='bold'
-        )
-    
-    ax.set_xlabel('POS Tag', fontweight='bold')
-    ax.set_ylabel('Count of LJMPNIK Tokens', fontweight='bold')
-    ax.set_title(title, fontweight='bold', pad=15)
-    ax.grid(True, alpha=0.3, axis='y')
-    
-    # Add summary text
+        ax.text(bar.get_x() + bar.get_width() / 2., height,
+                f'{int(height)}', ha='center', va='bottom', fontweight='bold')
+
+    ax.set_xlabel('POS Tag')
+    ax.set_ylabel('Count of LJMPNIK Tokens')
+    ax.set_title(title, pad=15)
+
     total = len(ljmpnik_tokens)
     top_pos = pos_counts.index[0]
     top_pct = (pos_counts.iloc[0] / total) * 100
-    
-    summary_text = (
-        f"Total LJMPNIK tokens: {total}\\n"
-        f"Most common: {top_pos} ({top_pct:.1f}%)"
-    )
-    
-    ax.text(
-        0.98, 0.98,
-        summary_text,
-        transform=ax.transAxes,
-        ha='right',
-        va='top',
-        bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5),
-        fontsize=10
-    )
-    
+    summary_text = f"Total LJMPNIK tokens: {total}\nMost common: {top_pos} ({top_pct:.1f}%)"
+    ax.text(0.98, 0.98, summary_text, transform=ax.transAxes, ha='right', va='top',
+            bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7), fontsize=10)
+
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
-    
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
     plt.show()
-    
     return pos_counts
 
 
-def plot_document_statistics(df, title="Document Statistics", save_path=None):
+# ============================================================================
+# D. DOCUMENT-LEVEL ANALYSIS (split into independent figures)
+# ============================================================================
+
+def plot_sentences_per_document(df: pd.DataFrame,
+                                title: str = "Sentences per Document",
+                                save_path: Optional[Path] = None) -> None:
     """
-    Show statistics at document level.
-    
+    Plot histogram of sentences per document, separated by label.
+
     Args:
         df: DataFrame with 'document_id' and 'label' columns
         title: Plot title
         save_path: Optional save path
     """
-    # Group by document
     doc_stats = df.groupby('document_id').agg({
-        'label': 'first',  # Document label (same for all sentences in doc)
-        'sentence_id': 'count'  # Count sentences per document
+        'label': 'first',
+        'sentence_id': 'count'
     }).rename(columns={'sentence_id': 'num_sentences'})
-    
-    # Separate by label
+
     l0_docs = doc_stats[doc_stats['label'] == 0]['num_sentences']
     l1_docs = doc_stats[doc_stats['label'] == 1]['num_sentences']
-    
-    # Create figure
-    fig, axes = plt.subplots(1, 2, figsize=config.VIZ_CONFIG['figure_sizes']['wide'])
-    
-    # Histogram of sentences per document
-    axes[0].hist(
-        [l0_docs, l1_docs],
-        bins=15,
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    ax.hist(
+        [l0_docs, l1_docs], bins=15,
         label=['Neutral Docs', 'LJMPNIK Docs'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7,
-        edgecolor='black'
+        alpha=0.7, edgecolor='white'
     )
-    axes[0].set_xlabel('Sentences per Document')
-    axes[0].set_ylabel('Frequency')
-    axes[0].set_title('Sentences per Document', fontweight='bold')
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
-    
-    # Summary stats
+    ax.set_xlabel('Sentences per Document')
+    ax.set_ylabel('Frequency')
+    ax.set_title(title, pad=15)
+    ax.legend()
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
+    plt.show()
+
+
+def plot_document_stats_table(df: pd.DataFrame,
+                              title: str = "Document Statistics",
+                              save_path: Optional[Path] = None) -> pd.DataFrame:
+    """
+    Show document-level summary statistics as a standalone table figure.
+
+    Args:
+        df: DataFrame with 'document_id' and 'label' columns
+        title: Plot title
+        save_path: Optional save path
+
+    Returns:
+        Summary DataFrame
+    """
+    doc_stats = df.groupby('document_id').agg({
+        'label': 'first',
+        'sentence_id': 'count'
+    }).rename(columns={'sentence_id': 'num_sentences'})
+
+    l0_docs = doc_stats[doc_stats['label'] == 0]['num_sentences']
+    l1_docs = doc_stats[doc_stats['label'] == 1]['num_sentences']
+
     summary_data = pd.DataFrame({
         'Metric': ['Documents', 'Avg Sentences/Doc', 'Std Sentences/Doc'],
-        'Neutral': [
-            len(l0_docs),
-            l0_docs.mean(),
-            l0_docs.std()
-        ],
-        'LJMPNIK': [
-            len(l1_docs),
-            l1_docs.mean(),
-            l1_docs.std()
-        ]
+        'Neutral': [len(l0_docs), f"{l0_docs.mean():.2f}", f"{l0_docs.std():.2f}"],
+        'LJMPNIK': [len(l1_docs), f"{l1_docs.mean():.2f}", f"{l1_docs.std():.2f}"],
     })
-    
-    axes[1].axis('off')
-    table = axes[1].table(
+
+    fig, ax = plt.subplots(figsize=(8, 3))
+    ax.axis('off')
+
+    table = ax.table(
         cellText=summary_data.values,
         colLabels=summary_data.columns,
-        cellLoc='center',
-        loc='center',
-        bbox=[0, 0.2, 1, 0.6]
+        cellLoc='center', loc='center',
+        bbox=[0, 0, 1, 1]
     )
     table.auto_set_font_size(False)
-    table.set_fontsize(10)
+    table.set_fontsize(11)
     table.scale(1, 2)
-    
-    # Color header
+
     for i in range(len(summary_data.columns)):
-        table[(0, i)].set_facecolor('#40466e')
+        table[(0, i)].set_facecolor('#8DA0CB')
         table[(0, i)].set_text_props(weight='bold', color='white')
-    
-    axes[1].set_title('Document Statistics', fontweight='bold')
-    
-    fig.suptitle(title, fontweight='bold', fontsize=14, y=0.98)
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
-    
+
+    ax.set_title(title, pad=15)
+    plt.tight_layout()
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+
     plt.show()
-    
     return summary_data
 
 
-def plot_dataset_overview(token_df, sentence_df, dataset_name='Dataset', save_path=None):
-    """
-    Comprehensive overview of a dataset.
-    
-    Args:
-        token_df: Token-level DataFrame
-        sentence_df: Sentence-level DataFrame
-        dataset_name: Name for title
-        save_path: Optional save path
-    """
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle(f'{dataset_name} Overview', fontsize=16, fontweight='bold', y=0.995)
-    
-    # 1. Class distribution (sentences)
+# Backward-compatible wrapper
+def plot_document_statistics(df: pd.DataFrame, title: str = "Document Statistics",
+                             save_path: Optional[Path] = None) -> pd.DataFrame:
+    """Convenience wrapper — calls both document plots."""
+    plot_sentences_per_document(df, f"{title} — Sentences per Document", save_path)
+    return plot_document_stats_table(df, f"{title} — Summary Table", save_path)
+
+
+# ============================================================================
+# E. DATASET OVERVIEW (split into 4 independent figures)
+# ============================================================================
+
+def plot_overview_class_dist(sentence_df: pd.DataFrame,
+                             dataset_name: str = 'Dataset',
+                             save_path: Optional[Path] = None) -> None:
+    """Sentence-level class distribution bar chart."""
     sent_label_counts = sentence_df['label'].value_counts().sort_index()
-    axes[0, 0].bar(
-        ['Neutral', 'LJMPNIK'],
-        sent_label_counts.values,
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
+
+    bars = ax.bar(
+        ['Neutral', 'LJMPNIK'], sent_label_counts.values,
         color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.8,
-        edgecolor='black'
+        edgecolor='white', linewidth=1.2
     )
     for i, v in enumerate(sent_label_counts.values):
-        axes[0, 0].text(i, v, str(v), ha='center', va='bottom', fontweight='bold')
-    axes[0, 0].set_title('Sentence-Level Class Distribution', fontweight='bold')
-    axes[0, 0].set_ylabel('Count')
-    axes[0, 0].grid(True, alpha=0.3, axis='y')
-    
-    # 2. Token count distribution
+        ax.text(i, v, str(v), ha='center', va='bottom', fontweight='bold')
+
+    ax.set_title(f'{dataset_name} — Sentence-Level Class Distribution', pad=15)
+    ax.set_ylabel('Count')
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+    plt.show()
+
+
+def plot_overview_token_dist(sentence_df: pd.DataFrame,
+                             dataset_name: str = 'Dataset',
+                             save_path: Optional[Path] = None) -> None:
+    """Token count distribution histogram by label."""
     if 'num_tokens' in sentence_df.columns:
         lengths = sentence_df['num_tokens']
     else:
         lengths = sentence_df['text'].str.split().str.len()
-    
+
     l0_len = lengths[sentence_df['label'] == 0]
     l1_len = lengths[sentence_df['label'] == 1]
-    
-    axes[0, 1].hist(
-        [l0_len, l1_len],
-        bins=20,
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    ax.hist(
+        [l0_len, l1_len], bins=20,
         label=['Neutral', 'LJMPNIK'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7,
-        edgecolor='black'
+        alpha=0.7, edgecolor='white'
     )
-    axes[0, 1].set_title('Token Count Distribution', fontweight='bold')
-    axes[0, 1].set_xlabel('Tokens per Sentence')
-    axes[0, 1].set_ylabel('Frequency')
-    axes[0, 1].legend()
-    axes[0, 1].grid(True, alpha=0.3)
-    
-    # 3. POS distribution (top 10)
+    ax.set_title(f'{dataset_name} — Token Count Distribution', pad=15)
+    ax.set_xlabel('Tokens per Sentence')
+    ax.set_ylabel('Frequency')
+    ax.legend()
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+    plt.show()
+
+
+def plot_overview_top_pos(token_df: pd.DataFrame,
+                          dataset_name: str = 'Dataset',
+                          top_n: int = 10,
+                          save_path: Optional[Path] = None) -> None:
+    """Top N POS tags grouped bar chart by label."""
     l0_pos = Counter(token_df[token_df['label'] == 0]['pos'])
     l1_pos = Counter(token_df[token_df['label'] == 1]['pos'])
-    
-    top_pos = [tag for tag, _ in l1_pos.most_common(10)]
+
+    top_pos = [tag for tag, _ in l1_pos.most_common(top_n)]
     l0_counts = [l0_pos.get(tag, 0) for tag in top_pos]
     l1_counts = [l1_pos.get(tag, 0) for tag in top_pos]
-    
+
     x = np.arange(len(top_pos))
     width = 0.35
-    
-    axes[1, 0].bar(x - width/2, l0_counts, width, label='Neutral', 
-                   color=config.COLORS['l0'], alpha=0.8, edgecolor='black')
-    axes[1, 0].bar(x + width/2, l1_counts, width, label='LJMPNIK', 
-                   color=config.COLORS['l1'], alpha=0.8, edgecolor='black')
-    
-    axes[1, 0].set_title('Top 10 POS Tags', fontweight='bold')
-    axes[1, 0].set_xlabel('POS Tag')
-    axes[1, 0].set_ylabel('Count')
-    axes[1, 0].set_xticks(x)
-    axes[1, 0].set_xticklabels(top_pos, rotation=45, ha='right')
-    axes[1, 0].legend()
-    axes[1, 0].grid(True, alpha=0.3, axis='y')
-    
-    # 4. Summary statistics table
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    ax.bar(x - width / 2, l0_counts, width, label='Neutral',
+           color=config.COLORS['l0'], edgecolor='white', linewidth=1.2)
+    ax.bar(x + width / 2, l1_counts, width, label='LJMPNIK',
+           color=config.COLORS['l1'], edgecolor='white', linewidth=1.2)
+
+    ax.set_title(f'{dataset_name} — Top {top_n} POS Tags', pad=15)
+    ax.set_xlabel('POS Tag')
+    ax.set_ylabel('Count')
+    ax.set_xticks(x)
+    ax.set_xticklabels(top_pos, rotation=45, ha='right')
+    ax.legend()
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
+    plt.show()
+
+
+def plot_overview_summary_table(token_df: pd.DataFrame,
+                                sentence_df: pd.DataFrame,
+                                dataset_name: str = 'Dataset',
+                                save_path: Optional[Path] = None) -> None:
+    """Summary statistics table as standalone figure."""
     summary_stats = pd.DataFrame({
         'Metric': [
-            'Total Documents',
-            'Total Sentences',
-            'Total Tokens',
-            'Avg Tokens/Sentence',
-            'LJMPNIK Tokens',
-            'Unique POS Tags'
+            'Total Documents', 'Total Sentences', 'Total Tokens',
+            'Avg Tokens/Sentence', 'LJMPNIK Tokens', 'Unique POS Tags'
         ],
         'Value': [
             token_df['document_id'].nunique(),
             sentence_df.shape[0],
             token_df.shape[0],
             f"{token_df.groupby('sentence_id').size().mean():.1f}",
-            (token_df['is_target'] == True).sum(),
+            int((token_df['is_target'] == True).sum()),
             token_df['pos'].nunique()
         ]
     })
-    
-    axes[1, 1].axis('off')
-    table = axes[1, 1].table(
+
+    fig, ax = plt.subplots(figsize=(7, 4))
+    ax.axis('off')
+
+    table = ax.table(
         cellText=summary_stats.values,
         colLabels=summary_stats.columns,
-        cellLoc='left',
-        loc='center',
-        bbox=[0, 0.1, 1, 0.8]
+        cellLoc='left', loc='center',
+        bbox=[0, 0, 1, 1]
     )
     table.auto_set_font_size(False)
     table.set_fontsize(11)
     table.scale(1, 2.5)
-    
-    # Color header
+
     for i in range(len(summary_stats.columns)):
-        table[(0, i)].set_facecolor('#40466e')
+        table[(0, i)].set_facecolor('#8DA0CB')
         table[(0, i)].set_text_props(weight='bold', color='white')
-    
-    axes[1, 1].set_title('Summary Statistics', fontweight='bold')
-    
-    plt.tight_layout(rect=[0, 0, 1, 0.99])
-    
+
+    ax.set_title(f'{dataset_name} — Summary Statistics', pad=15)
+    plt.tight_layout()
+
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
-    
+        plt.savefig(save_path, dpi=_DPI, bbox_inches='tight')
     plt.show()
 
 
-def print_data_summary(token_df, sentence_df, dataset_name='Dataset'):
-    """
-    # UNUSED FUNCTION! New one is print_dataset_stats()
+# Backward-compatible wrapper
+def plot_dataset_overview(token_df: pd.DataFrame, sentence_df: pd.DataFrame,
+                          dataset_name: str = 'Dataset',
+                          save_path: Optional[Path] = None) -> None:
+    """Convenience wrapper — calls all 4 overview plots."""
+    plot_overview_class_dist(sentence_df, dataset_name, save_path)
+    plot_overview_token_dist(sentence_df, dataset_name, save_path)
+    plot_overview_top_pos(token_df, dataset_name, save_path=save_path)
+    plot_overview_summary_table(token_df, sentence_df, dataset_name, save_path)
 
-    Print textual summary of dataset statistics.
-    
-    Args:
-        token_df: Token DataFrame
-        sentence_df: Sentence DataFrame
-        dataset_name: Name for display
-    """
-    print(f"\\n{'='*60}")
-    print(f"{dataset_name} SUMMARY")
-    print(f"{'='*60}\\n")
-    
-    # Document level
-    n_docs = token_df['document_id'].nunique()
-    n_docs_l0 = sentence_df[sentence_df['label'] == 0]['document_id'].nunique()
-    n_docs_l1 = sentence_df[sentence_df['label'] == 1]['document_id'].nunique()
-    
-    print(f"📁 DOCUMENTS:")
-    print(f"   Total: {n_docs}")
-    print(f"   Neutral: {n_docs_l0}")
-    print(f"   LJMPNIK: {n_docs_l1}")
-    
-    # Sentence level
-    n_sent = len(sentence_df)
-    n_sent_l0 = (sentence_df['label'] == 0).sum()
-    n_sent_l1 = (sentence_df['label'] == 1).sum()
-    
-    # Filter out context if exists
-    if 'is_context' in sentence_df.columns:
-        n_context = sentence_df['is_context'].sum()
-        n_target = (~sentence_df['is_context']).sum()
-        print(f"\\n📝 SENTENCES:")
-        print(f"   Total: {n_sent}")
-        print(f"   Target: {n_target} (Neutral: {n_sent_l0}, LJMPNIK: {n_sent_l1})")
-        print(f"   Context: {n_context}")
-    else:
-        print(f"\\n📝 SENTENCES:")
-        print(f"   Total: {n_sent}")
-        print(f"   Neutral: {n_sent_l0}")
-        print(f"   LJMPNIK: {n_sent_l1}")
-        print(f"   Ratio L0:L1 = {n_sent_l0/n_sent_l1:.2f}:1")
-    
-    # Token level
-    n_tokens = len(token_df)
-    n_ljmpnik = (token_df['is_target'] == True).sum()
-    avg_tokens_per_sent = token_df.groupby('sentence_id').size().mean()
-    
-    print(f"\\n🔤 TOKENS:")
-    print(f"   Total: {n_tokens:,}")
-    print(f"   LJMPNIK: {n_ljmpnik}")
-    print(f"   Avg per sentence: {avg_tokens_per_sent:.1f}")
-    
-    # POS distribution
-    top_pos = token_df['pos'].value_counts().head(5)
-    print(f"\\n📊 TOP 5 POS TAGS:")
-    for pos, count in top_pos.items():
-        pct = (count / n_tokens) * 100
-        print(f"   {pos}: {count:,} ({pct:.1f}%)")
-    
-    print(f"\\n{'='*60}\\n")
 
-def print_dataset_stats(token_df, sentence_df, name="DATASET"):
+# ============================================================================
+# F. TEXT SUMMARIES (non-visual)
+# ============================================================================
+
+def print_dataset_stats(token_df: pd.DataFrame,
+                        sentence_df: pd.DataFrame,
+                        name: str = "DATASET") -> None:
     """
     Print basic statistics about the dataset.
     Robust version handles NaN values in boolean columns.
-
-    Args:
-        token_df: Token DataFrame
-        sentence_df: Sentence DataFrame
-        name: Name for display
-    
     """
-    print(f"\n{'='*20} {name} STATS {'='*20}")
-    
-    # Document level
-    n_docs = sentence_df['document_id'].nunique()
-    print(f"📄 DOCUMENTS: {n_docs}")
+    print(f"\n{'=' * 20} {name} STATS {'=' * 20}")
 
-    # Sentence level
+    n_docs = sentence_df['document_id'].nunique()
+    print(f"DOCUMENTS: {n_docs}")
+
     n_sent = len(sentence_df)
     n_sent_l0 = (sentence_df['label'] == 0).sum()
     n_sent_l1 = (sentence_df['label'] == 1).sum()
-    
-    print(f"\n📝 SENTENCES:")
+
+    print(f"\nSENTENCES:")
     print(f"   Total: {n_sent}")
-    
-    # --- OPRAVA ZDE ---
+
     if 'is_context' in sentence_df.columns:
-        # 1. Ošetření NaN hodnot (vyplníme False) a převod na bool
         is_context_safe = sentence_df['is_context'].fillna(False).astype(bool)
-        
         n_context = is_context_safe.sum()
-        # Teď už můžeme použít vlnovku ~, protože je to bezpečný bool
         n_target = (~is_context_safe).sum()
-        
-        # Pro L0/L1 počítáme jen TARGET věty (bez kontextu)
+
         target_mask = ~is_context_safe
         target_l0 = ((sentence_df['label'] == 0) & target_mask).sum()
         target_l1 = ((sentence_df['label'] == 1) & target_mask).sum()
 
         print(f"   Target (Analyzed): {n_target}")
-        print(f"     ├─ Neutral (L0): {target_l0}")
-        print(f"     └─ LJMPNIK (L1): {target_l1}")
+        print(f"     Neutral (L0): {target_l0}")
+        print(f"     LJMPNIK (L1): {target_l1}")
         print(f"   Context (Ignored): {n_context}")
     else:
         print(f"   Neutral: {n_sent_l0}")
         print(f"   LJMPNIK: {n_sent_l1}")
-    
-    # Token level
+
     n_tokens = len(token_df)
-    # Zde také ošetříme label, kdyby tam byly NaN
     n_ljmpnik = (token_df['label'].fillna(0) == 1).sum()
-    
-    print(f"\n🔤 TOKENS:")
+
+    print(f"\nTOKENS:")
     print(f"   Total: {n_tokens}")
     print(f"   LJMPNIK anomalies: {n_ljmpnik}")
-    print(f"   Global anomaly rate: {n_ljmpnik/n_tokens*100:.4f}%")
+    print(f"   Global anomaly rate: {n_ljmpnik / n_tokens * 100:.4f}%")
