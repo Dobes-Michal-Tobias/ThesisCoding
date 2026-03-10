@@ -3,17 +3,14 @@
 		=== ÚPRAVY V DIMPLOMCE ===
 
 
-Sjednocení vizualizací (visualization.py)
-		použít paletu set2
-		navázat vše na config (sjednotit styl)
-		sjednotit využití grafů pro rúzné notebooky/experimenty.
-		Přidat celkové vizualiazce.
 
 Bootstrap CI a Permutační testy (evaluation.py)
 
 Přidat a vyladit XGBoost v M2/S1
 
 Přidělat M3_S1 (LLM na úrovni slov)
+
+10 fold stratifikace do deep dive retraining v M2
 
 
 

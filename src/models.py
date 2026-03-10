@@ -29,6 +29,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.dummy import DummyClassifier
 from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
 
 # Optional XGBoost support
 try:
@@ -494,6 +495,106 @@ def get_supervised_model(name: str,
     return models[name]()
 
 # ============================================================================
+# XGBOOST HYPERPARAMETER TUNING
+# ============================================================================
+
+def tune_xgboost(X_train: np.ndarray,
+                 y_train: np.ndarray,
+                 param_grid: Dict[str, list],
+                 n_iter: int = None,
+                 cv: int = None,
+                 scoring: str = None,
+                 random_state: int = None) -> Dict[str, Any]:
+    """
+    Tune XGBoost hyperparameters using RandomizedSearchCV.
+
+    Dynamically computes scale_pos_weight from the training data to handle
+    class imbalance. Uses StratifiedKFold to preserve class ratios in each fold.
+
+    Args:
+        X_train: Training feature matrix of shape (n_samples, n_features).
+        y_train: Training labels of shape (n_samples,).
+        param_grid: Dictionary of hyperparameter distributions to search over.
+            Example: {'learning_rate': [0.01, 0.1], 'max_depth': [3, 5, 7]}
+        n_iter: Number of random parameter combinations to try.
+            Defaults to config.XGBOOST_TUNING_CONFIG['n_iter'].
+        cv: Number of cross-validation folds.
+            Defaults to config.XGBOOST_TUNING_CONFIG['cv'].
+        scoring: Scoring metric for optimization.
+            Defaults to config.XGBOOST_TUNING_CONFIG['scoring'].
+        random_state: Random seed for reproducibility.
+            Defaults to config.XGBOOST_TUNING_CONFIG['random_state'].
+
+    Returns:
+        Dictionary of best hyperparameters found (excludes scale_pos_weight,
+        eval_metric and other base params — these are set automatically
+        during model creation via get_supervised_model).
+
+    Raises:
+        RuntimeError: If XGBoost is not installed.
+        ValueError: If y_train contains no positive samples.
+
+    Example:
+        >>> import config
+        >>> best_params = tune_xgboost(X_train, y_train, config.XGBOOST_PARAM_GRID)
+        >>> clf = get_supervised_model('XGBoost', **best_params)
+        >>> clf.fit(X_train, y_train)
+    """
+    if not XGBOOST_AVAILABLE:
+        raise RuntimeError("XGBoost is not installed. Install with: pip install xgboost")
+
+    # Defaults from config
+    tuning_cfg = config.XGBOOST_TUNING_CONFIG
+    n_iter = n_iter or tuning_cfg['n_iter']
+    cv = cv or tuning_cfg['cv']
+    scoring = scoring or tuning_cfg['scoring']
+    random_state = random_state or tuning_cfg['random_state']
+
+    # Dynamic scale_pos_weight
+    n_neg = int(np.sum(y_train == 0))
+    n_pos = int(np.sum(y_train == 1))
+    if n_pos == 0:
+        raise ValueError("y_train contains no positive samples (label=1).")
+    scale_pos_weight = n_neg / n_pos
+
+    logger.info(
+        f"Tuning XGBoost: {n_iter} iterations, {cv}-fold CV, "
+        f"scoring='{scoring}', scale_pos_weight={scale_pos_weight:.2f} "
+        f"(neg={n_neg}, pos={n_pos})"
+    )
+
+    # Base estimator with fixed params
+    base_estimator = XGBClassifier(
+        scale_pos_weight=scale_pos_weight,
+        eval_metric='aucpr',
+        use_label_encoder=False,
+        n_jobs=-1,
+        random_state=random_state,
+    )
+
+    # Stratified CV to preserve class ratios
+    cv_strategy = StratifiedKFold(n_splits=cv, shuffle=True, random_state=random_state)
+
+    search = RandomizedSearchCV(
+        estimator=base_estimator,
+        param_distributions=param_grid,
+        n_iter=n_iter,
+        scoring=scoring,
+        cv=cv_strategy,
+        random_state=random_state,
+        n_jobs=-1,
+        verbose=0,
+    )
+
+    search.fit(X_train, y_train)
+
+    best_params = search.best_params_
+    logger.info(f"Best XGBoost params (AUPRC={search.best_score_:.4f}): {best_params}")
+
+    return best_params
+
+
+# ============================================================================
 # EXPORTS
 # ============================================================================
 
@@ -510,6 +611,9 @@ __all__ = [
     # Supervised models
     'get_supervised_model',
     
+    # Tuning
+    'tune_xgboost',
+
     # Utilities
     'XGBOOST_AVAILABLE',
 ]
