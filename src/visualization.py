@@ -1374,11 +1374,160 @@ __all__ = [
 
     # LLM Benchmark
     'plot_llm_vs_m2_comparison',
+
+    # Master
+    'plot_experiment_results',
 ]
 
 
 # ============================================================================
-# F. THESIS-LEVEL VISUALIZATIONS (stubs for future implementation)
+# F. MASTER EXPERIMENT VISUALIZATION
+# ============================================================================
+
+def plot_experiment_results(
+    df_results: pd.DataFrame,
+    metric: str = 'auprc',
+    facet_col: Optional[str] = 'pooling',
+    facet_row: Optional[str] = None,
+    title_prefix: str = "Porovnání modelů",
+    save_path: Optional[Union[str, Path]] = None,
+) -> sns.FacetGrid:
+    """
+    Master function for visualizing experiment results across models and splits.
+
+    Automatically detects available Train/Val/Test columns for the given metric,
+    melts the DataFrame into long format, and produces a faceted bar chart with
+    annotated values — ready for thesis inclusion.
+
+    Args:
+        df_results: Wide-format results DataFrame. Must contain 'model' column
+            and at least one of 'train_{metric}', 'val_{metric}', 'test_{metric}'.
+        metric: Metric suffix (e.g. 'auprc', 'f1', 'prec', 'rec').
+        facet_col: Column used for facet columns (e.g. 'pooling'). None to disable.
+        facet_row: Column used for facet rows (e.g. 'scenario'). None to disable.
+        title_prefix: Prefix for the main suptitle.
+        save_path: If provided, save figure to this path.
+
+    Returns:
+        The seaborn FacetGrid object for further customization if needed.
+
+    Example:
+        >>> g = plot_experiment_results(results_df, metric='f1', facet_col='pooling')
+        >>> g = plot_experiment_results(results_df, metric='auprc', facet_col='scenario',
+        ...                            save_path='results/overview_auprc.png')
+    """
+    # ------------------------------------------------------------------
+    # 1. Detect available split columns & build rename map
+    # ------------------------------------------------------------------
+    split_map = {
+        f'train_{metric}': 'Train',
+        f'val_{metric}':   'Val',
+        f'test_{metric}':  'Test',
+    }
+    available = {col: label for col, label in split_map.items()
+                 if col in df_results.columns}
+
+    if not available:
+        raise ValueError(
+            f"No columns matching *_{metric} found. "
+            f"Available columns: {df_results.columns.tolist()}"
+        )
+
+    # ------------------------------------------------------------------
+    # 2. Build id_vars (always 'model' + optional facets)
+    # ------------------------------------------------------------------
+    id_vars = ['model']
+    for facet in [facet_col, facet_row]:
+        if facet is not None and facet in df_results.columns and facet not in id_vars:
+            id_vars.append(facet)
+
+    # ------------------------------------------------------------------
+    # 3. Melt wide → long
+    # ------------------------------------------------------------------
+    df_melted = df_results.melt(
+        id_vars=id_vars,
+        value_vars=list(available.keys()),
+        var_name='_split_raw',
+        value_name='Score',
+    )
+    df_melted['Dataset'] = df_melted['_split_raw'].map(available)
+    df_melted.drop(columns='_split_raw', inplace=True)
+
+    # Ordered so that bars appear Train → Val → Test
+    hue_order = [label for label in ['Train', 'Val', 'Test']
+                 if label in df_melted['Dataset'].unique()]
+
+    # Filter palette to only present splits
+    palette = {k: v for k, v in config.DATASET_COLORS.items() if k in hue_order}
+
+    # ------------------------------------------------------------------
+    # 4. Build catplot kwargs
+    # ------------------------------------------------------------------
+    catplot_kw = dict(
+        data=df_melted,
+        kind='bar',
+        x='model',
+        y='Score',
+        hue='Dataset',
+        hue_order=hue_order,
+        palette=palette,
+        height=5,
+        aspect=1.2,
+        sharey=True,
+        edgecolor='white',
+        linewidth=1.2,
+        errorbar=None,
+    )
+
+    if facet_col and facet_col in df_melted.columns:
+        catplot_kw['col'] = facet_col
+    if facet_row and facet_row in df_melted.columns:
+        catplot_kw['row'] = facet_row
+
+    # ------------------------------------------------------------------
+    # 5. Draw
+    # ------------------------------------------------------------------
+    g = sns.catplot(**catplot_kw)
+
+    # ------------------------------------------------------------------
+    # 6. Annotate bars & polish axes
+    # ------------------------------------------------------------------
+    for ax in g.axes.flat:
+        ax.set_ylim(0, 1.05)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+
+        for container in ax.containers:
+            labels = [f'{v:.2f}' if (v := bar.get_height()) == v else ''
+                      for bar in container]
+            ax.bar_label(container, labels=labels, padding=3, fontsize=9)
+
+    # ------------------------------------------------------------------
+    # 7. Titles & final touches
+    # ------------------------------------------------------------------
+    g.fig.suptitle(
+        f"{title_prefix} ({metric.upper()})",
+        y=1.05,
+        fontweight='bold',
+    )
+    g.set_axis_labels("", f"{metric.upper()} Score")
+    sns.despine()
+
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(
+            save_path,
+            dpi=config.VIZ_CONFIG['dpi']['print'],
+            bbox_inches='tight',
+        )
+        logger.info(f"Saved experiment results plot to {save_path}")
+
+    plt.show()
+    return g
+
+
+# ============================================================================
+# G. THESIS-LEVEL VISUALIZATIONS (stubs for future implementation)
 # ============================================================================
 #
 # Prostor pro celkové vizualizace diplomové práce.
