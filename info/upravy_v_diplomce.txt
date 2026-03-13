@@ -4,6 +4,8 @@
 
 Přidat master fci všude...
 
+Je všude shuffle?
+
 Bootstrap CI a Permutační testy (evaluation.py)
 
 Přidělat M3_S1 (LLM na úrovni slov)
