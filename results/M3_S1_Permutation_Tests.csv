@@ -1,0 +1,5 @@
+Comparison,Filter,Metric,Score_Model1,Score_Model2,Diff,p_value,Significant (α=0.05)
+Few-Shot vs Zero-Shot,none,AUPRC,0.1025,0.0902,0.0124,0.013,True
+Few-Shot vs Dummy,none,AUPRC,0.1025,0.049,0.0536,0.0016,True
+Few-Shot vs Zero-Shot,aggressive,AUPRC,0.152,0.1297,0.0223,0.003,True
+Few-Shot vs Dummy,aggressive,AUPRC,0.152,0.0621,0.0899,0.0026,True

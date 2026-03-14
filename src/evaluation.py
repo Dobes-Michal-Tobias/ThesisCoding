@@ -18,9 +18,17 @@ from sklearn.metrics import (
     confusion_matrix,
     average_precision_score
 )
+from sklearn.utils import resample
 import logging
 
 logger = logging.getLogger(__name__)
+
+__all__ = [
+    'find_optimal_threshold',
+    'calculate_metrics',
+    'calculate_bootstrap_ci',
+    'permutation_test',
+]
 
 def find_optimal_threshold(
     y_true: np.ndarray, 
@@ -103,5 +111,50 @@ def calculate_metrics(
     else:
         metrics['roc_auc'] = 0.0
         metrics['avg_precision'] = 0.0
-            
+
     return metrics
+
+
+def calculate_bootstrap_ci(y_true, y_pred, metric_func, n_bootstraps=1000, ci=95, random_state=42):
+    """Vypočítá interval spolehlivosti pro metriku pomocí bootstrap resamplingu."""
+    np.random.seed(random_state)
+    y_true_np, y_pred_np = np.array(y_true), np.array(y_pred)
+    indices = np.arange(len(y_true_np))
+    scores = []
+
+    for _ in range(n_bootstraps):
+        boot_idx = resample(indices, replace=True)
+        try:
+            scores.append(metric_func(y_true_np[boot_idx], y_pred_np[boot_idx]))
+        except Exception:
+            continue
+
+    if not scores:
+        return (np.nan, np.nan)
+    lower = (100 - ci) / 2.0
+    return np.percentile(scores, lower), np.percentile(scores, 100 - lower)
+
+
+def permutation_test(y_true, y_pred1, y_pred2, metric_func, n_permutations=10000, random_state=42):
+    """Provede párový permutační test: testuje, zda je model 1 lepší než model 2."""
+    np.random.seed(random_state)
+    y_true_np, y_pred1_np, y_pred2_np = np.array(y_true), np.array(y_pred1), np.array(y_pred2)
+
+    base_diff = metric_func(y_true_np, y_pred1_np) - metric_func(y_true_np, y_pred2_np)
+    if base_diff <= 0:
+        return 1.0
+
+    count_better = 0
+    n_samples = len(y_true_np)
+
+    for _ in range(n_permutations):
+        mask = np.random.binomial(1, 0.5, size=n_samples) > 0
+        p1 = np.where(mask, y_pred2_np, y_pred1_np)
+        p2 = np.where(mask, y_pred1_np, y_pred2_np)
+        try:
+            if (metric_func(y_true_np, p1) - metric_func(y_true_np, p2)) >= base_diff:
+                count_better += 1
+        except Exception:
+            continue
+
+    return (count_better + 1) / (n_permutations + 1)

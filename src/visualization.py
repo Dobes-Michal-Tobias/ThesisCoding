@@ -1342,45 +1342,6 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
 
 
 # ============================================================================
-# EXPORTS
-# ============================================================================
-
-__all__ = [
-    # Style
-    'setup_style',
-
-    # Metrics & Performance
-    'plot_pr_curve',
-    'plot_threshold_tuning',
-    'plot_anomaly_histogram',
-    'plot_confusion_matrix_heatmap',
-
-    # Embeddings & Projections
-    'compute_projections',
-    'plot_embedding_projection',
-
-    # Supervised Results
-    'plot_scenario_breakdown',
-    'plot_global_comparison',
-    'plot_pooling_breakdown',
-    'plot_three_way_comparison',
-    'plot_model_comparison',
-
-    # Advanced Analysis
-    'plot_model_calibration',
-    'plot_feature_importance',
-    'plot_error_analysis_projection',
-    'plot_bootstrap_results',
-
-    # LLM Benchmark
-    'plot_llm_vs_m2_comparison',
-
-    # Master
-    'plot_experiment_results',
-]
-
-
-# ============================================================================
 # F. MASTER EXPERIMENT VISUALIZATION
 # ============================================================================
 
@@ -1539,3 +1500,208 @@ def plot_experiment_results(
 #   - plot_thesis_pipeline_diagram()  — schéma celého experimentálního pipeline
 #   - plot_thesis_embedding_gallery() — grid projekcí (PCA/t-SNE/UMAP) pro appendix
 #
+
+
+
+# ============================================================================
+# E2. STATISTICAL ANALYSIS PLOTS
+# ============================================================================
+
+def plot_filter_boxplot(df_results: pd.DataFrame,
+                        metric_col: str = 'test_auprc',
+                        filter_col: str = 'filter',
+                        filter_order: Optional[List[str]] = None,
+                        title: Optional[str] = None,
+                        ylabel: Optional[str] = None,
+                        save_path: Optional[Path] = None) -> None:
+    """
+    Plot boxplot + swarmplot of a metric grouped by POS filter type.
+
+    Publication-ready single-panel figure showing the distribution of
+    model performance across filter categories.
+
+    Args:
+        df_results: DataFrame with experiment results.
+        metric_col: Column name of the metric to plot (e.g. 'test_auprc', 'test_f1').
+        filter_col: Column name for filter categories.
+        filter_order: Display order of filter categories.
+        title: Plot title. Auto-generated if None.
+        ylabel: Y-axis label. Auto-generated from metric_col if None.
+        save_path: If provided, save figure to this path.
+
+    Example:
+        >>> plot_filter_boxplot(df_m1, metric_col='test_auprc',
+        ...                     save_path=Path('results/M1_S1_Filter_AUPRC.png'))
+    """
+    if metric_col not in df_results.columns:
+        raise ValueError(f"Column '{metric_col}' not found. Available: {df_results.columns.tolist()}")
+    if filter_col not in df_results.columns:
+        raise ValueError(f"Column '{filter_col}' not found. Available: {df_results.columns.tolist()}")
+
+    if filter_order is None:
+        filter_order = sorted(df_results[filter_col].unique())
+
+    if title is None:
+        metric_label = metric_col.replace('test_', '').upper()
+        title = f"Distribuce {metric_label} podle POS filtru"
+
+    if ylabel is None:
+        ylabel = metric_col.replace('_', ' ').title()
+
+    palette = sns.color_palette(config.PALETTE_CATEGORICAL_NAME, n_colors=len(filter_order))
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    sns.boxplot(
+        data=df_results, x=filter_col, y=metric_col, order=filter_order,
+        palette=palette, width=0.5, ax=ax
+    )
+    sns.swarmplot(
+        data=df_results, x=filter_col, y=metric_col, order=filter_order,
+        color='black', size=5, alpha=0.7, ax=ax
+    )
+
+    ax.set_xlabel('POS Filtr', fontsize=config.VIZ_CONFIG['font']['label'])
+    ax.set_ylabel(ylabel, fontsize=config.VIZ_CONFIG['font']['label'])
+    ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)
+    ax.yaxis.grid(True, linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
+
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
+        logger.info(f"Saved filter boxplot to {save_path}")
+
+    plt.show()
+
+
+def plot_kruskal_posthoc_summary(df_results: pd.DataFrame,
+                                  metric_col: str = 'test_auprc',
+                                  filter_col: str = 'filter',
+                                  filter_order: Optional[List[str]] = None,
+                                  title: Optional[str] = None,
+                                  save_path: Optional[Path] = None) -> None:
+    """
+    Plot bar chart of mean metric per filter with error bars (std)
+    and annotated statistical test results (Kruskal-Wallis p-value).
+
+    Args:
+        df_results: DataFrame with experiment results.
+        metric_col: Column name of the metric to plot.
+        filter_col: Column name for filter categories.
+        filter_order: Display order of filter categories.
+        title: Plot title. Auto-generated if None.
+        save_path: If provided, save figure to this path.
+
+    Example:
+        >>> plot_kruskal_posthoc_summary(df_m1, metric_col='test_auprc',
+        ...     save_path=Path('results/M1_S1_Filter_Summary.png'))
+    """
+    from scipy import stats as sp_stats
+
+    if metric_col not in df_results.columns:
+        raise ValueError(f"Column '{metric_col}' not found.")
+    if filter_col not in df_results.columns:
+        raise ValueError(f"Column '{filter_col}' not found.")
+
+    if filter_order is None:
+        filter_order = sorted(df_results[filter_col].unique())
+
+    if title is None:
+        metric_label = metric_col.replace('test_', '').upper()
+        title = f"Průměrný {metric_label} podle POS filtru (± std)"
+
+    # Aggregate
+    agg = df_results.groupby(filter_col)[metric_col].agg(['mean', 'std']).reindex(filter_order)
+
+    # Kruskal-Wallis
+    groups = [df_results[df_results[filter_col] == f][metric_col].values for f in filter_order]
+    h_stat, p_kw = sp_stats.kruskal(*groups)
+
+    palette = sns.color_palette(config.PALETTE_CATEGORICAL_NAME, n_colors=len(filter_order))
+
+    fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+
+    bars = ax.bar(
+        filter_order, agg['mean'], yerr=agg['std'],
+        color=palette, edgecolor='white', linewidth=1.5,
+        capsize=5, width=0.5, error_kw={'linewidth': 1.5}
+    )
+
+    # Annotate bar values
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(
+            bar.get_x() + bar.get_width() / 2., height + agg['std'].max() * 0.15,
+            f'{height:.4f}', ha='center', va='bottom',
+            fontsize=config.VIZ_CONFIG['font']['annot'], fontweight='bold'
+        )
+
+    # Annotate KW result
+    sig_label = f"Kruskal-Wallis: H={h_stat:.2f}, p={p_kw:.4f}"
+    if p_kw < 0.05:
+        sig_label += " *"
+    ax.text(
+        0.5, 0.97, sig_label, transform=ax.transAxes,
+        ha='center', va='top', fontsize=config.VIZ_CONFIG['font']['annot'],
+        style='italic', color=config.VIZ_CONFIG['style']['text_color'],
+        bbox=dict(boxstyle='round,pad=0.3', facecolor='white', edgecolor='#CCCCCC', alpha=0.8)
+    )
+
+    ax.set_xlabel('POS Filtr', fontsize=config.VIZ_CONFIG['font']['label'])
+    ax.set_ylabel(metric_col.replace('_', ' ').title(), fontsize=config.VIZ_CONFIG['font']['label'])
+    ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)
+    ax.yaxis.grid(True, linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
+    sns.despine()
+
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
+        logger.info(f"Saved Kruskal summary plot to {save_path}")
+
+    plt.show()
+
+
+# ============================================================================
+# EXPORTS
+# ============================================================================
+
+__all__ = [
+    # Style
+    'setup_style',
+
+    # Metrics & Performance
+    'plot_pr_curve',
+    'plot_threshold_tuning',
+    'plot_anomaly_histogram',
+    'plot_confusion_matrix_heatmap',
+
+    # Embeddings & Projections
+    'compute_projections',
+    'plot_embedding_projection',
+
+    # Supervised Results
+    'plot_scenario_breakdown',
+    'plot_global_comparison',
+    'plot_pooling_breakdown',
+    'plot_three_way_comparison',
+    'plot_model_comparison',
+
+    # Advanced Analysis
+    'plot_model_calibration',
+    'plot_feature_importance',
+    'plot_error_analysis_projection',
+    'plot_bootstrap_results',
+
+    # Statistical Analysis
+    'plot_filter_boxplot',
+    'plot_kruskal_posthoc_summary',
+
+    # LLM Benchmark
+    'plot_llm_vs_m2_comparison',
+
+    # Master
+    'plot_experiment_results',
+]
+
