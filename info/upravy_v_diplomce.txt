@@ -5,6 +5,8 @@
 
 Je všude shuffle?
 
+Je všude stejný seed z config??
+
 
 
 
