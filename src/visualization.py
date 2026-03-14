@@ -1575,6 +1575,80 @@ def plot_filter_boxplot(df_results: pd.DataFrame,
     plt.show()
 
 
+def plot_cv_stability(cv_scores: Dict[str, List[float]],
+                      model_name: str = "Model",
+                      title: Optional[str] = None,
+                      save_path: Optional[Path] = None) -> None:
+    """
+    Plot boxplot + swarmplot of cross-validation fold scores.
+
+    Displays per-fold metric values with summary statistics (mean ± std)
+    as a dashed horizontal line. Designed for 10-fold stratified CV results.
+
+    Args:
+        cv_scores: Dict mapping metric name (e.g. 'AUPRC', 'F1') to list of
+            per-fold scores.
+        model_name: Name of the model (used in title).
+        title: Plot title. Auto-generated if None.
+        save_path: If provided, save figure to this path.
+
+    Example:
+        >>> scores = {'AUPRC': [0.72, 0.75, ...], 'F1': [0.68, 0.71, ...]}
+        >>> plot_cv_stability(scores, model_name='SVM (RBF)',
+        ...     save_path=Path('results/M2_S1_CV_Stability.png'))
+    """
+    if not cv_scores:
+        raise ValueError("cv_scores dictionary is empty")
+
+    n_metrics = len(cv_scores)
+    fig, axes = plt.subplots(1, n_metrics,
+                             figsize=(5 * n_metrics,
+                                      config.VIZ_CONFIG['figure_sizes']['small'][1]))
+    if n_metrics == 1:
+        axes = [axes]
+
+    if title is None:
+        title = f"Stabilita vítězného modelu ({model_name}) napříč foldy"
+
+    for ax, (metric_name, values) in zip(axes, cv_scores.items()):
+        df_cv = pd.DataFrame({metric_name: values})
+
+        sns.boxplot(
+            y=metric_name, data=df_cv, ax=ax,
+            color=config.COLORS['l0'], width=0.4
+        )
+        sns.swarmplot(
+            y=metric_name, data=df_cv, ax=ax,
+            color=config.COLORS['l1'], size=8, alpha=0.8
+        )
+
+        ax.set_title(f"{metric_name} across {len(values)} Folds",
+                     fontsize=config.VIZ_CONFIG['font']['title'])
+        ax.set_ylabel(metric_name,
+                      fontsize=config.VIZ_CONFIG['font']['label'])
+
+        # Mean ± std annotation
+        mean_val = np.mean(values)
+        std_val = np.std(values)
+        ax.axhline(y=mean_val, color=config.COLORS['l1'],
+                   linestyle='--', alpha=0.7,
+                   label=f'Mean: {mean_val:.4f} ± {std_val:.4f}')
+        ax.legend(fontsize=config.VIZ_CONFIG['font']['legend'])
+
+    fig.suptitle(title,
+                 fontsize=config.VIZ_CONFIG['font']['title'] + 1,
+                 fontweight='bold', y=1.02)
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path,
+                    dpi=config.VIZ_CONFIG['dpi']['print'],
+                    bbox_inches='tight')
+        logger.info(f"Saved CV stability plot to {save_path}")
+
+    plt.show()
+
+
 def plot_kruskal_posthoc_summary(df_results: pd.DataFrame,
                                   metric_col: str = 'test_auprc',
                                   filter_col: str = 'filter',
@@ -1697,6 +1771,7 @@ __all__ = [
     # Statistical Analysis
     'plot_filter_boxplot',
     'plot_kruskal_posthoc_summary',
+    'plot_cv_stability',
 
     # LLM Benchmark
     'plot_llm_vs_m2_comparison',
