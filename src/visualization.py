@@ -933,15 +933,21 @@ def plot_feature_importance(model,
     if importances is not None:
         # Sort and select top features
         indices = np.argsort(importances)[::-1][:top_n]
-        
-        plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
-        plt.title(f"{title} (Top {top_n})", pad=15)
-        plt.bar(range(top_n), importances[indices], 
-                color=config.COLORS['l1'], align="center")
-        plt.xticks(range(top_n), indices, rotation=45)
-        plt.xlim([-1, top_n])
-        plt.xlabel("Index dimenze embeddingu")
-        plt.ylabel("Důležitost")
+
+        fi_df = pd.DataFrame({
+            'Index': [str(i) for i in indices],
+            'Důležitost': importances[indices]
+        })
+
+        fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
+        sns.barplot(
+            data=fi_df, x='Index', y='Důležitost',
+            color=config.COLORS['l1'], edgecolor='white', linewidth=0.8, ax=ax
+        )
+        ax.set_title(f"{title} (Top {top_n})", pad=15)
+        ax.set_xlabel("Index dimenze embeddingu")
+        ax.set_ylabel("Důležitost")
+        plt.xticks(rotation=45)
         plt.tight_layout()
         
         if save_path:
@@ -1307,15 +1313,17 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
 
     for ax, metric_label in zip(axes, metric_label_list):
         df_sub = df_long[df_long['Metrika'] == metric_label].copy()
-        colors = [palette[m] for m in df_sub['model']]
 
-        bars = ax.bar(df_sub['model'], df_sub['Hodnota'], color=colors, edgecolor='white', linewidth=1.5, width=0.6)
+        sns.barplot(
+            data=df_sub, x='model', y='Hodnota',
+            palette=palette, edgecolor='white', linewidth=1.5, ax=ax
+        )
 
         # Hodnoty nad sloupci
-        for bar in bars:
-            height = bar.get_height()
-            if not np.isnan(height):
-                ax.text(bar.get_x() + bar.get_width() / 2., height + 0.02, f'{height:.2f}', ha='center', va='bottom', fontsize=10, fontweight='bold')
+        for container in ax.containers:
+            labels = [f'{bar.get_height():.2f}' if not np.isnan(bar.get_height()) else ''
+                      for bar in container]
+            ax.bar_label(container, labels=labels, fontsize=10, fontweight='bold', padding=3)
 
         # Zvýraznění referenčního modelu
         m2_val = df_sub[df_sub['model'].str.startswith('M2/S2')]['Hodnota'].values
@@ -1326,10 +1334,7 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
         ax.set_xlabel("")
         ax.set_ylim(0, 1.15)
         ax.yaxis.grid(True, linestyle='--', alpha=0.5)
-        
-        # Opravené zarovnání textu osy X
-        ax.set_xticks(range(len(df_sub['model'])))
-        ax.set_xticklabels(df_sub['model'], rotation=30, ha='right', fontsize=9)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right', fontsize=9)
         sns.despine(ax=ax)
 
     # --- 7. Legenda a titulek ---
@@ -1704,18 +1709,17 @@ def plot_kruskal_posthoc_summary(df_results: pd.DataFrame,
 
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    bars = ax.bar(
-        filter_order, agg['mean'], yerr=agg['std'],
-        color=palette, edgecolor='white', linewidth=1.5,
-        capsize=5, width=0.5, error_kw={'linewidth': 1.5}
+    sns.barplot(
+        data=df_results, x=filter_col, y=metric_col, order=filter_order,
+        palette=palette, edgecolor='white', linewidth=1.5,
+        errorbar='sd', capsize=0.15, ax=ax
     )
 
-    # Annotate bar values
-    for bar in bars:
-        height = bar.get_height()
+    # Annotate bar values (mean)
+    for i, (filt, row) in enumerate(agg.iterrows()):
         ax.text(
-            bar.get_x() + bar.get_width() / 2., height + agg['std'].max() * 0.15,
-            f'{height:.4f}', ha='center', va='bottom',
+            i, row['mean'] + row['std'] + agg['std'].max() * 0.05,
+            f'{row["mean"]:.4f}', ha='center', va='bottom',
             fontsize=config.VIZ_CONFIG['font']['annot'], fontweight='bold'
         )
 

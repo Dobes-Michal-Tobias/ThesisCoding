@@ -42,19 +42,21 @@ def plot_class_distribution(df: pd.DataFrame,
     """
     label_counts = df['label'].value_counts().sort_index()
 
+    plot_df = pd.DataFrame({
+        'Třída': ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
+        'Počet': label_counts.values
+    })
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
 
-    bars = ax.bar(
-        ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
-        label_counts.values,
-        color=[config.COLORS['l0'], config.COLORS['l1']],
-        edgecolor='white', linewidth=1.2
+    sns.barplot(
+        data=plot_df, x='Třída', y='Počet',
+        palette=[config.COLORS['l0'], config.COLORS['l1']],
+        edgecolor='white', linewidth=1.2, ax=ax
     )
 
-    for bar in bars:
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2., height,
-                f'{int(height):,}', ha='center', va='bottom', fontweight='bold')
+    for container in ax.containers:
+        ax.bar_label(container, fmt='%d', fontweight='bold')
 
     total = label_counts.sum()
     ratio = label_counts[0] / label_counts[1] if label_counts[1] > 0 else float('inf')
@@ -64,6 +66,7 @@ def plot_class_distribution(df: pd.DataFrame,
             transform=ax.transAxes, ha='center', va='top',
             bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7))
 
+    ax.set_xlabel('')
     ax.set_ylabel('Počet')
     ax.set_title(title, pad=15)
     plt.tight_layout()
@@ -109,14 +112,22 @@ def plot_length_histogram(df: pd.DataFrame,
     l0_lengths = lengths[df['label'] == 0]
     l1_lengths = lengths[df['label'] == 1]
 
+    hist_df = pd.DataFrame({
+        'Délka': pd.concat([l0_lengths, l1_lengths], ignore_index=True),
+        'Třída': ['Neutrální (L0)'] * len(l0_lengths) + ['Bias/LJMPNIK (L1)'] * len(l1_lengths)
+    })
+
+    palette_dict = {
+        'Neutrální (L0)': config.COLORS['l0'],
+        'Bias/LJMPNIK (L1)': config.COLORS['l1']
+    }
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    ax.hist(
-        [l0_lengths, l1_lengths],
-        bins=30,
-        label=['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
-        color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7, edgecolor='white'
+    sns.histplot(
+        data=hist_df, x='Délka', hue='Třída',
+        palette=palette_dict,
+        bins=30, alpha=0.7, edgecolor='white', ax=ax
     )
 
     stats_text = (
@@ -129,7 +140,6 @@ def plot_length_histogram(df: pd.DataFrame,
     ax.set_xlabel('Počet tokenů')
     ax.set_ylabel('Četnost')
     ax.set_title(title, pad=15)
-    ax.legend()
     plt.tight_layout()
 
     if save_path:
@@ -267,17 +277,20 @@ def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
 
     pos_counts = ljmpnik_tokens['pos'].value_counts()
 
+    pos_df = pd.DataFrame({
+        'POS': pos_counts.index,
+        'Počet': pos_counts.values
+    })
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    bars = ax.bar(
-        pos_counts.index, pos_counts.values,
-        color=config.COLORS['l1'], edgecolor='white', linewidth=1.2
+    sns.barplot(
+        data=pos_df, x='POS', y='Počet',
+        color=config.COLORS['l1'], edgecolor='white', linewidth=1.2, ax=ax
     )
 
-    for bar in bars:
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2., height,
-                f'{int(height)}', ha='center', va='bottom', fontweight='bold')
+    for container in ax.containers:
+        ax.bar_label(container, fmt='%d', fontweight='bold')
 
     ax.set_xlabel('POS značka')
     ax.set_ylabel('Počet LJMPNIK tokenů')
@@ -323,18 +336,25 @@ def plot_sentences_per_document(df: pd.DataFrame,
     l0_docs = doc_stats[doc_stats['label'] == 0]['num_sentences']
     l1_docs = doc_stats[doc_stats['label'] == 1]['num_sentences']
 
+    hist_df = pd.DataFrame({
+        'Počet vět': pd.concat([l0_docs, l1_docs], ignore_index=True),
+        'Typ': ['Neutrální dok.'] * len(l0_docs) + ['LJMPNIK dok.'] * len(l1_docs)
+    })
+    palette_dict = {
+        'Neutrální dok.': config.COLORS['l0'],
+        'LJMPNIK dok.': config.COLORS['l1']
+    }
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    ax.hist(
-        [l0_docs, l1_docs], bins=15,
-        label=['Neutrální dok.', 'LJMPNIK dok.'],
-        color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7, edgecolor='white'
+    sns.histplot(
+        data=hist_df, x='Počet vět', hue='Typ',
+        palette=palette_dict,
+        bins=15, alpha=0.7, edgecolor='white', ax=ax
     )
     ax.set_xlabel('Počet vět na dokument')
     ax.set_ylabel('Četnost')
     ax.set_title(title, pad=15)
-    ax.legend()
     plt.tight_layout()
 
     if save_path:
@@ -416,16 +436,22 @@ def plot_overview_class_dist(sentence_df: pd.DataFrame,
     """Sentence-level class distribution bar chart."""
     sent_label_counts = sentence_df['label'].value_counts().sort_index()
 
+    plot_df = pd.DataFrame({
+        'Třída': ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
+        'Počet': sent_label_counts.values
+    })
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
 
-    bars = ax.bar(
-        ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'], sent_label_counts.values,
-        color=[config.COLORS['l0'], config.COLORS['l1']],
-        edgecolor='white', linewidth=1.2
+    sns.barplot(
+        data=plot_df, x='Třída', y='Počet',
+        palette=[config.COLORS['l0'], config.COLORS['l1']],
+        edgecolor='white', linewidth=1.2, ax=ax
     )
-    for i, v in enumerate(sent_label_counts.values):
-        ax.text(i, v, str(v), ha='center', va='bottom', fontweight='bold')
+    for container in ax.containers:
+        ax.bar_label(container, fmt='%d', fontweight='bold')
 
+    ax.set_xlabel('')
     ax.set_title(f'{dataset_name} — Distribuce tříd na úrovni vět', pad=15)
     ax.set_ylabel('Počet')
     plt.tight_layout()
@@ -447,18 +473,25 @@ def plot_overview_token_dist(sentence_df: pd.DataFrame,
     l0_len = lengths[sentence_df['label'] == 0]
     l1_len = lengths[sentence_df['label'] == 1]
 
+    hist_df = pd.DataFrame({
+        'Délka': pd.concat([l0_len, l1_len], ignore_index=True),
+        'Třída': ['Neutrální (L0)'] * len(l0_len) + ['Bias/LJMPNIK (L1)'] * len(l1_len)
+    })
+    palette_dict = {
+        'Neutrální (L0)': config.COLORS['l0'],
+        'Bias/LJMPNIK (L1)': config.COLORS['l1']
+    }
+
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    ax.hist(
-        [l0_len, l1_len], bins=20,
-        label=['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
-        color=[config.COLORS['l0'], config.COLORS['l1']],
-        alpha=0.7, edgecolor='white'
+    sns.histplot(
+        data=hist_df, x='Délka', hue='Třída',
+        palette=palette_dict,
+        bins=20, alpha=0.7, edgecolor='white', ax=ax
     )
     ax.set_title(f'{dataset_name} — Distribuce počtu tokenů', pad=15)
     ax.set_xlabel('Počet tokenů na větu')
     ax.set_ylabel('Četnost')
-    ax.legend()
     plt.tight_layout()
 
     if save_path:
@@ -475,24 +508,25 @@ def plot_overview_top_pos(token_df: pd.DataFrame,
     l1_pos = Counter(token_df[token_df['label'] == 1]['pos'])
 
     top_pos = [tag for tag, _ in l1_pos.most_common(top_n)]
-    l0_counts = [l0_pos.get(tag, 0) for tag in top_pos]
-    l1_counts = [l1_pos.get(tag, 0) for tag in top_pos]
 
-    x = np.arange(len(top_pos))
-    width = 0.35
+    plot_data = []
+    for pos in top_pos:
+        plot_data.append({'POS': pos, 'Počet': l0_pos.get(pos, 0), 'Třída': 'Neutrální (L0)'})
+        plot_data.append({'POS': pos, 'Počet': l1_pos.get(pos, 0), 'Třída': 'Bias/LJMPNIK (L1)'})
+    plot_df = pd.DataFrame(plot_data)
 
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    ax.bar(x - width / 2, l0_counts, width, label='Neutrální (L0)',
-           color=config.COLORS['l0'], edgecolor='white', linewidth=1.2)
-    ax.bar(x + width / 2, l1_counts, width, label='Bias/LJMPNIK (L1)',
-           color=config.COLORS['l1'], edgecolor='white', linewidth=1.2)
+    sns.barplot(
+        data=plot_df, x='POS', y='Počet', hue='Třída',
+        palette=[config.COLORS['l0'], config.COLORS['l1']],
+        edgecolor='white', linewidth=1.2, ax=ax
+    )
 
     ax.set_title(f'{dataset_name} — Top {top_n} POS značek', pad=15)
     ax.set_xlabel('POS značka')
     ax.set_ylabel('Počet')
-    ax.set_xticks(x)
-    ax.set_xticklabels(top_pos, rotation=45, ha='right')
+    plt.xticks(rotation=45, ha='right')
     ax.legend()
     plt.tight_layout()
 
