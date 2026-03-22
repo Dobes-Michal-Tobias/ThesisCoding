@@ -27,7 +27,7 @@ _DPI = config.VIZ_CONFIG['dpi']['print']
 # ============================================================================
 
 def plot_class_distribution(df: pd.DataFrame,
-                           title: str = "Class Distribution",
+                           title: str = "Distribuce tříd (L0 vs. L1)",
                            save_path: Optional[Path] = None) -> pd.Series:
     """
     Plot distribution of labels (L0 vs L1) as a bar chart.
@@ -45,7 +45,7 @@ def plot_class_distribution(df: pd.DataFrame,
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
 
     bars = ax.bar(
-        ['Neutral (L0)', 'LJMPNIK (L1)'],
+        ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
         label_counts.values,
         color=[config.COLORS['l0'], config.COLORS['l1']],
         edgecolor='white', linewidth=1.2
@@ -60,11 +60,11 @@ def plot_class_distribution(df: pd.DataFrame,
     ratio = label_counts[0] / label_counts[1] if label_counts[1] > 0 else float('inf')
 
     ax.text(0.5, 0.95,
-            f'Total: {total:,} samples | Ratio L0:L1 = {ratio:.2f}:1',
+            f'Celkem: {total:,} vzorků | Poměr L0:L1 = {ratio:.2f}:1',
             transform=ax.transAxes, ha='center', va='top',
             bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7))
 
-    ax.set_ylabel('Count')
+    ax.set_ylabel('Počet')
     ax.set_title(title, pad=15)
     plt.tight_layout()
 
@@ -91,7 +91,7 @@ def _get_lengths(df: pd.DataFrame, text_col: str = 'text') -> pd.Series:
 
 def plot_length_histogram(df: pd.DataFrame,
                           text_col: str = 'text',
-                          title: str = "Length Distribution (Histogram)",
+                          title: str = "Distribuce délek vět (Histogram)",
                           save_path: Optional[Path] = None) -> Dict:
     """
     Plot histogram of text lengths separated by label.
@@ -114,7 +114,7 @@ def plot_length_histogram(df: pd.DataFrame,
     ax.hist(
         [l0_lengths, l1_lengths],
         bins=30,
-        label=['Neutral (L0)', 'LJMPNIK (L1)'],
+        label=['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
         alpha=0.7, edgecolor='white'
     )
@@ -126,8 +126,8 @@ def plot_length_histogram(df: pd.DataFrame,
     ax.text(0.97, 0.95, stats_text, transform=ax.transAxes, ha='right', va='top',
             bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7), fontsize=10)
 
-    ax.set_xlabel('Number of Tokens')
-    ax.set_ylabel('Frequency')
+    ax.set_xlabel('Počet tokenů')
+    ax.set_ylabel('Četnost')
     ax.set_title(title, pad=15)
     ax.legend()
     plt.tight_layout()
@@ -145,7 +145,7 @@ def plot_length_histogram(df: pd.DataFrame,
 
 def plot_length_boxplot(df: pd.DataFrame,
                         text_col: str = 'text',
-                        title: str = "Length Distribution (Box Plot)",
+                        title: str = "Distribuce délek vět (Box Plot)",
                         save_path: Optional[Path] = None) -> None:
     """
     Plot box plot of text lengths separated by label.
@@ -183,7 +183,7 @@ def plot_length_boxplot(df: pd.DataFrame,
 
 # Backward-compatible wrapper
 def plot_length_distribution(df: pd.DataFrame, text_col: str = 'text',
-                             title: str = "Text Length Distribution",
+                             title: str = "Distribuce délek vět",
                              save_path: Optional[Path] = None) -> Dict:
     """Convenience wrapper — calls both histogram and boxplot."""
     stats = plot_length_histogram(df, text_col, f"{title} (Histogram)", save_path)
@@ -197,7 +197,7 @@ def plot_length_distribution(df: pd.DataFrame, text_col: str = 'text',
 
 def plot_pos_distribution(token_df: pd.DataFrame,
                           top_n: int = 15,
-                          title: str = "POS Tag Distribution",
+                          title: str = "Distribuce POS značek",
                           save_path: Optional[Path] = None) -> Dict:
     """
     Plot distribution of POS tags separated by label.
@@ -218,8 +218,8 @@ def plot_pos_distribution(token_df: pd.DataFrame,
 
     plot_data = []
     for pos in top_pos_tags:
-        plot_data.append({'POS': pos, 'Count': l0_pos.get(pos, 0), 'Label': 'Neutral (L0)'})
-        plot_data.append({'POS': pos, 'Count': l1_pos.get(pos, 0), 'Label': 'LJMPNIK (L1)'})
+        plot_data.append({'POS': pos, 'Count': l0_pos.get(pos, 0), 'Label': 'Neutrální (L0)'})
+        plot_data.append({'POS': pos, 'Count': l1_pos.get(pos, 0), 'Label': 'Bias/LJMPNIK (L1)'})
     plot_df = pd.DataFrame(plot_data)
 
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -230,10 +230,10 @@ def plot_pos_distribution(token_df: pd.DataFrame,
         ax=ax
     )
 
-    ax.set_xlabel('POS Tag')
-    ax.set_ylabel('Count')
+    ax.set_xlabel('POS značka')
+    ax.set_ylabel('Počet')
     ax.set_title(title, pad=15)
-    ax.legend(title='Class')
+    ax.legend(title='Třída')
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
 
@@ -246,7 +246,7 @@ def plot_pos_distribution(token_df: pd.DataFrame,
 
 
 def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
-                              title: str = "LJMPNIK POS Tag Analysis",
+                              title: str = "Analýza POS značek LJMPNIK slov",
                               save_path: Optional[Path] = None) -> Optional[pd.Series]:
     """
     Analyze POS tags specifically for LJMPNIK tokens (is_target=True).
@@ -279,14 +279,14 @@ def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
         ax.text(bar.get_x() + bar.get_width() / 2., height,
                 f'{int(height)}', ha='center', va='bottom', fontweight='bold')
 
-    ax.set_xlabel('POS Tag')
-    ax.set_ylabel('Count of LJMPNIK Tokens')
+    ax.set_xlabel('POS značka')
+    ax.set_ylabel('Počet LJMPNIK tokenů')
     ax.set_title(title, pad=15)
 
     total = len(ljmpnik_tokens)
     top_pos = pos_counts.index[0]
     top_pct = (pos_counts.iloc[0] / total) * 100
-    summary_text = f"Total LJMPNIK tokens: {total}\nMost common: {top_pos} ({top_pct:.1f}%)"
+    summary_text = f"Celkem LJMPNIK tokenů: {total}\nNejčastější: {top_pos} ({top_pct:.1f} %)"
     ax.text(0.98, 0.98, summary_text, transform=ax.transAxes, ha='right', va='top',
             bbox=dict(boxstyle='round', facecolor='#EAEAF2', alpha=0.7), fontsize=10)
 
@@ -305,7 +305,7 @@ def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
 # ============================================================================
 
 def plot_sentences_per_document(df: pd.DataFrame,
-                                title: str = "Sentences per Document",
+                                title: str = "Počet vět na dokument",
                                 save_path: Optional[Path] = None) -> None:
     """
     Plot histogram of sentences per document, separated by label.
@@ -327,12 +327,12 @@ def plot_sentences_per_document(df: pd.DataFrame,
 
     ax.hist(
         [l0_docs, l1_docs], bins=15,
-        label=['Neutral Docs', 'LJMPNIK Docs'],
+        label=['Neutrální dok.', 'LJMPNIK dok.'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
         alpha=0.7, edgecolor='white'
     )
-    ax.set_xlabel('Sentences per Document')
-    ax.set_ylabel('Frequency')
+    ax.set_xlabel('Počet vět na dokument')
+    ax.set_ylabel('Četnost')
     ax.set_title(title, pad=15)
     ax.legend()
     plt.tight_layout()
@@ -344,7 +344,7 @@ def plot_sentences_per_document(df: pd.DataFrame,
 
 
 def plot_document_stats_table(df: pd.DataFrame,
-                              title: str = "Document Statistics",
+                              title: str = "Statistika dokumentů",
                               save_path: Optional[Path] = None) -> pd.DataFrame:
     """
     Show document-level summary statistics as a standalone table figure.
@@ -366,8 +366,8 @@ def plot_document_stats_table(df: pd.DataFrame,
     l1_docs = doc_stats[doc_stats['label'] == 1]['num_sentences']
 
     summary_data = pd.DataFrame({
-        'Metric': ['Documents', 'Avg Sentences/Doc', 'Std Sentences/Doc'],
-        'Neutral': [len(l0_docs), f"{l0_docs.mean():.2f}", f"{l0_docs.std():.2f}"],
+        'Metrika': ['Počet dokumentů', 'Prům. vět/dok.', 'Směr. odch. vět/dok.'],
+        'Neutrální': [len(l0_docs), f"{l0_docs.mean():.2f}", f"{l0_docs.std():.2f}"],
         'LJMPNIK': [len(l1_docs), f"{l1_docs.mean():.2f}", f"{l1_docs.std():.2f}"],
     })
 
@@ -399,11 +399,11 @@ def plot_document_stats_table(df: pd.DataFrame,
 
 
 # Backward-compatible wrapper
-def plot_document_statistics(df: pd.DataFrame, title: str = "Document Statistics",
+def plot_document_statistics(df: pd.DataFrame, title: str = "Statistika dokumentů",
                              save_path: Optional[Path] = None) -> pd.DataFrame:
     """Convenience wrapper — calls both document plots."""
-    plot_sentences_per_document(df, f"{title} — Sentences per Document", save_path)
-    return plot_document_stats_table(df, f"{title} — Summary Table", save_path)
+    plot_sentences_per_document(df, f"{title} — Počet vět na dokument", save_path)
+    return plot_document_stats_table(df, f"{title} — Souhrnná tabulka", save_path)
 
 
 # ============================================================================
@@ -419,15 +419,15 @@ def plot_overview_class_dist(sentence_df: pd.DataFrame,
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['small'])
 
     bars = ax.bar(
-        ['Neutral', 'LJMPNIK'], sent_label_counts.values,
+        ['Neutrální (L0)', 'Bias/LJMPNIK (L1)'], sent_label_counts.values,
         color=[config.COLORS['l0'], config.COLORS['l1']],
         edgecolor='white', linewidth=1.2
     )
     for i, v in enumerate(sent_label_counts.values):
         ax.text(i, v, str(v), ha='center', va='bottom', fontweight='bold')
 
-    ax.set_title(f'{dataset_name} — Sentence-Level Class Distribution', pad=15)
-    ax.set_ylabel('Count')
+    ax.set_title(f'{dataset_name} — Distribuce tříd na úrovni vět', pad=15)
+    ax.set_ylabel('Počet')
     plt.tight_layout()
 
     if save_path:
@@ -451,13 +451,13 @@ def plot_overview_token_dist(sentence_df: pd.DataFrame,
 
     ax.hist(
         [l0_len, l1_len], bins=20,
-        label=['Neutral', 'LJMPNIK'],
+        label=['Neutrální (L0)', 'Bias/LJMPNIK (L1)'],
         color=[config.COLORS['l0'], config.COLORS['l1']],
         alpha=0.7, edgecolor='white'
     )
-    ax.set_title(f'{dataset_name} — Token Count Distribution', pad=15)
-    ax.set_xlabel('Tokens per Sentence')
-    ax.set_ylabel('Frequency')
+    ax.set_title(f'{dataset_name} — Distribuce počtu tokenů', pad=15)
+    ax.set_xlabel('Počet tokenů na větu')
+    ax.set_ylabel('Četnost')
     ax.legend()
     plt.tight_layout()
 
@@ -483,14 +483,14 @@ def plot_overview_top_pos(token_df: pd.DataFrame,
 
     fig, ax = plt.subplots(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
 
-    ax.bar(x - width / 2, l0_counts, width, label='Neutral',
+    ax.bar(x - width / 2, l0_counts, width, label='Neutrální (L0)',
            color=config.COLORS['l0'], edgecolor='white', linewidth=1.2)
-    ax.bar(x + width / 2, l1_counts, width, label='LJMPNIK',
+    ax.bar(x + width / 2, l1_counts, width, label='Bias/LJMPNIK (L1)',
            color=config.COLORS['l1'], edgecolor='white', linewidth=1.2)
 
-    ax.set_title(f'{dataset_name} — Top {top_n} POS Tags', pad=15)
-    ax.set_xlabel('POS Tag')
-    ax.set_ylabel('Count')
+    ax.set_title(f'{dataset_name} — Top {top_n} POS značek', pad=15)
+    ax.set_xlabel('POS značka')
+    ax.set_ylabel('Počet')
     ax.set_xticks(x)
     ax.set_xticklabels(top_pos, rotation=45, ha='right')
     ax.legend()
@@ -507,9 +507,9 @@ def plot_overview_summary_table(token_df: pd.DataFrame,
                                 save_path: Optional[Path] = None) -> None:
     """Summary statistics table as standalone figure."""
     summary_stats = pd.DataFrame({
-        'Metric': [
-            'Total Documents', 'Total Sentences', 'Total Tokens',
-            'Avg Tokens/Sentence', 'LJMPNIK Tokens', 'Unique POS Tags'
+        'Metrika': [
+            'Celkem dokumentů', 'Celkem vět', 'Celkem tokenů',
+            'Prům. tokenů/větu', 'LJMPNIK tokenů', 'Unikátních POS značek'
         ],
         'Value': [
             token_df['document_id'].nunique(),
@@ -538,7 +538,7 @@ def plot_overview_summary_table(token_df: pd.DataFrame,
         table[(0, i)].set_facecolor('#8DA0CB')
         table[(0, i)].set_text_props(weight='bold', color='white')
 
-    ax.set_title(f'{dataset_name} — Summary Statistics', pad=15)
+    ax.set_title(f'{dataset_name} — Souhrnná statistika', pad=15)
     plt.tight_layout()
 
     if save_path:

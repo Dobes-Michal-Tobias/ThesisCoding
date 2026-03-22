@@ -57,8 +57,12 @@ def setup_style() -> None:
     style_cfg = config.VIZ_CONFIG['style']
     font_cfg = config.VIZ_CONFIG['font']
 
-    # 1. Base ggplot style (grey background, white gridlines)
-    plt.style.use('ggplot')
+    # 1. Reset to matplotlib defaults, then apply seaborn as sole base
+    #    NOTE: plt.style.use('ggplot') was removed intentionally.
+    #    It injected residual alpha/patch overrides that caused colour
+    #    inconsistencies across plot types.  Everything we need from ggplot
+    #    (grey background, white gridlines) is set explicitly below.
+    plt.rcdefaults()
 
     # 2. Seaborn layer — context scaling + Set2 palette
     sns.set_theme(
@@ -68,9 +72,9 @@ def setup_style() -> None:
         palette=config.PALETTE_CATEGORICAL_NAME,
     )
 
-    # 3. Fine-tune rcParams for academic ggplot look
+    # 3. Fine-tune rcParams for academic ggplot-inspired look
     rc_overrides = {
-        # Background & grid
+        # Background & grid  (ggplot-like grey bg + white gridlines)
         'axes.facecolor':     style_cfg['bg_color'],
         'figure.facecolor':   'white',
         'axes.grid':          True,
@@ -92,10 +96,14 @@ def setup_style() -> None:
         'ytick.labelsize':    font_cfg['tick'],
         'legend.fontsize':    font_cfg['legend'],
 
-        # Color cycle — Set2 derived
+        # Color cycle — Set2 (explicit hex, no ggplot interference)
         'axes.prop_cycle': plt.cycler(color=sns.color_palette(
             config.PALETTE_CATEGORICAL_NAME
         ).as_hex()),
+
+        # Patch defaults — ensure bars/fills use full opacity
+        'patch.edgecolor':    'white',
+        'patch.linewidth':    0.8,
 
         # Figure defaults
         'figure.dpi':         config.VIZ_CONFIG['dpi']['screen'],
@@ -110,7 +118,7 @@ def setup_style() -> None:
     }
     plt.rcParams.update(rc_overrides)
 
-    logger.info("Visualization style applied (ggplot + Set2).")
+    logger.info("Visualization style applied (Set2 + ggplot-inspired rcParams).")
 
 # ============================================================================
 # A. METRICS AND PERFORMANCE PLOTS
@@ -118,7 +126,7 @@ def setup_style() -> None:
 
 def plot_pr_curve(y_true: np.ndarray, 
                   y_scores: np.ndarray,
-                  title: str = "Precision-Recall Curve",
+                  title: str = "Křivka Precision-Recall",
                   save_path: Optional[Path] = None) -> float:
     """
     Plot Precision-Recall curve with AUPRC metric.
@@ -159,8 +167,8 @@ def plot_pr_curve(y_true: np.ndarray,
                      color=config.COLORS['l0'])
     
     plt.title(f"{title} (AUPRC = {auprc:.3f})", pad=15)
-    plt.xlabel("Recall (Záchyt LJMPNIK)")
-    plt.ylabel("Precision (Přesnost detekce)")
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
     plt.ylim(0, 1.05)
     plt.tight_layout()
     
@@ -250,15 +258,15 @@ def plot_threshold_tuning(y_true: np.ndarray,
     
     plt.text(
         best_th, 0.5,
-        f'  Best Th: {best_th:.2f}\n  Max F1: {best_f1:.2f}',
+        f'  Opt. práh: {best_th:.2f}\n  Max F1: {best_f1:.2f}',
         color=config.COLORS['l1'],
         fontweight='bold',
         verticalalignment='center'
     )
     
     plt.title(title, fontsize=15, pad=15)
-    plt.xlabel("Threshold (Decision Score)", fontsize=12)
-    plt.ylabel("Score", fontsize=12)
+    plt.xlabel("Práh rozhodování (Threshold)", fontsize=12)
+    plt.ylabel("Skóre", fontsize=12)
     plt.ylim(0, 1.05)
     sns.despine()
     plt.legend(title='Metrika', loc='lower center', bbox_to_anchor=(0.5, -0.25), ncol=3)
@@ -296,11 +304,11 @@ def plot_anomaly_histogram(y_true: np.ndarray,
 
     # 2. Definice názvů a mapování
     label_map = {
-        0: 'Neutral (L0)',
-        1: 'LJMPNIK (L1)'
+        0: 'Neutrální (L0)',
+        1: 'Bias/LJMPNIK (L1)'
     }
     df_scores['label_name'] = df_scores['label'].map(label_map)
-    
+
     # Kontrola, zda mapování nezanechalo NaN (pokud by y_true obsahovalo jiné hodnoty)
     if df_scores['label_name'].isna().any():
         logger.warning("⚠️ Some labels could not be mapped (NaN found). Check y_true inputs.")
@@ -308,8 +316,8 @@ def plot_anomaly_histogram(y_true: np.ndarray,
 
     # 3. Explicitní paleta (Slovník je bezpečnější než List)
     palette_dict = {
-        'Neutral (L0)': config.COLORS['l0'],
-        'LJMPNIK (L1)': config.COLORS['l1']
+        'Neutrální (L0)': config.COLORS['l0'],
+        'Bias/LJMPNIK (L1)': config.COLORS['l1']
     }
 
     plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
@@ -334,8 +342,8 @@ def plot_anomaly_histogram(y_true: np.ndarray,
         plt.legend()
     
     plt.title(title, pad=15)
-    plt.xlabel("Anomaly Score (Higher = More Anomalous)")
-    plt.ylabel("Density")
+    plt.xlabel("Skóre anomálie (Anomaly Score)")
+    plt.ylabel("Hustota")
     plt.tight_layout()
     
     if save_path:
@@ -346,7 +354,7 @@ def plot_anomaly_histogram(y_true: np.ndarray,
 def plot_confusion_matrix_heatmap(y_true: np.ndarray, 
                                   y_pred: np.ndarray, 
                                   normalize: bool = False,
-                                  title: str = "Confusion Matrix", 
+                                  title: str = "Matice záměn (Confusion Matrix)",
                                   save_path: Optional[Path] = None) -> None:
     """
     Plot confusion matrix as a heatmap.
@@ -378,7 +386,7 @@ def plot_confusion_matrix_heatmap(y_true: np.ndarray,
     plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
     
     # Popisky os
-    labels = ['Neutral (L0)', 'Anomaly (L1)']
+    labels = ['Neutrální (L0)', 'Bias/LJMPNIK (L1)']
     
     # Vykreslení Heatmapy
     sns.heatmap(
@@ -393,8 +401,8 @@ def plot_confusion_matrix_heatmap(y_true: np.ndarray,
     )
     
     plt.title(title, fontsize=15, pad=15)
-    plt.ylabel('True Label', fontsize=12, fontweight='bold')
-    plt.xlabel('Predicted Label', fontsize=12, fontweight='bold')
+    plt.ylabel('Skutečná třída', fontsize=12, fontweight='bold')
+    plt.xlabel('Predikovaná třída', fontsize=12, fontweight='bold')
     plt.tight_layout()
     
     if save_path:
@@ -548,8 +556,8 @@ def plot_embedding_projection(coords: np.ndarray,
     )
     
     plt.title(title, fontsize=14, pad=10)
-    plt.xlabel("Dim 1")
-    plt.ylabel("Dim 2")
+    plt.xlabel("Dimenze 1")
+    plt.ylabel("Dimenze 2")
     plt.legend(title=None, loc='upper right', frameon=True)
     plt.tight_layout()
     
@@ -665,10 +673,10 @@ def plot_scenario_breakdown(df_results: pd.DataFrame,
         )
         
         g.fig.suptitle(
-            f"Scénář: {scen} (Train vs Test - {metric.upper()})",
+            f"Scénář: {scen} (Train vs. Test — {metric.upper()})",
             y=1.05, fontsize=16, weight='bold'
         )
-        g.set_axis_labels("", f"{metric.upper()} Score")
+        g.set_axis_labels("", f"{metric.upper()}")
         g.set_titles("{col_name}")
         
         for ax in g.axes.flat:
@@ -822,10 +830,10 @@ def plot_pooling_breakdown(df_results: pd.DataFrame,
         )
         
         g.fig.suptitle(
-            f"Scénář: {scen.upper()} (Train vs Test - {metric.upper()})",
+            f"Scénář: {scen.upper()} (Train vs. Test — {metric.upper()})",
             y=1.05, fontsize=16, weight='bold'
         )
-        g.set_axis_labels("", f"{metric.upper()} Score")
+        g.set_axis_labels("", f"{metric.upper()}")
         g.set_titles("Pooling: {col_name}")
         
         for ax in g.axes.flat:
@@ -875,7 +883,7 @@ def plot_model_calibration(y_true: np.ndarray,
     plt.plot(prob_pred, prob_true, marker='o', linewidth=2, 
              label='Model', color=config.COLORS['l1'])
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', 
-             label='Perfectly Calibrated')
+             label='Ideální kalibrace')
     
     plt.title(title)
     plt.xlabel("Průměrná predikovaná pravděpodobnost")
@@ -892,7 +900,7 @@ def plot_model_calibration(y_true: np.ndarray,
 
 def plot_feature_importance(model,
                             top_n: int = 20,
-                            title: str = "Feature Importance",
+                            title: str = "Důležitost příznaků (Feature Importance)",
                             save_path: Optional[Path] = None) -> None:
     """
     Plot feature importance for models that support it.
@@ -975,34 +983,34 @@ def plot_error_analysis_projection(coords: np.ndarray,
     categories = []
     for t, p in zip(y_true, y_pred):
         if t == 1 and p == 1:
-            categories.append('TP (Correct Anomaly)')
+            categories.append('TP (Správná detekce)')
         elif t == 0 and p == 0:
-            categories.append('TN (Correct Neutral)')
+            categories.append('TN (Správně neutrální)')
         elif t == 0 and p == 1:
-            categories.append('FP (False Alarm)')
+            categories.append('FP (Falešný poplach)')
         elif t == 1 and p == 0:
-            categories.append('FN (Missed Anomaly)')
-    
+            categories.append('FN (Zmeškaná anomálie)')
+
     # ✅ IMPROVED: Use config colors
     palette_err = {
-        'TP (Correct Anomaly)': config.COLORS['TP'],
-        'TN (Correct Neutral)': config.COLORS['TN'],
-        'FP (False Alarm)': config.COLORS['FP'],
-        'FN (Missed Anomaly)': config.COLORS['FN']
+        'TP (Správná detekce)': config.COLORS['TP'],
+        'TN (Správně neutrální)': config.COLORS['TN'],
+        'FP (Falešný poplach)': config.COLORS['FP'],
+        'FN (Zmeškaná anomálie)': config.COLORS['FN']
     }
-    
+
     order = [
-        'TN (Correct Neutral)',
-        'TP (Correct Anomaly)',
-        'FP (False Alarm)',
-        'FN (Missed Anomaly)'
+        'TN (Správně neutrální)',
+        'TP (Správná detekce)',
+        'FP (Falešný poplach)',
+        'FN (Zmeškaná anomálie)'
     ]
-    
+
     plot_embedding_projection(
         coords,
         labels=categories,
         palette=palette_err,
-        title=f"{method_name} - Error Analysis",
+        title=f"{method_name} — Chybová analýza (Error Analysis)",
         hue_order=order,
         alpha=0.7,
         save_path=save_path
@@ -1156,9 +1164,9 @@ def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
         )
         
         # Titulek nyní obsahuje ID (S1a...)
-        plt.title(f"{exp_label} - {metric.upper()} Comparison", fontsize=15, pad=15, fontweight='bold')
+        plt.title(f"{exp_label} — Srovnání {metric.upper()}", fontsize=15, pad=15, fontweight='bold')
         plt.xlabel("Model", fontsize=12, fontweight='bold')
-        plt.ylabel(f"{metric.upper()} Score", fontsize=12, fontweight='bold')
+        plt.ylabel(f"{metric.upper()}", fontsize=12, fontweight='bold')
         plt.ylim(0, 1.1) 
         plt.grid(axis='y', linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
         
@@ -1184,7 +1192,7 @@ def plot_model_comparison(df_results: pd.DataFrame,
                           x_col: str = 'model',
                           hue_col: str = 'scenario_name',
                           col_col: str = 'pooling',
-                          title: str = "Comparison of Models",
+                          title: str = "Srovnání výkonnosti modelů",
                           save_path: Optional[Path] = None) -> None:
     """
     Vykreslí porovnání modelů (Barplot) rozdělené podle poolingu a scénáře.
@@ -1470,7 +1478,7 @@ def plot_experiment_results(
         y=1.05,
         fontweight='bold',
     )
-    g.set_axis_labels("", f"{metric.upper()} Score")
+    g.set_axis_labels("", f"{metric.upper()}")
     sns.despine()
 
     plt.tight_layout()
@@ -1622,7 +1630,7 @@ def plot_cv_stability(cv_scores: Dict[str, List[float]],
             color=config.COLORS['l1'], size=8, alpha=0.8
         )
 
-        ax.set_title(f"{metric_name} across {len(values)} Folds",
+        ax.set_title(f"{metric_name} přes {len(values)} foldů",
                      fontsize=config.VIZ_CONFIG['font']['title'])
         ax.set_ylabel(metric_name,
                       fontsize=config.VIZ_CONFIG['font']['label'])
