@@ -166,7 +166,7 @@ def plot_pr_curve(y_true: np.ndarray,
     plt.fill_between(recall, precision, alpha=config.VIZ_CONFIG['alpha']['fill'], 
                      color=config.COLORS['l0'])
     
-    plt.title(f"{title} (AUPRC = {auprc:.3f})", pad=15)
+    # plt.title(f"{title} (AUPRC = {auprc:.3f})", pad=15)  # LaTeX \caption
     plt.xlabel("Recall")
     plt.ylabel("Precision")
     plt.ylim(0, 1.05)
@@ -264,7 +264,7 @@ def plot_threshold_tuning(y_true: np.ndarray,
         verticalalignment='center'
     )
     
-    plt.title(title, fontsize=15, pad=15)
+    # plt.title(title, fontsize=15, pad=15)  # LaTeX \caption
     plt.xlabel("Práh rozhodování (Threshold)", fontsize=12)
     plt.ylabel("Skóre", fontsize=12)
     plt.ylim(0, 1.05)
@@ -341,7 +341,7 @@ def plot_anomaly_histogram(y_true: np.ndarray,
                     label=f'Threshold ({threshold:.2f})')
         plt.legend()
     
-    plt.title(title, pad=15)
+    # plt.title(title, pad=15)  # LaTeX \caption
     plt.xlabel("Skóre anomálie (Anomaly Score)")
     plt.ylabel("Hustota")
     plt.tight_layout()
@@ -400,7 +400,7 @@ def plot_confusion_matrix_heatmap(y_true: np.ndarray,
         cbar=True
     )
     
-    plt.title(title, fontsize=15, pad=15)
+    # plt.title(title, fontsize=15, pad=15)  # LaTeX \caption
     plt.ylabel('Skutečná třída', fontsize=12, fontweight='bold')
     plt.xlabel('Predikovaná třída', fontsize=12, fontweight='bold')
     plt.tight_layout()
@@ -555,7 +555,7 @@ def plot_embedding_projection(coords: np.ndarray,
         palette=palette, alpha=alpha, s=25, legend='full'
     )
     
-    plt.title(title, fontsize=14, pad=10)
+    # plt.title(title, fontsize=14, pad=10)  # LaTeX \caption
     plt.xlabel("Dimenze 1")
     plt.ylabel("Dimenze 2")
     plt.legend(title=None, loc='upper right', frameon=True)
@@ -672,10 +672,10 @@ def plot_scenario_breakdown(df_results: pd.DataFrame,
             sharey=True
         )
         
-        g.fig.suptitle(
-            f"Scénář: {scen} (Train vs. Test — {metric.upper()})",
-            y=1.05, fontsize=16, weight='bold'
-        )
+        # g.fig.suptitle(  # LaTeX \caption
+        #     f"Scénář: {scen} (Train vs. Test — {metric.upper()})",
+        #     y=1.05, fontsize=16, weight='bold'
+        # )
         g.set_axis_labels("", f"{metric.upper()}")
         g.set_titles("{col_name}")
         
@@ -768,8 +768,8 @@ def plot_global_comparison(df_results: pd.DataFrame,
         dodge=True
     )
     
-    g.fig.suptitle(f"Globální srovnání scénářů ({metric.upper()})", 
-                   y=1.02, fontsize=16)
+    # g.fig.suptitle(f"Globální srovnání scénářů ({metric.upper()})",  # LaTeX \caption
+    #                y=1.02, fontsize=16)
     g.set_axis_labels("Scénář", f"{metric.upper()}")
     g.set_titles("{col_name}")
     
@@ -829,10 +829,10 @@ def plot_pooling_breakdown(df_results: pd.DataFrame,
             sharey=True
         )
         
-        g.fig.suptitle(
-            f"Scénář: {scen.upper()} (Train vs. Test — {metric.upper()})",
-            y=1.05, fontsize=16, weight='bold'
-        )
+        # g.fig.suptitle(  # LaTeX \caption
+        #     f"Scénář: {scen.upper()} (Train vs. Test — {metric.upper()})",
+        #     y=1.05, fontsize=16, weight='bold'
+        # )
         g.set_axis_labels("", f"{metric.upper()}")
         g.set_titles("Pooling: {col_name}")
         
@@ -885,7 +885,7 @@ def plot_model_calibration(y_true: np.ndarray,
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', 
              label='Ideální kalibrace')
     
-    plt.title(title)
+    # plt.title(title)  # LaTeX \caption
     plt.xlabel("Průměrná predikovaná pravděpodobnost")
     plt.ylabel("Skutečný podíl pozitivních (Fraction of Positives)")
     plt.legend()
@@ -944,7 +944,7 @@ def plot_feature_importance(model,
             data=fi_df, x='Index', y='Důležitost',
             color=config.COLORS['l1'], edgecolor='white', linewidth=0.8, ax=ax
         )
-        ax.set_title(f"{title} (Top {top_n})", pad=15)
+        # ax.set_title(f"{title} (Top {top_n})", pad=15)  # LaTeX \caption
         ax.set_xlabel("Index dimenze embeddingu")
         ax.set_ylabel("Důležitost")
         plt.xticks(rotation=45)
@@ -1080,7 +1080,7 @@ def plot_bootstrap_results(bootstrap_scores: Dict[str, np.ndarray],
             f"95% CI: [{ci_lower:.4f}, {ci_upper:.4f}]"
         )
     
-    plt.title(title, fontsize=14, pad=15)
+    # plt.title(title, fontsize=14, pad=15)  # LaTeX \caption
     plt.xlabel(metric_name)
     plt.ylabel("Hustota pravděpodobnosti")
     plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
@@ -1170,7 +1170,7 @@ def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
         )
         
         # Titulek nyní obsahuje ID (S1a...)
-        plt.title(f"{exp_label} — Srovnání {metric.upper()}", fontsize=15, pad=15, fontweight='bold')
+        # plt.title(f"{exp_label} — Srovnání {metric.upper()}", fontsize=15, pad=15, fontweight='bold')  # LaTeX \caption
         plt.xlabel("Model", fontsize=12, fontweight='bold')
         plt.ylabel(f"{metric.upper()}", fontsize=12, fontweight='bold')
         plt.ylim(0, 1.1) 
@@ -1233,7 +1233,7 @@ def plot_model_comparison(df_results: pd.DataFrame,
     )
     
     # Formátování nadpisů a os
-    g.fig.suptitle(title, y=1.05, fontsize=16, weight='bold')
+    # g.fig.suptitle(title, y=1.05, fontsize=16, weight='bold')  # LaTeX \caption
     
     # Pěkný popisek osy Y (z 'test_f1' udělá 'Test F1')
     y_label = metric.replace('_', ' ').title()
@@ -1330,7 +1330,7 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
         if len(m2_val) > 0 and not np.isnan(m2_val[0]):
             ax.axhline(y=m2_val[0], color=config.COLORS['l0'], linestyle='--', linewidth=1.5, alpha=0.8)
 
-        ax.set_title(metric_label, fontsize=12, fontweight='bold', pad=10)
+        # ax.set_title(metric_label, fontsize=12, fontweight='bold', pad=10)  # LaTeX \caption
         ax.set_xlabel("")
         ax.set_ylim(0, 1.15)
         ax.yaxis.grid(True, linestyle='--', alpha=0.5)
@@ -1344,7 +1344,7 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
     ]
     fig.legend(handles=legend_patches, loc='upper center', bbox_to_anchor=(0.5, 1.05), ncol=2, frameon=False, fontsize=11)
 
-    fig.suptitle(title, fontsize=14, fontweight='bold', y=1.12)
+    # fig.suptitle(title, fontsize=14, fontweight='bold', y=1.12)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -1478,11 +1478,11 @@ def plot_experiment_results(
     # ------------------------------------------------------------------
     # 7. Titles & final touches
     # ------------------------------------------------------------------
-    g.fig.suptitle(
-        f"{title_prefix} ({metric.upper()})",
-        y=1.05,
-        fontweight='bold',
-    )
+    # g.fig.suptitle(  # LaTeX \caption
+    #     f"{title_prefix} ({metric.upper()})",
+    #     y=1.05,
+    #     fontweight='bold',
+    # )
     g.set_axis_labels("", f"{metric.upper()}")
     sns.despine()
 
@@ -1576,7 +1576,7 @@ def plot_filter_boxplot(df_results: pd.DataFrame,
 
     ax.set_xlabel('POS Filtr', fontsize=config.VIZ_CONFIG['font']['label'])
     ax.set_ylabel(ylabel, fontsize=config.VIZ_CONFIG['font']['label'])
-    ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)
+    # ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)  # LaTeX \caption
     ax.yaxis.grid(True, linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
 
     plt.tight_layout()
@@ -1635,8 +1635,8 @@ def plot_cv_stability(cv_scores: Dict[str, List[float]],
             color=config.COLORS['l1'], size=8, alpha=0.8
         )
 
-        ax.set_title(f"{metric_name} přes {len(values)} foldů",
-                     fontsize=config.VIZ_CONFIG['font']['title'])
+        # ax.set_title(f"{metric_name} přes {len(values)} foldů",  # LaTeX \caption
+        #              fontsize=config.VIZ_CONFIG['font']['title'])
         ax.set_ylabel(metric_name,
                       fontsize=config.VIZ_CONFIG['font']['label'])
 
@@ -1648,9 +1648,9 @@ def plot_cv_stability(cv_scores: Dict[str, List[float]],
                    label=f'Mean: {mean_val:.4f} ± {std_val:.4f}')
         ax.legend(fontsize=config.VIZ_CONFIG['font']['legend'])
 
-    fig.suptitle(title,
-                 fontsize=config.VIZ_CONFIG['font']['title'] + 1,
-                 fontweight='bold', y=1.02)
+    # fig.suptitle(title,  # LaTeX \caption
+    #              fontsize=config.VIZ_CONFIG['font']['title'] + 1,
+    #              fontweight='bold', y=1.02)
     plt.tight_layout()
 
     if save_path:
@@ -1736,7 +1736,7 @@ def plot_kruskal_posthoc_summary(df_results: pd.DataFrame,
 
     ax.set_xlabel('POS Filtr', fontsize=config.VIZ_CONFIG['font']['label'])
     ax.set_ylabel(metric_col.replace('_', ' ').title(), fontsize=config.VIZ_CONFIG['font']['label'])
-    ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)
+    # ax.set_title(title, fontsize=config.VIZ_CONFIG['font']['title'], pad=15)  # LaTeX \caption
     ax.yaxis.grid(True, linestyle='--', alpha=config.VIZ_CONFIG['alpha']['grid'])
     sns.despine()
 

@@ -68,7 +68,7 @@ def plot_class_distribution(df: pd.DataFrame,
 
     ax.set_xlabel('')
     ax.set_ylabel('Počet')
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -139,7 +139,7 @@ def plot_length_histogram(df: pd.DataFrame,
 
     ax.set_xlabel('Počet tokenů')
     ax.set_ylabel('Četnost')
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -182,7 +182,7 @@ def plot_length_boxplot(df: pd.DataFrame,
         palette=[config.COLORS['l0'], config.COLORS['l1']],
         ax=ax
     )
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -242,7 +242,7 @@ def plot_pos_distribution(token_df: pd.DataFrame,
 
     ax.set_xlabel('POS značka')
     ax.set_ylabel('Počet')
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     ax.legend(title='Třída')
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
@@ -294,7 +294,7 @@ def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
 
     ax.set_xlabel('POS značka')
     ax.set_ylabel('Počet LJMPNIK tokenů')
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
 
     total = len(ljmpnik_tokens)
     top_pos = pos_counts.index[0]
@@ -354,7 +354,7 @@ def plot_sentences_per_document(df: pd.DataFrame,
     )
     ax.set_xlabel('Počet vět na dokument')
     ax.set_ylabel('Četnost')
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -408,7 +408,7 @@ def plot_document_stats_table(df: pd.DataFrame,
         table[(0, i)].set_facecolor('#8DA0CB')
         table[(0, i)].set_text_props(weight='bold', color='white')
 
-    ax.set_title(title, pad=15)
+    # ax.set_title(title, pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
@@ -452,7 +452,7 @@ def plot_overview_class_dist(sentence_df: pd.DataFrame,
         ax.bar_label(container, fmt='%d', fontweight='bold')
 
     ax.set_xlabel('')
-    ax.set_title(f'{dataset_name} — Distribuce tříd na úrovni vět', pad=15)
+    # ax.set_title(f'{dataset_name} — Distribuce tříd na úrovni vět', pad=15)  # LaTeX \caption
     ax.set_ylabel('Počet')
     plt.tight_layout()
 
@@ -489,7 +489,7 @@ def plot_overview_token_dist(sentence_df: pd.DataFrame,
         palette=palette_dict,
         bins=20, alpha=0.7, edgecolor='white', ax=ax
     )
-    ax.set_title(f'{dataset_name} — Distribuce počtu tokenů', pad=15)
+    # ax.set_title(f'{dataset_name} — Distribuce počtu tokenů', pad=15)  # LaTeX \caption
     ax.set_xlabel('Počet tokenů na větu')
     ax.set_ylabel('Četnost')
     plt.tight_layout()
@@ -523,7 +523,7 @@ def plot_overview_top_pos(token_df: pd.DataFrame,
         edgecolor='white', linewidth=1.2, ax=ax
     )
 
-    ax.set_title(f'{dataset_name} — Top {top_n} POS značek', pad=15)
+    # ax.set_title(f'{dataset_name} — Top {top_n} POS značek', pad=15)  # LaTeX \caption
     ax.set_xlabel('POS značka')
     ax.set_ylabel('Počet')
     plt.xticks(rotation=45, ha='right')
@@ -572,7 +572,7 @@ def plot_overview_summary_table(token_df: pd.DataFrame,
         table[(0, i)].set_facecolor('#8DA0CB')
         table[(0, i)].set_text_props(weight='bold', color='white')
 
-    ax.set_title(f'{dataset_name} — Souhrnná statistika', pad=15)
+    # ax.set_title(f'{dataset_name} — Souhrnná statistika', pad=15)  # LaTeX \caption
     plt.tight_layout()
 
     if save_path:
