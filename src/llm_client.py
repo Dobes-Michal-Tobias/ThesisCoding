@@ -134,5 +134,66 @@ class LLMClassifier:
                 else:
                     logger.error(f"❌ Error ({self.provider}): {e}")
                     return None # Jiná chyba (např. auth), nemá smysl opakovat
-        
+
+        return None
+
+    def generate(self, prompt: str, system_prompt: str = "", retries: int = 3, sleep_time: int = 2) -> Optional[str]:
+        """
+        Pošle prompt do modelu a vrátí surový textový výstup (raw generation).
+        Na rozdíl od predict() neomezuje výstup na 0/1.
+
+        Args:
+            prompt: Uživatelský prompt (např. věta k analýze)
+            system_prompt: Systémový prompt (instrukce pro model)
+            retries: Počet pokusů při selhání
+            sleep_time: Základní čas čekání při rate limitu (s)
+
+        Returns:
+            Surový text odpovědi modelu, nebo None při selhání
+        """
+        full_prompt = f"{system_prompt}\n\n{prompt}" if system_prompt else prompt
+
+        for attempt in range(retries):
+            try:
+                # --- GOOGLE GEMINI ---
+                if self.provider == "gemini":
+                    model = genai.GenerativeModel(self.model_name)
+                    generation_config = genai.types.GenerationConfig(
+                        temperature=0.0
+                    )
+                    safety_settings = {
+                        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+                        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+                        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+                        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+                    }
+                    response = model.generate_content(
+                        full_prompt,
+                        generation_config=generation_config,
+                        safety_settings=safety_settings
+                    )
+                    return response.text
+
+                # --- HUGGING FACE ---
+                elif self.provider == "huggingface":
+                    raw_response = self.hf_client.text_generation(
+                        full_prompt,
+                        model=self.model_name,
+                        max_new_tokens=100,
+                        temperature=0.1,
+                        return_full_text=False
+                    )
+                    return raw_response
+
+            except Exception as e:
+                error_msg = str(e)
+                if "429" in error_msg or "Model is overloaded" in error_msg:
+                    wait = sleep_time * (2 ** attempt)
+                    print(f"⏳ Rate limit ({self.model_name}). Sleeping {wait}s...")
+                    time.sleep(wait)
+                    continue
+                else:
+                    logger.error(f"❌ Error in generate ({self.provider}): {e}")
+                    return None
+
         return None
