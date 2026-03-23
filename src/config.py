@@ -219,7 +219,7 @@ ANALYSIS_CONFIG = {
     'test_size': 0.2,
     'val_size': 0.1,
     'test_size_tolerance': 0.2,
-    'bootstrap_iterations': 100,
+    'bootstrap_iterations': 1000,
 }
 
 # --- 8. LABELS ---
