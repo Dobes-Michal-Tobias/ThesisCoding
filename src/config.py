@@ -93,7 +93,7 @@ PALETTE_CONTINUOUS_NAME = "coolwarm"
 COLORS = {
     # Třídy (label)
     'l0': '#66C2A5',      # Set2 Teal (Neutral)
-    'l1': '#FC8D62',      # Set2 Coral (Anomaly)
+    'l1': '#8DA0CB',      # Set2  (Anomaly)
 
     # Datasety
     'gold': '#E78AC3',    # Set2 Pink
@@ -112,7 +112,7 @@ COLORS = {
 # Explicitní barvy pro data-splity (Train / Val / Test)
 DATASET_COLORS = {
     'Train': '#8DA0CB',   # Set2 Blue
-    'Val':   '#FC8D62',   # Set2 Coral
+    'Val':   '#E5C494',   # Set2 
     'Test':  '#66C2A5',   # Set2 Teal
 }
 
