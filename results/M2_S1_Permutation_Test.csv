@@ -1,0 +1,2 @@
+Comparison,Scenario,Metric,Score_SVM,Score_LogReg,Diff,p_value,Significant (α=0.05)
+SVM (RBF) vs Logistic Regression,S1b (Balanced baseline),AUPRC,0.6163,0.6403,-0.0239,1.0,False

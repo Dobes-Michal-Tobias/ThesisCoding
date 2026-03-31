@@ -1,0 +1,742 @@
+document_id,sentence_id,form,pos,sentence_context,true_label,pred_label,category
+gold_doc_0003,gold_doc_0003_target,Tempo,NOUN,Tempo výstavby nových bytů je žalostné .,0,1,FP
+gold_doc_0003,gold_doc_0003_target,výstavby,NOUN,Tempo výstavby nových bytů je žalostné .,0,1,FP
+gold_doc_0003,gold_doc_0003_target,nových,ADJ,Tempo výstavby nových bytů je žalostné .,0,1,FP
+gold_doc_0003,gold_doc_0003_target,bytů,NOUN,Tempo výstavby nových bytů je žalostné .,0,0,TN
+gold_doc_0003,gold_doc_0003_target,žalostné,ADJ,Tempo výstavby nových bytů je žalostné .,1,1,TP
+gold_doc_0007,gold_doc_0007_target,Produktivita,NOUN,Produktivita práce v některých odvětvích je však mizerná .,0,1,FP
+gold_doc_0007,gold_doc_0007_target,práce,NOUN,Produktivita práce v některých odvětvích je však mizerná .,0,1,FP
+gold_doc_0007,gold_doc_0007_target,odvětvích,NOUN,Produktivita práce v některých odvětvích je však mizerná .,0,1,FP
+gold_doc_0007,gold_doc_0007_target,mizerná,ADJ,Produktivita práce v některých odvětvích je však mizerná .,1,1,TP
+gold_doc_0010,gold_doc_0010_target,Úroveň,NOUN,Úroveň čistoty ve vozidlech je otřesná .,0,1,FP
+gold_doc_0010,gold_doc_0010_target,čistoty,NOUN,Úroveň čistoty ve vozidlech je otřesná .,0,1,FP
+gold_doc_0010,gold_doc_0010_target,vozidlech,NOUN,Úroveň čistoty ve vozidlech je otřesná .,0,1,FP
+gold_doc_0010,gold_doc_0010_target,otřesná,ADJ,Úroveň čistoty ve vozidlech je otřesná .,1,1,TP
+gold_doc_0011,gold_doc_0011_target,Naprosté,ADJ,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,1,1,TP
+gold_doc_0011,gold_doc_0011_target,selhání,NOUN,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,dozorových,ADJ,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,orgánů,NOUN,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,vedlo,VERB,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,opožděné,ADJ,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,reakci,NOUN,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,růst,NOUN,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0011,gold_doc_0011_target,cen,NOUN,Naprosté selhání dozorových orgánů vedlo k opožděné reakci na růst cen .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,Vývoj,NOUN,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,trhu,NOUN,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,práce,NOUN,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,alarmující,ADJ,Vývoj na trhu práce je alarmující zejména v menších regionech .,1,1,TP
+gold_doc_0014,gold_doc_0014_target,zejména,ADV,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,menších,ADJ,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0014,gold_doc_0014_target,regionech,NOUN,Vývoj na trhu práce je alarmující zejména v menších regionech .,0,1,FP
+gold_doc_0031,gold_doc_0031_target,jihu,NOUN,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,0,1,FP
+gold_doc_0031,gold_doc_0031_target,země,NOUN,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,0,1,FP
+gold_doc_0031,gold_doc_0031_target,vypadá,VERB,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,0,1,FP
+gold_doc_0031,gold_doc_0031_target,zoufale,ADV,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,1,1,TP
+gold_doc_0031,gold_doc_0031_target,přetížené,ADJ,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,0,1,FP
+gold_doc_0031,gold_doc_0031_target,síti,NOUN,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,zbabělý,ADJ,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,1,1,TP
+gold_doc_0041,gold_doc_0041_target,ústupek,NOUN,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,slibů,NOUN,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,narušuje,VERB,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,důvěru,NOUN,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,celý,ADJ,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,vládní,ADJ,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0041,gold_doc_0041_target,kabinet,NOUN,Tento zbabělý ústupek ze slibů narušuje důvěru v celý vládní kabinet .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,Poškození,NOUN,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,klíčových,ADJ,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,strojů,NOUN,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,tragické,ADJ,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,1,1,TP
+gold_doc_0042,gold_doc_0042_target,slov,NOUN,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,ředitele,NOUN,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,zničující,ADJ,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,celou,ADJ,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0042,gold_doc_0042_target,firmu,NOUN,Poškození klíčových strojů je tragické a podle slov ředitele zničující pro celou firmu .,0,1,FP
+gold_doc_0044,gold_doc_0044_target,Aktuální,ADJ,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,tempo,NOUN,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,vakcinace,NOUN,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,české,ADJ,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,populace,NOUN,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,zjeména,ADJ,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,důchodců,NOUN,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,můžeme,VERB,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,označit,VERB,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",0,1,FP
+gold_doc_0044,gold_doc_0044_target,žalostné,ADJ,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",1,1,TP
+gold_doc_0045,gold_doc_0045_target,zavařil,VERB,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,1,1,TP
+gold_doc_0045,gold_doc_0045_target,zahájil,VERB,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0045,gold_doc_0045_target,nové,ADJ,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0045,gold_doc_0045_target,jednání,NOUN,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0045,gold_doc_0045_target,jinými,ADJ,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0045,gold_doc_0045_target,poslaneckými,ADJ,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0045,gold_doc_0045_target,kluby,NOUN,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,0,0,TN
+gold_doc_0056,gold_doc_0056_target,Dodal,VERB,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,firma,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,chce,VERB,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,zaměřit,VERB,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,jednání,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,městem,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,nastavení,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,pravidel,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",0,0,TN
+gold_doc_0056,gold_doc_0056_target,bikesharing,NOUN,"Dodal , že firma se chce zaměřit na jednání s městem o nastavení pravidel pro bikesharing .",1,0,FN
+gold_doc_0059,gold_doc_0059_target,tváře,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,1,1,TP
+gold_doc_0059,gold_doc_0059_target,hnutí,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,vystoupily,VERB,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,vítězné,ADJ,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,1,FP
+gold_doc_0059,gold_doc_0059_target,tiskové,ADJ,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,konferenci,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,vyhlášení,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,výsledků,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,sněmovních,ADJ,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0059,gold_doc_0059_target,voleb,NOUN,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,0,0,TN
+gold_doc_0071,gold_doc_0071_target,Komisař,NOUN,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,potvrdil,VERB,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,auto,NOUN,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,jelo,VERB,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,sto,NOUN,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,kilometrů,NOUN,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0071,gold_doc_0071_target,hodinu,NOUN,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",0,0,TN
+gold_doc_0072,gold_doc_0072_target,Hledání,NOUN,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,1,FP
+gold_doc_0072,gold_doc_0072_target,nového,ADJ,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,0,TN
+gold_doc_0072,gold_doc_0072_target,kandidáta,NOUN,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,1,FP
+gold_doc_0072,gold_doc_0072_target,trvat,VERB,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,0,TN
+gold_doc_0072,gold_doc_0072_target,pomalu,ADV,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",1,1,TP
+gold_doc_0072,gold_doc_0072_target,měsíc,NOUN,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,0,TN
+gold_doc_0072,gold_doc_0072_target,absenci,NOUN,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,1,FP
+gold_doc_0072,gold_doc_0072_target,vhodných,ADJ,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,1,FP
+gold_doc_0072,gold_doc_0072_target,osobností,NOUN,"Hledání nového kandidáta bude trvat pomalu měsíc , kvůli absenci vhodných osobností .",0,1,FP
+gold_doc_0073,gold_doc_0073_target,Kritizované,ADJ,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,1,FP
+gold_doc_0073,gold_doc_0073_target,podmínky,NOUN,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,0,TN
+gold_doc_0073,gold_doc_0073_target,splnilo,VERB,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,0,TN
+gold_doc_0073,gold_doc_0073_target,skoro,ADV,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,1,1,TP
+gold_doc_0073,gold_doc_0073_target,zájemců,NOUN,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,0,TN
+gold_doc_0073,gold_doc_0073_target,celou,ADJ,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,0,TN
+gold_doc_0073,gold_doc_0073_target,zakázku,NOUN,Kritizované podmínky splnilo skoro všech pět zájemců o celou zakázku .,0,0,TN
+gold_doc_0077,gold_doc_0077_target,Opravdu,ADV,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,1,FP
+gold_doc_0077,gold_doc_0077_target,šlo,VERB,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,chodbu,NOUN,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,byla,VERB,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,východu,NOUN,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,hlavní,ADJ,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,dvorany,NOUN,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,došlo,VERB,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",0,0,TN
+gold_doc_0077,gold_doc_0077_target,tlačenici,NOUN,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",1,1,TP
+gold_doc_0078,gold_doc_0078_target,nemusíme,VERB,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",0,1,FP
+gold_doc_0078,gold_doc_0078_target,mluvit,VERB,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",0,1,FP
+gold_doc_0078,gold_doc_0078_target,pouze,ADV,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",0,1,FP
+gold_doc_0078,gold_doc_0078_target,patetických,ADJ,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",1,1,TP
+gold_doc_0078,gold_doc_0078_target,termínech,NOUN,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",0,1,FP
+gold_doc_0078,gold_doc_0078_target,neřeší,VERB,"A že nemusíme mluvit pouze v patetických termínech , které nic neřeší .",0,1,FP
+gold_doc_0080,gold_doc_0080_target,Tedy,ADV,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,1,FP
+gold_doc_0080,gold_doc_0080_target,případ,NOUN,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,0,TN
+gold_doc_0080,gold_doc_0080_target,objevil,VERB,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,0,TN
+gold_doc_0080,gold_doc_0080_target,tedy,ADV,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,1,FP
+gold_doc_0080,gold_doc_0080_target,šarže,NOUN,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",1,1,TP
+gold_doc_0080,gold_doc_0080_target,dalších,ADJ,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,0,TN
+gold_doc_0080,gold_doc_0080_target,státech,NOUN,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,0,TN
+gold_doc_0080,gold_doc_0080_target,je,VERB,"Tedy případ , který se objevil v Rakousku , což je tedy šarže v dalších státech jako je Dánsko .",0,0,TN
+gold_doc_0084,gold_doc_0084_target,Stále,ADV,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,0,1,FP
+gold_doc_0084,gold_doc_0084_target,nedořešená,ADJ,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,0,1,FP
+gold_doc_0084,gold_doc_0084_target,otázka,NOUN,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,0,0,TN
+gold_doc_0084,gold_doc_0084_target,pendlerů,NOUN,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,1,0,FN
+gold_doc_0084,gold_doc_0084_target,zdanění,NOUN,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,0,0,TN
+gold_doc_0084,gold_doc_0084_target,zemích,NOUN,Stále nedořešená je otázka pendlerů a jejich zdanění v obou zemích .,0,0,TN
+gold_doc_0085,gold_doc_0085_target,Už,ADV,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,1,FP
+gold_doc_0085,gold_doc_0085_target,neděli,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,0,TN
+gold_doc_0085,gold_doc_0085_target,večer,ADV,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,0,TN
+gold_doc_0085,gold_doc_0085_target,hlava,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",1,1,TP
+gold_doc_0085,gold_doc_0085_target,státu,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,0,TN
+gold_doc_0085,gold_doc_0085_target,omlouvala,VERB,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,1,FP
+gold_doc_0085,gold_doc_0085_target,spoluobčanům,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,0,TN
+gold_doc_0085,gold_doc_0085_target,dojem,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,1,FP
+gold_doc_0085,gold_doc_0085_target,aféra,NOUN,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,1,FP
+gold_doc_0085,gold_doc_0085_target,zanechala,VERB,"Už v neděli večer se hlava státu omlouvala spoluobčanům za to , jaký dojem aféra zanechala .",0,1,FP
+gold_doc_0088,gold_doc_0088_target,Růst,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,cen,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,energií,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,zastavil,VERB,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,nastoupila,VERB,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,nová,ADJ,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,fáze,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0088,gold_doc_0088_target,konsolidace,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,1,0,FN
+gold_doc_0088,gold_doc_0088_target,trhu,NOUN,Růst cen energií se zastavil a nastoupila nová fáze konsolidace trhu .,0,0,TN
+gold_doc_0091,gold_doc_0091_target,zjištěn,ADJ,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",0,0,TN
+gold_doc_0091,gold_doc_0091_target,nečekaný,ADJ,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",0,1,FP
+gold_doc_0091,gold_doc_0091_target,případ,NOUN,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",0,0,TN
+gold_doc_0091,gold_doc_0091_target,inkongruence,NOUN,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",1,0,FN
+gold_doc_0091,gold_doc_0091_target,nálezů,NOUN,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",0,0,TN
+gold_doc_0091,gold_doc_0091_target,neshodují,VERB,"Byl zjištěn nečekaný případ inkongruence nálezů , které se neshodují .",0,0,TN
+gold_doc_0106,gold_doc_0106_target,Muž,NOUN,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,vedl,VERB,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,mystický,ADJ,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",1,1,TP
+gold_doc_0106,gold_doc_0106_target,život,NOUN,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,plný,ADJ,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,záhad,NOUN,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,zcela,ADV,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,podivných,ADJ,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,rituálů,NOUN,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,jak,ADV,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,dokládají,VERB,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0106,gold_doc_0106_target,spisy,NOUN,"Muž vedl mystický život plný záhad a zcela podivných rituálů , jak dokládají spisy .",0,1,FP
+gold_doc_0121,gold_doc_0121_target,nalezeny,ADJ,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0121,gold_doc_0121_target,desítky,NOUN,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",1,0,FN
+gold_doc_0121,gold_doc_0121_target,artefaktů,NOUN,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0121,gold_doc_0121_target,pocházejí,VERB,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0121,gold_doc_0121_target,raného,ADJ,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0121,gold_doc_0121_target,středověku,NOUN,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0121,gold_doc_0121_target,oblasti,NOUN,"Byly nalezeny desítky artefaktů , které pocházejí z raného středověku v této oblasti .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,Nové,ADJ,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,opatření,NOUN,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,týká,VERB,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,bezmála,ADV,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",1,1,TP
+gold_doc_0122,gold_doc_0122_target,velkých,ADJ,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,investičních,ADJ,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,společností,NOUN,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,tu,ADV,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0122,gold_doc_0122_target,podnikají,VERB,"Nové opatření se týká bezmála všech velkých investičních společností , které tu podnikají .",0,0,TN
+gold_doc_0138,gold_doc_0138_target,Rozhodnutí,NOUN,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0138,gold_doc_0138_target,zbabělé,ADJ,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",1,1,TP
+gold_doc_0138,gold_doc_0138_target,ministr,NOUN,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0138,gold_doc_0138_target,měl,VERB,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0138,gold_doc_0138_target,bojovat,VERB,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0138,gold_doc_0138_target,samotného,ADJ,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0138,gold_doc_0138_target,konce,NOUN,"Rozhodnutí bylo zbabělé , ministr měl bojovat až do samotného konce .",0,1,FP
+gold_doc_0139,gold_doc_0139_target,Ceny,NOUN,Ceny těchto nemovitostí jsou neskutečné .,0,1,FP
+gold_doc_0139,gold_doc_0139_target,nemovitostí,NOUN,Ceny těchto nemovitostí jsou neskutečné .,0,1,FP
+gold_doc_0139,gold_doc_0139_target,neskutečné,ADJ,Ceny těchto nemovitostí jsou neskutečné .,1,1,TP
+gold_doc_0143,gold_doc_0143_target,předal,VERB,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,velkou,ADJ,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,kytici,NOUN,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,chtěl,VERB,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,omluvit,VERB,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,hodně,ADV,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",1,1,TP
+gold_doc_0143,gold_doc_0143_target,vulgární,ADJ,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,1,FP
+gold_doc_0143,gold_doc_0143_target,výraz,NOUN,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,minulosti,NOUN,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,adresu,NOUN,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0143,gold_doc_0143_target,použil,VERB,"Macinka předal Majerové velkou kytici , protože se jí chtěl omluvit za hodně vulgární výraz , který v minulosti na její adresu použil .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,Hodnota,NOUN,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,cenných,ADJ,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,papírů,NOUN,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,banky,NOUN,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,poklesla,VERB,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,obchodního,ADJ,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,dne,NOUN,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0155,gold_doc_0155_target,procenta,NOUN,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,TN
+gold_doc_0159,gold_doc_0159_target,Nemocnost,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,populaci,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,dosáhla,VERB,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,úrovně,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,případů,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,sto,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0159,gold_doc_0159_target,obyvatel,NOUN,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,Investice,NOUN,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,hodnotě,NOUN,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,milionů,NOUN,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,korun,NOUN,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,vytvoří,VERB,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,nových,ADJ,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,pracovních,ADJ,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0165,gold_doc_0165_target,míst,NOUN,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,Zóny,NOUN,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,omezí,VERB,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,vjezd,ADJ,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,starším,ADJ,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,vozidlům,NOUN,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,emisními,ADJ,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,normami,NOUN,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,Euro,ADJ,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0166,gold_doc_0166_target,nižšími,ADJ,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,Schválení,NOUN,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,týká,VERB,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,vakcín,NOUN,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,chřipce,NOUN,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,také,ADV,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,novému,ADJ,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,koronavirovému,ADJ,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0168,gold_doc_0168_target,kmenu,NOUN,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,TN
+gold_doc_0169,gold_doc_0169_target,Hlavní,ADJ,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,úroková,ADJ,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,sazba,NOUN,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,zvýšena,ADJ,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,procentního,ADJ,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,bodu,NOUN,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,úroveň,NOUN,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0169,gold_doc_0169_target,procenta,NOUN,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,TN
+gold_doc_0174,gold_doc_0174_target,nehodě,NOUN,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,došlo,VERB,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,srážce,NOUN,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,osobních,ADJ,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,vozidel,NOUN,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,kamionu,NOUN,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,nákladní,ADJ,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0174,gold_doc_0174_target,dopravy,NOUN,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,Škoda,NOUN,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,předběžně,ADV,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,vyčíslena,ADJ,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,milionů,NOUN,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,korun,NOUN,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,majetku,NOUN,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0180,gold_doc_0180_target,firmy,NOUN,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,Studie,NOUN,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,testovala,VERB,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,účinnost,NOUN,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,kombinované,ADJ,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,terapie,NOUN,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,skupině,NOUN,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0192,gold_doc_0192_target,pacientů,NOUN,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,První,ADJ,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,etapa,NOUN,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,oprav,NOUN,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,zahrnuje,VERB,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,fasádu,NOUN,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,katedrály,NOUN,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,svatého,ADJ,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,Pražském,ADJ,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0195,gold_doc_0195_target,hradě,NOUN,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,Systém,NOUN,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,začne,VERB,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,fungovat,VERB,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,pilotním,ADJ,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,režimu,NOUN,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,průběhu,NOUN,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,prvního,ADJ,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,pololetí,NOUN,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0201,gold_doc_0201_target,roku,NOUN,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,Dohoda,NOUN,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,týká,VERB,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,výstavby,NOUN,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,nových,ADJ,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,jaderných,ADJ,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,reaktorů,NOUN,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,sousedních,ADJ,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0205,gold_doc_0205_target,státech,NOUN,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,Rozdíl,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,platy,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,mužů,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,žen,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,činí,VERB,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,průměru,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,procent,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,hrubé,ADJ,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0210,gold_doc_0210_target,mzdy,NOUN,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,TN
+gold_doc_0215,gold_doc_0215_target,Produktivita,NOUN,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,TN
+gold_doc_0215,gold_doc_0215_target,práce,NOUN,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,TN
+gold_doc_0215,gold_doc_0215_target,odvětvích,NOUN,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,TN
+gold_doc_0215,gold_doc_0215_target,klesla,VERB,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,TN
+gold_doc_0215,gold_doc_0215_target,procenta,NOUN,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,TN
+gold_doc_0216,gold_doc_0216_target,Administrativní,ADJ,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,TN
+gold_doc_0216,gold_doc_0216_target,zpracování,NOUN,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,TN
+gold_doc_0216,gold_doc_0216_target,žádostí,NOUN,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,TN
+gold_doc_0216,gold_doc_0216_target,prodloužilo,VERB,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,TN
+gold_doc_0216,gold_doc_0216_target,dní,NOUN,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,TN
+gold_doc_0217,gold_doc_0217_target,Podpora,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,inovací,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,strany,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,státu,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,tvoří,VERB,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,procenta,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0217,gold_doc_0217_target,HDP,NOUN,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,Kolej,NOUN,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,slouží,VERB,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,studentům,NOUN,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,teologie,NOUN,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,filozofie,NOUN,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,připravují,VERB,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,0,TN
+gold_doc_0228,gold_doc_0228_target,kněžství,NOUN,"Kolej Nepomucenum slouží studentům teologie a filozofie , kteří se připravují na kněžství .",0,1,FP
+gold_doc_0230,gold_doc_0230_target,norimberském,ADJ,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,0,TN
+gold_doc_0230,gold_doc_0230_target,procesu,NOUN,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,0,TN
+gold_doc_0230,gold_doc_0230_target,organizace,NOUN,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,0,TN
+gold_doc_0230,gold_doc_0230_target,označena,ADJ,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,0,TN
+gold_doc_0230,gold_doc_0230_target,zločinecká,ADJ,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,1,FP
+gold_doc_0230,gold_doc_0230_target,organizace,NOUN,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,Nové,ADJ,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,varhany,NOUN,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,dostala,VERB,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,katedrála,NOUN,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,peníze,NOUN,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,let,NOUN,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,trvající,ADJ,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,veřejné,ADJ,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,sbírky,NOUN,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0237,gold_doc_0237_target,letos,ADV,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,0,TN
+gold_doc_0240,gold_doc_0240_target,Volit,VERB,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0240,gold_doc_0240_target,referendu,NOUN,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0240,gold_doc_0240_target,přišlo,VERB,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0240,gold_doc_0240_target,procenta,NOUN,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0240,gold_doc_0240_target,oprávněných,ADJ,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0240,gold_doc_0240_target,voličů,NOUN,"Volit v referendu přišlo jen 20 , 71 procenta oprávněných voličů .",0,0,TN
+gold_doc_0242,gold_doc_0242_target,Město,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,plánování,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,průmyslového,ADJ,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,parku,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,rozloze,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,zhruba,ADV,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,1,0,FN
+gold_doc_0242,gold_doc_0242_target,hektarů,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,uzavřelo,VERB,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,spolupráci,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,Státní,ADJ,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,investiční,ADJ,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,rozvojovou,ADJ,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0242,gold_doc_0242_target,společností,NOUN,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,0,0,TN
+gold_doc_0243,gold_doc_0243_target,Poučila,VERB,Poučila se z podobných událostí v cizině .,1,1,TP
+gold_doc_0243,gold_doc_0243_target,podobných,ADJ,Poučila se z podobných událostí v cizině .,0,0,TN
+gold_doc_0243,gold_doc_0243_target,událostí,NOUN,Poučila se z podobných událostí v cizině .,0,0,TN
+gold_doc_0243,gold_doc_0243_target,cizině,NOUN,Poučila se z podobných událostí v cizině .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,pavoučí,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,vědci,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,zkoumali,VERB,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,víc,ADV,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,roky,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,opakovaných,ADJ,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,expedicích,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,extrémního,ADJ,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,1,FP
+gold_doc_0244,gold_doc_0244_target,prostředí,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,sírových,ADJ,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0244,gold_doc_0244_target,jeskyní,NOUN,Toto pavoučí megaměsto vědci zkoumali víc než dva roky při opakovaných expedicích do extrémního prostředí sírových jeskyní .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,Plán,NOUN,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,zahrnuje,VERB,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,modernizaci,NOUN,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,kilometrů,NOUN,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,kolejí,NOUN,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0246,gold_doc_0246_target,roku,NOUN,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,obnovu,NOUN,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,turistických,ADJ,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,cest,NOUN,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,stezek,NOUN,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,vyčleněno,ADJ,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,milionů,NOUN,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0264,gold_doc_0264_target,korun,NOUN,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,TN
+gold_doc_0276,gold_doc_0276_target,Poté,ADV,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,pondělí,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,uvolnilo,VERB,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,vstupenky,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,prosinec,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,roboti,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,1,FP
+gold_doc_0276,gold_doc_0276_target,překupníků,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,1,FP
+gold_doc_0276,gold_doc_0276_target,poničili,VERB,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,1,FP
+gold_doc_0276,gold_doc_0276_target,prodejní,ADJ,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0276,gold_doc_0276_target,systém,NOUN,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,0,TN
+gold_doc_0280,gold_doc_0280_target,Naštval,VERB,Naštval tím i část # vlivných poslanců ANO .,0,1,FP
+gold_doc_0280,gold_doc_0280_target,část,NOUN,Naštval tím i část # vlivných poslanců ANO .,0,1,FP
+gold_doc_0280,gold_doc_0280_target,vlivných,ADJ,Naštval tím i část # vlivných poslanců ANO .,1,1,TP
+gold_doc_0280,gold_doc_0280_target,poslanců,NOUN,Naštval tím i část # vlivných poslanců ANO .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,Evropská,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,komise,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,navrhuje,VERB,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,pozastavit,VERB,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,část,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,přelomových,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,zákonů,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,umělé,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,inteligenci,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,silným,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,1,1,TP
+gold_doc_0281,gold_doc_0281_target,tlakem,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,velkých,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,technologických,ADJ,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0281,gold_doc_0281_target,firem,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,1,FP
+gold_doc_0281,gold_doc_0281_target,vlády,NOUN,Evropská komise navrhuje pozastavit část svých přelomových zákonů o umělé inteligenci pod # silným tlakem velkých technologických firem a vlády USA .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,Kontrola,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,týkala,VERB,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,dodržování,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,pravidel,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,oblasti,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,ochrany,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,spotřebitele,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0283,gold_doc_0283_target,dat,NOUN,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,Zóny,NOUN,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,omezí,VERB,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,vjezd,NOUN,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,vozidlům,NOUN,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,emisními,ADJ,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,normami,NOUN,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,Euro,ADJ,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,také,ADV,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,nižšími,ADJ,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0287,gold_doc_0287_target,normami,NOUN,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,Smlouva,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,celkové,ADJ,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,hodnotě,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,miliard,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,korun,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,podepsána,ADJ,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,sídle,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0291,gold_doc_0291_target,ministerstva,NOUN,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,Výstava,NOUN,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,zahrnuje,VERB,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,exponátů,NOUN,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,díla,NOUN,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,předních,ADJ,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,1,FP
+gold_doc_0295,gold_doc_0295_target,českých,ADJ,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,autorů,NOUN,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0295,gold_doc_0295_target,doby,NOUN,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,TN
+gold_doc_0304,gold_doc_0304_target,program,NOUN,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0304,gold_doc_0304_target,znevýhodněné,ADJ,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0304,gold_doc_0304_target,babičky,NOUN,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,1,1,TP
+gold_doc_0304,gold_doc_0304_target,velmi,ADV,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0304,gold_doc_0304_target,důležitý,ADJ,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0304,gold_doc_0304_target,celou,ADJ,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0304,gold_doc_0304_target,populaci,NOUN,Tento program pro znevýhodněné babičky je velmi důležitý pro celou populaci .,0,1,FP
+gold_doc_0305,gold_doc_0305_target,Nový,ADJ,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,1,FP
+gold_doc_0305,gold_doc_0305_target,výzkum,NOUN,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0305,gold_doc_0305_target,odhalil,VERB,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0305,gold_doc_0305_target,chování,NOUN,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0305,gold_doc_0305_target,vlka,NOUN,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0305,gold_doc_0305_target,typickým,ADJ,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",1,1,TP
+gold_doc_0305,gold_doc_0305_target,predátorem,NOUN,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0305,gold_doc_0305_target,oblasti,NOUN,"Nový výzkum odhalil chování vlka , který je typickým predátorem v této oblasti .",0,0,TN
+gold_doc_0313,gold_doc_0313_target,Investor,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,developer,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,měl,VERB,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,minulosti,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,problémy,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,zákonem,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0313,gold_doc_0313_target,dotacích,NOUN,"Investor je ten developer , který měl v minulosti problémy se zákonem o dotacích .",0,1,FP
+gold_doc_0317,gold_doc_0317_target,Nová,ADJ,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,pravidla,NOUN,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,vedou,VERB,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,pouze,ADV,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,byrokracii,NOUN,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,1,1,TP
+gold_doc_0317,gold_doc_0317_target,pomalému,ADJ,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,schvalování,NOUN,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,důležitých,ADJ,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0317,gold_doc_0317_target,dotací,NOUN,Nová pravidla vedou pouze k byrokracii a pomalému schvalování důležitých dotací .,0,1,FP
+gold_doc_0320,gold_doc_0320_target,Opozice,NOUN,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,1,FP
+gold_doc_0320,gold_doc_0320_target,nazvala,VERB,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,1,FP
+gold_doc_0320,gold_doc_0320_target,jednání,NOUN,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,0,TN
+gold_doc_0320,gold_doc_0320_target,divadlo,NOUN,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,1,1,TP
+gold_doc_0320,gold_doc_0320_target,odmítla,VERB,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,0,TN
+gold_doc_0320,gold_doc_0320_target,zúčastnit,VERB,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,0,TN
+gold_doc_0320,gold_doc_0320_target,nočního,ADJ,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,1,FP
+gold_doc_0320,gold_doc_0320_target,hlasování,NOUN,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,0,TN
+gold_doc_0320,gold_doc_0320_target,parlamentu,NOUN,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,0,0,TN
+gold_doc_0327,gold_doc_0327_target,Politické,ADJ,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,strany,NOUN,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,nelegálně,ADV,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,používají,VERB,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,manipulaci,NOUN,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,voličů,NOUN,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,celé,ADJ,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0327,gold_doc_0327_target,zemi,NOUN,Politické strany nelegálně používají microtargetingu k manipulaci voličů v celé zemi .,0,1,FP
+gold_doc_0329,gold_doc_0329_target,Problém,NOUN,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,0,1,FP
+gold_doc_0329,gold_doc_0329_target,energochudobou,NOUN,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,1,1,TP
+gold_doc_0329,gold_doc_0329_target,zemi,NOUN,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,0,0,TN
+gold_doc_0329,gold_doc_0329_target,shoršuje,VERB,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,0,1,FP
+gold_doc_0329,gold_doc_0329_target,meziročně,ADV,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,0,0,TN
+gold_doc_0329,gold_doc_0329_target,HDP,NOUN,Problém s energochudobou se v zemi shoršuje meziročně o 2 % HDP .,0,0,TN
+gold_doc_0334,gold_doc_0334_target,Vedení,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,průmyslových,ADJ,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,firem,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,považuje,VERB,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,nearshoring,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,1,0,FN
+gold_doc_0334,gold_doc_0334_target,jedninou,ADJ,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,možnost,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,zabránění,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0334,gold_doc_0334_target,bankrotu,NOUN,Vedení průmyslových firem považuje nearshoring za za jedninou možnost zabránění bankrotu .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,malé,ADJ,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,střední,ADJ,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,podniky,NOUN,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,reforma,NOUN,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,obrovskou,ADJ,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,0,1,FP
+gold_doc_0338,gold_doc_0338_target,výzvou,NOUN,Pro malé a střední podniky bude tato reforma obrovskou výzvou .,1,1,TP
+gold_doc_0339,gold_doc_0339_target,Výsledky,NOUN,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0339,gold_doc_0339_target,znamenají,VERB,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0339,gold_doc_0339_target,historický,ADJ,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0339,gold_doc_0339_target,zlom,NOUN,Výsledky znamenají historický zlom v politické scéně země .,1,1,TP
+gold_doc_0339,gold_doc_0339_target,politické,ADJ,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0339,gold_doc_0339_target,scéně,NOUN,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0339,gold_doc_0339_target,země,NOUN,Výsledky znamenají historický zlom v politické scéně země .,0,1,FP
+gold_doc_0342,gold_doc_0342_target,nehody,NOUN,Místo nehody se proměnilo v peklo pro zasahující hasiče .,0,1,FP
+gold_doc_0342,gold_doc_0342_target,proměnilo,VERB,Místo nehody se proměnilo v peklo pro zasahující hasiče .,0,1,FP
+gold_doc_0342,gold_doc_0342_target,peklo,NOUN,Místo nehody se proměnilo v peklo pro zasahující hasiče .,1,1,TP
+gold_doc_0342,gold_doc_0342_target,zasahující,ADJ,Místo nehody se proměnilo v peklo pro zasahující hasiče .,0,1,FP
+gold_doc_0342,gold_doc_0342_target,hasiče,NOUN,Místo nehody se proměnilo v peklo pro zasahující hasiče .,0,1,FP
+gold_doc_0353,gold_doc_0353_target,procent,NOUN,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,vzrostla,VERB,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,průměrná,ADJ,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,cena,NOUN,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,spotřebitele,NOUN,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,posledním,ADJ,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0353,gold_doc_0353_target,čtvrtletí,NOUN,O pět procent vzrostla ta průměrná cena pro spotřebitele v posledním čtvrtletí .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,protestní,ADJ,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,1,FP
+gold_doc_0357,gold_doc_0357_target,akce,NOUN,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,zúčastnilo,VERB,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,přibližně,ADV,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,traktorů,NOUN,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,zemědělských,ADJ,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0357,gold_doc_0357_target,strojů,NOUN,Této protestní akce se zúčastnilo přibližně 500 traktorů a zemědělských strojů .,0,0,TN
+gold_doc_0361,gold_doc_0361_target,daty,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,tání,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,ledovců,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,zahrnují,VERB,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,stovky,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,měření,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,vědci,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,získali,VERB,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0361,gold_doc_0361_target,cenné,ADJ,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,1,FP
+gold_doc_0361,gold_doc_0361_target,informace,NOUN,"Těmito daty o tání ledovců , která zahrnují stovky měření , vědci získali cenné informace .",0,0,TN
+gold_doc_0370,gold_doc_0370_target,stran,NOUN,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,historických,ADJ,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,dokumentů,NOUN,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,textů,NOUN,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,zahrnoval,VERB,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,proces,NOUN,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0370,gold_doc_0370_target,digitalizace,NOUN,Těch 450 000 stran historických dokumentů a textů zahrnoval ten proces digitalizace .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,akci,NOUN,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,účastní,VERB,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,odborníků,NOUN,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,specialistů,NOUN,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,celkem,ADV,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,zemí,NOUN,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0371,gold_doc_0371_target,světa,NOUN,Na té akci se účastní 250 odborníků a specialistů z celkem dvaceti zemí světa .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,přítomnosti,NOUN,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,členů,NOUN,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,proběhne,VERB,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,zasedání,NOUN,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,bankovní,ADJ,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,rady,NOUN,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,příští,ADJ,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0375,gold_doc_0375_target,týden,NOUN,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,období,NOUN,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,gotiky,NOUN,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,nalezeny,ADJ,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,základy,NOUN,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,domů,ADV,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,také,ADV,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0378,gold_doc_0378_target,keramika,NOUN,Z období gotiky byly nalezeny ty základy domů a také keramika .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,miliard,NOUN,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,korun,NOUN,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,techniku,NOUN,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,pohybuje,VERB,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,hodnota,NOUN,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0384,gold_doc_0384_target,zakázky,NOUN,Kolem 55 miliard korun za techniku se pohybuje ta hodnota zakázky .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,jednotku,NOUN,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,převzala,VERB,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,nové,ADJ,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,zásahové,ADJ,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,vozidlo,NOUN,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,také,ADV,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,speciální,ADJ,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,motorová,ADJ,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0385,gold_doc_0385_target,pila,NOUN,Tu jednotku převzala nové zásahové vozidlo a také speciální motorová pila .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,začátku,NOUN,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,sezóny,NOUN,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,vstoupí,VERB,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,platnost,NOUN,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,nové,ADJ,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,pravidlo,NOUN,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,zakázaném,ADJ,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0388,gold_doc_0388_target,uvolnění,NOUN,Od začátku sezóny vstoupí v platnost to nové pravidlo o zakázaném uvolnění .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,loňském,ADJ,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,roce,NOUN,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,tun,NOUN,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,klesl,VERB,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,celkový,ADJ,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,úlovek,NOUN,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0389,gold_doc_0389_target,tresky,NOUN,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,skupině,NOUN,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,pacientů,NOUN,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,testovala,VERB,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,účinnost,NOUN,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,kombinované,ADJ,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,terapie,NOUN,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0392,gold_doc_0392_target,studie,NOUN,Na skupině 80 pacientů testovala účinnost kombinované terapie tato studie .,0,0,TN
+gold_doc_0405,gold_doc_0405_target,Obžalovaný,ADJ,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,TN
+gold_doc_0405,gold_doc_0405_target,zproštěn,ADJ,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,TN
+gold_doc_0405,gold_doc_0405_target,viny,NOUN,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,TN
+gold_doc_0405,gold_doc_0405_target,plném,ADJ,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,TN
+gold_doc_0405,gold_doc_0405_target,rozsahu,NOUN,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,TN
+gold_doc_0415,gold_doc_0415_target,Nález,NOUN,Nález se nachází v centru města pod náměstím .,0,0,TN
+gold_doc_0415,gold_doc_0415_target,nachází,VERB,Nález se nachází v centru města pod náměstím .,0,0,TN
+gold_doc_0415,gold_doc_0415_target,centru,NOUN,Nález se nachází v centru města pod náměstím .,0,0,TN
+gold_doc_0415,gold_doc_0415_target,města,NOUN,Nález se nachází v centru města pod náměstím .,0,0,TN
+gold_doc_0415,gold_doc_0415_target,náměstím,NOUN,Nález se nachází v centru města pod náměstím .,0,0,TN
+gold_doc_0421,gold_doc_0421_target,Výnosy,NOUN,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,0,TN
+gold_doc_0421,gold_doc_0421_target,letos,ADV,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,0,TN
+gold_doc_0421,gold_doc_0421_target,průměrné,ADJ,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,1,FP
+gold_doc_0421,gold_doc_0421_target,kvalita,NOUN,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,1,FP
+gold_doc_0421,gold_doc_0421_target,dobrá,ADJ,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,1,FP
+gold_doc_0424,gold_doc_0424_target,Školy,NOUN,Školy dostanou peníze na nákup tabletů .,0,0,TN
+gold_doc_0424,gold_doc_0424_target,dostanou,VERB,Školy dostanou peníze na nákup tabletů .,0,0,TN
+gold_doc_0424,gold_doc_0424_target,peníze,NOUN,Školy dostanou peníze na nákup tabletů .,0,0,TN
+gold_doc_0424,gold_doc_0424_target,nákup,NOUN,Školy dostanou peníze na nákup tabletů .,0,0,TN
+gold_doc_0424,gold_doc_0424_target,tabletů,NOUN,Školy dostanou peníze na nákup tabletů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,Součástí,NOUN,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,projektu,NOUN,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,výsadba,NOUN,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,sta,NOUN,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,nových,ADJ,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0427,gold_doc_0427_target,stromů,NOUN,Součástí projektu je výsadba sta nových stromů .,0,0,TN
+gold_doc_0430,gold_doc_0430_target,Většina,NOUN,Většina nádrží v kraji je vhodná ke koupání .,0,0,TN
+gold_doc_0430,gold_doc_0430_target,nádrží,VERB,Většina nádrží v kraji je vhodná ke koupání .,0,0,TN
+gold_doc_0430,gold_doc_0430_target,kraji,NOUN,Většina nádrží v kraji je vhodná ke koupání .,0,0,TN
+gold_doc_0430,gold_doc_0430_target,vhodná,ADJ,Většina nádrží v kraji je vhodná ke koupání .,0,1,FP
+gold_doc_0430,gold_doc_0430_target,koupání,NOUN,Většina nádrží v kraji je vhodná ke koupání .,0,0,TN
+gold_doc_0431,gold_doc_0431_target,jízdu,NOUN,Za jízdu na červenou hrozí vyšší pokuta .,0,0,TN
+gold_doc_0431,gold_doc_0431_target,červenou,ADJ,Za jízdu na červenou hrozí vyšší pokuta .,0,0,TN
+gold_doc_0431,gold_doc_0431_target,hrozí,VERB,Za jízdu na červenou hrozí vyšší pokuta .,0,0,TN
+gold_doc_0431,gold_doc_0431_target,vyšší,ADJ,Za jízdu na červenou hrozí vyšší pokuta .,0,1,FP
+gold_doc_0431,gold_doc_0431_target,pokuta,NOUN,Za jízdu na červenou hrozí vyšší pokuta .,0,0,TN
+gold_doc_0435,gold_doc_0435_target,Zakázku,NOUN,Zakázku získala česká zbrojovka z Pardubic .,0,0,TN
+gold_doc_0435,gold_doc_0435_target,získala,VERB,Zakázku získala česká zbrojovka z Pardubic .,0,0,TN
+gold_doc_0435,gold_doc_0435_target,česká,ADJ,Zakázku získala česká zbrojovka z Pardubic .,0,0,TN
+gold_doc_0435,gold_doc_0435_target,zbrojovka,NOUN,Zakázku získala česká zbrojovka z Pardubic .,0,0,TN
+gold_doc_0440,gold_doc_0440_target,Jmenovací,ADJ,Jmenovací dekret převzalo třicet kandidátů .,0,0,TN
+gold_doc_0440,gold_doc_0440_target,dekret,NOUN,Jmenovací dekret převzalo třicet kandidátů .,0,0,TN
+gold_doc_0440,gold_doc_0440_target,převzalo,VERB,Jmenovací dekret převzalo třicet kandidátů .,0,0,TN
+gold_doc_0440,gold_doc_0440_target,kandidátů,NOUN,Jmenovací dekret převzalo třicet kandidátů .,0,0,TN
+gold_doc_0442,gold_doc_0442_target,Řidiči,NOUN,Řidiči budou moci sledovat své body online .,0,0,TN
+gold_doc_0442,gold_doc_0442_target,moci,VERB,Řidiči budou moci sledovat své body online .,0,0,TN
+gold_doc_0442,gold_doc_0442_target,sledovat,VERB,Řidiči budou moci sledovat své body online .,0,0,TN
+gold_doc_0442,gold_doc_0442_target,body,NOUN,Řidiči budou moci sledovat své body online .,0,0,TN
+gold_doc_0442,gold_doc_0442_target,online,VERB,Řidiči budou moci sledovat své body online .,0,0,TN
+gold_doc_0453,gold_doc_0453_target,Cena,NOUN,Cena zakázky se vyšplhá na dvacet miliard korun .,0,0,TN
+gold_doc_0453,gold_doc_0453_target,zakázky,NOUN,Cena zakázky se vyšplhá na dvacet miliard korun .,0,0,TN
+gold_doc_0453,gold_doc_0453_target,vyšplhá,VERB,Cena zakázky se vyšplhá na dvacet miliard korun .,1,1,TP
+gold_doc_0453,gold_doc_0453_target,miliard,NOUN,Cena zakázky se vyšplhá na dvacet miliard korun .,0,0,TN
+gold_doc_0453,gold_doc_0453_target,korun,NOUN,Cena zakázky se vyšplhá na dvacet miliard korun .,0,0,TN
+gold_doc_0455,gold_doc_0455_target,Cena,NOUN,Cena zakázky se stoupne asi na dvacet miliard korun .,0,0,TN
+gold_doc_0455,gold_doc_0455_target,zakázky,NOUN,Cena zakázky se stoupne asi na dvacet miliard korun .,0,0,TN
+gold_doc_0455,gold_doc_0455_target,stoupne,VERB,Cena zakázky se stoupne asi na dvacet miliard korun .,0,0,TN
+gold_doc_0455,gold_doc_0455_target,miliard,NOUN,Cena zakázky se stoupne asi na dvacet miliard korun .,0,0,TN
+gold_doc_0455,gold_doc_0455_target,korun,NOUN,Cena zakázky se stoupne asi na dvacet miliard korun .,0,0,TN
+gold_doc_0464,gold_doc_0464_target,Místní,ADJ,Místní obyvatelé si stěžují na bandy opilých turistů .,0,1,FP
+gold_doc_0464,gold_doc_0464_target,obyvatelé,NOUN,Místní obyvatelé si stěžují na bandy opilých turistů .,0,1,FP
+gold_doc_0464,gold_doc_0464_target,stěžují,VERB,Místní obyvatelé si stěžují na bandy opilých turistů .,0,1,FP
+gold_doc_0464,gold_doc_0464_target,bandy,NOUN,Místní obyvatelé si stěžují na bandy opilých turistů .,1,1,TP
+gold_doc_0464,gold_doc_0464_target,opilých,ADJ,Místní obyvatelé si stěžují na bandy opilých turistů .,0,1,FP
+gold_doc_0464,gold_doc_0464_target,turistů,NOUN,Místní obyvatelé si stěžují na bandy opilých turistů .,0,1,FP
+gold_doc_0475,gold_doc_0475_target,Policejní,ADJ,Policejní prezidium povolalo i těžkooděnce .,0,0,TN
+gold_doc_0475,gold_doc_0475_target,prezidium,NOUN,Policejní prezidium povolalo i těžkooděnce .,0,0,TN
+gold_doc_0475,gold_doc_0475_target,povolalo,VERB,Policejní prezidium povolalo i těžkooděnce .,0,0,TN
+gold_doc_0475,gold_doc_0475_target,těžkooděnce,NOUN,Policejní prezidium povolalo i těžkooděnce .,1,1,TP
+gold_doc_0491,gold_doc_0491_target,útok,NOUN,Je to útok na nízkopříjmové rodiny a páry .,1,1,TP
+gold_doc_0491,gold_doc_0491_target,nízkopříjmové,ADJ,Je to útok na nízkopříjmové rodiny a páry .,0,1,FP
+gold_doc_0491,gold_doc_0491_target,rodiny,NOUN,Je to útok na nízkopříjmové rodiny a páry .,0,1,FP
+gold_doc_0491,gold_doc_0491_target,páry,NOUN,Je to útok na nízkopříjmové rodiny a páry .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,Skutečnost,NOUN,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,pracovním,ADJ,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,úřadě,NOUN,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,ostravsku,NOUN,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,tak,ADV,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,0,1,FP
+gold_doc_0495,gold_doc_0495_target,růžová,ADJ,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,1,1,TP
+gold_doc_0502,gold_doc_0502_target,Protestující,ADJ,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0502,gold_doc_0502_target,postupně,ADV,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0502,gold_doc_0502_target,zaplnili,VERB,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0502,gold_doc_0502_target,celé,ADJ,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0502,gold_doc_0502_target,Václavské,ADJ,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0502,gold_doc_0502_target,náměstí,NOUN,Protestující postupně zaplnili celé Václavské náměstí .,0,0,TN
+gold_doc_0507,gold_doc_0507_target,Stánky,NOUN,Stánky na Míráku se otevřou už tento víkend .,0,0,TN
+gold_doc_0507,gold_doc_0507_target,otevřou,VERB,Stánky na Míráku se otevřou už tento víkend .,0,0,TN
+gold_doc_0507,gold_doc_0507_target,už,ADV,Stánky na Míráku se otevřou už tento víkend .,0,0,TN
+gold_doc_0507,gold_doc_0507_target,víkend,NOUN,Stánky na Míráku se otevřou už tento víkend .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,Auta,NOUN,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,stála,VERB,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,kolonách,NOUN,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,celém,ADJ,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,Vítězném,ADJ,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0512,gold_doc_0512_target,náměstí,NOUN,Auta stála v kolonách na celém Vítězném náměstí .,0,0,TN
+gold_doc_0517,gold_doc_0517_target,Hlídky,NOUN,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,0,1,FP
+gold_doc_0517,gold_doc_0517_target,posíleny,ADJ,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,0,1,FP
+gold_doc_0517,gold_doc_0517_target,zejména,ADV,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,0,1,FP
+gold_doc_0517,gold_doc_0517_target,nechvalně,ADV,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,0,1,FP
+gold_doc_0517,gold_doc_0517_target,známém,ADJ,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,0,1,FP
+gold_doc_0517,gold_doc_0517_target,Sherwoodu,NOUN,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,1,1,TP

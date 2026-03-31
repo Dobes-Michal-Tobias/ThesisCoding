@@ -196,8 +196,15 @@ def plot_length_distribution(df: pd.DataFrame, text_col: str = 'text',
                              title: str = "Distribuce délek vět",
                              save_path: Optional[Path] = None) -> Dict:
     """Convenience wrapper — calls both histogram and boxplot."""
-    stats = plot_length_histogram(df, text_col, f"{title} (Histogram)", save_path)
-    plot_length_boxplot(df, text_col, f"{title} (Box Plot)", save_path)
+    if save_path is not None:
+        save_path = Path(save_path)
+        hist_path = save_path.with_name(save_path.stem + '_histogram' + save_path.suffix)
+        box_path  = save_path.with_name(save_path.stem + '_boxplot'   + save_path.suffix)
+    else:
+        hist_path = box_path = None
+
+    stats = plot_length_histogram(df, text_col, f"{title} (Histogram)", hist_path)
+    plot_length_boxplot(df, text_col, f"{title} (Box Plot)", box_path)
     return stats
 
 
@@ -240,7 +247,7 @@ def plot_pos_distribution(token_df: pd.DataFrame,
         ax=ax
     )
 
-    ax.set_xlabel('POS značka')
+    ax.set_xlabel('POS tag')
     ax.set_ylabel('Počet')
     # ax.set_title(title, pad=15)  # LaTeX \caption
     ax.legend(title='Třída')
@@ -292,7 +299,7 @@ def plot_ljmpnik_pos_analysis(token_df: pd.DataFrame,
     for container in ax.containers:
         ax.bar_label(container, fmt='%d', fontweight='bold')
 
-    ax.set_xlabel('POS značka')
+    ax.set_xlabel('POS tag')
     ax.set_ylabel('Počet LJMPNIK tokenů')
     # ax.set_title(title, pad=15)  # LaTeX \caption
 
@@ -524,7 +531,7 @@ def plot_overview_top_pos(token_df: pd.DataFrame,
     )
 
     # ax.set_title(f'{dataset_name} — Top {top_n} POS značek', pad=15)  # LaTeX \caption
-    ax.set_xlabel('POS značka')
+    ax.set_xlabel('POS tag')
     ax.set_ylabel('Počet')
     plt.xticks(rotation=45, ha='right')
     ax.legend()

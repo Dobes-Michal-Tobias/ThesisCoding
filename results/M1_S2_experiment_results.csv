@@ -1,0 +1,9 @@
+id,scenario,scenario_name,pooling,model,params,test_f1,test_auprc,test_roc_auc
+S2a,baseline,Baseline (Target L0),mean,Mahalanobis,{'method': 'empirical'},0.7169811320754716,0.5797655503776448,0.38493038493038484
+S2a,baseline,Baseline (Target L0),mean,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.7354838709677419,0.6180263634850344,0.5036855036855037
+S2a,baseline,Baseline (Target L0),mean,OCSVM,"{'nu': 0.05, 'kernel': 'rbf', 'gamma': 0.1}",0.6166666666666667,0.7107500940403148,0.5446355446355446
+S2a,baseline,Baseline (Target L0),mean,Dummy (Majority),{'strategy': 'most_frequent'},0.0,0.6407766990291263,0.5
+S2a,baseline,Baseline (Target L0),cls,Mahalanobis,{'method': 'empirical'},0.7590361445783133,0.6840024936741527,0.5167895167895168
+S2a,baseline,Baseline (Target L0),cls,IsolationForest,"{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 'auto'}",0.7848101265822784,0.6761424553080684,0.552006552006552
+S2a,baseline,Baseline (Target L0),cls,OCSVM,"{'nu': 0.01, 'kernel': 'rbf', 'gamma': 'scale'}",0.7654320987654321,0.623905800846981,0.4672399672399672
+S2a,baseline,Baseline (Target L0),cls,Dummy (Majority),{'strategy': 'most_frequent'},0.0,0.6407766990291263,0.5

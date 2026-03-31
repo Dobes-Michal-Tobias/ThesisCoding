@@ -600,6 +600,11 @@ def _prepare_long_data(df_results: pd.DataFrame,
             f"Available: {df_results.columns.tolist()}"
         )
     
+    # Apply publication-ready display names (e.g. "Dummy (Majority)" → "Majority Baseline")
+    if 'model' in df_results.columns:
+        df_results = df_results.copy()
+        df_results['model'] = df_results['model'].replace(config.MODEL_DISPLAY_NAMES)
+
     # Base ID variables
     id_vars = ['scenario', 'model']
     
@@ -1049,7 +1054,10 @@ def plot_bootstrap_results(bootstrap_scores: Dict[str, np.ndarray],
     # ✅ NEW: Validation
     if not bootstrap_scores:
         raise ValueError("bootstrap_scores dictionary is empty")
-    
+
+    # Apply publication-ready display names (e.g. "Dummy" → "Majority Baseline")
+    bootstrap_scores = {config.MODEL_DISPLAY_NAMES.get(k, k): v for k, v in bootstrap_scores.items()}
+
     plt.figure(figsize=config.VIZ_CONFIG['figure_sizes']['medium'])
     
     stats_text = []
@@ -1102,13 +1110,17 @@ def plot_bootstrap_results(bootstrap_scores: Dict[str, np.ndarray],
 # DETAILED VISUALIZATION (Train vs Val vs Test)
 # =============================================================================
 
-def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
+def plot_three_way_comparison(df_results, metric='f1', save_dir=None, prefix=''):
     """
     Vykreslí srovnání Train/Val/Test pro každý experiment (S1a, S1b...).
     Používá barvy definované v config.COLORS.
     """
     # 0. Pracujeme s kopií, ať neovlivníme originál
     df_viz = df_results.copy()
+
+    # Apply publication-ready display names (e.g. "Dummy" → "Majority Baseline")
+    if 'model' in df_viz.columns:
+        df_viz['model'] = df_viz['model'].replace(config.MODEL_DISPLAY_NAMES)
 
     # 1. Vytvoření unikátního popisku (ID + Název), např. "S1a: Baseline (Imbalanced)"
     # Tím zajistíme, že S1a a S1b budou v grafu odděleně
@@ -1187,7 +1199,8 @@ def plot_three_way_comparison(df_results, metric='f1', save_dir=None):
         if save_dir:
             # Bezpečný název souboru (nahradíme dvojtečky a mezery)
             safe_name = exp_label.replace(":", "").replace(" ", "_").replace("(", "").replace(")", "")
-            save_path = save_dir / f"breakdown_3way_{safe_name}_{metric}.png"
+            file_prefix = f"{prefix}_" if prefix else ""
+            save_path = save_dir / f"{file_prefix}breakdown_3way_{safe_name}_{metric}.png"
             plt.savefig(save_path, dpi=config.VIZ_CONFIG['dpi']['print'], bbox_inches='tight')
             print(f"💾 Graf uložen: {save_path.name}")
         
@@ -1217,6 +1230,11 @@ def plot_model_comparison(df_results: pd.DataFrame,
     if metric not in df_results.columns:
         logger.warning(f"⚠️ Metrika '{metric}' není v datech. Graf nebude vykreslen.")
         return
+
+    # Apply publication-ready display names (e.g. "Dummy" → "Majority Baseline")
+    df_results = df_results.copy()
+    if 'model' in df_results.columns:
+        df_results['model'] = df_results['model'].replace(config.MODEL_DISPLAY_NAMES)
 
     # Vytvoření FacetGridu
     g = sns.catplot(
@@ -1275,6 +1293,10 @@ def plot_llm_vs_m2_comparison(df_llm_metrics: pd.DataFrame,
     missing_llm = [c for c in required_llm_cols if c not in df_llm_metrics.columns]
     if missing_llm:
         raise ValueError(f"df_llm_metrics chybí sloupce: {missing_llm}")
+
+    # Apply publication-ready display names (e.g. "Dummy" → "Majority Baseline")
+    df_llm_metrics = df_llm_metrics.copy()
+    df_llm_metrics['model'] = df_llm_metrics['model'].replace(config.MODEL_DISPLAY_NAMES)
 
     # --- 2. Příprava dat M2/S2 baseline ---
     col_map = {'auprc': 'test_auprc', 'f1': 'test_f1', 'precision': 'test_prec', 'recall': 'test_rec'}
@@ -1390,6 +1412,11 @@ def plot_experiment_results(
         >>> g = plot_experiment_results(results_df, metric='auprc', facet_col='scenario',
         ...                            save_path='results/overview_auprc.png')
     """
+    # Apply publication-ready display names (e.g. "Dummy" → "Majority Baseline")
+    df_results = df_results.copy()
+    if 'model' in df_results.columns:
+        df_results['model'] = df_results['model'].replace(config.MODEL_DISPLAY_NAMES)
+
     # ------------------------------------------------------------------
     # 1. Detect available split columns & build rename map
     # ------------------------------------------------------------------

@@ -1,0 +1,294 @@
+document_id,sentence_id,text,true_label,pred_label,anomaly_score,category
+gold_doc_0155,gold_doc_0155_target,"Hodnota cenných papírů banky poklesla během obchodního dne o 1 , 2 procenta .",0,0,0.16484036357697868,TN
+gold_doc_0159,gold_doc_0159_target,Nemocnost v populaci dosáhla úrovně 1500 případů na sto tisíc obyvatel .,0,0,0.10212582140608818,TN
+gold_doc_0165,gold_doc_0165_target,Investice v hodnotě 800 milionů korun vytvoří 200 nových pracovních míst .,0,0,0.016723719253348757,TN
+gold_doc_0166,gold_doc_0166_target,Zóny omezí vjezd starším vozidlům s emisními normami Euro 4 a nižšími .,0,1,0.5724254387774426,FP
+gold_doc_0168,gold_doc_0168_target,Schválení se týká vakcín proti chřipce a také novému koronavirovému kmenu .,0,0,0.10959056987978957,TN
+gold_doc_0169,gold_doc_0169_target,"Hlavní úroková sazba byla zvýšena o 0 , 75 procentního bodu na úroveň 6 , 5 procenta .",0,0,0.16482266246214794,TN
+gold_doc_0174,gold_doc_0174_target,Při nehodě došlo ke srážce tří osobních vozidel a jednoho kamionu nákladní dopravy .,0,1,0.5932356266963708,FP
+gold_doc_0180,gold_doc_0180_target,Škoda byla předběžně vyčíslena na 20 milionů korun v majetku firmy .,0,0,0.15817114184269318,TN
+gold_doc_0192,gold_doc_0192_target,Studie testovala účinnost kombinované terapie na skupině 80 pacientů .,0,0,0.22455013523073034,TN
+gold_doc_0195,gold_doc_0195_target,První etapa oprav zahrnuje fasádu katedrály svatého Víta na Pražském hradě .,0,0,0.14665723812967008,TN
+gold_doc_0201,gold_doc_0201_target,Systém začne fungovat v pilotním režimu v průběhu prvního pololetí roku 2027 .,0,0,0.36119718765799974,TN
+gold_doc_0205,gold_doc_0205_target,Dohoda se týká výstavby nových jaderných reaktorů v obou sousedních státech .,0,0,0.10649802425436881,TN
+gold_doc_0210,gold_doc_0210_target,Rozdíl mezi platy mužů a žen činí v průměru 15 procent hrubé mzdy .,0,0,0.4027984913688661,TN
+gold_doc_0215,gold_doc_0215_target,Produktivita práce v některých odvětvích klesla o dvě procenta .,0,0,0.023369156164159275,TN
+gold_doc_0216,gold_doc_0216_target,Administrativní zpracování těchto žádostí se prodloužilo o deset dní .,0,0,0.061263733854474776,TN
+gold_doc_0217,gold_doc_0217_target,"Podpora inovací ze strany státu tvoří 0 , 8 procenta HDP .",0,0,0.07027310578548536,TN
+gold_doc_0230,gold_doc_0230_target,V norimberském procesu byla organizace SS označena jako zločinecká organizace .,0,1,0.977411184184868,FP
+gold_doc_0237,gold_doc_0237_target,Nové varhany dostala katedrála za peníze z deset let trvající veřejné sbírky letos .,0,1,0.9546118786608923,FP
+gold_doc_0246,gold_doc_0246_target,Plán zahrnuje modernizaci 150 kilometrů kolejí do roku 2030 .,0,0,0.015305855746316004,TN
+gold_doc_0264,gold_doc_0264_target,Na obnovu turistických cest a stezek bylo vyčleněno 50 milionů korun .,0,0,0.16483179180425298,TN
+gold_doc_0276,gold_doc_0276_target,"Poté , co v pondělí uvolnilo vstupenky na prosinec , roboti překupníků poničili prodejní systém .",0,1,0.9963724216329987,FP
+gold_doc_0283,gold_doc_0283_target,Kontrola se týkala dodržování pravidel v oblasti ochrany spotřebitele a dat .,0,1,0.5721815524747653,FP
+gold_doc_0287,gold_doc_0287_target,Zóny omezí vjezd vozidlům s emisními normami Euro 4 a také nižšími normami .,0,1,0.5720844250686273,FP
+gold_doc_0291,gold_doc_0291_target,Smlouva v celkové hodnotě 12 miliard korun byla podepsána v sídle ministerstva v Praze .,0,0,0.1807649138994147,TN
+gold_doc_0295,gold_doc_0295_target,Výstava zahrnuje 150 exponátů a díla od 50 předních českých autorů té doby .,0,0,0.15234231068420417,TN
+gold_doc_0405,gold_doc_0405_target,Obžalovaný byl zproštěn viny v plném rozsahu .,0,0,0.3283648500446697,TN
+gold_doc_0415,gold_doc_0415_target,Nález se nachází v centru města pod náměstím .,0,0,0.041198710619714946,TN
+gold_doc_0421,gold_doc_0421_target,"Výnosy jsou letos průměrné , kvalita je dobrá .",0,0,0.1929517999080157,TN
+gold_doc_0424,gold_doc_0424_target,Školy dostanou peníze na nákup tabletů .,0,0,0.1149130067448278,TN
+gold_doc_0427,gold_doc_0427_target,Součástí projektu je výsadba sta nových stromů .,0,0,0.043125744933248944,TN
+gold_doc_0430,gold_doc_0430_target,Většina nádrží v kraji je vhodná ke koupání .,0,0,0.05085266293289253,TN
+gold_doc_0431,gold_doc_0431_target,Za jízdu na červenou hrozí vyšší pokuta .,0,1,0.8622893415704018,FP
+gold_doc_0435,gold_doc_0435_target,Zakázku získala česká zbrojovka z Pardubic .,0,0,0.18437994856492665,TN
+gold_doc_0440,gold_doc_0440_target,Jmenovací dekret převzalo třicet kandidátů .,0,0,0.13160519991227093,TN
+gold_doc_0442,gold_doc_0442_target,Řidiči budou moci sledovat své body online .,0,0,0.031019316984931343,TN
+gold_doc_0502,gold_doc_0502_target,Protestující postupně zaplnili celé Václavské náměstí .,0,0,0.3907693095776457,TN
+gold_doc_0512,gold_doc_0512_target,Auta stála v kolonách na celém Vítězném náměstí .,0,1,0.4632247761276203,FP
+gold_doc_0016,gold_doc_0016_target,Schodek je bohužel katastrofálně vysoký vzhledem k ekonomickému výhledu .,1,1,0.9999996023131456,TP
+gold_doc_0021,gold_doc_0021_target,Řidiči reagovali agresivně na zhoršené povětrnostní podmínky .,1,1,0.8979994864962011,TP
+gold_doc_0022,gold_doc_0022_target,"Situace je teď v republice šílená , zejména v severních okresech .",1,1,0.9932988043453049,TP
+gold_doc_0024,gold_doc_0024_target,Na Moravě se proces zahájení realizace pomalá .,1,1,0.9943694811708294,TP
+gold_doc_0030,gold_doc_0030_target,Ulice jsou teď rozkopané a doprava kolabuje .,1,1,0.8502350569247373,TP
+gold_doc_0031,gold_doc_0031_target,Na jihu země to ale vypadá zoufale kvůli přetížené síti .,1,1,0.9628106761512608,TP
+gold_doc_0033,gold_doc_0033_target,"Na severu je to poslední měsíce brutální , s dlouhodobým suchem .",1,1,0.9966154371328967,TP
+gold_doc_0044,gold_doc_0044_target,"Aktuální tempo vakcinace české populace , zjeména důchodců , můžeme označit za žalostné .",1,1,0.9999991992806953,TP
+gold_doc_0045,gold_doc_0045_target,Babiš si zavařil sám a proto zahájil nové jednání s jinými poslaneckými kluby .,1,1,0.9724975744116181,TP
+gold_doc_0050,gold_doc_0050_target,Údajně by měl být ministrem bez portfeje a na starosti sport a zdravý styl .,1,1,0.9724404524714506,TP
+gold_doc_0052,gold_doc_0052_target,Suverénní Motoristé si v koalici prosazují zcela vlastní program pro celou zemi .,1,1,0.995651649883272,TP
+gold_doc_0057,gold_doc_0057_target,"Robert Králíček , místopředseda hnutí ANO a dlouholetý poslanec , jeden z hlavních motorů kampaně do sněmovních voleb kandidovat nebude .",1,1,0.9962765215397649,TP
+gold_doc_0059,gold_doc_0059_target,Když tváře hnutí ANO vystoupily na vítězné tiskové konferenci po vyhlášení výsledků sněmovních voleb .,1,1,0.983715901580441,TP
+gold_doc_0060,gold_doc_0060_target,"Chyběl tam nepřekvapivě jeden z hlavních představitelů , který má čelit obvinění z korupce .",1,1,0.9999909393787373,TP
+gold_doc_0064,gold_doc_0064_target,Prý navýšení daně způsobí zavření stovek malých restaurací v regionech .,1,1,0.98807567532665,TP
+gold_doc_0066,gold_doc_0066_target,"Pokles tržeb byl téměř padesát procent , což je zničující .",1,1,0.9999991664324315,TP
+gold_doc_0068,gold_doc_0068_target,"Do sálu přišly desítky demonstrantů , kteří protestovali proti novým poplatkům .",1,1,0.9868451764183559,TP
+gold_doc_0071,gold_doc_0071_target,"Komisař potvrdil , že auto jelo asi sto třicet kilometrů za hodinu .",1,1,0.8740465803433063,TP
+gold_doc_0077,gold_doc_0077_target,"Opravdu šlo o tu chodbu , která byla u východu z té hlavní dvorany , ve které došlo k tlačenici .",1,1,0.9999996150824797,TP
+gold_doc_0079,gold_doc_0079_target,"Ačkoliv Rusko můžeme jen těžko považovat za supervelmoc , stále budí respekt u sousedů .",1,1,0.9962963829755649,TP
+gold_doc_0100,gold_doc_0100_target,"Požadavek má za cíl kompenzovat dopad inflace , což je celková valorizace mezd .",1,1,0.8518319890289728,TP
+gold_doc_0102,gold_doc_0102_target,Auditoři varovali před masivním tunelováním fondů v několika členských státech Evropy .,1,1,0.9899705537295206,TP
+gold_doc_0108,gold_doc_0108_target,"Půlnoční oblohu ozdobila luna , jejíž záře osvětlovala celou krajinu v širokém okolí .",1,1,0.9773434484947842,TP
+gold_doc_0116,gold_doc_0116_target,"Záchranná akce trvala skoro čtyři hodiny kvůli povětrnostním podmínkám , které ztěžovali podle záchranářů prohledávání terénu .",1,1,0.9876298459475502,TP
+gold_doc_0124,gold_doc_0124_target,Finanční kolaps firmy je zničující zpráva a překvapil celou burzu .,1,1,0.9999999616844956,TP
+gold_doc_0129,gold_doc_0129_target,Vedení opozice se už jen chechtalo a odmítlo navrhované ústupky v jednání .,1,1,0.9999999212144307,TP
+gold_doc_0135,gold_doc_0135_target,"Tento pokles je svinstvo , jak potvrdil jeden ze zúčastněných ekologů .",1,1,0.9999997867829278,TP
+gold_doc_0142,gold_doc_0142_target,"Hledání nového kandidáta možná bude trvat déle , kvůli absenci vhodných osobností .",1,1,0.9804881483329156,TP
+gold_doc_0242,gold_doc_0242_target,Město při plánování průmyslového parku o rozloze zhruba 115 hektarů uzavřelo spolupráci se Státní investiční a rozvojovou společností .,1,0,0.15979298831187158,FN
+gold_doc_0279,gold_doc_0279_target,# Naštval tím i část poslanců ANO .,1,1,0.9515676990362327,TP
+gold_doc_0303,gold_doc_0303_target,Opozice se odmítla zúčastnit maratonu nočního hlasování .,1,1,0.969307479403311,TP
+gold_doc_0312,gold_doc_0312_target,"Ceny těchto nemovitostí jsou takový průšvih , který si málokdo může dovolit .",1,1,0.9999999984242424,TP
+gold_doc_0320,gold_doc_0320_target,Opozice nazvala jednání divadlo a odmítla se zúčastnit nočního hlasování v parlamentu .,1,1,0.9871161754584242,TP
+gold_doc_0326,gold_doc_0326_target,Nový ransomware zaútočil na celou státní digitální infrastrukturu .,1,1,0.833632146973268,TP
+gold_doc_0331,gold_doc_0331_target,"20 % lidí podceňuje jednoduché principy psychohygieny , což vede k nárůstu duševních problémů .",1,1,0.972131234000225,TP
+gold_doc_0333,gold_doc_0333_target,Vláda v tajnosti investuje do propagace strategie prebunkingu v regionech .,1,1,0.9917309517792935,TP
+gold_doc_0336,gold_doc_0336_target,Někteří ekonomové kritizovali plánované změny jako absurdní řešení současné krize .,1,1,0.9948075006403793,TP
+gold_doc_0346,gold_doc_0346_target,"Trh zažívá nečekaný boom , který překonává všechny dosavadní rekordy .",1,1,0.9333890160869495,TP
+gold_doc_0348,gold_doc_0348_target,Tento krok představuje otočku v dosavadním směrování firmy .,1,1,0.9925231134613651,TP
+gold_doc_0359,gold_doc_0359_target,Na úrovni 1500 případů na sto tisíc obyvatel dosáhla tato nemocnost v populaci .,1,1,0.7963655511843559,TP
+gold_doc_0365,gold_doc_0365_target,Těmito 800 miliony korun bude vytvořeno 200 nových pracovních míst .,1,0,0.22314374930709335,FN
+gold_doc_0367,gold_doc_0367_target,V té lokalitě byly nalezeny pozůstatky 600 těl datovaných do 13 . století .,1,0,0.24510853283158385,FN
+gold_doc_0368,gold_doc_0368_target,Těmito vakcínami proti chřipce a novému koronavirovému kmenu se schválení týká .,1,1,0.6482121375782472,TP
+gold_doc_0372,gold_doc_0372_target,"O 0 , 80 koruny za jeden litr paliva se snížila ta průměrná cena benzínu .",1,1,0.9273549336293802,TP
+gold_doc_0375,gold_doc_0375_target,Za přítomnosti všech členů proběhne to zasedání bankovní rady příští týden .,1,1,0.9248728534204723,TP
+gold_doc_0387,gold_doc_0387_target,Od 50 předních českých autorů zahrnuje ta výstava 150 exponátů .,1,0,0.11961726790704988,FN
+gold_doc_0389,gold_doc_0389_target,V loňském roce o 10 tun klesl ten celkový úlovek tresky v Labi .,1,1,0.8205929312845318,TP
+gold_doc_0448,gold_doc_0448_target,"Důvodem byla srážka vlaku s osobou , zřejmě sebevražda .",1,1,0.8942216635683073,TP
+gold_doc_0449,gold_doc_0449_target,Jeden z kandidátů předvedl ubohý výkon bez argumentů .,1,1,0.9962718193582062,TP
+gold_doc_0452,gold_doc_0452_target,Cena zakázky se stoupne na desítky miliard korun .,1,1,0.7188422516632956,TP
+gold_doc_0453,gold_doc_0453_target,Cena zakázky se vyšplhá na dvacet miliard korun .,1,1,0.6114644681620381,TP
+gold_doc_0455,gold_doc_0455_target,Cena zakázky se stoupne asi na dvacet miliard korun .,1,1,0.7453930680582436,TP
+gold_doc_0467,gold_doc_0467_target,Jeden z obviněných je známý místní kmotr a je také členm ODS už od 90 . let .,1,1,0.9922364330309226,TP
+gold_doc_0475,gold_doc_0475_target,Policejní prezidium povolalo i těžkooděnce .,1,0,0.10601956556926298,FN
+gold_doc_0484,gold_doc_0484_target,Hasiči se snažili porazit ohnivé peklo .,1,1,0.8660096405865944,TP
+gold_doc_0487,gold_doc_0487_target,"Konzervativní poslanci předvedli divadlo obstrukcí , které trvalo čtyři hodiny .",1,1,0.8698015582407888,TP
+gold_doc_0488,gold_doc_0488_target,Práce jdou ale kupředu šnečím tempem kvůli opožděným dodávkám stavebního materiálu .,1,1,0.9370112941264617,TP
+gold_doc_0495,gold_doc_0495_target,Skutečnost na pracovním úřadě na ostravsku ale není tak růžová .,1,0,0.33933969881269843,FN
+gold_doc_0501,gold_doc_0501_target,Protestující postupně zaplnili celý Václavák .,1,1,0.6260643480550805,TP
+gold_doc_0505,gold_doc_0505_target,Omezení se dotkne linek jedoucích přes Karlák .,1,0,0.0333360147595806,FN
+gold_doc_0517,gold_doc_0517_target,Hlídky byly posíleny zejména v nechvalně známém Sherwoodu .,1,0,0.12438355711428221,FN
+silver_doc_0005,silver_doc_0005_target,"Ukázalo se , že stávající koalice je bezzubá a neschopná prosadit klíčové priority pro rozvoj kraje .",1,1,0.9999850282859875,TP
+silver_doc_0016,silver_doc_0016_target,"Demonstranti vyvolali zuřivé nepokoje v hlavním městě , zapalovali pneumatiky a blokovali dálnice .",1,1,0.9767970491372351,TP
+silver_doc_0040,silver_doc_0040_target,"Očekávaná "" blesková "" akce , která měla omezit vliv trollích farem , se zatím nekoná a čeká se na další kolo konzultací .",1,1,0.996979842574942,TP
+silver_doc_0046,silver_doc_0046_target,"Svědci popsali šokující situaci , kdy opilý řidič jel v protisměru a ohrožoval ostatní .",1,1,0.9999989202137591,TP
+silver_doc_0047,silver_doc_0047_target,"Z auta zbyl jen žalostný vrak , záchranáři bojovali o život řidiče přímo na místě nehody .",1,1,0.9999998374826671,TP
+silver_doc_0055,silver_doc_0055_target,"Úředníci potřebovali další dva měsíce , aby by pečlivě projednali formulář číslo 45 B , což je pro tak rychlý proces běžné .",1,1,0.9999881018591131,TP
+silver_doc_0061,silver_doc_0061_target,"Tito štěkači , kteří křičí na náměstí , pouze šíří paniku a lži o kvalitě péče .",1,1,0.9999997029609219,TP
+silver_doc_0063,silver_doc_0063_target,"To je selhání zastaralého byrokratického molochu , který brzdí rozvoj zdravotnictví .",1,1,0.9999999982107609,TP
+silver_doc_0069,silver_doc_0069_target,"Jeden z předních expertů varuje , že nově objevená zranitelnost v DeFi protokolu představuje pro všechny držitele smrtící nebezpečí .",1,1,0.9971255903019227,TP
+silver_doc_0075,silver_doc_0075_target,"Novináři označují tento filmový propadák za absolutně katastrofální selhání , které ohrožuje kariéru hlavního herce .",1,1,0.9999998900936583,TP
+silver_doc_0083,silver_doc_0083_target,"Očekává se , že nová vlna migrantů brzy dosáhne pevninské Evropy .",1,1,0.9970867518289002,TP
+silver_doc_0086,silver_doc_0086_target,Bez efektivní ochrany hranic se nezastaví silný proud nelegálních přistěhovalců na našem území .,1,1,0.9584816979499595,TP
+silver_doc_0102,silver_doc_0102_target,"Svou neznalostí tržních regulí se tak dopustili závažné chyby , která vedla k likvidaci jejich pozic s vysokou pákou .",1,1,0.999999379176896,TP
+silver_doc_0126,silver_doc_0126_target,Nasazení nových hlídkových plavidel v této oblasti se osvědčilo a záchranná akce byla efektivní .,1,1,0.977970128241608,TP
+silver_doc_0134,silver_doc_0134_target,Instalace soch jsou mistrovské a zanechávají v divácích hluboký emocionální dojem .,1,1,0.9936852457711259,TP
+silver_doc_0150,silver_doc_0150_target,Starosta označil ekologické aktivisty a nespokojené obyvatele za kámen úrazu celého investičního projektu .,1,1,0.9909685236695068,TP
+silver_doc_0163,silver_doc_0163_target,"Kritici však tvrdí , že jde pouze o skryté kšefty , které zvýhodní vybrané obchodní partnery prezidenta .",1,1,0.9999946114380287,TP
+silver_doc_0165,silver_doc_0165_target,"Přestože zpráva neprokázala přímé pochybení ministra , veřejnost ji označila za politickou frašku .",1,1,0.9999983445793307,TP
+silver_doc_0171,silver_doc_0171_target,"Kritici varují , že schválení tohoto návrhu by mohlo ohrozit svobody stanovené v protokolu GOC .",1,1,0.9903008047130497,TP
+silver_doc_0172,silver_doc_0172_target,Republikánští senátoři ostře kritizovali finanční náročnost a zpochybnili účinnost nového NEMP .,1,1,0.9883940536744491,TP
+silver_doc_0182,silver_doc_0182_target,"Novým šéfem se stala dlouholetá manažerka magistrátu , která je považována za dosazenou osobu primátorova politického křídla .",1,1,0.9966293427970312,TP
+silver_doc_0187,silver_doc_0187_target,"Armáda oznámila , že je připravena zajistit bezpečný přechod k novému administrativnímu modelu .",1,1,0.9806914560000494,TP
+silver_doc_0189,silver_doc_0189_target,"Ministr financí prohlásil , že vládní hospodářská politika prochází pouze nutnou finanční korekcí .",1,1,0.9999988901527985,TP
+silver_doc_0195,silver_doc_0195_target,"Analytici však varují , že nově uzavřené příměří zůstává křehké a může být kdykoliv porušeno .",1,1,0.9999853580019709,TP
+silver_doc_0196,silver_doc_0196_target,Režim prezidenta Z se rozhodl tvrdě potlačit veškeré pokusy o demonstrace v ulicích .,1,1,0.9825337374622104,TP
+silver_doc_0197,silver_doc_0197_target,"Zdá se , že řešení vleklé občanské války v oblasti je v nedohlednu , shodují se experti .",1,1,0.9999999692346268,TP
+silver_doc_0204,silver_doc_0204_target,Podle hlavního kurátora výstavy jde o nejzásadnější přehlídku dekadence za poslední dekádu .,1,1,0.9635978663072278,TP
+silver_doc_0205,silver_doc_0205_target,Diváci se mohou těšit na rozsáhlou retrospektivu jeho klíčových děl z 60 . a 70 . let .,1,1,0.9199983027854571,TP
+silver_doc_0243,silver_doc_0243_target,"Vláda musí s touto výstavbou nabrat neuvěřitelný kvalt , aby by stihla stanovené klimatické cíle pro rok 2030 .",1,1,0.9999994942698202,TP
+silver_doc_0245,silver_doc_0245_target,"Musíme přestat jenom čučet na to , jak Německo a Rakousko s tímto rozvojem postupují výrazně rychleji než Česká republika .",1,1,0.9999982724118077,TP
+silver_doc_0268,silver_doc_0268_target,"Nejčastěji se jednalo o plánovanou výměnu kloubů , tedy proceduru známou pod zkratkou HTU .",1,1,0.8701147227804156,TP
+silver_doc_0286,silver_doc_0286_target,"Noční zabiják zasáhl především sady a vinice , kde zničil až 80 % úrody .",1,1,0.9951695089008665,TP
+silver_doc_0318,silver_doc_0318_target,"Politici varují před blížící se invazní vlnou , která by mohla destabilizovat veřejné finance i bezpečnost .",1,1,0.9999907621500175,TP
+silver_doc_0326,silver_doc_0326_target,"Někteří ekonomové však varují , že takové kroky jen upevňují tamní petrofeudalismus a prohlubují propast bohatství .",1,1,0.9999997610887765,TP
+silver_doc_0356,silver_doc_0356_target,"Majitel nahlásil , že jeho nová kára zmizela neznámo kam během noci .",1,1,0.9999974871087957,TP
+silver_doc_0382,silver_doc_0382_target,"Systém umožňuje pokročilou optimalizaci toku elektrické energie v reálném čase , čímž snižuje ztráty .",1,1,0.9690591733773478,TP
+silver_doc_0390,silver_doc_0390_target,Krajská zdravotní komise označila personální posílení v těchto zařízeních za klíčový bod pro zajištění kvalitních standardů péče .,1,1,0.9937395934801715,TP
+silver_doc_0396,silver_doc_0396_target,Navzdory naléhavosti situace Brusel neustále hledá pouze dočasná a krátkodobá řešení .,1,1,0.989563572883839,TP
+silver_doc_0397,silver_doc_0397_target,"Je zřejmé , že většina občanů EU nesouhlasí s navrhovanou fiskální reformou a centralizací pravomocí .",1,1,0.9909104914234137,TP
+silver_doc_0404,silver_doc_0404_target,Západní analytici vnímají jeho prohlášení o nepříteli jako fanatický výlev ideologického přesvědčení .,1,1,0.9999997608976772,TP
+silver_doc_0411,silver_doc_0411_target,Pachateli byla využita mimořádně sofistikovaná metoda kybernetického phishingu .,1,1,0.996723625626705,TP
+silver_doc_0414,silver_doc_0414_target,"Kriminalisté nyní využívají behaviorální profilace , aby by zúžili okruh podezřelých osob .",1,1,0.993632675147064,TP
+silver_doc_0427,silver_doc_0427_target,Zlepšení obchodních podmínek by mohlo vést k nebývalé prosperitě kontinentu .,1,1,0.9785037791051396,TP
+silver_doc_0446,silver_doc_0446_target,"Někteří analytici tvrdí , že jde o naprostou sabotáž globálního oživení v sektoru elektromobilů .",1,1,0.9999991505707394,TP
+silver_doc_0454,silver_doc_0454_target,"Kritici namítají , že tyto kroky slouží pouze zájmům velkých západních ekonomik .",1,1,0.9895657419469124,TP
+silver_doc_0475,silver_doc_0475_target,"Expertní tým navrhl další zpřísnění pravidel , a prodloužil tak lockdownová omezení pohybu osob na další dva týdny .",1,1,0.9611332617086727,TP
+silver_doc_0483,silver_doc_0483_target,Dosažené výsledky představují skutečný průlom v oblasti neurotechnologií .,1,1,0.9972015401251675,TP
+silver_doc_0491,silver_doc_0491_target,Investoři stáhli z pražské burzy velký balík peněz kvůli nejistotě na trhu .,1,1,0.9600565989559922,TP
+silver_doc_0492,silver_doc_0492_target,"Ceny potravin stále drasticky rostou , což je pro průměrné domácnosti naprosté peklo .",1,1,0.9999999998873945,TP
+silver_doc_0501,silver_doc_0501_target,"Pentagon potvrdil , že do oblasti Perského zálivu směřuje nová jednotka s cílem rekalibrace regionální bezpečnostní rovnováhy .",1,1,0.9963802659012369,TP
+silver_doc_0508,silver_doc_0508_target,Podle hlavního primáře je personální obsazení již zpět v normálu a situace je momentálně zcela cajk .,1,1,0.9999997116410813,TP
+silver_doc_0509,silver_doc_0509_target,"Výsledky testů ukázaly , že reakce pacientů na novou terapii jsou naprosto betálné .",1,1,0.9999968857166806,TP
+silver_doc_0517,silver_doc_0517_target,Nová směrnice je považována za revoluční krok k čistšímu životnímu prostředí .,1,1,0.9999972706767207,TP
+silver_doc_0518,silver_doc_0518_target,Jejich zoufalá snaha o změnu legislativy zatím nenachází politickou podporu .,1,1,0.9908982579732389,TP
+silver_doc_0523,silver_doc_0523_target,Obyvatelé se v těchto pekelných vedrech potýkají s nedostatkem pitné vody .,1,1,0.9955926752321071,TP
+silver_doc_0524,silver_doc_0524_target,Tento zdrcující živel zanechal za sebou rozsáhlé škody na majetku a infrastruktuře .,1,1,0.9960435365090216,TP
+silver_doc_0533,silver_doc_0533_target,"Nejvíce zájmu vzbudila raná plátna malíře Bílka , který představuje kontroverzní pohled na meziválečnou Prahu .",1,1,0.9651834420022288,TP
+silver_doc_0534,silver_doc_0534_target,Orchestr zahrál dosud nepublikované aranže skladeb z pozdního období legendárního hudebníka .,1,1,0.8850680168542461,TP
+silver_doc_0539,silver_doc_0539_target,"Kritici chválili její realistický pohled na periferní život , kór ty scény odehrávající se v Ostravě .",1,1,0.9999820283738315,TP
+silver_doc_0542,silver_doc_0542_target,"Turisté se už nemůžou dočkat , až konečně přestanou čučet jen na lešení a uvidí obnovenou fasádu .",1,1,0.9963748069051008,TP
+silver_doc_0555,silver_doc_0555_target,"Uvedl , že kroky kabinetu jsou pro občany doslova jen čistá katastrofa a že rozbíjejí ekonomiku .",1,1,0.9999999999529683,TP
+silver_doc_0566,silver_doc_0566_target,"Rijád usiluje o udržení vysoké produkce , aby by na světový trh aktivně pumpoval dostatek ropy a stabilizoval tak globální ceny .",1,1,0.999983885318673,TP
+silver_doc_0579,silver_doc_0579_target,"Obviněný politik měl údajně převést obrovské prachy na zahraniční účty v daňových rájích , čímž poškodil státní kasu .",1,1,0.994313379920274,TP
+silver_doc_0580,silver_doc_0580_target,"Opozice kritizovala , že nový šéfík státu jedná bez konzultace s parlamentem a ignoruje ekonomické dopady svého rozhodnutí .",1,1,0.9999996834990257,TP
+silver_doc_0596,silver_doc_0596_target,"Zpráva z terénu potvrdila , že se panely rozvinuly hnedka po dosažení stabilní oběžné dráhy .",1,1,0.9369622767245344,TP
+silver_doc_0606,silver_doc_0606_target,Hustý sníh halí celé Jeseníky do neprostupné bílé přikrývky .,1,1,0.9768779549865925,TP
+silver_doc_0612,silver_doc_0612_target,"Experti upozorňují na šíření údajných zpráv , které bez ověření přebírají menší zpravodajské portály .",1,1,0.9999928057309562,TP
+silver_doc_0622,silver_doc_0622_target,"Podle disidentů se režim ukrývá za kamennou pevností propagandy , která brání svobodné debatě .",1,1,0.9999997611716489,TP
+silver_doc_0627,silver_doc_0627_target,Obě strany se překvapivě shodly na časovém rámci pro obnovení regionálních ekonomických projektů .,1,1,0.9959648592573536,TP
+silver_doc_0637,silver_doc_0637_target,"Generální ředitel informoval zaměstnance , že společnost zahájí program celopodnikové restrukturalizace lidských zdrojů v reakci na měnící se tržní prostředí .",1,1,0.999998837102205,TP
+silver_doc_0677,silver_doc_0677_target,"Analytici varují , že neúspěšná akvizice pracovní síly může prohloubit sociální nerovnosti v regionech .",1,1,0.9952595375009475,TP
+silver_doc_0678,silver_doc_0678_target,"Expertní skupiny tvrdí , že současné tempo změn povede k ireverzibilní transformaci evropské společnosti .",1,1,0.9999996807837446,TP
+silver_doc_0686,silver_doc_0686_target,Předseda dopravní komise se proto rozhodl rezignovat na dosavadní cíle v oblasti silniční sítě .,1,1,0.9025654057250396,TP
+silver_doc_0699,silver_doc_0699_target,"Kritici po zhlédnutí shodně prohlásili , že inscenace je naprostá pecka a doporučili ji široké veřejnosti .",1,1,0.9999998739283346,TP
+silver_doc_0700,silver_doc_0700_target,"Organizátoři potvrdili , že akce přinesla rekordní prachy díky vysoké návštěvnosti a prodeji merchandisingu .",1,1,0.9800783279371971,TP
+silver_doc_0702,silver_doc_0702_target,Podle interních zdrojů z Barrandova je výsledný materiál opravdu čupr a slibuje divácký úspěch .,1,1,0.999999671454408,TP
+silver_doc_0710,silver_doc_0710_target,Prezidentovo prohlášení hovoří o nutnosti provést politický úklid ve vládních kruzích a zajistit větší transparentnost .,1,1,0.9999994439302233,TP
+silver_doc_0723,silver_doc_0723_target,"Odborníci se shodují , že se jedná o nevídaný pokrok , který do deseti let změní více než 50 % pracovního trhu .",1,1,0.9999969892715489,TP
+silver_doc_0725,silver_doc_0725_target,"Analytici varují , že její pozice na trhu polovodičů je nyní nezničitelná a představuje akutní riziko pro konkurenční firmy .",1,1,0.9999994225465869,TP
+silver_doc_0731,silver_doc_0731_target,"Vláda se snaží usměrnit tento solární nápor legislativními změnami , aby by nedošlo k přetížení distribuční sítě .",1,1,0.9999990973819338,TP
+silver_doc_0755,silver_doc_0755_target,Podle zástupců obcí se krajská koalice připravuje na další finanční bitvu s venkovskými regiony .,1,1,0.9999936929927233,TP
+silver_doc_0763,silver_doc_0763_target,Diváci tak budou mít znovu možnost vidět toto ikonické dílo na velkém plátně .,1,1,0.9942288686442087,TP
+silver_doc_0774,silver_doc_0774_target,"Vlády se obávají , že příští dekáda přinese existenční hrozbu pro bezpečnost v celém středomoří .",1,1,0.9999980012456556,TP
+silver_doc_0780,silver_doc_0780_target,"Navzdory veškerým slibům ze strany vedení resortu se jedná jen o prázdné kecy , které nevedou k reálné ochraně vodních zdrojů .",1,1,0.9999957961738251,TP
+silver_doc_0805,silver_doc_0805_target,"Cílem Fedu je zkrotit inflaci , která se stala pro průměrného spotřebitele obrovskou koulí u nohy .",1,1,0.9999992242727203,TP
+silver_doc_0812,silver_doc_0812_target,Toto fiasko znovu otevírá debatu o kvalitě komponentů dodávaných subdodavateli a jejich testování .,1,1,0.9931920005700723,TP
+silver_doc_0822,silver_doc_0822_target,Zastupitelstvo podpořilo návrh na změnu vlastnické struktury jednoho z regionálních provozů rekreačního charakteru .,1,1,0.8633508940699357,TP
+silver_doc_0830,silver_doc_0830_target,"Ekologové se obávají , že realizace tohoto záměru by pro tamní chráněný biotop znamenala neodvratnou zkázu .",1,1,0.9999995245368922,TP
+silver_doc_0835,silver_doc_0835_target,"Zkušení uživatelé internetu přitom samozřejmě vědí , že těmto globálním platformám se nedá plně důvěřovat .",1,1,0.9999964374380179,TP
+silver_doc_0846,silver_doc_0846_target,"Zprávy nezávislých pozorovatelů hovoří o odpudivé brutalitě , s jakou tamní bezpečnostní složky zasáhly proti demonstrantům .",1,1,0.9999998132469556,TP
+silver_doc_0848,silver_doc_0848_target,Tato síť se zjevně snažila narušit jednotu evropských států v otázce podpory Ukrajiny .,1,1,0.9848336763206832,TP
+silver_doc_0869,silver_doc_0869_target,Tato strategie naléhavě vyžaduje holistický přístup k řešení problémů souvisejících se zemědělstvím a vodohospodářstvím .,1,1,0.9880781778831804,TP
+silver_doc_0884,silver_doc_0884_target,"Zjištění výzkumníků je veskrze alarmující , jelikož poukazuje na masivní erozí důvěry ve veřejné instituce .",1,1,0.9999999978878704,TP
+silver_doc_0893,silver_doc_0893_target,Kritici označují vystavená díla za přímou ránu do tváře tradičním představám o estetice a formě umění .,1,1,0.9999932063625485,TP
+silver_doc_0902,silver_doc_0902_target,"Poukazují na zásadní asymetrii mezi zeměmi první linie a těmi ve vnitrozemí EU , které nemají přímou zodpovědnost za příjem .",1,1,0.9999895697567925,TP
+silver_doc_0916,silver_doc_0916_target,"Experti upozorňují , že Hydra evropské regulace opět natahuje svá chapadla směrem k národním rozpočtům .",1,1,0.9999979415300452,TP
+silver_doc_0932,silver_doc_0932_target,Demokraté označili republikánské argumenty za pouhé kecy a požadovali konkrétní legislativní kroky .,1,1,0.9999932822983288,TP
+silver_doc_0950,silver_doc_0950_target,"Přechodná vláda , vedená premiérem Henrym , se ukázala být zcela nekompetentní čelit tomuto bezpečnostnímu kolapsu a ztratila kontrolu nad velkou částí území .",1,1,0.9999998801226757,TP
+silver_doc_0963,silver_doc_0963_target,"Izraelská armáda následně provedla rázný úder na pozice , odkud byly střely vypáleny .",1,1,0.9968044686730585,TP
+silver_doc_0964,silver_doc_0964_target,Navzdory mezinárodní pozornosti pokračuje režim v drancování přírodních zdrojů země .,1,1,0.9909773623003736,TP
+silver_doc_0973,silver_doc_0973_target,Primární fází je bezproblémová implementace nového softwarového řešení do stávajícího registru obyvatel do konce tohoto čtvrtletí .,1,1,0.9746253827446296,TP
+silver_doc_1012,silver_doc_1012_target,"Analytici upozorňují , že hlavním cílem je šířit politickou špínu a destabilizovat tak veřejnou debatu .",1,1,0.9999994522278272,TP
+silver_doc_1014,silver_doc_1014_target,Kritici z řad opozice označili celý ministerský návrh za bezobsažné kecy bez jakéhokoliv reálného dopadu na situaci .,1,1,0.9999997411643926,TP
+silver_doc_1027,silver_doc_1027_target,"Někteří analytici však varují , že tichý hospodářský drak si tímto zajišťuje strategické pozice na kontinentu .",1,1,0.9999998267759556,TP
+silver_doc_1030,silver_doc_1030_target,"Cílem je zmenšit hlubokou ekonomickou propast , která je dle expertů hlavní příčinou masové migrace do Evropy .",1,1,0.9999934011675156,TP
+silver_doc_1051,silver_doc_1051_target,"Silná bouře bičovala pobřeží rychlostí větru přes 130 km / h , což ochromilo dopravu .",1,1,0.9589336361430995,TP
+silver_doc_1086,silver_doc_1086_target,Choreografie Tomáše Rychetského se stala skutečným darem pro pražskou taneční scénu .,1,1,0.9999848683259644,TP
+silver_doc_1101,silver_doc_1101_target,Výběr daně z přidané hodnoty zaznamenal v mezikvartálním srovnání mandatorní nárůst .,1,1,0.7877342797758841,TP
+silver_doc_1115,silver_doc_1115_target,"Především výkon mladého herce Martina Nováka , hrajícího Hamleta , byl fakt skvělý .",1,1,0.9999958448087213,TP
+silver_doc_1124,silver_doc_1124_target,"Kurátoři věří , že tato sbírka se stane skutečnou pokladnicí pro historiky umění i širokou veřejnost .",1,1,0.9999894490624882,TP
+silver_doc_1126,silver_doc_1126_target,Historické filmové komplexy jsou dlouhodobě označovány jako česká továrna na sny .,1,1,0.9999938742747664,TP
+silver_doc_1134,silver_doc_1134_target,"Někteří analytici považují obrovské státní investice do bateriových systémů za nákladnou technoutopii , která nemusí zajistit plnou energetickou suverenitu .",1,1,0.9999982249790865,TP
+silver_doc_1150,silver_doc_1150_target,Zahájení čínského lunárního programu představuje realizaci letitého snu o nezávislém přístupu k vesmírným zdrojům .,1,1,0.972797008914274,TP
+silver_doc_1155,silver_doc_1155_target,Právě tito propagátoři lží využívají složité algoritmy k maximalizaci svého dosahu a zisku .,1,1,0.9999818129447602,TP
+silver_doc_1158,silver_doc_1158_target,Uživatelé projevují značnou naivitu při klikání na neověřené odkazy a při sdílení osobních údajů v reakci na paniku .,1,1,0.9962584338107392,TP
+silver_doc_1171,silver_doc_1171_target,"Pacienti si však na vyšetření u specialistů stěžují , že čekají neustále příliš dlouho a dochází ke kolapsům .",1,1,0.999998662898517,TP
+silver_doc_1172,silver_doc_1172_target,"Opozice kritizuje , že nedostatek finančních prostředků ohrožuje všechny menší nemocnice v regionu , což může vést k jejich zavření .",1,1,0.9999961284082762,TP
+silver_doc_1173,silver_doc_1173_target,"Odbory ale tvrdí , že personální problémy na jednotce intenzivní péče zásadně ovlivňují kvalitu poskytované péče všem pacientům .",1,1,0.9966097376079488,TP
+silver_doc_1182,silver_doc_1182_target,Podstatná část žádostí o přijetí do školek musela být letos v Praze z kapacitních důvodů zamítnuta .,1,1,0.8095948341856674,TP
+silver_doc_1189,silver_doc_1189_target,"Meteorologové varují , že v příštích hodinách hrozí na jihu země opakovaný veltok vody .",1,1,0.9999991946178733,TP
+silver_doc_1197,silver_doc_1197_target,"Experti tvrdí , že toto obrozování predátorů pomáhá udržet pod kontrolou populaci spárkaté zvěře .",1,1,0.9864866129676019,TP
+silver_doc_1198,silver_doc_1198_target,Mnozí vědci spatřují v současném tempu blednutí korálů pouze zmar celého podmořského ekosystému .,1,1,0.9999896039843109,TP
+silver_doc_1219,silver_doc_1219_target,Podle zprávy může mít masivní nasazení umělé inteligence v některých odvětvích ničivou sílu pro tradiční profese .,1,1,0.9867136022261151,TP
+silver_doc_1230,silver_doc_1230_target,Povodňová vlna ukázala své drápy a nekompromisně odřízla od světa několik horských vesnic .,1,1,0.9999963261599077,TP
+silver_doc_1244,silver_doc_1244_target,"Premiér údajně dokázal vyjednat výhodnější podmínky s protistranou zfleku , což analytiky zaskočilo .",1,1,0.999999977472548,TP
+silver_doc_1251,silver_doc_1251_target,Ministr školství označil požadavky na zvýšení platů za drzé a nereálné .,1,1,0.9943753904623975,TP
+silver_doc_1254,silver_doc_1254_target,"Kontrolní úřad zjistil , že dotyčný chamtivě zneužil finanční zdroje určené na modernizaci techniky .",1,1,0.9999917771955718,TP
+silver_doc_1270,silver_doc_1270_target,Analytici banky J & K upozorňují na rekordní pokles důvěry v rizikovém segmentu FIT .,1,1,0.9944304711604366,TP
+silver_doc_1284,silver_doc_1284_target,"Jeho cílem bylo prý zasáhnout vládní kolonu , což potvrzuje , že jsou to zkažené bestie bez jakéhokoliv morálního kompasu .",1,1,0.9999998988243064,TP
+silver_doc_1299,silver_doc_1299_target,Prezidentka Boluarte kupodivu zahájila dialog s regionálními guvernéry o distribuci federálních fondů .,1,1,0.9915300831311458,TP
+silver_doc_1308,silver_doc_1308_target,"I přes vládní podporu existují jisté kruhy , které považují tento krok za riskantní eskalaci konfliktu .",1,1,0.9999997658341472,TP
+silver_doc_1318,silver_doc_1318_target,"Stavební práce odhalily skryté fresky , které potvrdily , že tato budova je skutečným pamětník klíčových dějinných událostí .",1,1,0.9999988919083325,TP
+silver_doc_1326,silver_doc_1326_target,Nová éra festivalu se tak okamžitě stala kulturním fenoménem letošní letní sezóny .,1,1,0.9999902340068485,TP
+silver_doc_1334,silver_doc_1334_target,"Většina energetických společností začala investovat do zelených technologií , což naznačuje široký konsensus na trhu .",1,1,0.9938208026058738,TP
+silver_doc_1341,silver_doc_1341_target,"Lékaři si stěžují , že musejí pracovat se starým šrotem , který často selhává uprostřed zákroku .",1,1,0.9917748563918195,TP
+silver_doc_1350,silver_doc_1350_target,Pachatel se rozhodl svého obchodního partnera eliminoval v domnělé snaze o vyřešení situace .,1,1,0.9999830457102608,TP
+silver_doc_1357,silver_doc_1357_target,"Celková škoda , kterou podezřelí způsobili desítkám poškozených , dosahuje kolosálních rozměrů .",1,1,0.9999928770957176,TP
+silver_doc_1374,silver_doc_1374_target,Krajští radní schválili štědré navýšení finanční podpory pro domovy seniorů a organizace poskytující terénní péči .,1,1,0.8891818509572755,TP
+silver_doc_1380,silver_doc_1380_target,"Očekává se , že nové restrikce způsobí Rusku značné ekonomické potíže , ale Moskva tvrdí , že všechny obavy Západu jsou jen kecy .",1,1,0.999999538924263,TP
+silver_doc_1388,silver_doc_1388_target,"Když by úředníci dostali včas ty prachy , už dávno by nemuseli řešit stav zdevastované krajiny .",1,1,0.9999998239584994,TP
+silver_doc_1389,silver_doc_1389_target,"Mluvčí společnosti však uvedl , že veškeré filtry a technické vybavení jsou prý úplně cajk a nehrozí žádné znečištění .",1,1,0.9999999096519242,TP
+silver_doc_1395,silver_doc_1395_target,Nové směrnice Zelené dohody zbytečně kladou na průmysl značné finanční a administrativní nároky .,1,1,0.9999957258322545,TP
+silver_doc_1404,silver_doc_1404_target,"Kritici očekávají , že tento projekt znovu potvrdí jeho pozici jako architekta moderní české kinematografie , formujícího současnou estetiku .",1,1,0.9999988167567683,TP
+silver_doc_1405,silver_doc_1405_target,"Herec David Klíma prý na tiskové konferenci prohlásil , že je unaven tím , že se stal na čas politikem a musel řešit politické otázky .",1,1,0.9999999969836519,TP
+silver_doc_1412,silver_doc_1412_target,"Městská správa připravila opatření , která fungovala skvěle a zabránila větším škodám .",1,1,0.9640745887065659,TP
+silver_doc_1420,silver_doc_1420_target,"Nedostatek silných institucí znamená , že politické procesy v Africe jsou neustále ohroženy chaosem .",1,1,0.9999998363548963,TP
+silver_doc_1421,silver_doc_1421_target,Zahraniční korporace většinou těží ze slabé legislativy a neadekvátní ochrany místního obyvatelstva .,1,1,0.9861902534494161,TP
+silver_doc_1422,silver_doc_1422_target,"Problémy s údržbou kritické infrastruktury se v regionu bohužel objevují pravidelně , což brzdí růst .",1,1,0.9999904314478171,TP
+silver_doc_1430,silver_doc_1430_target,"Experti varují , že pokud se zpomalí poptávka na Západě , hrozí částečný kolaps dodavatelských řetězců závislých na exportu .",1,1,0.9999995509337307,TP
+silver_doc_1435,silver_doc_1435_target,"Podle interních zpráv se však zdá , že některé kšefty byly uzavřeny mimo oficiální účetnictví .",1,1,0.9999847883246392,TP
+silver_doc_1437,silver_doc_1437_target,"Místní firmy přišly na zajímavý fígl , jak obejít nové americké celní předpisy .",1,1,0.9883528808297539,TP
+silver_doc_1443,silver_doc_1443_target,Přední vývojáři nyní preferují strukturu DAO pro správu komunitních fondů bez centrálního vedení .,1,1,0.9832939259992983,TP
+silver_doc_1445,silver_doc_1445_target,"Pro zajištění úvěrů uživatelé musí udržovat dostatečnou zástavu , typicky se sleduje metrika LTV .",1,1,0.9413896563141552,TP
+silver_doc_1446,silver_doc_1446_target,Nově přijaté směrnice vyžadují od všech registrovaných burz striktní dodržování protokolu KYC před umožněním obchodování .,1,1,0.8563261096439546,TP
+silver_doc_1461,silver_doc_1461_target,Součástí opatření je navýšení platů a také příkladná podpora dalšího odborného vzdělávání personálu .,1,1,0.9423786116365337,TP
+silver_doc_1494,silver_doc_1494_target,"Postupný přechod k zeleným technologiím ukazuje , že čas tradičních fosilních obrů se definitivně chýlí ke konci .",1,1,0.9999997544523724,TP
+silver_doc_1510,silver_doc_1510_target,"Bylo navrženo , že by staré nevyužité špajsky mohly být přeměněny na studijní místnosti .",1,1,0.9916790239147211,TP
+silver_doc_1515,silver_doc_1515_target,"Vláda zavedla nové karanténní opatření až včera , čímž zbytečně prodloužila dobu šíření nákazy .",1,1,0.9999952974734506,TP
+silver_doc_1518,silver_doc_1518_target,Někteří epidemiologové přehnaně varují před příchodem podzimní vlny a vyzývají k okamžitému znovuzavedení roušek .,1,1,0.9860910604193152,TP
+silver_doc_1525,silver_doc_1525_target,Návrh byl na radě města šmahem schválen bez hlubší analýzy budoucího využití plochy .,1,1,0.9867057525819315,TP
+silver_doc_1531,silver_doc_1531_target,"Prezident prohlásil , že veškerá kritika jeho ekonomického programu je naprostá pitomost .",1,1,0.999999947164495,TP
+silver_doc_1542,silver_doc_1542_target,"Nehoda způsobila nekonečné kolony , které se táhly přes deset kilometrů a paralyzovaly provoz .",1,1,0.9899998927074558,TP
+silver_doc_1547,silver_doc_1547_target,Projekt si vyžádá obrovsky nákladné zdroje na vývoj nového tepelného štítu .,1,1,0.9796502136115676,TP
+silver_doc_1550,silver_doc_1550_target,Tento objev může zásadně změnit naše chápání potenciálního života mimo Sluneční soustavu .,1,1,0.9899718508691594,TP
+silver_doc_1557,silver_doc_1557_target,"Podnikatelská komora si stěžuje , že místní byrokrati opět záměrně prodlužují vydání stavebních povolení .",1,1,0.9924346688819599,TP
+silver_doc_1558,silver_doc_1558_target,"Kritici se obávají , že za podezřelou transakcí stojí vlivová chobotnice napojená na krajské vedení .",1,1,0.9999993872042757,TP
+silver_doc_1566,silver_doc_1566_target,EU překvapivě odmítla otevřít novou kapitolu v přístupových jednáních se Srbskem .,1,1,0.9874945962984952,TP
+silver_doc_1581,silver_doc_1581_target,"Oběť utrpěla lehčí zranění hlavy po tom , co ji zasáhla prudká týmovka pěstí .",1,1,0.9943769025097036,TP
+silver_doc_1604,silver_doc_1604_target,Takto surový útok vyvolal mezi obyvateli dané čtvrti silné obavy o jejich bezpečnost .,1,1,0.9999998884644224,TP
+silver_doc_1605,silver_doc_1605_target,"Na lavici obžalovaných teď čeká deset takových šmejdů , kteří se neštítili vydělávat na slabosti starých lidí .",1,1,0.9999995923464958,TP
+silver_doc_1606,silver_doc_1606_target,Tento jedovatý náklad byl určen pro desítky mladých uživatelů po celé metropoli .,1,1,0.9999921761156852,TP
+silver_doc_1644,silver_doc_1644_target,"V případě prudkého nárůstu pacientů by došlo k okamžitému kolapsu zdravotnického systému , varují odbory .",1,1,0.995177307871664,TP
+silver_doc_1653,silver_doc_1653_target,"Obě strany se obviňují ze zablokování diskuse , což vede k patovou situaci v bilaterálních vztazích mezi ostrovem a Washingtonem .",1,1,0.999995051875341,TP
+silver_doc_1660,silver_doc_1660_target,"Kandidát veřejně prohlásil , že se jedná o prolhaný plátek , který záměrně šíří dezinformace a zmanipulované průzkumy preferencí .",1,1,0.9999999627627997,TP
+silver_doc_1661,silver_doc_1661_target,"Premiér v následném rozhovoru pro Rádio Impuls prohlásil , že opozice se chová jako banda ignorantů , kteří poškozují bezpečnostní zájmy státu .",1,1,0.9999945988976675,TP
+silver_doc_1668,silver_doc_1668_target,"Vyšetřování příčin komplikuje skutečnost , že poldové museli řešit i agresi svědků nehody .",1,1,0.9999967085885392,TP
+silver_doc_1669,silver_doc_1669_target,"Svědci tvrdí , že řidič před srážkou pouze čuměl do telefonu a nereagoval na brzdění ostatních vozidel .",1,1,0.9952291289241617,TP
+silver_doc_1686,silver_doc_1686_target,"Úřady se domnívají , že krátce před vydáním zatykače zdrhnul do Panamy přes obtížně kontrolovatelnou hranici s Kolumbií .",1,1,0.9851425649398023,TP
+silver_doc_1692,silver_doc_1692_target,"Předseda strany v reakci prohlásil , že se jedná o ohromující důkaz důvěry voličů v jejich dlouhodobou práci .",1,1,0.9999999731470285,TP
+silver_doc_1699,silver_doc_1699_target,Vedení společnosti ukázalo odhodlanou snahu řešit problém dezinformací ještě před koncem fiskálního kvartálu .,1,1,0.9999992417559771,TP
+silver_doc_1708,silver_doc_1708_target,"Navzdory vysvětlení starosty vyjádřila řada občanů nespokojenost s navrhovaným zvýšením místních poplatků , zejména pak za svoz odpadu .",1,1,0.99189934359235,TP
+silver_doc_1742,silver_doc_1742_target,Představitelé kraje tento krok označili za nezbytnou restrukturalizaci sítě veřejné správy .,1,1,0.9715273568550178,TP
+silver_doc_1772,silver_doc_1772_target,"Před zatčením stihli realizovat šestnáct případů , které označovali jako profisbírka .",1,1,0.9773408972606242,TP
+silver_doc_1773,silver_doc_1773_target,"Jeden z hlavních podezřelých , který útoky řídil , byl médii označen jako kybergangster .",1,1,0.9999976361929557,TP
+silver_doc_1781,silver_doc_1781_target,"Zařízení , které má být klíčovým produktem Vánoc , je překvapivě nabízeno za poloviční cenu oproti konkurenčním headsetům .",1,1,0.9999817430897905,TP
+silver_doc_1797,silver_doc_1797_target,"Lidé si stěžují , že náklady na běžný nákup jsou už prostě neúnosně mastné a ohrožují rodinné rozpočty .",1,1,0.9999999729191056,TP
+silver_doc_1821,silver_doc_1821_target,"Analytici sledovali , jak probíhala celá ta pařba falešných účtů , které masivně spamovaly komentářové sekce velkých médií .",1,1,0.999999742270057,TP
+silver_doc_1822,silver_doc_1822_target,"Vyšetřovatelé zjistili , že tito borci používali sofistikované AI nástroje pro generování uvěřitelného vizuálního obsahu .",1,1,0.9999944031732977,TP
+silver_doc_1823,silver_doc_1823_target,"Experti upozornili , že jde o hustej a technologicky náročný způsob , jak podkopat důvěru v bankovní sektor a kapitálové trhy .",1,1,0.999999827413486,TP
+silver_doc_1838,silver_doc_1838_target,Někteří radní neváhali kvůli přístupu ke korytu změnit politickou příslušnost .,1,1,0.9775251538987553,TP
+silver_doc_1845,silver_doc_1845_target,"Celková škoda , kterou tento nešťastník způsobil , se vyšplhala nad sto tisíc korun .",1,1,0.9999999713336094,TP
+silver_doc_1868,silver_doc_1868_target,Obchodní spory s regionálními partnery jen posilují narativ o nutnosti diverzifikace dodavatelských řetězců v Asii .,1,1,0.9911327198566982,TP
+silver_doc_1870,silver_doc_1870_target,"Zatímco některé obchodní domy rychle modernizují , starší čtvrti si drží svůj zvláštní háv z dob protektorátu .",1,1,0.9955822717687868,TP
+silver_doc_1885,silver_doc_1885_target,Diváci zřejmě budou čučet na neobvyklou scénografii a minimalistické kostýmy po celou dobu představení .,1,1,0.9999978905776812,TP
+silver_doc_1900,silver_doc_1900_target,Podle záchranářů je to pořádný průšvih a lidé by měli zvážit nutnost cestování .,1,1,0.9999986411159892,TP

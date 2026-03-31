@@ -226,6 +226,16 @@ ANALYSIS_CONFIG = {
 LABEL_NEUTRAL = 0
 LABEL_ANOMALY = 1
 
+# --- 9. MODEL DISPLAY NAMES ---
+# Mapping from internal model names (stored in CSVs) to publication-ready labels.
+MODEL_DISPLAY_NAMES = {
+    'Dummy (Majority)':   'Majority Baseline',
+    'Dummy':              'Majority Baseline',
+    'Dummy (None)':       'Majority Baseline (None)',
+    'Dummy (Mild)':       'Majority Baseline (Mild)',
+    'Dummy (Aggressive)': 'Majority Baseline (Aggressive)',
+}
+
 # --- 10. XGBOOST HYPERPARAMETER TUNING ---
 XGBOOST_PARAM_GRID = {
     'learning_rate': [0.01, 0.05, 0.1, 0.2],
