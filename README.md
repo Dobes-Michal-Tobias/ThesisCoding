@@ -1,91 +1,103 @@
-# Strojová detekce lexikálních jednotek s potenciálem narušit informační kvalitu ve zpravodajských textech
- 
+# Machine Detection of Lexical Units with the Potential to Violate Informational Quality in News Texts
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![NLP](https://img.shields.io/badge/NLP-RobeCzech-green)](https://huggingface.co/ufal/robeczech-base)
+[![NLP](https://img.shields.io/badge/NLP-Czert%2FRobeCzech-green)](https://huggingface.co/ufal/robeczech-base)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-In%20Progress-orange)]()
 
-> **Diplomová práce** | Univerzita Palackého v Olomouci | Katedra obecné lingvistiky
+> **Master's Thesis** | Palacký University Olomouc | Department of General Linguistics
 
-Tento repozitář obsahuje zdrojový kód, experimentální framework a dokumentaci k diplomové práci zaměřené na **automatizovanou identifikaci slov porušujících objektivu** v českých zpravodajských textech. Projekt kombinuje doménové znalosti mediálních studií a lingvistiky s moderními metodami NLP (Natural Language Processing) a strojového učení.
+This repository contains the source code, experimental framework, and documentation for a master's thesis focused on the **automated identification of lexical units with the potential to violate informational quality** in Czech news texts (abbreviated as LJMPNIK — *lexikální jednotka mající potenciál narušit informační kvalitu zpravodajství*). The project combines domain knowledge from media studies and linguistics with modern NLP (Natural Language Processing) and machine learning methods.
 
 ---
 
-## Cíle projektu
+## Project Goals
 
-Hlavním úkolem je detekce lexikálních jednotek, které mají potenciál narušovat objektivitu zpravodajství – tzv. **bias detection**. Projekt řeší tento problém čtyřmi přístupy (na úrovni vět i slov):
+The main task is detection of lexical units that have the potential to violate journalistic objectivity — a form of **bias detection**. The project approaches this problem through three experimental tracks, evaluated at both the word level (S1) and sentence level (S2):
 
-1.  **Unsupervised Outlier Detection**
-    * Využití metod detekce anomálií pro identifikaci "odchylek" od neutrálního zpravodajského stylu.
-    * **Algoritmy:** One-Class SVM, Isolation Forest, Mahalanobisova vzdálenost.
-    * **Vstup:** Contextualized embeddings (BERT/RobeCzech).
+1.  **M1 — Unsupervised Outlier Detection**
+    * Anomaly detection methods to identify deviations from neutral news style.
+    * **Algorithms:** One-Class SVM, Isolation Forest, Mahalanobis distance.
+    * **Input:** Contextualized embeddings (Czert / RobeCzech).
 
-2.  **Supervised Classification (Klasifikace)**
-    * Trénování klasifikátorů na anotovaných datech.
-    * **Algoritmy:** Logistic Regression, SVM, XGBoost nad BERT embeddingy.
+2.  **M2 — Supervised Classification**
+    * Training classifiers on annotated data.
+    * **Algorithms:** Logistic Regression, SVM, XGBoost over BERT embeddings.
 
-3.  **Neural Networks (Hluboké učení)**
-    * Implementace vlastních architektur neuronových sítí.
-    * **Supervised:** MLP (Multilayer Perceptron) a BiLSTM pro klasifikaci sekvencí.
-    * **Unsupervised:** Autoenkodéry pro detekci anomálií na základě rekonstrukční chyby.
+3.  **M3 — LLM In-context Classification**
+    * Zero-shot and few-shot classification using large language models without task-specific training.
+    * **Approach:** Prompt engineering (zero-shot / few-shot), post-hoc POS-tag filtering.
+    * **Model:** Gemma 3 (27B) via Google Generative AI API.
 
-4.  **Large Language Models (LLM)**
-    * Využití state-of-the-art generativních modelů.
-    * **In-context Learning:** Zero-shot / Few-shot learning, pokročilý Prompt Engineering.
-    * **Fine-tuning:** Doménová adaptace open-source modelů (Llama 3, Mistral…).
-  
+4.  **M4 — LLM Generative Extraction**
+    * Generative approach: the model is prompted to directly extract LJMPNIK candidates from a given sentence.
+    * **Model:** Gemma 3 (27B) via Google Generative AI API.
 
-## Vlastní datasety
 
-Projekt je postaven na **dvou unikátních datasetech vytvořených autorem** speciálně pro účely této práce:
+## Datasets
 
-* **GOLD Dataset:** Ručně anotovaný dataset vysoké kvality. Obsahuje expertně ověřené příklady lexikálních jednotek s potenciálem narušit inforamční kvalitu zpravodajství (kombinace reálných textů a LLM augmentace). Slouží jako *Ground Truth* pro evaluaci.
-* **SILVER Dataset:** Rozsáhlý, automaticky generovaný dataset (weakly labeled). Slouží k trénování robustnosti modelů a ověření metod na větším objemu dat.
+The project is built on **two unique datasets created by the author** specifically for this thesis:
 
-> **Poznámka k dostupnosti dat:** Vzhledem k probíhajícímu řízení a originalitě dat **nejsou datasety momentálně veřejně dostupné**. Jejich zveřejnění v sekci [Releases](../../releases) je plánováno po odevzdání a obhajobě práce (LS 2026).
+* **GOLD Dataset:** A high-quality, manually annotated dataset. Contains expert-verified examples of lexical units with the potential to violate informational quality (a combination of real news texts and LLM-augmented samples). Serves as the *Ground Truth* for evaluation.
+* **SILVER Dataset:** A large, automatically generated weakly-labelled dataset. Used to train model robustness and validate methods on a larger data volume.
 
-## Technologie a nástroje
+> **Note on data availability:** Due to the ongoing thesis proceedings and the originality of the data, **the datasets are not currently publicly available**. Their release in the [Releases](../../releases) section is planned after submission and defence (Summer Semester 2026).
 
-Projekt využívá moderní Python stack pro Data Science:
+## Technologies & Tools
 
-* **Jazyk:** Python 3.9+
-* **NLP & Embeddings:** `transformers` (HuggingFace), `ufal/robeczech-base`, `spaCy`
-* **Machine Learning:** `scikit-learn`, `xgboost`
+The project uses a modern Python stack for Data Science and NLP:
+
+* **Language:** Python 3.9+
+* **NLP & Embeddings:** `transformers` (HuggingFace), Czert / `ufal/robeczech-base`, `spaCy`, `spacy-udpipe`
+* **Machine Learning:** `scikit-learn`, `xgboost`, `imbalanced-learn`
+* **LLM API:** `google-generativeai` (Gemma 3)
+* **Dimensionality Reduction:** `umap-learn`
+* **Statistical Testing:** `statsmodels`, `scipy`
 * **Data Processing:** `pandas`, `numpy`
-* **Vizualizace:** `seaborn`, `matplotlib`
+* **Visualisation:** `seaborn`, `matplotlib`
 
-## Struktura repozitáře
+## Repository Structure
 
-Projekt dodržuje modulární strukturu oddělující data, experimentální notebooky a znovupoužitelný kód.
+The project follows a modular structure separating data, experimental notebooks, and reusable source code.
 
 ```text
-├── data/                  # Složka pro data
-│   ├── raw/               # (Surová JSONL data - neveřejné)
-│   ├── vectors/           # (Předpočítané embeddingy - neveřejné)
-├── notebooks/             # Reprodukovatelné experimenty (Jupyter)
-│   ├── 01_EDA_Preprocess.ipynb           # Exploratorní analýza a NLP pipeline
-│   ├── 02_M1_S1_Unsupervised_Token.ipynb # Detekce anomálií na úrovni slov
-│   ├── 03_M1_S2_Unsupervised_Sentence.ipynb
-│   ├── 04_M2_S1_Supervised_Token.ipynb   # Supervised Klasifikace 
-│   └── ...
-├── src/                   # Zdrojový kód (Python moduly)
-│   ├── config.py          # Centrální konfigurace projektu
-│   ├── load_data.py       # Data loading a preprocessing pipeline
-│   ├── visualization.py   # Unifikované vizualizace pro reporty
-│   └── evaluation.py      # Metriky (Precision-Recall, F1, AUPRC)
-├── requirements.txt       
-└── README.md              
+├── data/
+│   ├── raw/               # Raw JSONL data (private)
+│   └── processed/         # Preprocessed pickled data (tokens, sentences)
+├── notebooks/             # Reproducible experiments (Jupyter)
+│   ├── 01_Data_Processing.ipynb             # Data loading and NLP preprocessing
+│   ├── 02_EDA.ipynb                         # Exploratory Data Analysis
+│   ├── 03_M1_S1_Unsupervised_Token.ipynb    # M1 anomaly detection – word level
+│   ├── 04_M1_S2_Unsupervised_Sentence.ipynb # M1 anomaly detection – sentence level
+│   ├── 05_M2_S1_Supervised_Token.ipynb      # M2 supervised classification – word level
+│   ├── 06_M2_S2_Supervised_Sentence.ipynb   # M2 supervised classification – sentence level
+│   ├── 07_M3_S1_LLM_Benchmark_Token.ipynb   # M3 LLM classification – word level
+│   ├── 08_M3_S2_LLM_Sentence.ipynb          # M3 LLM classification – sentence level
+│   ├── 09_Statistical_Analysis.ipynb         # Statistical tests (permutation, bootstrap, ANOVA/KW)
+│   └── 10_M4_LLM_Generative_Extraction.ipynb # M4 LLM generative extraction
+├── src/                   # Source code (Python modules)
+│   ├── config.py                  # Central project configuration
+│   ├── load_preprocess_data.py    # Data loading and NLP preprocessing pipeline
+│   ├── data_splitting.py          # Data splitting logic and experimental scenario definitions
+│   ├── models.py                  # Model definitions, feature extraction, hyperparameter tuning
+│   ├── experiments.py             # Experiment runners
+│   ├── evaluation.py              # Metrics (Precision-Recall, F1, AUPRC, bootstrap CI, permutation tests)
+│   ├── llm_client.py              # LLM API client (M3 / M4)
+│   ├── analysis.py                # Qualitative analysis utilities
+│   └── visualization.py           # Unified visualisations for reports
+├── results/               # Saved figures and CSV result tables
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 **Michal Tobiáš Dobeš**
 
-* Student NMgr. Obecná lingvistika, FF UP
-* Zaměření: Computational Linguistics, NLP, Machine Learning
+* Student, NMgr. General Linguistics, Faculty of Arts, Palacký University Olomouc
+* Focus: Computational Linguistics, NLP, Machine Learning
 * ✉️ [michaltobias.dobes01@upol.cz](mailto:michaltobias.dobes01@upol.cz)
 
-**Vedoucí práce:** Mgr. Vladimír Matlach, Ph.D. (Katedra obecné lingvistiky FF UP)
+**Supervisor:** Mgr. Vladimír Matlach, Ph.D. (Department of General Linguistics, FF UP)
 
-*Poznámka: Práce je ve vývoji. Plánované dokončení a obhajoba: Letní semestr 2026.*
+*Note: The thesis is in progress. Planned completion and defence: Summer Semester 2026.*
