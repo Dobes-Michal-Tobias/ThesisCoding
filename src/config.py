@@ -109,6 +109,16 @@ COLORS = {
     'grid': '#E0E0E0',
 }
 
+# Barvy specifické pro M4 (Generative Extraction)
+M4_COLORS = {
+    'prompt_a':  '#66C2A5',   # Teal  — Prompt A (Base)
+    'prompt_b':  '#8DA0CB',   # Blue  — Prompt B (Theory-guided)
+    'match':     '#66C2A5',   # Teal  — správná extrakce (TP)
+    'no_match':  '#E5C494',   # Light yellow — chybná extrakce (FP/FN)
+    'neutral':   '#D9D9D9',   # Šedá  — neutrální (TN)
+    'highlight': '#E5C494',   # Náhrada za oranžovou '#FC8D62' v M4 grafech
+}
+
 # Explicitní barvy pro data-splity (Train / Val / Test)
 DATASET_COLORS = {
     'Train': '#8DA0CB',   # Set2 Blue
